@@ -21,7 +21,7 @@ PayGate is included only as one optional synthetic agentic-commerce profile. It 
 9. `docs/STANDARDS_STATUS_AND_IPR.md` — IETF status and no-patent-license boundary.
 10. `docs/PUBLIC_REVIEWER_GUIDE.md` — what feedback is useful and what not to submit.
 11. `docs/REPRODUCIBILITY.md` — clean-run and manifest expectations.
-12. `docs/PRE_RELEASE_AUDIT_CHECKLIST.md` — pre-release verification gate.
+12. `docs/PRE_RELEASE_AUDIT_CHECKLIST.md` — public-release audit checklist; filename retained for continuity.
 13. `docs/PUBLIC_STEWARDSHIP.md` — public-good posture.
 
 ## Quickstart

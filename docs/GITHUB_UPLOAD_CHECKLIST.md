@@ -23,8 +23,8 @@ Release title:
 Release settings:
 
 ```text
-Pre-release: ON
-Set as latest: OFF
+Pre-release: OFF / unchecked
+Set as latest: optional; recommended OFF for conservative rollout
 ```
 
 Before upload:
@@ -33,7 +33,7 @@ Before upload:
 2. Confirm `ietf126/` exists and includes `run_review_packet.py`, `README.md`, `AUTHORIZATION_REF_PROFILE.md`, `DIGEST_INTEROP_NOTES.md`, `NEGATIVE_VECTOR_PLAN.md`, and `schemas/authorization_ref.public-eval.v2.schema.json`.
 3. Do not add non-public annexes, claim charts, legal opinions, field-of-use analysis, private implementation mapping, customer data, production logs, credentials, live payment or processor materials, or commercial strategy.
 4. Do not add generated cache or run-output directories such as `__pycache__/`, `.pytest_cache/`, `checks/`, `results/`, `ietf126/results/`, `dist/`, or `build/`.
-5. Do not describe this release as production software, stable production software, an official IETF reference implementation, an IETF standard, a certification program, a conformance program, a public trust anchor, or a production non-bypassability proof.
+5. Do not describe this release as production software, an official IETF reference implementation, an IETF standard, a certification program, a conformance program, a public trust anchor, or a production non-bypassability proof.
 
 Pre-upload commands:
 

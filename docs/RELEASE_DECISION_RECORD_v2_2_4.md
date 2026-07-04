@@ -2,7 +2,7 @@
 
 ## Decision
 
-Publish `v2.2.4-public-eval` as the GitHub pre-release / IETF 126 public review update after applying the integrated IETF 126 packet and regenerating the static manifest.
+Publish `v2.2.4-public-eval` as the GitHub public evaluation release / IETF 126 public review update after applying the integrated IETF 126 packet and regenerating the static manifest. The GitHub pre-release checkbox is left unchecked; the artifact remains explicitly non-production.
 
 ## Why this release exists
 

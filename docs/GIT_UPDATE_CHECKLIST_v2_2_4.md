@@ -21,4 +21,4 @@ git push origin main
 git push origin v2.2.4-public-eval
 ```
 
-Publish the GitHub release as a **pre-release** and attach the ZIP plus `.sha256` sidecar.
+Publish the GitHub release with the pre-release checkbox left **unchecked** and attach the ZIP plus `.sha256` sidecar.

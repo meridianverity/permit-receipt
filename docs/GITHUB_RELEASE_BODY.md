@@ -4,6 +4,10 @@ Synthetic source-available evaluation artifact for PermitReceipt-based permit-be
 
 This release integrates the IETF 126 remote review packet into the public evaluation slice. It demonstrates one protected action, exact canonical request bytes, an `action_digest`, PermitReceipt decision behavior, fail-closed negative vectors, and signature-covered cross-reference shape checks for public-safe interoperability discussion.
 
+## Release status
+
+Public evaluation release. Not production software. GitHub pre-release checkbox left unchecked.
+
 ## Scope
 
 This is a synthetic public evaluation artifact only.

@@ -37,14 +37,14 @@
       "sha256": "e92db7663c4b5cf5cf3968855ea1099a363dbcc99e5e53dc3cf879819e8dc16d"
     },
     {
-      "bytes": 8649,
+      "bytes": 8670,
       "path": "README.md",
-      "sha256": "79ae0ca55130fd4c9f86107848d6d59271367bb7e1cbf7d7fde0885daa755b10"
+      "sha256": "b58aaa4d32e82059ac6179100ca084c90cc12e2985adeb738f2925981526f530"
     },
     {
-      "bytes": 2702,
+      "bytes": 2737,
       "path": "README_FIRST.md",
-      "sha256": "89c1d888f0c5fa43354deea49fc26443512cebf8099366df72a5b377c06642d9"
+      "sha256": "a5c1cae2bd644f7c7cbca2740efc43c4209991d27c30af88a71aebc8b337e3e5"
     },
     {
       "bytes": 858,
@@ -122,19 +122,19 @@
       "sha256": "9f199499e738d90bef30097e4b4cd1d76f7fb8f650a84d7a29360c42b5d95cc4"
     },
     {
-      "bytes": 1983,
+      "bytes": 2099,
       "path": "docs/GITHUB_RELEASE_BODY.md",
-      "sha256": "519b2a700bf457d95335ea779c9b44bd902ca97e14ec3b60f30bdfaad20ff250"
+      "sha256": "c532ab8f86c5f82a38335592ed39f901a13be815aa629c8ac9c662190b35107a"
     },
     {
-      "bytes": 2612,
+      "bytes": 2644,
       "path": "docs/GITHUB_UPLOAD_CHECKLIST.md",
-      "sha256": "1b4cf03fa672fe0e0956b5caecc3c14c53bd1d95df6a3ac38e3a67566c332849"
+      "sha256": "7cf1060d5c6236da076a8bc2ae58877cb22b7d68939a9fffd3353eb4faaa4002"
     },
     {
-      "bytes": 659,
+      "bytes": 687,
       "path": "docs/GIT_UPDATE_CHECKLIST_v2_2_4.md",
-      "sha256": "d4547724036e6c85bd48af017e15afbb5feaa46bdd163221d19d03afc5ba018f"
+      "sha256": "f768dea8418935986d87983202db3def4ebc0485da3be2b147720720fb19c8e7"
     },
     {
       "bytes": 3995,
@@ -142,9 +142,9 @@
       "sha256": "4bfc953cb323f67fd075fef365ba4793a7aaada7f28a852803693d5c0c07490f"
     },
     {
-      "bytes": 2266,
+      "bytes": 2561,
       "path": "docs/PRE_RELEASE_AUDIT_CHECKLIST.md",
-      "sha256": "be41caa419f2d5da10cca77b8613a0eaf1db9f3c78e789ff69020c72c5017281"
+      "sha256": "aea56560faa430eaca2b519d0dab3d2fe7afd18ad08634c49a194f3f6168dd3c"
     },
     {
       "bytes": 1292,
@@ -157,9 +157,14 @@
       "sha256": "d242c388adaa5ccc7a125ac4cf8db7d332470851c6954553fe0d3d105a5e7883"
     },
     {
+      "bytes": 1117,
+      "path": "docs/Q4_MANUAL_UPLOAD_RELEASE_FINAL.md",
+      "sha256": "4c04b56e073db4ceb8e8534720fd4227bfeb04344f006e14f41f668c1a1aa6ff"
+    },
+    {
       "bytes": 1737,
       "path": "docs/QA_REPORT_v2_2_4_PUBLIC_EVAL.md",
-      "sha256": "1478434e554d682fe2ab97986f1eba976cdae7fd1de2f403a7c80ed3c05543db"
+      "sha256": "f3fcc9b8e7f7f1e3b0a0da53ba94c7ebbc9b656bc3fd2438e8a9ce3dbd3babae"
     },
     {
       "bytes": 1226,
@@ -167,9 +172,9 @@
       "sha256": "91f9dde33ecc9d58aafb555ae36091cec9d824a35496a4026c921d3c627dc248"
     },
     {
-      "bytes": 865,
+      "bytes": 978,
       "path": "docs/RELEASE_DECISION_RECORD_v2_2_4.md",
-      "sha256": "d43f1a0c00565b546f2b646e82e557df188d21ffdfac777954880a9a3053c7c5"
+      "sha256": "0a616e57a3883b79de2c321297ef943c83bc2c2eb82032182c70b4d1daf892b5"
     },
     {
       "bytes": 1139,

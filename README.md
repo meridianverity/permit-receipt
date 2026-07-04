@@ -35,7 +35,7 @@ Current public evaluation tag:
 
 Release status:
 
-Pre-release. Not stable production software.
+Public evaluation release. Not production software.
 
 Release asset hashes should be verified from the GitHub release assets generated at publication time. Do not treat an overlay ZIP hash as the full release artifact hash.
 
@@ -198,7 +198,7 @@ This release is manual-upload friendly. The public evaluation manifest does not 
 
 ## GitHub update / IETF 126 review
 
-For the GitHub update, publish this as `v2.2.4-public-eval` and keep the release as a pre-release. The IETF Hackathon project page should point reviewers to:
+For the GitHub update, publish this as `v2.2.4-public-eval` with the GitHub pre-release checkbox left unchecked. The IETF Hackathon project page should point reviewers to:
 
 ```text
 https://github.com/meridianverity/permit-receipt/tree/main/ietf126

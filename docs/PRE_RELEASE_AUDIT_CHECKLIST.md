@@ -1,6 +1,6 @@
-# Pre-Release Audit Checklist
+# Public Release Audit Checklist
 
-Use this checklist before publishing any public evaluation slice.
+Use this checklist before publishing any public evaluation slice. The filename is retained for continuity with earlier review packets; the current `v2.2.4-public-eval` GitHub release is published with the pre-release checkbox unchecked.
 
 ## 1. Scope and boundary
 
@@ -57,9 +57,9 @@ Expected:
 
 ## 5. Upload posture
 
-- GitHub release: mark as **Pre-release**.
-- Do not mark as `Latest` if a stable release semantics could be inferred.
-- Release title should include `Public Evaluation Slice` and `IETF Discussion Artifact`.
+- GitHub release: leave the pre-release checkbox **unchecked** for `v2.2.4-public-eval`.
+- `Latest` is optional; for conservative rollout, do not set it as latest until you decide the repository should advertise it as the default release.
+- Release title should include `Public Evaluation Slice` and `IETF 126 Review Artifact`.
 - Attach the ZIP and SHA-256 file only.
 - Do not attach patent PDFs, claim charts, legal analyses, partner materials, or private annexes.
 
