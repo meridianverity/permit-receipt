@@ -3,9 +3,9 @@ import hashlib, json, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 MANIFEST = ROOT / 'MANIFEST.sha256.json'
-EXCLUDE_DIRS = {'.git', '__pycache__', '.pytest_cache', '.mypy_cache', 'tmp', 'dist', 'build', 'results', 'checks'}
+EXCLUDE_DIRS = {'.git', '.github', '__pycache__', '.pytest_cache', '.mypy_cache', 'tmp', 'dist', 'build', 'results', 'checks'}
 EXCLUDE_SUFFIXES = {'.pyc'}
-EXCLUDE_FILES = {'MANIFEST.json', 'MANIFEST.sha256.json'}
+EXCLUDE_FILES = {'MANIFEST.json', 'MANIFEST.sha256.json', '.gitignore'}
 
 def sha(path: Path) -> str:
     h = hashlib.sha256()

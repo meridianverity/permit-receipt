@@ -2,36 +2,6 @@
   "artifact": "PermitReceipt Public Evaluation Slice for AI-Agent External Effects v2.2.4",
   "entries": [
     {
-      "bytes": 1458,
-      "path": ".github/ISSUE_TEMPLATE/ietf126-cross-reference.md",
-      "sha256": "65dff86f25616a188944864789fed5bfbc9d07f8849a13d309d116d439781be5"
-    },
-    {
-      "bytes": 798,
-      "path": ".github/ISSUE_TEMPLATE/ietf126-field-model.md",
-      "sha256": "3eee96f86cb12ed89a64a642f380cb50cadc30de20a6d1a44c600a815e4f20bc"
-    },
-    {
-      "bytes": 946,
-      "path": ".github/ISSUE_TEMPLATE/ietf126-negative-vector.md",
-      "sha256": "4993ee24a6fe99d30f926562b56ea910b81a42865d918d909df72d0135bbe045"
-    },
-    {
-      "bytes": 763,
-      "path": ".github/workflows/ietf126-review-packet.yml",
-      "sha256": "42354facfbe9be597ae8a25c444cbe6f8d8fc1bfe22ef5c5bfd909292d0ff621"
-    },
-    {
-      "bytes": 671,
-      "path": ".github/workflows/qa.yml",
-      "sha256": "6a5dc071bcc2dd9ef781ad1749b2cba391bebd763966c3a0d79d63fdb34e9f89"
-    },
-    {
-      "bytes": 214,
-      "path": ".gitignore",
-      "sha256": "290de490d4ba4755901a8fbc9504a4a3afa07daddc6a651731ace36ad20e174a"
-    },
-    {
       "bytes": 720,
       "path": "CONTRIBUTING.md",
       "sha256": "0a7f55827482b3268b948a94efe9133b61b3043f0fbc4e245bd9c8338277af92"
@@ -67,9 +37,9 @@
       "sha256": "e92db7663c4b5cf5cf3968855ea1099a363dbcc99e5e53dc3cf879819e8dc16d"
     },
     {
-      "bytes": 8163,
+      "bytes": 8649,
       "path": "README.md",
-      "sha256": "89bd05d9ae3c9f5187b4cae0b2f0ce0abf517f12b0ad1d286816f04cb76da1a4"
+      "sha256": "79ae0ca55130fd4c9f86107848d6d59271367bb7e1cbf7d7fde0885daa755b10"
     },
     {
       "bytes": 2702,
@@ -147,14 +117,19 @@
       "sha256": "1046273339ac7d22edcf70f115b2c9373f902987e95d5bb11926841e8f58cd97"
     },
     {
+      "bytes": 2038,
+      "path": "docs/GITHUB_MANUAL_UPLOAD_GUIDE.md",
+      "sha256": "9f199499e738d90bef30097e4b4cd1d76f7fb8f650a84d7a29360c42b5d95cc4"
+    },
+    {
       "bytes": 1983,
       "path": "docs/GITHUB_RELEASE_BODY.md",
       "sha256": "519b2a700bf457d95335ea779c9b44bd902ca97e14ec3b60f30bdfaad20ff250"
     },
     {
-      "bytes": 2212,
+      "bytes": 2612,
       "path": "docs/GITHUB_UPLOAD_CHECKLIST.md",
-      "sha256": "3c34dc6bb4d3c2cd7ffcec3a09d618a8f04f516ddb83b8f38f0108f10d1069a0"
+      "sha256": "1b4cf03fa672fe0e0956b5caecc3c14c53bd1d95df6a3ac38e3a67566c332849"
     },
     {
       "bytes": 659,
@@ -182,9 +157,9 @@
       "sha256": "d242c388adaa5ccc7a125ac4cf8db7d332470851c6954553fe0d3d105a5e7883"
     },
     {
-      "bytes": 1384,
+      "bytes": 1737,
       "path": "docs/QA_REPORT_v2_2_4_PUBLIC_EVAL.md",
-      "sha256": "a6f9737c052f8fb772125369fcb7d301c01981bc218e0bd9c1df988e6a872ff5"
+      "sha256": "1478434e554d682fe2ab97986f1eba976cdae7fd1de2f403a7c80ed3c05543db"
     },
     {
       "bytes": 1226,
@@ -195,6 +170,11 @@
       "bytes": 865,
       "path": "docs/RELEASE_DECISION_RECORD_v2_2_4.md",
       "sha256": "d43f1a0c00565b546f2b646e82e557df188d21ffdfac777954880a9a3053c7c5"
+    },
+    {
+      "bytes": 1139,
+      "path": "docs/RELEASE_DECISION_RECORD_v2_2_4_Q_MANUAL_UPLOAD.md",
+      "sha256": "7f6da024cf1b228ecbec418ca8cbbb93ad49abb738443032f6b24fcf5b3bdca0"
     },
     {
       "bytes": 842,
@@ -305,6 +285,36 @@
       "bytes": 3332,
       "path": "gateway_demo.py",
       "sha256": "ec382277d3c65e7e84a00cdc01379198758a1dc346c8deda376b497eb99e1e64"
+    },
+    {
+      "bytes": 214,
+      "path": "github-ui-files/gitignore.txt",
+      "sha256": "290de490d4ba4755901a8fbc9504a4a3afa07daddc6a651731ace36ad20e174a"
+    },
+    {
+      "bytes": 1458,
+      "path": "github-ui-files/issue-templates/ietf126-cross-reference.md",
+      "sha256": "65dff86f25616a188944864789fed5bfbc9d07f8849a13d309d116d439781be5"
+    },
+    {
+      "bytes": 798,
+      "path": "github-ui-files/issue-templates/ietf126-field-model.md",
+      "sha256": "3eee96f86cb12ed89a64a642f380cb50cadc30de20a6d1a44c600a815e4f20bc"
+    },
+    {
+      "bytes": 946,
+      "path": "github-ui-files/issue-templates/ietf126-negative-vector.md",
+      "sha256": "4993ee24a6fe99d30f926562b56ea910b81a42865d918d909df72d0135bbe045"
+    },
+    {
+      "bytes": 763,
+      "path": "github-ui-files/workflows/ietf126-review-packet.yml",
+      "sha256": "42354facfbe9be597ae8a25c444cbe6f8d8fc1bfe22ef5c5bfd909292d0ff621"
+    },
+    {
+      "bytes": 671,
+      "path": "github-ui-files/workflows/qa.yml",
+      "sha256": "6a5dc071bcc2dd9ef781ad1749b2cba391bebd763966c3a0d79d63fdb34e9f89"
     },
     {
       "bytes": 6087,
@@ -452,9 +462,9 @@
       "sha256": "c628ffbf0abd693f1c5309af068ddd7715077b3b3a6fffc65fd6a65a6ad2f12e"
     },
     {
-      "bytes": 1690,
+      "bytes": 1714,
       "path": "make_manifest.py",
-      "sha256": "3d2de506f561b97372694ffb827afae08fc2bba06c6ef3ebe34867b3b5640c4f"
+      "sha256": "2155fe4f2debfbb230fbd7a620f46934614d9e2e9f413f9e91278f19a87b0ca4"
     },
     {
       "bytes": 215,
@@ -817,14 +827,19 @@
       "sha256": "68f178d636f578f4051af99f68b8d193ec8a3dd4e66f052a837a789d7a02458d"
     },
     {
-      "bytes": 1694,
+      "bytes": 1718,
       "path": "tools/make_public_manifest.py",
-      "sha256": "cd76346d762f739222d933b7bdc9a75b59929f9bd15de36e420baf1248ce5451"
+      "sha256": "0b809f41b5f168dd65d70e0bdbf2fd4894da7d233481f4b97e626bb3c79d5dcf"
     },
     {
-      "bytes": 6576,
+      "bytes": 1699,
+      "path": "tools/materialize_github_files.py",
+      "sha256": "060dd4347bed879a5b7a4315637c6a4fb5230d46e2f1647008cb6aaa7fb63578"
+    },
+    {
+      "bytes": 6615,
       "path": "tools/release_gate.py",
-      "sha256": "1ec0b121f2eabc4add831a6f544c2c96b988b32a77910f18172fe0fc885cd77d"
+      "sha256": "fc9f67720ee79a8a8e09922752fb7732b53ee7a43c451a351496e7e6d108df12"
     },
     {
       "bytes": 3336,
@@ -837,15 +852,17 @@
       "sha256": "f36d962a55e26db5cde9e47b899d82b4aeb1fd6e3e3961cdf9891c3e1d94194c"
     },
     {
-      "bytes": 2172,
+      "bytes": 2197,
       "path": "verify_manifest.py",
-      "sha256": "65833528b9b34086949c9bf87c92aa5a6c23690f3cf4d5808573ec79b69dbc08"
+      "sha256": "5766224c725b1eb98b83027bbc66a2fbac4d6c50a559dcc2b874df5f873bb629"
     }
   ],
   "excludes": [
+    ".gitignore",
     "MANIFEST.json",
     "MANIFEST.sha256.json",
     ".git",
+    ".github",
     ".mypy_cache",
     ".pytest_cache",
     "__pycache__",

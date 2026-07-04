@@ -14,9 +14,11 @@ SKIP_CONTENT = {
     Path("tools/release_gate.py"),
     Path("checks/release_gate_report.json"),
     Path("checks/release_gate_report.md"),
+    Path(".gitignore"),
 }
 SKIP_DIRS = {
     ".git",
+    ".github",
     "__pycache__",
     ".pytest_cache",
     ".mypy_cache",

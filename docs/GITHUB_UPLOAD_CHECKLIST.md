@@ -68,3 +68,7 @@ IETF release pointer after publishing:
 ```text
 https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.4-public-eval
 ```
+
+## Manual-upload friendly option
+
+If you are using GitHub Web UI upload and cannot easily select dotfiles, do not block the public evaluation on `.github/` or `.gitignore`. The manifest excludes those optional repository-hygiene files. Upload the visible repository files, then optionally create GitHub Actions and issue templates from `github-ui-files/` using `docs/GITHUB_MANUAL_UPLOAD_GUIDE.md`.

@@ -191,6 +191,11 @@ Before using this artifact, review:
 * `docs/PRE_RELEASE_AUDIT_CHECKLIST.md`
 * `docs/PUBLIC_STEWARDSHIP.md`
 
+
+## GitHub Web UI / manual upload note
+
+This release is manual-upload friendly. The public evaluation manifest does not require `.github/` or `.gitignore` dotfiles, because browser and Finder upload flows often hide them. Optional GitHub Actions and issue-template files are provided as visible templates under `github-ui-files/`. See `docs/GITHUB_MANUAL_UPLOAD_GUIDE.md`. To materialize the optional dot-path files in a local checkout, run `python tools/materialize_github_files.py`.
+
 ## GitHub update / IETF 126 review
 
 For the GitHub update, publish this as `v2.2.4-public-eval` and keep the release as a pre-release. The IETF Hackathon project page should point reviewers to:

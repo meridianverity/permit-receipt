@@ -1,0 +1,30 @@
+name: IETF 126 Review Packet
+
+on:
+  pull_request:
+    paths:
+      - 'ietf126/**'
+      - 'orprg_eval/**'
+      - 'evaluation_vectors/**'
+      - 'tests/**'
+      - 'requirements.txt'
+      - 'run_vectors.py'
+      - 'tools/**'
+  workflow_dispatch:
+
+jobs:
+  review-packet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run IETF 126 packet
+        run: python ietf126/run_review_packet.py
+      - name: Run public vectors
+        run: python run_vectors.py
+      - name: Run public eval gate
+        run: python tools/validate_public_eval_packet.py

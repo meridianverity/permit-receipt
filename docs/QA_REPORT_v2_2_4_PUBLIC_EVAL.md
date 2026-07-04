@@ -8,8 +8,8 @@ This report records the local checks run before packaging the Git-ready v2.2.4 p
 
 ```text
 make clean                                      PASS
-python make_manifest.py                         PASS — 168 static entries
-python verify_manifest.py                       PASS — 168 / 168 static files
+python make_manifest.py                         PASS — 170 static entries
+python verify_manifest.py                       PASS — 170 / 170 static files
 make qa                                         PASS
 python run_vectors.py                           PASS — 64 / 64 vectors
 python -m pytest -q                             PASS — 11 / 11 tests
@@ -36,3 +36,7 @@ python -m pip install -r requirements.txt
 python ietf126/run_review_packet.py
 cat ietf126/results/review-summary.md
 ```
+
+## Manual-upload friendly release hygiene
+
+The manifest intentionally excludes optional GitHub dotfiles (`.github/` and `.gitignore`) so browser/Finder upload flows do not break reproducibility checks. Visible templates are provided under `github-ui-files/`, and `tools/materialize_github_files.py` can recreate the dot-path files in a local checkout.

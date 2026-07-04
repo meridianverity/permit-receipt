@@ -1,0 +1,27 @@
+name: Public evaluation QA
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run public QA
+        run: |
+          python tools/run_public_eval.py
+          python tools/validate_public_eval_packet.py
+          python verify_manifest.py
+          python ietf126/run_review_packet.py
+      - name: Run vectors and tests
+        run: |
+          python run_vectors.py
+          python -m pytest -q

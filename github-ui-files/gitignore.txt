@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Generated review outputs
+checks/
+results/
+ietf126/results/
+tmp/
+dist/
+build/
+
+# OS/editor
+.DS_Store
+._*
+.vscode/
+.idea/
+
+# Local env
+.venv/
+venv/
+.env
