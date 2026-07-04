@@ -222,11 +222,11 @@
             "entries_digest": "d801aa1fb7ddcc330a5e3173372ea6af4a3d08ec58074478e85aa5603e926658",
             "issued_at": "2026-06-02T23:59:40Z",
             "log_id": "revocation-log-synth",
-            "root_hash": "c79180046d6f3f86ff4ff6c80fd81cc3e41f67d515f997152cb172d1765a9973",
+            "root_hash": "3a19eeb9b49784e388b4c15e52b22a6e3c8ca04e0416325bf444391307deee02",
             "sequence": 100,
             "tree_size": 0
           },
-          "signature": "cgyfo7XwSjDjddSvL8eE17fgiHa9IQDalCKN/gh+Zmb2f7I/3656TgdW4tBriNuYIMlhXtpcn7ayDcBAPqvVBw=="
+          "signature": "Ohnuc1K4qlB4u7BtKGtrhdJ1cjRtO2xlFj3VsJg8U+k8tUgHtnnAfiXeSRkctPeWnPayY2/es/zseUO1eMS/CA=="
         }
       },
       "signed_revocation_list": {
@@ -4716,11 +4716,11 @@
             "entries_digest": "d801aa1fb7ddcc330a5e3173372ea6af4a3d08ec58074478e85aa5603e926658",
             "issued_at": "2026-06-02T23:59:40Z",
             "log_id": "revocation-log-synth",
-            "root_hash": "c79180046d6f3f86ff4ff6c80fd81cc3e41f67d515f997152cb172d1765a9973",
+            "root_hash": "3a19eeb9b49784e388b4c15e52b22a6e3c8ca04e0416325bf444391307deee02",
             "sequence": 100,
             "tree_size": 0
           },
-          "signature": "BBBBo7XwSjDjddSvL8eE17fgiHa9IQDalCKN/gh+Zmb2f7I/3656TgdW4tBriNuYIMlhXtpcn7ayDcBAPqvVBw=="
+          "signature": "BBBBc1K4qlB4u7BtKGtrhdJ1cjRtO2xlFj3VsJg8U+k8tUgHtnnAfiXeSRkctPeWnPayY2/es/zseUO1eMS/CA=="
         }
       },
       "signed_revocation_list": {
@@ -4851,11 +4851,11 @@
             "entries_digest": "d801aa1fb7ddcc330a5e3173372ea6af4a3d08ec58074478e85aa5603e926658",
             "issued_at": "2026-06-01T00:00:00Z",
             "log_id": "revocation-log-synth",
-            "root_hash": "c79180046d6f3f86ff4ff6c80fd81cc3e41f67d515f997152cb172d1765a9973",
+            "root_hash": "3a19eeb9b49784e388b4c15e52b22a6e3c8ca04e0416325bf444391307deee02",
             "sequence": 100,
             "tree_size": 0
           },
-          "signature": "U8lJHi9C3O+eUFTF8KOX3mfC/1+bFHUnMajnc4xxJiKAXL5V/92siIqwFa1NYGrjvEOYHXZbL6VqOQtzbkzkBA=="
+          "signature": "9waaDsxg3e09uDFJXBc3D1NP8aNbcNSJ6Aec3t/nx7+TNYNuYY0xyB4dXD4WphKq6KAU9HG3esUo8mhhr+GADQ=="
         }
       },
       "signed_revocation_list": {
@@ -4986,11 +4986,11 @@
             "entries_digest": "d801aa1fb7ddcc330a5e3173372ea6af4a3d08ec58074478e85aa5603e926658",
             "issued_at": "2026-06-02T23:59:40Z",
             "log_id": "revocation-log-synth",
-            "root_hash": "c79180046d6f3f86ff4ff6c80fd81cc3e41f67d515f997152cb172d1765a9973",
+            "root_hash": "3a19eeb9b49784e388b4c15e52b22a6e3c8ca04e0416325bf444391307deee02",
             "sequence": 100,
             "tree_size": 0
           },
-          "signature": "cgyfo7XwSjDjddSvL8eE17fgiHa9IQDalCKN/gh+Zmb2f7I/3656TgdW4tBriNuYIMlhXtpcn7ayDcBAPqvVBw=="
+          "signature": "Ohnuc1K4qlB4u7BtKGtrhdJ1cjRtO2xlFj3VsJg8U+k8tUgHtnnAfiXeSRkctPeWnPayY2/es/zseUO1eMS/CA=="
         }
       },
       "signed_revocation_list": {
@@ -5148,11 +5148,11 @@
             "entries_digest": "30b164f5950219d0c289eec2c1a27452fd2e83c8dc966ee589825939fc3a22ef",
             "issued_at": "2026-06-02T23:59:40Z",
             "log_id": "revocation-log-synth",
-            "root_hash": "03b17f84ca782e35eda82257c24a4cdb44b456dedbf3a27618d838127bac4f63",
+            "root_hash": "759a14a4746f81efa5f6447d8a9ea57a3b9528cb4df6b131675faea72c7e1074",
             "sequence": 100,
             "tree_size": 1
           },
-          "signature": "CcWKvWl/vEMURVBgvG4l6x9j8xiaLaH0xHTrEcMOCCDE05z4c0vkhdkb7zqB2WAwrCzMPSpIc5tbPgSpQ9uUCQ=="
+          "signature": "1+aZHW8tXULKk4jHIqoaYj4xuI3zp2jBDCKC6XccbqkSl9IlKvbU8OPQhUrhys4F+cKtdKhIaOY0Dle5dZypAw=="
         }
       },
       "signed_revocation_list": {
@@ -5304,11 +5304,11 @@
             "entries_digest": "bb1cb6c71c3b791e1c73acf1c40d2f0668b10634565b3ffa1b92f68823714e46",
             "issued_at": "2026-06-02T23:59:40Z",
             "log_id": "revocation-log-synth",
-            "root_hash": "cd5f5fd56b2c8f79fd71ac833d605461ff43886aa0537f19514be3e524f03fe9",
+            "root_hash": "8a219118cd79617dc44876feded62d5238d1466917d6004cd43b371d863fdbb1",
             "sequence": 100,
             "tree_size": 1
           },
-          "signature": "WqrHKXimogzLNrGgYOG/9hW5hfOK9bGMxhxN5w/HBImSbLIYO4KB64uCcpHOuixIycQI3rTtvOCx8AgA7NNbDA=="
+          "signature": "5u8fhF69syDHOPawFbqcYPmCWyh+5BbyUWVzd6AgwItF8+hrigbbfNxgwrfaxDOMdcunbiCqYo1NchCXvm1dCg=="
         }
       },
       "signed_revocation_list": {
@@ -5460,11 +5460,11 @@
             "entries_digest": "ba8af00a1cecb6f493f787da319a9983da663994f27a64a264b8dcbc9d60c0a8",
             "issued_at": "2026-06-02T23:59:40Z",
             "log_id": "revocation-log-synth",
-            "root_hash": "507018b1706f7185e1f7ddb764019068f8b61aeaaa5e074313aee42dbc2cf9f9",
+            "root_hash": "1bb2f709647a23a1d73d98a302d71e3cbd27b9daf6a155aaca56ea1f2e0dc9d8",
             "sequence": 100,
             "tree_size": 1
           },
-          "signature": "qlMj5S2tYh3h/z94u0jb0NHZSlrdHjWHQFVd9crGPrPwRsH0qiaOqzL5ZanRENV1P9Vc5PdbUo9jQRobfXhUCQ=="
+          "signature": "QB6wOZDWtLxGhwlGkXtMyS5S5n1iKHfs2l3faD8XNyT7Ye/Se4UlHVr/zdnz/+SllIZUEyrDYzuSA52R0qpwDA=="
         }
       },
       "signed_revocation_list": {

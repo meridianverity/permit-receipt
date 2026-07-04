@@ -147,6 +147,8 @@ make eval       # public evaluation harness
 make manifest   # regenerate static source manifest
 make verify     # verify static source manifest
 make validate   # validate required public-evaluation packet files
+make ietf126    # IETF Hackathon selected review packet
+make ietf-preflight # full Hackathon preflight: eval + validate + verify + IETF packet + vectors + tests
 make qa         # eval + validate + manifest verification
 ```
 
@@ -157,7 +159,7 @@ The v2.2.4 public-evaluation release is expected to pass:
 ```bash
 python verify_manifest.py
 python tools/validate_public_eval_packet.py
-make qa
+make ietf-preflight
 ```
 
 Expected results:
@@ -165,8 +167,9 @@ Expected results:
 ```text
 verify_manifest.py: PASS
 validate_public_eval_packet.py: PASS
+IETF 126 selected review packet: 16 / 16 PASS
 ORPRG public evaluation vectors: 64 / 64 PASS
-pytest: PASS
+pytest: 17 / 17 PASS
 release gate findings: 0
 ```
 

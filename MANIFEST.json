@@ -17,9 +17,9 @@
       "sha256": "67892e32ba2547e0bbf5b441f2a1378f83e2d598902299fd92ed91797fa6d5e9"
     },
     {
-      "bytes": 756,
+      "bytes": 796,
       "path": "Makefile",
-      "sha256": "fd726232e3d9757d3e914f2277cddd90236999c269d4ead8e2d6a488ac37311d"
+      "sha256": "e4a4c929df1cd7a51c8724202406b9d50f3557ef1999c02a279b94e12fbb046a"
     },
     {
       "bytes": 1050,
@@ -37,9 +37,9 @@
       "sha256": "e92db7663c4b5cf5cf3968855ea1099a363dbcc99e5e53dc3cf879819e8dc16d"
     },
     {
-      "bytes": 8670,
+      "bytes": 8897,
       "path": "README.md",
-      "sha256": "b58aaa4d32e82059ac6179100ca084c90cc12e2985adeb738f2925981526f530"
+      "sha256": "996bc91c58a462858d961074e936b55d67e16b4764f847d14c640f5dd2b5b5a3"
     },
     {
       "bytes": 2737,
@@ -137,9 +137,14 @@
       "sha256": "f768dea8418935986d87983202db3def4ebc0485da3be2b147720720fb19c8e7"
     },
     {
-      "bytes": 3995,
+      "bytes": 2648,
+      "path": "docs/HACKATHON_POLISH_AUDIT.md",
+      "sha256": "63a1409be2339c6abc09df1fba1f3f5cead8f1a368f0fa2629b24384d7d3c492"
+    },
+    {
+      "bytes": 4061,
       "path": "docs/IETF_HACKATHON_PROJECT_PAGE.md",
-      "sha256": "4bfc953cb323f67fd075fef365ba4793a7aaada7f28a852803693d5c0c07490f"
+      "sha256": "09e43f75598943f57640c29493e79a94ebce428e2033a94efa42a6f012e6617b"
     },
     {
       "bytes": 2561,
@@ -162,9 +167,9 @@
       "sha256": "4c04b56e073db4ceb8e8534720fd4227bfeb04344f006e14f41f668c1a1aa6ff"
     },
     {
-      "bytes": 1737,
+      "bytes": 1791,
       "path": "docs/QA_REPORT_v2_2_4_PUBLIC_EVAL.md",
-      "sha256": "f3fcc9b8e7f7f1e3b0a0da53ba94c7ebbc9b656bc3fd2438e8a9ce3dbd3babae"
+      "sha256": "cb445089c0cb8c718ae65a92a27443480d155ead367efcfbfba8cd2ac23a0872"
     },
     {
       "bytes": 1226,
@@ -224,7 +229,7 @@
     {
       "bytes": 260473,
       "path": "evaluation_vectors/vectors.json",
-      "sha256": "4b77bf9939801269aad60889da7e47eb1c359b9982a19d78852e8dfb09bd99a3"
+      "sha256": "fe1b642d4faae9f3a3549b8d91351464322d024f91d945f0b78cb7ab533baffe"
     },
     {
       "bytes": 1073,
@@ -337,14 +342,24 @@
       "sha256": "25a49568707f2137ccb7029058663f12596f8b3787f695d2daf49fb3b29a64b4"
     },
     {
+      "bytes": 2017,
+      "path": "ietf126/CLOSING_PRESENTATION_CARD.md",
+      "sha256": "d088feaeab20ae568e25545e62af910d81a25bcfbf57be29502520c9b0a8a596"
+    },
+    {
       "bytes": 2259,
       "path": "ietf126/DIGEST_INTEROP_NOTES.md",
       "sha256": "cf7d68e9f936ca8a222b9ed96c9c161eb12fcbcdfe70d8fd15c3bdddc9408afa"
     },
     {
-      "bytes": 1637,
+      "bytes": 2106,
       "path": "ietf126/HACKATHON_JUDGES_BRIEF.md",
-      "sha256": "10be50d9bd91f31be0e9e7ae2cdba11755fc61b88f491b11bb5e2bf1e938796f"
+      "sha256": "544a458ce9fb03b97eef1dce8ec3ce43fbe28ba10a455c4ad93d8fce48f71284"
+    },
+    {
+      "bytes": 1842,
+      "path": "ietf126/HACKATHON_REVIEWER_BRIEF.md",
+      "sha256": "1fea88fd200f29e423b8fd05c3043cd70014ef844146f361043357b45bf39a61"
     },
     {
       "bytes": 891,
@@ -372,9 +387,9 @@
       "sha256": "708dd63b44f2b16b342f8a54a3d63585d127b33ab75b67e1d5a2e9e5584ba616"
     },
     {
-      "bytes": 4400,
+      "bytes": 4744,
       "path": "ietf126/README.md",
-      "sha256": "d337d7cb633d18655acd53bce553accc4503e5aabf7a3729189836e922731ef7"
+      "sha256": "b7da6cb430796d849ed0a0dc39493e60d2a985244d563a8e048cb1c9e733a99f"
     },
     {
       "bytes": 1255,
@@ -392,19 +407,19 @@
       "sha256": "54d906354aab94299f3de6eb221d19d01802686fc5fbb6d2d8f8484bbc5fd446"
     },
     {
-      "bytes": 3995,
+      "bytes": 4061,
       "path": "ietf126/SUBMISSION_TEXT.md",
-      "sha256": "4bfc953cb323f67fd075fef365ba4793a7aaada7f28a852803693d5c0c07490f"
+      "sha256": "09e43f75598943f57640c29493e79a94ebce428e2033a94efa42a6f012e6617b"
     },
     {
-      "bytes": 1196,
+      "bytes": 1202,
       "path": "ietf126/TALK_TRACK_90_SECONDS.md",
-      "sha256": "139e8963ae661b31b19fe1f45cdee7700786d2ccfb62cdb87d1d279dd91254b4"
+      "sha256": "b762ede5aadbbefa849629ceb6f2f58fd91e0c8d8ab27ecc6df04932b5b5b3d2"
     },
     {
-      "bytes": 1278,
+      "bytes": 1309,
       "path": "ietf126/TEAM_SCHEDULE_TEXT.md",
-      "sha256": "c13389f4ad0a0963209039108c51bc14d7364f1a438b5be7f5b9374613712241"
+      "sha256": "60abf048da2d1d98ccd3c5bcfe994baa8380f8c5460e52ee2ce52e16ae630800"
     },
     {
       "bytes": 1023,
@@ -492,9 +507,9 @@
       "sha256": "143047b60f9e77cd1597b259068410eaed19cc8d254756389b7db3e4d44bf700"
     },
     {
-      "bytes": 6510,
+      "bytes": 8930,
       "path": "orprg_eval/merkle.py",
-      "sha256": "76fd560871d8320f90ec22331ce3257a759b0279ba660da2f1e24b6dbd5c38d0"
+      "sha256": "c7abf321c9066c0eb339dfa6409eb517d99204ac822c801b7aa7fa4cee85f474"
     },
     {
       "bytes": 3883,
@@ -527,9 +542,9 @@
       "sha256": "94a3e6455cbb55777007b62733974a3493f33ac586ab9178dbdb7030a5101083"
     },
     {
-      "bytes": 22689,
+      "bytes": 22701,
       "path": "orprg_eval/verifier.py",
-      "sha256": "358b203d7cab686c9a029682b4b4173830c20484dde7891b581566234b70095b"
+      "sha256": "257c423b4ea634068a9b0c40ce56aa8583695c32f99083848ec694944bdc3d0a"
     },
     {
       "bytes": 3484,
@@ -807,6 +822,11 @@
       "sha256": "04d44126fbc99c05daac378674f314c28d126b96a09868220da5dc6cec0e9a25"
     },
     {
+      "bytes": 2834,
+      "path": "tests/orprg_eval_tests/test_merkle_proof_hardening.py",
+      "sha256": "32a5335143ec4a5be2bbcfce6d0aab815c31f1575b53ccd47b6fe150abff68a6"
+    },
+    {
       "bytes": 400,
       "path": "tests/orprg_eval_tests/test_persistent_replay.py",
       "sha256": "ed65c74b5b9a0b6d89038d4b4c69188ed361e4dad8d65bd93a874048380de490"
@@ -815,6 +835,11 @@
       "bytes": 546,
       "path": "tests/orprg_eval_tests/test_public_evaluation_vectors.py",
       "sha256": "e3932e9ce841f5c200dbb88e9938ce96c8f1acc65eb383e458f3205fa2c15fb4"
+    },
+    {
+      "bytes": 964,
+      "path": "tests/orprg_eval_tests/test_scope_constraint_hardening.py",
+      "sha256": "f5bc5acd1594237dee5b96a3a40f92330a1794a1626d9689250a06445a0a85cd"
     },
     {
       "bytes": 1071,

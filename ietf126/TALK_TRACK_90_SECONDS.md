@@ -8,5 +8,5 @@ This packet makes that narrow claim runnable. Reviewers can run one command, ins
 
 The interop point is equally narrow: if another artifact uses the same exact bytes and profile, digest equality can be proven by a shared vector. If it uses different canonicalization, the safe bridge is a signature-covered authorization reference. A name-only action identifier is not authorization.
 
-The goal is not to claim production non-bypassability or create a standard by demo. The goal is to make the boundary precise enough that IETF reviewers can say what belongs in requirements, data model, conformance vectors, and future wire profiles.
+The goal is not to claim production non-bypassability or create a standard by demo. The goal is to make the boundary precise enough that IETF reviewers can say what belongs in requirements, data model, public evaluation vectors, and future wire profiles.
 

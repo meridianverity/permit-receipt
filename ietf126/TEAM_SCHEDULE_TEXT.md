@@ -4,7 +4,7 @@ Champion: Yong Bok Lee / Meridian Verity Group, <scott@meridianverity.com>
 
 Mode: Remote / asynchronous first.
 
-Remote checkpoint: TBD during the IETF 126 Hackathon window; final slot to be listed when the team schedule is updated.
+Suggested remote checkpoint: Sunday, 19 July 2026, 11:00-11:25 GMT+2, before the 12:30 hacking stop; adjust here if the team selects a different slot.
 
 Purpose: Review one protected-action evaluation, exact canonical request bytes, `action_digest` binding, fail-closed negative vectors, and signature-covered authorization-reference interop shape.
 

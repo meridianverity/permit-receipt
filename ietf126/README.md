@@ -14,7 +14,7 @@ The packet is intentionally small, runnable, and falsifiable. It asks one questi
   - **standalone packet mode** uses only Python's standard library when the IETF packet is extracted without the full repository.
 - Public language now says **signature-covered authorization reference** instead of overclaiming a production signature profile.
 - Public-boundary language uses **legal/commercial position** instead of legal-claim-facing language.
-- Remote schedule text includes a concrete `TBD during the IETF 126 Hackathon window` placeholder.
+- Remote schedule text includes a concrete proposed pre-closing checkpoint for the IETF 126 Hackathon weekend.
 - The release hash is not hardcoded in reviewer-facing text; publish-time release assets should carry their own checksums.
 
 ## The 5-minute reviewer path
@@ -49,6 +49,8 @@ python ietf126/run_review_packet.py
 python tools/run_public_eval.py
 python tools/validate_public_eval_packet.py
 python verify_manifest.py
+# or run the one-command preflight from the repository root:
+make ietf-preflight
 ```
 
 Expected posture:
@@ -83,7 +85,9 @@ Do not put customer data, credentials, regulated data, production logs, non-publ
 
 - `SUBMISSION_TEXT.md` — copy/paste project-page text.
 - `TEAM_SCHEDULE_TEXT.md` — copy/paste remote checkpoint text.
-- `HACKATHON_JUDGES_BRIEF.md` — one-page technical framing for reviewers.
+- `HACKATHON_REVIEWER_BRIEF.md` — one-page technical framing for reviewers. `HACKATHON_JUDGES_BRIEF.md` is retained as a compatibility alias only.
+- `CLOSING_PRESENTATION_CARD.md` — compact project-results presentation card.
+- `../docs/HACKATHON_POLISH_AUDIT.md` — final hardening and QA summary for the polished packet.
 - `ONE_PROTECTED_ACTION.md` — the synthetic request under test.
 - `CANONICALIZATION_AND_DIGESTS.md` — byte-level digest rules.
 - `AUTHORIZATION_REF_PROFILE.md` — signature-covered cross-reference shape for interop review.

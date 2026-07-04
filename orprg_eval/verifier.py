@@ -95,7 +95,7 @@ def _scope_code(request: Mapping[str, Any], scope: Mapping[str, Any]) -> Optiona
     if scope.get("representation_class_id") and request.get("representation_class_id") != scope["representation_class_id"]:
         return DRC["REPRESENTATION_CLASS_VIOLATION"]
     for key in ("effect_type", "interface_id", "action_type", "target_id", "artifact_id", "key_id", "key_op"):
-        if key in scope and key in request and scope[key] != request[key]:
+        if key in scope and scope[key] is not None and request.get(key) != scope[key]:
             return DRC["KEY_RELEASE_DENIED"] if request.get("effect_type") == "KEY_RELEASE" else DRC["SCOPE_VIOLATION"]
     if "key_ops" in scope and request.get("key_op") not in set(scope["key_ops"]):
         return DRC["KEY_RELEASE_DENIED"]

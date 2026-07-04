@@ -1,4 +1,4 @@
-.PHONY: demo paygate ref vectors tests eval gate manifest verify validate ietf126 clean qa qa-full
+.PHONY: demo paygate ref vectors tests eval gate manifest verify validate ietf126 ietf-preflight clean qa qa-full
 
 demo:
 	python -m paygate_hybrid.hybrid_demo
@@ -32,6 +32,8 @@ validate:
 
 ietf126:
 	python ietf126/run_review_packet.py
+
+ietf-preflight: qa-full
 
 qa: eval validate verify ietf126
 

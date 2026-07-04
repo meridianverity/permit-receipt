@@ -8,11 +8,12 @@ This report records the local checks run before packaging the Git-ready v2.2.4 p
 
 ```text
 make clean                                      PASS
-python make_manifest.py                         PASS — 172 static entries
-python verify_manifest.py                       PASS — 172 / 172 static files
+python make_manifest.py                         PASS — 177 static entries
+python verify_manifest.py                       PASS — 177 / 177 static files
 make qa                                         PASS
+make ietf-preflight                              PASS
 python run_vectors.py                           PASS — 64 / 64 vectors
-python -m pytest -q                             PASS — 11 / 11 tests
+python -m pytest -q                             PASS — 17 / 17 tests
 python ietf126/run_review_packet.py             PASS — 16 / 16 selected packet checks
 ```
 

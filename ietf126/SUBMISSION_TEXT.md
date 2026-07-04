@@ -35,7 +35,7 @@ The project includes a provider-neutral synthetic agentic-commerce profile as on
 - Review negative vectors and fail-closed denial behavior.
 - Review the proposed `authorization_ref` shape for signature-covered cross-reference interop.
 - Identify missing public evaluation and interoperability vectors.
-- Discuss whether future work should separate requirements, architecture, data model, conformance vectors, and wire-profile documents.
+- Discuss whether future work should separate requirements, architecture, data model, public evaluation vectors, and wire-profile documents.
 - Collect implementation and reviewer feedback for a future revision of the Internet-Draft.
 
 ## Suggested reviewer path
@@ -59,7 +59,7 @@ The runner is dual-mode: it uses the full repository evaluation package when ava
 
 Remote/asynchronous coordination via GitHub Issues and IETF Hackathon communication channels.
 
-Remote checkpoint: TBD during the IETF 126 Hackathon window; final slot to be listed in the Team Schedule.
+Suggested remote checkpoint: Sunday, 19 July 2026, 11:00-11:25 GMT+2, before the 12:30 hacking stop; adjust in the Team Schedule if the team selects a different slot.
 
 ## Public boundary
 

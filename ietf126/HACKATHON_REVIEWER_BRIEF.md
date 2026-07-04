@@ -1,9 +1,3 @@
-# Compatibility Alias — Hackathon Reviewer Brief
-
-This file is retained for older links. The reviewer-facing file is `HACKATHON_REVIEWER_BRIEF.md`. The IETF Hackathon is collaborative; this is not an awards, judging, certification, or endorsement request.
-
----
-
 # Hackathon Reviewer Brief — PermitReceipt Reference Evaluation
 
 This brief is written for IETF Hackathon reviewers, project-results listeners, and collaborators. The IETF Hackathon is collaborative; this file is not an awards, certification, or endorsement request.
