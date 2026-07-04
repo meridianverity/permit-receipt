@@ -1,0 +1,26 @@
+{
+  "schema": "mvg.route_search@1",
+  "version": "v375-haltseal-runtime-action-control-apex",
+  "generated_utc": "2026-07-04T00:00:00Z",
+  "route": "/products/haltseal/",
+  "title": "HALTSEAL Runtime Action Control",
+  "summary": "No permit. No action. HALTSEAL is the runtime action-control layer for agentic AI with one gateway, one permit path, and fail-closed Gateway Proof Pack review.",
+  "aliases": [
+    "HALTSEAL",
+    "Runtime Action Control",
+    "No permit no action",
+    "Gateway Proof Pack",
+    "NOVACOV",
+    "proof before activation",
+    "permit before action",
+    "agentic AI gateway",
+    "egress",
+    "privileged I/O",
+    "accelerator dispatch",
+    "firmware dispatch",
+    "hypervisor egress",
+    "VM-exit",
+    "tool execution",
+    "actuation"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": "v375",
+  "route": "/products/haltseal/runtime-action-review/",
+  "intake_questions": [
+    "What action should not cross without proof?",
+    "Where is the last enforceable hook before impact?",
+    "What permit prerequisites should be current?",
+    "What missing-proof condition should HOLD first?",
+    "What implementation depth belongs under written scope?"
+  ],
+  "public_safe_start": "synthetic or public-safe descriptions only until written scope"
+}

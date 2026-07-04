@@ -1,0 +1,48 @@
+{
+  "version": "v375-haltseal-runtime-action-control-apex",
+  "product": "HALTSEAL",
+  "positioning": "Runtime action-control layer for agentic AI",
+  "headline": "No permit. No action.",
+  "public_product_route": "/products/haltseal/",
+  "proof_pack_route": "/products/haltseal/gateway-proof-pack/",
+  "review_route": "/products/haltseal/runtime-action-review/",
+  "public_ip_spine": "/patents/novacov/",
+  "core_funnel": [
+    "public product route",
+    "gateway proof pack",
+    "runtime action review",
+    "scoped diligence",
+    "staged license"
+  ],
+  "gateway_candidates": [
+    "network egress",
+    "privileged I/O",
+    "accelerator dispatch",
+    "firmware dispatch",
+    "hypervisor egress",
+    "tool execution",
+    "actuation"
+  ],
+  "public_safe_boundary": [
+    "no claim chart",
+    "no implementation map",
+    "no production SDK/API/schema",
+    "no customer secrets",
+    "no compliance certification",
+    "no patent/license grant by publication"
+  ],
+  "issued_records": [
+    {
+      "record": "US 12,602,481 B1",
+      "role": "issued parent / verify-to-activation control nucleus"
+    },
+    {
+      "record": "US 12,608,476 B1",
+      "role": "issued continuation / gateway-oriented runtime enforcement"
+    },
+    {
+      "record": "allowed-claims branch",
+      "role": "written-scope diligence only"
+    }
+  ]
+}
