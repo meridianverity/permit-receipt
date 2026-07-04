@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PaymentDecisionReceipt",
+  "type": "object",
+  "required": ["type", "version", "issuer_id", "issued_at", "decision_core", "signature"],
+  "properties": {
+    "type": {"const": "PaymentDecisionReceipt"},
+    "version": {"type": "string"},
+    "issuer_id": {"type": "string"},
+    "issued_at": {"type": "string"},
+    "decision_core": {
+      "type": "object",
+      "required": ["decision_id", "outcome", "action_digest", "permit_receipt_digest", "policy_digest", "epoch_id", "provider_adapter_id", "provider_class", "expires_at"]
+    },
+    "signature": {"type": "object"}
+  }
+}

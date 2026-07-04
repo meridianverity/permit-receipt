@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PermitReceipt",
+  "type": "object",
+  "required": ["type", "version", "receipt_id", "issuer_id", "issued_at", "receipt_core", "signature"],
+  "properties": {
+    "type": {"const": "PermitReceipt"},
+    "version": {"type": "string"},
+    "receipt_id": {"type": "string"},
+    "issuer_id": {"type": "string"},
+    "issued_at": {"type": "string"},
+    "receipt_core": {
+      "type": "object",
+      "required": ["policy_digest", "epoch_id", "not_before", "not_after", "action_digest", "action_commitment", "scope", "anti_replay", "evidence"],
+      "properties": {
+        "policy_digest": {"type": "string", "pattern": "^sha256:"},
+        "epoch_id": {"type": "string"},
+        "not_before": {"type": "string"},
+        "not_after": {"type": "string"},
+        "action_digest": {"type": "string", "pattern": "^sha256:"},
+        "action_commitment": {"type": "object"},
+        "scope": {"type": "object"},
+        "anti_replay": {"type": "object", "required": ["nonce", "monotonic_counter", "idempotency_key"]},
+        "evidence": {"type": "object"}
+      }
+    },
+    "signature": {"type": "object", "required": ["alg", "kid", "context", "value"]}
+  }
+}

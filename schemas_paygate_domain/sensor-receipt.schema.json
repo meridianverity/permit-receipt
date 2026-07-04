@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SensorReceipt",
+  "type": "object",
+  "required": ["type", "version", "issuer_id", "issued_at", "s2_core", "signature"],
+  "properties": {
+    "type": {"const": "SensorReceipt"},
+    "version": {"type": "string"},
+    "issuer_id": {"type": "string"},
+    "issued_at": {"type": "string"},
+    "s2_core": {
+      "type": "object",
+      "required": ["type", "version", "tenant_id", "boundary_measurement", "input_digest", "trusted_event_time", "monotonic_counter", "anti_replay", "anchor", "proofs"]
+    },
+    "signature": {"type": "object"}
+  }
+}

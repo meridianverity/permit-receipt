@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PAYGATE-Ref VerifierResult",
+  "type": "object",
+  "required": ["decision"],
+  "properties": {
+    "decision": {"enum": ["ALLOW", "DENY"]},
+    "denial_reason_code": {"type": ["string", "null"]},
+    "evidence_digests": {"type": "object"},
+    "recency_observations": {"type": "object"},
+    "constrained_mode": {"type": "boolean"}
+  }
+}

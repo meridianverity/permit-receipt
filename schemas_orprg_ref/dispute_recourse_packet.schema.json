@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AgenticCommerceDisputeRecoursePacket",
+  "type": "object",
+  "required": ["packet_type", "version", "packet_id", "summary", "selective_disclosure_views", "raw_pan_or_sad_present"],
+  "properties": {
+    "packet_type": {"const": "AgenticCommerceDisputeRecoursePacket"},
+    "version": {"type": "string"},
+    "packet_id": {"type": "string"},
+    "summary": {"type": "object"},
+    "selective_disclosure_views": {"type": "object"},
+    "raw_pan_or_sad_present": {"const": false}
+  }
+}

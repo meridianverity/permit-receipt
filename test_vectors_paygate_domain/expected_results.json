@@ -1,0 +1,96 @@
+{
+  "policy_digest": "sha256:e7aeda663c4cee7051c6b768b676a32c6df2be7f8a8384e5ecc7c00be4732ad4",
+  "policy_epoch": "epoch:paygate:2026-06-05:001",
+  "scenarios": [
+    {
+      "expected_outcome": "ALLOW",
+      "outcome": "ALLOW",
+      "reason_codes": [],
+      "scenario": "01_ALLOW_exact_cart_card_provider"
+    },
+    {
+      "expected_outcome": "ALLOW",
+      "outcome": "ALLOW",
+      "reason_codes": [],
+      "scenario": "02_ALLOW_provider_neutral_wallet_provider"
+    },
+    {
+      "expected_outcome": "DENY",
+      "outcome": "DENY",
+      "reason_codes": [
+        "ACTION_DIGEST_MISMATCH",
+        "AMOUNT_MISMATCH"
+      ],
+      "scenario": "03_DENY_amount_tamper"
+    },
+    {
+      "expected_outcome": "DENY",
+      "outcome": "DENY",
+      "reason_codes": [
+        "ACTION_DIGEST_MISMATCH",
+        "CART_DIGEST_MISMATCH"
+      ],
+      "scenario": "04_DENY_cart_tamper_same_total"
+    },
+    {
+      "expected_outcome": "ALLOW",
+      "outcome": "ALLOW",
+      "reason_codes": [],
+      "scenario": "05A_ALLOW_first_use_before_replay"
+    },
+    {
+      "expected_outcome": "DENY",
+      "outcome": "DENY",
+      "reason_codes": [
+        "REPLAY_MONOTONIC_COUNTER_NOT_ADVANCED",
+        "REPLAY_NONCE_USED",
+        "REPLAY_RECEIPT_ID_USED"
+      ],
+      "scenario": "05B_DENY_replay_second_use"
+    },
+    {
+      "expected_outcome": "DENY",
+      "outcome": "DENY",
+      "reason_codes": [
+        "PERMIT_EXPIRED"
+      ],
+      "scenario": "06_DENY_expired_receipt"
+    },
+    {
+      "expected_outcome": "DENY",
+      "outcome": "DENY",
+      "reason_codes": [
+        "EPOCH_MISMATCH",
+        "POLICY_DIGEST_MISMATCH"
+      ],
+      "scenario": "07_DENY_epoch_mismatch"
+    },
+    {
+      "expected_outcome": "DENY",
+      "outcome": "DENY",
+      "reason_codes": [
+        "TSIL_SENSOR_RECEIPT_OBJECT_REQUIRED"
+      ],
+      "scenario": "08_DENY_missing_tsil_sensor_receipt"
+    },
+    {
+      "expected_outcome": "DENY",
+      "outcome": "DENY",
+      "reason_codes": [
+        "PROVIDER_CLASS_NOT_ALLOWED_BY_POLICY",
+        "PROVIDER_CLASS_NOT_ALLOWED_BY_RECEIPT"
+      ],
+      "scenario": "09_DENY_untrusted_provider_class"
+    },
+    {
+      "expected_outcome": "DENY",
+      "outcome": "DENY",
+      "reason_codes": [
+        "PROVIDER_DECISION_TOKEN_REQUIRED"
+      ],
+      "scenario": "10_DENY_direct_provider_bypass_without_decision_token"
+    }
+  ],
+  "suite_id": "urn:paygate-ref:paygate:poc:evaluation-suite:1.0",
+  "vectors": "built-in scenarios in paygate_poc.scenario.run_scenarios"
+}

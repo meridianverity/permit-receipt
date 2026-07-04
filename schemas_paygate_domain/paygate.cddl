@@ -1,0 +1,37 @@
+; Illustrative CDDL sketch, not a normative wire format.
+
+digest = tstr ; "sha256:" 64HEXDIG
+
+payment-action = {
+  type: "PaymentAction",
+  version: tstr,
+  tenant_id: tstr,
+  agent_id: tstr,
+  purpose_id: tstr,
+  merchant: { merchant_id: tstr, display_name: tstr },
+  cart: [+ cart-line],
+  totals: { currency: tstr, subtotal_minor: int, tax_minor: int, shipping_minor: int, discount_minor: int, total_minor: int },
+  payment: { capture_mode: tstr, idempotency_key: tstr, instrument_ref: tstr },
+  context: { sensor_receipt_core_digest: digest, agent_plan_digest: digest, commerce_session_id: tstr }
+}
+
+cart-line = { sku: tstr, name: tstr, quantity: int, unit_price_minor: int, line_total_minor: int }
+
+permit-receipt = {
+  type: "PermitReceipt",
+  version: tstr,
+  receipt_id: tstr,
+  issuer_id: tstr,
+  issued_at: tstr,
+  receipt_core: {
+    policy_digest: digest,
+    epoch_id: tstr,
+    not_before: tstr,
+    not_after: tstr,
+    action_digest: digest,
+    scope: {* tstr => any},
+    anti_replay: { nonce: digest, monotonic_counter: int, idempotency_key: tstr },
+    evidence: {* tstr => any}
+  },
+  signature: {* tstr => any}
+}

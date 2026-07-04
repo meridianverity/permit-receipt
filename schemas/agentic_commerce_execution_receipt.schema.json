@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AgenticCommerceExecutionReceipt",
+  "type": "object",
+  "required": ["receipt_type", "version", "receipt_id", "intent_ref", "agent_ref", "merchant_request", "execution_authorization", "payment_attempt", "verification", "disclosure_views"],
+  "properties": {
+    "receipt_type": {"const": "AgenticCommerceExecutionReceipt"},
+    "version": {"type": "string"},
+    "receipt_id": {"type": "string"},
+    "intent_ref": {"type": "object"},
+    "agent_ref": {"type": "object"},
+    "merchant_request": {"type": "object"},
+    "execution_authorization": {"type": "object"},
+    "payment_attempt": {"type": "object"},
+    "verification": {"type": "object"},
+    "disclosure_views": {"type": "array", "items": {"type": "string"}}
+  }
+}
