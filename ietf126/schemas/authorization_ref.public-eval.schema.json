@@ -1,0 +1,126 @@
+{
+  "$id": "https://meridianverity.com/schemas/orprg/authorization_ref.public-eval.v2.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "action_commitment": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "anti_replay": {
+      "type": "object"
+    },
+    "audience": {
+      "type": "string"
+    },
+    "canonicalization_profile_ref": {
+      "type": "string"
+    },
+    "digest_algorithm": {
+      "enum": [
+        "sha-256"
+      ],
+      "type": "string"
+    },
+    "domain_sep": {
+      "type": "string"
+    },
+    "issuer_or_signer": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "key_id": {
+      "type": "string"
+    },
+    "policy_epoch": {
+      "type": "string"
+    },
+    "ref_artifact_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "ref_artifact_id": {
+      "type": "string"
+    },
+    "ref_kind": {
+      "enum": [
+        "PermitReceipt",
+        "MachineMandate",
+        "authorization_credential",
+        "other"
+      ],
+      "type": "string"
+    },
+    "ref_profile": {
+      "const": "orprg.authorization-ref.public-eval.v2"
+    },
+    "scope": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "signature_coverage": {
+      "type": "boolean"
+    },
+    "status": {
+      "enum": [
+        "valid",
+        "stale",
+        "revoked",
+        "unknown"
+      ],
+      "type": "string"
+    },
+    "valid_from": {
+      "type": "string"
+    },
+    "valid_until": {
+      "type": "string"
+    },
+    "verifier_behavior": {
+      "additionalProperties": false,
+      "properties": {
+        "on_mismatch": {
+          "enum": [
+            "DENY",
+            "HOLD"
+          ],
+          "type": "string"
+        },
+        "on_unsupported_profile": {
+          "enum": [
+            "DENY",
+            "HOLD"
+          ],
+          "type": "string"
+        },
+        "on_unverifiable": {
+          "enum": [
+            "DENY",
+            "HOLD"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "on_unsupported_profile",
+        "on_mismatch",
+        "on_unverifiable"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "ref_profile",
+    "ref_kind",
+    "ref_artifact_digest",
+    "issuer_or_signer",
+    "digest_algorithm",
+    "action_commitment",
+    "signature_coverage",
+    "verifier_behavior"
+  ],
+  "title": "ORPRG public-eval authorization_ref v2",
+  "type": "object"
+}

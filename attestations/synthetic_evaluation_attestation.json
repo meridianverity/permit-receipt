@@ -1,0 +1,57 @@
+{
+  "attestation_core": {
+    "artifact_type": "SyntheticEvaluationAttestation",
+    "coverage": {
+      "expected_hybrid_outcomes": {
+        "H01_ALLOW_joint_orprg_paygate_provider": "ALLOW",
+        "H02_DENY_orprg_scope_before_paygate": "DENY",
+        "H03_DENY_paygate_tsil_missing_after_orprg_allow": "DENY",
+        "H04_DENY_direct_provider_bypass_without_gate_token": "DENY",
+        "H05_DETECT_tetpay_evidence_tamper": "DENY"
+      },
+      "hybrid_scenarios": 5,
+      "negative_paths": [
+        "ORPRG_SCOPE_DENIAL",
+        "PAYGATE_TSIL_EVIDENCE_DENIAL",
+        "PROVIDER_DECISION_TOKEN_REQUIRED",
+        "TETPAY_EVIDENCE_TAMPER_DETECTED"
+      ],
+      "orprg_evaluation_vectors": 64
+    },
+    "evidence": {
+      "hybrid_examples_digest": "sha256:e181fecf5822b471066445111c155ddfa9c8e45a91e46a5ad4b58d0bfa2b4d5b",
+      "policy_digest": "sha256:31c029df5946101aea178e63b805c55f13fab00cb0c7db346f499badbcce4a18",
+      "vectors_digest": "sha256:4b77bf9939801269aad60889da7e47eb1c359b9982a19d78852e8dfb09bd99a3"
+    },
+    "issued_at": "2026-06-05T00:00:00Z",
+    "limitations": [
+      "synthetic_evaluation_only",
+      "no_live_payments",
+      "no_pan_or_sad",
+      "not_a_certification_or_conformance_program"
+    ],
+    "packet": "permit-receipt-ref-eval-v2_2_4_public_eval",
+    "result": "PASS",
+    "subject": {
+      "validator_components": {
+        "orprg_eval/verifier.py": "sha256:358b203d7cab686c9a029682b4b4173830c20484dde7891b581566234b70095b",
+        "paygate_hybrid/bridge.py": "sha256:e24d0a636cd735010676c6e5d7b66a28c81b375e574ed5139660dc1da1b569d1",
+        "paygate_hybrid/hybrid_demo.py": "sha256:0df548d472161c7c4d96b5aa3e520d9ad84442f3e076cb74beb56ed290080501",
+        "paygate_poc/providers.py": "sha256:06eaf032ca891fcf0352d36e4eff1bf209a304c2a77aa6b20a74a7c687d30a63",
+        "paygate_poc/verifier.py": "sha256:3463bbbb98722fd42bec526e095b78688eb7e8a8db70647856c7389d427f13c4"
+      },
+      "validator_id": "permit-receipt-ref-eval-v2.2.4-public-eval"
+    },
+    "validity": {
+      "not_after": "2026-12-31T23:59:59Z",
+      "not_before": "2026-06-05T00:00:00Z",
+      "revocation_reference": "synthetic://permit-receipt-ref/v2.2.4/evaluation/status"
+    },
+    "version": "2.2.2-public-eval"
+  },
+  "integrity_note": {
+    "canonical_note": "No patent license, trademark license, service mark license, product implementation right, certification right, compliance approval, or endorsement is granted.",
+    "description": "This artifact is a synthetic evaluation attestation for reproducibility review only. It is not a production attestation, certification program output, public trust anchor, security warranty, or compliance approval.",
+    "type": "synthetic_public_evaluation_metadata"
+  }
+}

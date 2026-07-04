@@ -1,0 +1,142 @@
+{
+  "adapter_result": {
+    "action_digest": "2729ad3971b54b04e62eb3d31670c13dfd36f08ea0be27e991e76a4d1071c578",
+    "adapter": "fake_psp_adapter_v0_1",
+    "http_status": 202,
+    "live_network_settlement": false,
+    "live_pan_used": false,
+    "payment_attempt_digest": "e60d716c1269163ae8addb8a5858e44ef10e2054a54f701870780b79b102355a",
+    "status": "AUTHORIZED_SANDBOX"
+  },
+  "execution_receipt": {
+    "agent_ref": {
+      "agent_id": "agent:demo:001",
+      "proof_of_possession": "synthetic-pop-bound-to-request-digest"
+    },
+    "disclosure_views": [
+      "merchant_view",
+      "issuer_view",
+      "consumer_view",
+      "dispute_view",
+      "audit_view"
+    ],
+    "execution_authorization": {
+      "freshness_window_ms": 300000,
+      "policy_epoch": 72,
+      "policy_profile": "paygate-ref-profile-v0.1",
+      "reason_codes": [],
+      "revocation_status": "CLEAR",
+      "scope_result": "PASS"
+    },
+    "intent_ref": {
+      "delegation_scope": "merchant|category|amount|time|item",
+      "intent_digest": "sha256:intent-demo-001",
+      "intent_protocol": "AP2|VerifiableIntent|TAP|Other"
+    },
+    "merchant_request": {
+      "cart_or_order_digest": "cart:sha256:demo-001",
+      "merchant_id": "merchant-alpha",
+      "recipient_endpoint": "paygate-ref-psp-adapter",
+      "request_digest": "2729ad3971b54b04e62eb3d31670c13dfd36f08ea0be27e991e76a4d1071c578"
+    },
+    "payment_attempt": {
+      "authorization_trace_digest": "e60d716c1269163ae8addb8a5858e44ef10e2054a54f701870780b79b102355a",
+      "live_network_settlement": false,
+      "live_pan_used": false,
+      "network_token_ref": "token_ref_redacted_sandbox_only",
+      "payment_attempt_digest": "e60d716c1269163ae8addb8a5858e44ef10e2054a54f701870780b79b102355a",
+      "settlement_state": "NOT_ATTEMPTED_LIVE_SANDBOX"
+    },
+    "receipt_id": "acr_6ca1644c3cbb10e617ab85b9",
+    "receipt_type": "AgenticCommerceExecutionReceipt",
+    "verification": {
+      "decision": "ALLOW",
+      "denial_reason_code": null,
+      "evidence_digests": {
+        "action_digest": "2729ad3971b54b04e62eb3d31670c13dfd36f08ea0be27e991e76a4d1071c578",
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "epoch_id": 72,
+        "policy_digest": "policy-digest-paygate-ref-v0.1",
+        "receipt_digest": "3c5e8e1b8209a53cb26b898a65fdcd8b1f22dbefd15963461d404751a2c1cbce",
+        "revocation_list_digest": "025e964857757844e59747bbeeeb79fc27acc22f5a0c7eddd69ede1407ba7af8"
+      },
+      "verifier_id": "did:paygate-ref:verifier:001"
+    },
+    "version": "0.1"
+  },
+  "permit_receipt": {
+    "authenticity": {
+      "issuer_id": "issuer-operator-synth",
+      "signature": "9vt9PzhY7nkcPCXXXdqSlt/07Q6wQj5QLoWhPWiNlnugHNp2HqO4C6eDZOsJ43eDDs2szXjT3L1RG4z2WCdZCQ=="
+    },
+    "receipt_core": {
+      "action_digest": "2729ad3971b54b04e62eb3d31670c13dfd36f08ea0be27e991e76a4d1071c578",
+      "anti_replay": {
+        "nonce": "nonce-in-scope-001"
+      },
+      "assurance_level_id": "AL5",
+      "authority_profile_id": "AP-SYNTH-AL5",
+      "canonicalization_profile_ref": "CP-JSON-2",
+      "epoch_id": 72,
+      "issuer_id": "issuer-operator-synth",
+      "jurisdiction": "US",
+      "permit_provenance_digest": "permit-paygate-ref-001",
+      "policy_digest": "policy-digest-paygate-ref-v0.1",
+      "purpose_id": "agentic_purchase",
+      "scope": {
+        "action_type": "AUTHORIZE_SANDBOX",
+        "effect_type": "PAYMENT_ATTEMPT",
+        "interface_id": "paygate-ref-psp-adapter",
+        "max_effect_budget": 2499,
+        "purpose_id": "agentic_purchase",
+        "representation_class_id": "json-v1",
+        "target_id": "merchant-alpha",
+        "tenant_id": "tenant-A"
+      },
+      "tenant_id": "tenant-A",
+      "valid_from": "2026-06-02T00:00:00Z",
+      "valid_to": "2026-06-04T00:00:00Z"
+    }
+  },
+  "request": {
+    "action_type": "AUTHORIZE_SANDBOX",
+    "agent_id": "agent:demo:001",
+    "cart_digest": "cart:sha256:demo-001",
+    "currency": "USD",
+    "effect_type": "PAYMENT_ATTEMPT",
+    "interface_id": "paygate-ref-psp-adapter",
+    "max_effect_budget": 2499,
+    "merchant_id": "merchant-alpha",
+    "payload_digest": "cart:sha256:demo-001",
+    "purpose_id": "agentic_purchase",
+    "representation_class_id": "json-v1",
+    "target_id": "merchant-alpha",
+    "tenant_id": "tenant-A"
+  },
+  "scenario": "A_IN_SCOPE_AGENT_PURCHASE",
+  "verification_result": {
+    "constrained_mode": false,
+    "decision": "ALLOW",
+    "denial_reason_code": null,
+    "evidence_digests": {
+      "action_digest": "2729ad3971b54b04e62eb3d31670c13dfd36f08ea0be27e991e76a4d1071c578",
+      "assurance_level_id": "AL5",
+      "authority_profile_id": "AP-SYNTH-AL5",
+      "epoch_id": 72,
+      "policy_digest": "policy-digest-paygate-ref-v0.1",
+      "receipt_digest": "3c5e8e1b8209a53cb26b898a65fdcd8b1f22dbefd15963461d404751a2c1cbce",
+      "revocation_list_digest": "025e964857757844e59747bbeeeb79fc27acc22f5a0c7eddd69ede1407ba7af8"
+    },
+    "recency_observations": {
+      "revocation_list_age_seconds": 20,
+      "revocation_max_age_seconds": 3600
+    },
+    "timings_ns": {
+      "canonicalization_and_digest_ns": 39761,
+      "revocation_check_ns": 47108,
+      "signature_verification_ns": 218932,
+      "total_ns": 380435
+    }
+  }
+}

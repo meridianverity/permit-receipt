@@ -1,0 +1,160 @@
+{
+  "base_execution_receipt": {
+    "agent_ref": {
+      "agent_id": "agent:demo:001",
+      "proof_of_possession": "synthetic-pop-bound-to-request-digest"
+    },
+    "disclosure_views": [
+      "merchant_view",
+      "issuer_view",
+      "consumer_view",
+      "dispute_view",
+      "audit_view"
+    ],
+    "execution_authorization": {
+      "freshness_window_ms": 300000,
+      "policy_epoch": 72,
+      "policy_profile": "paygate-ref-profile-v0.1",
+      "reason_codes": [],
+      "revocation_status": "CLEAR",
+      "scope_result": "PASS"
+    },
+    "intent_ref": {
+      "delegation_scope": "merchant|category|amount|time|item",
+      "intent_digest": "sha256:intent-demo-001",
+      "intent_protocol": "AP2|VerifiableIntent|TAP|Other"
+    },
+    "merchant_request": {
+      "cart_or_order_digest": "cart:sha256:demo-001",
+      "merchant_id": "merchant-alpha",
+      "recipient_endpoint": "paygate-ref-psp-adapter",
+      "request_digest": "2729ad3971b54b04e62eb3d31670c13dfd36f08ea0be27e991e76a4d1071c578"
+    },
+    "payment_attempt": {
+      "authorization_trace_digest": "e60d716c1269163ae8addb8a5858e44ef10e2054a54f701870780b79b102355a",
+      "live_network_settlement": false,
+      "live_pan_used": false,
+      "network_token_ref": "token_ref_redacted_sandbox_only",
+      "payment_attempt_digest": "e60d716c1269163ae8addb8a5858e44ef10e2054a54f701870780b79b102355a",
+      "settlement_state": "NOT_ATTEMPTED_LIVE_SANDBOX"
+    },
+    "receipt_id": "acr_6ca1644c3cbb10e617ab85b9",
+    "receipt_type": "AgenticCommerceExecutionReceipt",
+    "verification": {
+      "decision": "ALLOW",
+      "denial_reason_code": null,
+      "evidence_digests": {
+        "action_digest": "2729ad3971b54b04e62eb3d31670c13dfd36f08ea0be27e991e76a4d1071c578",
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "epoch_id": 72,
+        "policy_digest": "policy-digest-paygate-ref-v0.1",
+        "receipt_digest": "3c5e8e1b8209a53cb26b898a65fdcd8b1f22dbefd15963461d404751a2c1cbce",
+        "revocation_list_digest": "025e964857757844e59747bbeeeb79fc27acc22f5a0c7eddd69ede1407ba7af8"
+      },
+      "verifier_id": "did:paygate-ref:verifier:001"
+    },
+    "version": "0.1"
+  },
+  "dispute_packet": {
+    "packet_id": "drp_bd254366ab98a6579364a9c8",
+    "packet_type": "AgenticCommerceDisputeRecoursePacket",
+    "raw_pan_or_sad_present": false,
+    "selective_disclosure_views": {
+      "audit_view": {
+        "agent_ref": {
+          "agent_id": "agent:demo:001",
+          "proof_of_possession": "synthetic-pop-bound-to-request-digest"
+        },
+        "disclosure_views": [
+          "merchant_view",
+          "issuer_view",
+          "consumer_view",
+          "dispute_view",
+          "audit_view"
+        ],
+        "execution_authorization": {
+          "freshness_window_ms": 300000,
+          "policy_epoch": 72,
+          "policy_profile": "paygate-ref-profile-v0.1",
+          "reason_codes": [],
+          "revocation_status": "CLEAR",
+          "scope_result": "PASS"
+        },
+        "intent_ref": {
+          "delegation_scope": "merchant|category|amount|time|item",
+          "intent_digest": "sha256:intent-demo-001",
+          "intent_protocol": "AP2|VerifiableIntent|TAP|Other"
+        },
+        "merchant_request": {
+          "cart_or_order_digest": "cart:sha256:demo-001",
+          "merchant_id": "merchant-alpha",
+          "recipient_endpoint": "paygate-ref-psp-adapter",
+          "request_digest": "2729ad3971b54b04e62eb3d31670c13dfd36f08ea0be27e991e76a4d1071c578"
+        },
+        "payment_attempt": {
+          "authorization_trace_digest": "e60d716c1269163ae8addb8a5858e44ef10e2054a54f701870780b79b102355a",
+          "live_network_settlement": false,
+          "live_pan_used": false,
+          "network_token_ref": "token_ref_redacted_sandbox_only",
+          "payment_attempt_digest": "e60d716c1269163ae8addb8a5858e44ef10e2054a54f701870780b79b102355a",
+          "settlement_state": "NOT_ATTEMPTED_LIVE_SANDBOX"
+        },
+        "receipt_id": "acr_6ca1644c3cbb10e617ab85b9",
+        "receipt_type": "AgenticCommerceExecutionReceipt",
+        "verification": {
+          "decision": "ALLOW",
+          "denial_reason_code": null,
+          "evidence_digests": {
+            "action_digest": "2729ad3971b54b04e62eb3d31670c13dfd36f08ea0be27e991e76a4d1071c578",
+            "assurance_level_id": "AL5",
+            "authority_profile_id": "AP-SYNTH-AL5",
+            "epoch_id": 72,
+            "policy_digest": "policy-digest-paygate-ref-v0.1",
+            "receipt_digest": "3c5e8e1b8209a53cb26b898a65fdcd8b1f22dbefd15963461d404751a2c1cbce",
+            "revocation_list_digest": "025e964857757844e59747bbeeeb79fc27acc22f5a0c7eddd69ede1407ba7af8"
+          },
+          "verifier_id": "did:paygate-ref:verifier:001"
+        },
+        "version": "0.1"
+      },
+      "consumer_view": {
+        "cart_or_order_digest": "cart:sha256:demo-001",
+        "decision": "ALLOW",
+        "merchant_id": "merchant-alpha"
+      },
+      "issuer_or_acquirer_view": {
+        "authorization_trace_digest": "e60d716c1269163ae8addb8a5858e44ef10e2054a54f701870780b79b102355a",
+        "intent_digest": "sha256:intent-demo-001",
+        "verification": {
+          "decision": "ALLOW",
+          "denial_reason_code": null,
+          "evidence_digests": {
+            "action_digest": "2729ad3971b54b04e62eb3d31670c13dfd36f08ea0be27e991e76a4d1071c578",
+            "assurance_level_id": "AL5",
+            "authority_profile_id": "AP-SYNTH-AL5",
+            "epoch_id": 72,
+            "policy_digest": "policy-digest-paygate-ref-v0.1",
+            "receipt_digest": "3c5e8e1b8209a53cb26b898a65fdcd8b1f22dbefd15963461d404751a2c1cbce",
+            "revocation_list_digest": "025e964857757844e59747bbeeeb79fc27acc22f5a0c7eddd69ede1407ba7af8"
+          },
+          "verifier_id": "did:paygate-ref:verifier:001"
+        }
+      },
+      "merchant_view": {
+        "reason_codes": [],
+        "request_digest": "2729ad3971b54b04e62eb3d31670c13dfd36f08ea0be27e991e76a4d1071c578",
+        "scope_result": "PASS"
+      }
+    },
+    "summary": {
+      "agent_id": "agent:demo:001",
+      "decision": "ALLOW",
+      "denial_reason_code": null,
+      "merchant_id": "merchant-alpha",
+      "receipt_id": "acr_6ca1644c3cbb10e617ab85b9"
+    },
+    "version": "0.1"
+  },
+  "scenario": "C_DISPUTED_TRANSACTION_SELECTIVE_DISCLOSURE"
+}

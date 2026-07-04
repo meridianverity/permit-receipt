@@ -1,0 +1,57 @@
+{
+  "final_outcome": "ALLOW",
+  "orprg_action_digest": "b2d82110d12ceb1a61a827d1eaca32d8376d55a58c17a37bd29960a478548fbe",
+  "orprg_receipt_digest": "ac081de245e0598ed36521d94cc25d40df04a167d1fbb351a578d73a3de48fcb",
+  "orprg_result": {
+    "constrained_mode": false,
+    "decision": "ALLOW",
+    "denial_reason_code": null,
+    "evidence_digests": {
+      "action_digest": "b2d82110d12ceb1a61a827d1eaca32d8376d55a58c17a37bd29960a478548fbe",
+      "assurance_level_id": "AL5",
+      "authority_profile_id": "AP-SYNTH-AL5",
+      "epoch_id": 72,
+      "policy_digest": "policy-digest-paygate-ref-v0.1",
+      "receipt_digest": "ac081de245e0598ed36521d94cc25d40df04a167d1fbb351a578d73a3de48fcb",
+      "revocation_list_digest": "025e964857757844e59747bbeeeb79fc27acc22f5a0c7eddd69ede1407ba7af8"
+    },
+    "recency_observations": {
+      "revocation_list_age_seconds": 20,
+      "revocation_max_age_seconds": 3600
+    },
+    "timings_ns": {
+      "canonicalization_and_digest_ns": 34555,
+      "revocation_check_ns": 282746,
+      "signature_verification_ns": 252959,
+      "total_ns": 685678
+    }
+  },
+  "paygate_outcome": "ALLOW",
+  "provider_status": "AUTHORIZED",
+  "scenario": "H01_ALLOW_joint_orprg_paygate_provider",
+  "stage": "COMMIT",
+  "tetpay": {
+    "decision": {
+      "orprg": "ALLOW",
+      "paygate": "ALLOW",
+      "provider": "AUTHORIZED"
+    },
+    "evidence_only": true,
+    "refs": {
+      "cart_digest": "sha256:472b04de58450699342a85fa4042533efbb99200307223a414649885a1a6de84",
+      "orprg_action_digest": "b2d82110d12ceb1a61a827d1eaca32d8376d55a58c17a37bd29960a478548fbe",
+      "orprg_verifier_result_digest": "230fea2865b40f58ea985b7de5aa1dbefc121879cfc93dd441c5e7fd006898fa",
+      "paygate_decision_receipt_digest": "sha256:344a50b305bb6e8e68e91ebc7847832c90efcde6175c0e065f0bba6e13aed2e2",
+      "payment_action_digest": "sha256:86532d5db83a581a41dbec67740be2b3545a11af60fc9688316a79e0f355082b",
+      "provider_commit_digest": "sha256:7f742df1247564fcaf2c316677d940bd6fcf9b4e1029cdeaa1d66d6fb9ea06eb",
+      "sensor_receipt_core_digest": "sha256:794a2f1b09768198c50aa3aa8e8b2f4fd80e60bd59cf8dcf13f1118c9f8dcf82"
+    },
+    "semantics": "cross-rail references do not alter ORPRG, TSIL, or PayGate gate predicates",
+    "type": "TETpay",
+    "version": "2.0-hybrid"
+  },
+  "tetpay_audit": {
+    "mismatches": [],
+    "status": "PASS"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "expected_reason": "DRC-005_SCOPE_VIOLATION",
+  "final_outcome": "DENY",
+  "orprg_result": {
+    "constrained_mode": false,
+    "decision": "DENY",
+    "denial_reason_code": "DRC-005_SCOPE_VIOLATION",
+    "evidence_digests": {
+      "action_digest": "b2d82110d12ceb1a61a827d1eaca32d8376d55a58c17a37bd29960a478548fbe",
+      "assurance_level_id": "AL5",
+      "authority_profile_id": "AP-SYNTH-AL5",
+      "epoch_id": 72,
+      "policy_digest": "policy-digest-paygate-ref-v0.1",
+      "receipt_digest": "4583dc7d4ee3e64cb45a0ae778ba62afd5524f7a356f91517820864922a9c3ee"
+    },
+    "recency_observations": {},
+    "timings_ns": {
+      "canonicalization_and_digest_ns": 33209,
+      "signature_verification_ns": 245559,
+      "total_ns": 390438
+    }
+  },
+  "paygate_invoked": false,
+  "scenario": "H02_DENY_orprg_scope_before_paygate",
+  "stage": "ORPRG"
+}

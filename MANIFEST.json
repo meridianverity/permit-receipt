@@ -1,0 +1,860 @@
+{
+  "artifact": "PermitReceipt Public Evaluation Slice for AI-Agent External Effects v2.2.4",
+  "entries": [
+    {
+      "bytes": 1458,
+      "path": ".github/ISSUE_TEMPLATE/ietf126-cross-reference.md",
+      "sha256": "65dff86f25616a188944864789fed5bfbc9d07f8849a13d309d116d439781be5"
+    },
+    {
+      "bytes": 798,
+      "path": ".github/ISSUE_TEMPLATE/ietf126-field-model.md",
+      "sha256": "3eee96f86cb12ed89a64a642f380cb50cadc30de20a6d1a44c600a815e4f20bc"
+    },
+    {
+      "bytes": 946,
+      "path": ".github/ISSUE_TEMPLATE/ietf126-negative-vector.md",
+      "sha256": "4993ee24a6fe99d30f926562b56ea910b81a42865d918d909df72d0135bbe045"
+    },
+    {
+      "bytes": 763,
+      "path": ".github/workflows/ietf126-review-packet.yml",
+      "sha256": "42354facfbe9be597ae8a25c444cbe6f8d8fc1bfe22ef5c5bfd909292d0ff621"
+    },
+    {
+      "bytes": 671,
+      "path": ".github/workflows/qa.yml",
+      "sha256": "6a5dc071bcc2dd9ef781ad1749b2cba391bebd763966c3a0d79d63fdb34e9f89"
+    },
+    {
+      "bytes": 214,
+      "path": ".gitignore",
+      "sha256": "290de490d4ba4755901a8fbc9504a4a3afa07daddc6a651731ace36ad20e174a"
+    },
+    {
+      "bytes": 720,
+      "path": "CONTRIBUTING.md",
+      "sha256": "0a7f55827482b3268b948a94efe9133b61b3043f0fbc4e245bd9c8338277af92"
+    },
+    {
+      "bytes": 7353,
+      "path": "GLOSSARY.md",
+      "sha256": "21568b20671c7a2a07721d4d8dfeb163581f52b3e86b0912e2e15cbb3f888528"
+    },
+    {
+      "bytes": 1277,
+      "path": "LICENSE-EVALUATION.md",
+      "sha256": "67892e32ba2547e0bbf5b441f2a1378f83e2d598902299fd92ed91797fa6d5e9"
+    },
+    {
+      "bytes": 756,
+      "path": "Makefile",
+      "sha256": "fd726232e3d9757d3e914f2277cddd90236999c269d4ead8e2d6a488ac37311d"
+    },
+    {
+      "bytes": 1050,
+      "path": "NOTICE.md",
+      "sha256": "ce2a1c94f9c47181f8be81f00ec2eb51a578e137b7d792b41b3466909020cbdc"
+    },
+    {
+      "bytes": 557,
+      "path": "PATENT-NOTICE.md",
+      "sha256": "9778cbf9a696e6afe7ae91878287f34fb7829d0b25efbbfe26473eef536eba1f"
+    },
+    {
+      "bytes": 1107,
+      "path": "QUICKSTART.md",
+      "sha256": "e92db7663c4b5cf5cf3968855ea1099a363dbcc99e5e53dc3cf879819e8dc16d"
+    },
+    {
+      "bytes": 8163,
+      "path": "README.md",
+      "sha256": "89bd05d9ae3c9f5187b4cae0b2f0ce0abf517f12b0ad1d286816f04cb76da1a4"
+    },
+    {
+      "bytes": 2702,
+      "path": "README_FIRST.md",
+      "sha256": "89c1d888f0c5fa43354deea49fc26443512cebf8099366df72a5b377c06642d9"
+    },
+    {
+      "bytes": 858,
+      "path": "RELEASE_NOTES_v2_2_1.md",
+      "sha256": "1d76b9c20bf99579d0ee2c88d49c303777ac35c7fb32a7fec637edd0d43101a2"
+    },
+    {
+      "bytes": 1137,
+      "path": "RELEASE_NOTES_v2_2_3.md",
+      "sha256": "fce3b0fdcd3fab6bc25818af601db4e953c79a684394528b610fe9c636767041"
+    },
+    {
+      "bytes": 1616,
+      "path": "RELEASE_NOTES_v2_2_4.md",
+      "sha256": "4a987867d1fb79fcff9052be0b3c2a8e5bd6fc2a1fcbebfd10f4a2f245a7c234"
+    },
+    {
+      "bytes": 534,
+      "path": "SECURITY.md",
+      "sha256": "2552b0630c51a0fd1b9a3634aa425e36afbb7f25d679b6b3bc1700984538b364"
+    },
+    {
+      "bytes": 2244,
+      "path": "SECURITY_AND_LIMITATIONS.md",
+      "sha256": "f98211ffdf0b515b06cf74098c95425ef91738605b5bcbb10c811027fe87a40a"
+    },
+    {
+      "bytes": 18,
+      "path": "VERSION",
+      "sha256": "1bc516d767021f4f8853b01bcf5f64bfea56c858424e0e3adce44e36fc23cf09"
+    },
+    {
+      "bytes": 645,
+      "path": "attestations/README.md",
+      "sha256": "d8c24284dcb1de3c4c9f8dc1b655a169c46729b588057c5732201cc40e81495d"
+    },
+    {
+      "bytes": 2753,
+      "path": "attestations/synthetic_evaluation_attestation.json",
+      "sha256": "ed8644ab3edc4bc0bd5de370afd66ee1f362e3df2fac3f3103918901f84693a7"
+    },
+    {
+      "bytes": 5958,
+      "path": "baseline_compare.py",
+      "sha256": "36585d2bf899b33af22f245d49b74c3f01eff02b988d912d78bffe9be59174a1"
+    },
+    {
+      "bytes": 4571,
+      "path": "benchmark.py",
+      "sha256": "011c20ecea5e2cb5668fab5ebe934fc1c2fc28ffd1565d3f08a21134922c6c9e"
+    },
+    {
+      "bytes": 3690,
+      "path": "canonicalization_fuzz.py",
+      "sha256": "87d91d1cf53494a9dfd5f05333f8b1933a0686645a6433e6afd75f6b71a3c355"
+    },
+    {
+      "bytes": 698,
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "f15e73707bedfb3284426121fc9ad990cb21bcb0c9ecab6df3cc1323562e036a"
+    },
+    {
+      "bytes": 1021,
+      "path": "docs/DEMO_SCRIPT_3_MIN.md",
+      "sha256": "0c31ef3a484d3e5f35fb280830759cb045fad48ac603bfce70643b03e8376865"
+    },
+    {
+      "bytes": 1765,
+      "path": "docs/EVALUATION_BOUNDARY.md",
+      "sha256": "1046273339ac7d22edcf70f115b2c9373f902987e95d5bb11926841e8f58cd97"
+    },
+    {
+      "bytes": 1983,
+      "path": "docs/GITHUB_RELEASE_BODY.md",
+      "sha256": "519b2a700bf457d95335ea779c9b44bd902ca97e14ec3b60f30bdfaad20ff250"
+    },
+    {
+      "bytes": 2212,
+      "path": "docs/GITHUB_UPLOAD_CHECKLIST.md",
+      "sha256": "3c34dc6bb4d3c2cd7ffcec3a09d618a8f04f516ddb83b8f38f0108f10d1069a0"
+    },
+    {
+      "bytes": 659,
+      "path": "docs/GIT_UPDATE_CHECKLIST_v2_2_4.md",
+      "sha256": "d4547724036e6c85bd48af017e15afbb5feaa46bdd163221d19d03afc5ba018f"
+    },
+    {
+      "bytes": 3995,
+      "path": "docs/IETF_HACKATHON_PROJECT_PAGE.md",
+      "sha256": "4bfc953cb323f67fd075fef365ba4793a7aaada7f28a852803693d5c0c07490f"
+    },
+    {
+      "bytes": 2266,
+      "path": "docs/PRE_RELEASE_AUDIT_CHECKLIST.md",
+      "sha256": "be41caa419f2d5da10cca77b8613a0eaf1db9f3c78e789ff69020c72c5017281"
+    },
+    {
+      "bytes": 1292,
+      "path": "docs/PUBLIC_REVIEWER_GUIDE.md",
+      "sha256": "9711e16d386790834703c23f316c63e44ca8869bb92720612e2362ee15ed669b"
+    },
+    {
+      "bytes": 810,
+      "path": "docs/PUBLIC_STEWARDSHIP.md",
+      "sha256": "d242c388adaa5ccc7a125ac4cf8db7d332470851c6954553fe0d3d105a5e7883"
+    },
+    {
+      "bytes": 1384,
+      "path": "docs/QA_REPORT_v2_2_4_PUBLIC_EVAL.md",
+      "sha256": "a6f9737c052f8fb772125369fcb7d301c01981bc218e0bd9c1df988e6a872ff5"
+    },
+    {
+      "bytes": 1226,
+      "path": "docs/RELEASE_DECISION_RECORD_v2_2_3.md",
+      "sha256": "91f9dde33ecc9d58aafb555ae36091cec9d824a35496a4026c921d3c627dc248"
+    },
+    {
+      "bytes": 865,
+      "path": "docs/RELEASE_DECISION_RECORD_v2_2_4.md",
+      "sha256": "d43f1a0c00565b546f2b646e82e557df188d21ffdfac777954880a9a3053c7c5"
+    },
+    {
+      "bytes": 842,
+      "path": "docs/RELEASE_HYGIENE.md",
+      "sha256": "d0981235c1237d21ad2074d52f3aec89fd87b6b422df03fe35f0146b1ac0f543"
+    },
+    {
+      "bytes": 954,
+      "path": "docs/REPRODUCIBILITY.md",
+      "sha256": "f970ab82a76b47e894f20da10b6256a70b75f00f99fd769a99220808b7f1f9e8"
+    },
+    {
+      "bytes": 905,
+      "path": "docs/SECURITY_AND_LIMITATIONS.md",
+      "sha256": "669f9a83090559a12fcb6efd31f0ff87e41de2fa3905e3b2598e483051776b5f"
+    },
+    {
+      "bytes": 1434,
+      "path": "docs/SIDE_MEETING_ONE_PAGER.md",
+      "sha256": "a7a8d93e40b64b791394e078ce5a3a66c857c9d4115c5c193984f6f14918136a"
+    },
+    {
+      "bytes": 1740,
+      "path": "docs/STANDARDS_STATUS_AND_IPR.md",
+      "sha256": "7d0da0c71bf1f2228bfaae606983105ac35f91d1514727ba335c5960c21ddc14"
+    },
+    {
+      "bytes": 2365,
+      "path": "docs/TERMINOLOGY_AND_BOUNDARY_GUIDE.md",
+      "sha256": "b63e217d3887c2ddcb680dce9a59cff489b6ff6f26832dea0824ee434a1742a0"
+    },
+    {
+      "bytes": 861,
+      "path": "docs/VECTOR_GUIDE.md",
+      "sha256": "05643432f5925f22ae0f0afcfb946fd6ae1d6204d121cf52bace79a801da1057"
+    },
+    {
+      "bytes": 6409,
+      "path": "egress_gateway_demo.py",
+      "sha256": "2d766d01d372e4dc887852653b84148cfb523877bc6d4e7bc4f0e7ff16f1e13d"
+    },
+    {
+      "bytes": 260473,
+      "path": "evaluation_vectors/vectors.json",
+      "sha256": "4b77bf9939801269aad60889da7e47eb1c359b9982a19d78852e8dfb09bd99a3"
+    },
+    {
+      "bytes": 1073,
+      "path": "examples/README.md",
+      "sha256": "f268e9925f68ec168947abe324a3d0a6cd44962927b3c2fe3a508db5d2287899"
+    },
+    {
+      "bytes": 2368,
+      "path": "examples/h01_allow_joint_orprg_paygate_provider.json",
+      "sha256": "03964b6a102aca9e6bcb699cda1ffe6bfd87cce2885e2c2ae699664231417c15"
+    },
+    {
+      "bytes": 859,
+      "path": "examples/h02_deny_orprg_scope_before_paygate.json",
+      "sha256": "0ec3445f4995f4f251da448d582b995b6c31b2e46a787fd3b6be888e357de16a"
+    },
+    {
+      "bytes": 1111,
+      "path": "examples/h03_deny_paygate_tsil_missing_after_orprg_allow.json",
+      "sha256": "fa906b9302ae656f1f030ef4f9e27245240d610d1ecc41693c2e93e0f74b0b9c"
+    },
+    {
+      "bytes": 297,
+      "path": "examples/h04_deny_direct_provider_bypass_without_gate_token.json",
+      "sha256": "9caf0f8d58cbd9124bbef8a187780a64f69b399920a202ece18cdddfec65a16f"
+    },
+    {
+      "bytes": 1119,
+      "path": "examples/h05_detect_tetpay_evidence_tamper.json",
+      "sha256": "0fcda3ddb0adcb964f9b572d031cb25dbcfce41ab974043a2981d98178371c38"
+    },
+    {
+      "bytes": 5274,
+      "path": "examples/paygate_ref_A_in_scope_agent_purchase.json",
+      "sha256": "20152bb592cd56ffa4b8cf5c7f7f4dacfc3b2b6f4f0fb2cd048d8178f63b838c"
+    },
+    {
+      "bytes": 5390,
+      "path": "examples/paygate_ref_B2_revoked_fail_closed.json",
+      "sha256": "abe1ebbc72ec25d7916211c4afee6db73039897fb18968454c2de8d8b8752421"
+    },
+    {
+      "bytes": 6294,
+      "path": "examples/paygate_ref_B3_replay_attempt_fail_closed.json",
+      "sha256": "ba7b04ec270a6c0d3b871348603776106aa0626ab32a0cc5945f399193ec2da0"
+    },
+    {
+      "bytes": 5049,
+      "path": "examples/paygate_ref_B_out_of_scope_fail_closed.json",
+      "sha256": "36eda2c40bcade9346761e2a1bb0f1a62aace8ccf269c9d0e18290aa626d4d18"
+    },
+    {
+      "bytes": 6376,
+      "path": "examples/paygate_ref_C_dispute_selective_disclosure.json",
+      "sha256": "2714cabab6f39fdf59afb4e9f64cf399da604874389edfca5b6fcf52fcfe8aee"
+    },
+    {
+      "bytes": 6095,
+      "path": "ext_authz_adapter_demo.py",
+      "sha256": "d401f915624e262f690b835f6d3eff6bf484a467bca289911c07b4405a54a9cb"
+    },
+    {
+      "bytes": 3332,
+      "path": "gateway_demo.py",
+      "sha256": "ec382277d3c65e7e84a00cdc01379198758a1dc346c8deda376b497eb99e1e64"
+    },
+    {
+      "bytes": 6087,
+      "path": "http_canonicalization_fuzz.py",
+      "sha256": "c54b3b6cadcf368b88868aba8049779f9db01faa68b3342ea33420c3274ae01a"
+    },
+    {
+      "bytes": 2799,
+      "path": "ietf126/AUTHORIZATION_REF_PROFILE.md",
+      "sha256": "590ba50205c5ae39f0ed93ecb72da2c6c44ca1d01443d810f6f0f7a74bdffd51"
+    },
+    {
+      "bytes": 1224,
+      "path": "ietf126/CANONICALIZATION_AND_DIGESTS.md",
+      "sha256": "25a49568707f2137ccb7029058663f12596f8b3787f695d2daf49fb3b29a64b4"
+    },
+    {
+      "bytes": 2259,
+      "path": "ietf126/DIGEST_INTEROP_NOTES.md",
+      "sha256": "cf7d68e9f936ca8a222b9ed96c9c161eb12fcbcdfe70d8fd15c3bdddc9408afa"
+    },
+    {
+      "bytes": 1637,
+      "path": "ietf126/HACKATHON_JUDGES_BRIEF.md",
+      "sha256": "10be50d9bd91f31be0e9e7ae2cdba11755fc61b88f491b11bb5e2bf1e938796f"
+    },
+    {
+      "bytes": 891,
+      "path": "ietf126/ISSUE_TRIAGE.md",
+      "sha256": "098f7f5847cc05dd53e41bd6bc2dfdaf927b690677c611777b0bd7c129271cba"
+    },
+    {
+      "bytes": 1431,
+      "path": "ietf126/NEGATIVE_VECTOR_PLAN.md",
+      "sha256": "8f3059e12e3d6ec9734d929825dbc66d689a8d352391f2161a1eba8e5c3c87f7"
+    },
+    {
+      "bytes": 1245,
+      "path": "ietf126/ONE_PROTECTED_ACTION.md",
+      "sha256": "8cb645343198f972eaa919ef7face8dda19b72a14989be99246028b4f2d5d870"
+    },
+    {
+      "bytes": 937,
+      "path": "ietf126/PUBLIC_BOUNDARY.md",
+      "sha256": "0c3ca8c40a8481bf8ebfaa93e1fb45f3c59980ea1a812a308f695b0edce30f47"
+    },
+    {
+      "bytes": 1265,
+      "path": "ietf126/QA_REPORT.md",
+      "sha256": "708dd63b44f2b16b342f8a54a3d63585d127b33ab75b67e1d5a2e9e5584ba616"
+    },
+    {
+      "bytes": 4400,
+      "path": "ietf126/README.md",
+      "sha256": "d337d7cb633d18655acd53bce553accc4503e5aabf7a3729189836e922731ef7"
+    },
+    {
+      "bytes": 1255,
+      "path": "ietf126/REVIEWER_CHECKLIST.md",
+      "sha256": "1ce5fd07ce2bd37a3d8bc1a2eafdbd8ce25d66041ab1cf276cb52914c2649728"
+    },
+    {
+      "bytes": 769,
+      "path": "ietf126/RUNBOOK_10_MIN.md",
+      "sha256": "a34bb066f31547b8c9832209f6a3fa8feffe82b27eac3eb8df6b45221860b981"
+    },
+    {
+      "bytes": 1069,
+      "path": "ietf126/STANDALONE_PACKET.md",
+      "sha256": "54d906354aab94299f3de6eb221d19d01802686fc5fbb6d2d8f8484bbc5fd446"
+    },
+    {
+      "bytes": 3995,
+      "path": "ietf126/SUBMISSION_TEXT.md",
+      "sha256": "4bfc953cb323f67fd075fef365ba4793a7aaada7f28a852803693d5c0c07490f"
+    },
+    {
+      "bytes": 1196,
+      "path": "ietf126/TALK_TRACK_90_SECONDS.md",
+      "sha256": "139e8963ae661b31b19fe1f45cdee7700786d2ccfb62cdb87d1d279dd91254b4"
+    },
+    {
+      "bytes": 1278,
+      "path": "ietf126/TEAM_SCHEDULE_TEXT.md",
+      "sha256": "c13389f4ad0a0963209039108c51bc14d7364f1a438b5be7f5b9374613712241"
+    },
+    {
+      "bytes": 1023,
+      "path": "ietf126/V2_RELEASE_NOTES.md",
+      "sha256": "5c31833ee1d1a107580e295e449aa8ba8c5d87516772fde507f6105d18181ad7"
+    },
+    {
+      "bytes": 1254,
+      "path": "ietf126/VECTOR_INDEX.md",
+      "sha256": "70476c1834560d1fc55ff8bb59a86fc733acae71fda7ffdc5d163b4eba43e0de"
+    },
+    {
+      "bytes": 29384,
+      "path": "ietf126/run_review_packet.py",
+      "sha256": "844d558122f62776d1c11d859b54ab0c6fb575c82efbdfc9af21064068b459cb"
+    },
+    {
+      "bytes": 2556,
+      "path": "ietf126/schemas/authorization_ref.public-eval.schema.json",
+      "sha256": "fc10ae6d5ff6ca0df3454d494deb53910a67390fb83d9aff76a488b789db7221"
+    },
+    {
+      "bytes": 2556,
+      "path": "ietf126/schemas/authorization_ref.public-eval.v2.schema.json",
+      "sha256": "fc10ae6d5ff6ca0df3454d494deb53910a67390fb83d9aff76a488b789db7221"
+    },
+    {
+      "bytes": 537,
+      "path": "ietf126/vectors/orprg-one-protected-action-seed.json",
+      "sha256": "7db532fda2949a23a3782b9b5837ee6868c8a99ed99ec4e3b94b8845b7b07ba2"
+    },
+    {
+      "bytes": 2406,
+      "path": "integration_contract_check.py",
+      "sha256": "15de037739f7be4d3eea661522cc80da9bfe975f68297bb9e80f0724569f0ce8"
+    },
+    {
+      "bytes": 730,
+      "path": "integrations/README.md",
+      "sha256": "1f1100eaec08c80d62a7c23f95b775eed738911d7b619fdf47737b4dceb72ef0"
+    },
+    {
+      "bytes": 303,
+      "path": "integrations/cedar_like_policy.cedar",
+      "sha256": "43fed5a126d586cdb99c67757ec548c3edc9d035b6f08a600d075dfaa9dc5c3e"
+    },
+    {
+      "bytes": 894,
+      "path": "integrations/envoy_ext_authz_bootstrap_fragment.yaml",
+      "sha256": "d77ceb082edc14daea4b7a6d33381d70b8e1f4395f567116276ea63d00cae24e"
+    },
+    {
+      "bytes": 360,
+      "path": "integrations/opa_style_policy_baseline.rego",
+      "sha256": "995b1bd401220ab1c07b65787c56ff3509ad35967f6be7fe0018eadb972d2270"
+    },
+    {
+      "bytes": 7192,
+      "path": "kms_key_release_demo.py",
+      "sha256": "c628ffbf0abd693f1c5309af068ddd7715077b3b3a6fffc65fd6a65a6ad2f12e"
+    },
+    {
+      "bytes": 1690,
+      "path": "make_manifest.py",
+      "sha256": "3d2de506f561b97372694ffb827afae08fc2bba06c6ef3ebe34867b3b5640c4f"
+    },
+    {
+      "bytes": 215,
+      "path": "orprg_eval/__init__.py",
+      "sha256": "6f3e3632ae5eec9fd8835e10d2d32a0290f9925a789e9740ac9e5ba04e5ab847"
+    },
+    {
+      "bytes": 2281,
+      "path": "orprg_eval/canonicalization.py",
+      "sha256": "9ab14a5da00d6200469fe114e0091ef51705905c4af7a579951520683aff0d71"
+    },
+    {
+      "bytes": 2304,
+      "path": "orprg_eval/crypto.py",
+      "sha256": "31819b71b342b2cac08b0e4b4d0201bc2a7647ea30b64338971e54234c2b1cfd"
+    },
+    {
+      "bytes": 1778,
+      "path": "orprg_eval/gateway.py",
+      "sha256": "143047b60f9e77cd1597b259068410eaed19cc8d254756389b7db3e4d44bf700"
+    },
+    {
+      "bytes": 6510,
+      "path": "orprg_eval/merkle.py",
+      "sha256": "76fd560871d8320f90ec22331ce3257a759b0279ba660da2f1e24b6dbd5c38d0"
+    },
+    {
+      "bytes": 3883,
+      "path": "orprg_eval/models.py",
+      "sha256": "10a43939f87b829e3b8604ecfe097863ec429e86552040332ffacc10b1599707"
+    },
+    {
+      "bytes": 1500,
+      "path": "orprg_eval/persistent_replay.py",
+      "sha256": "db872004bf268b317f45e18daa52e7816133a3a8c5061de7f8a6805052555111"
+    },
+    {
+      "bytes": 723,
+      "path": "orprg_eval/replay.py",
+      "sha256": "fca13e13c61a39122bb8c842fd28e4557232c7186f18a93a00c1399685045d44"
+    },
+    {
+      "bytes": 4778,
+      "path": "orprg_eval/retrieval_gateway_adapter.py",
+      "sha256": "2296cd56a464ec4698bd97c35c0df8a0cefdd3d68aa9fdd8247ac8ccb596b0ff"
+    },
+    {
+      "bytes": 2416,
+      "path": "orprg_eval/schema.py",
+      "sha256": "40d6ebfc1e1fffaec75ce0cc0cef2ffd451329519a2e9d11ec792d9ac3cb67b9"
+    },
+    {
+      "bytes": 29169,
+      "path": "orprg_eval/vector_factory.py",
+      "sha256": "94a3e6455cbb55777007b62733974a3493f33ac586ab9178dbdb7030a5101083"
+    },
+    {
+      "bytes": 22689,
+      "path": "orprg_eval/verifier.py",
+      "sha256": "358b203d7cab686c9a029682b4b4173830c20484dde7891b581566234b70095b"
+    },
+    {
+      "bytes": 3484,
+      "path": "partition_sim.py",
+      "sha256": "9dbf4fd5ca9d8b1cf9c4c0084f90e3ddb5c69ea16116bc601b59fd33f7771223"
+    },
+    {
+      "bytes": 56,
+      "path": "paygate_hybrid/__init__.py",
+      "sha256": "4f26cfe31fd90e3f4ceb2bdc64b675a0d2acc031aabcafd8e8f10e9ce1850755"
+    },
+    {
+      "bytes": 69,
+      "path": "paygate_hybrid/__main__.py",
+      "sha256": "f24745d9b620dc3b08735e12e38c1575015683845dd4e0a6ca4b05588555d60d"
+    },
+    {
+      "bytes": 5327,
+      "path": "paygate_hybrid/bridge.py",
+      "sha256": "e24d0a636cd735010676c6e5d7b66a28c81b375e574ed5139660dc1da1b569d1"
+    },
+    {
+      "bytes": 9456,
+      "path": "paygate_hybrid/hybrid_demo.py",
+      "sha256": "7262a415dfc5f8a22f3b27cd472e411f45142dc1c152a65a72e4f74d6e28224a"
+    },
+    {
+      "bytes": 0,
+      "path": "paygate_poc/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 3559,
+      "path": "paygate_poc/authority.py",
+      "sha256": "33e5fb412bf147f908369804a584c575c5ede629324453fee3eefaa2eedc0f25"
+    },
+    {
+      "bytes": 2228,
+      "path": "paygate_poc/canonical.py",
+      "sha256": "0682a8fdd543796c31277a65bb61c30f7029cb73005bf2cb8888909ee4b62fd7"
+    },
+    {
+      "bytes": 1356,
+      "path": "paygate_poc/demo.py",
+      "sha256": "2dc5472d872889038ef4f2a872cd76c3d6b2687a7a0428a4992e05a0a3563991"
+    },
+    {
+      "bytes": 2058,
+      "path": "paygate_poc/fixtures.py",
+      "sha256": "2bd1c51de9c6bd57826c18aef612bbf2154a6f1f7f027ddac110a1cf24a7da28"
+    },
+    {
+      "bytes": 2911,
+      "path": "paygate_poc/keys.py",
+      "sha256": "ecafe3f65bb5d2f95c19052ad62a306db8f2ad7a1324f04824da934570025bc2"
+    },
+    {
+      "bytes": 2301,
+      "path": "paygate_poc/ledger.py",
+      "sha256": "678b58f17251044d08f27bc7c720033131b1b9cd7dbc5cff86768e9f3c5bea3e"
+    },
+    {
+      "bytes": 2305,
+      "path": "paygate_poc/paygate.py",
+      "sha256": "e8bc80a13894a3ad3ace5751ab66202e6658c689a70ca20e40ce5556e7ba964d"
+    },
+    {
+      "bytes": 1965,
+      "path": "paygate_poc/policy.py",
+      "sha256": "4c4225d9113cdf58135993e87aa4d26ff6e6c4d903cd84984c21e5b32c824d04"
+    },
+    {
+      "bytes": 3265,
+      "path": "paygate_poc/providers.py",
+      "sha256": "06eaf032ca891fcf0352d36e4eff1bf209a304c2a77aa6b20a74a7c687d30a63"
+    },
+    {
+      "bytes": 1342,
+      "path": "paygate_poc/run_the_verifier.py",
+      "sha256": "f837a0b66bade173eecc9c975d99801e55db79246ce335b19e1029f1808ea7c7"
+    },
+    {
+      "bytes": 8924,
+      "path": "paygate_poc/scenario.py",
+      "sha256": "988d9ab4fde582619459efc63e6274b9cae054881aaaa8e72609589290f9f4e3"
+    },
+    {
+      "bytes": 3025,
+      "path": "paygate_poc/tsil.py",
+      "sha256": "26559af15b67a040ef19991ffa698726b7d184cd0829ae51e403953463f95a2c"
+    },
+    {
+      "bytes": 9694,
+      "path": "paygate_poc/verifier.py",
+      "sha256": "3463bbbb98722fd42bec526e095b78688eb7e8a8db70647856c7389d427f13c4"
+    },
+    {
+      "bytes": 292,
+      "path": "paygate_ref/__init__.py",
+      "sha256": "9ad81e1fc63ef5216718db2838708678a3bb07f0329aa47c2891eb98e725cd8b"
+    },
+    {
+      "bytes": 14522,
+      "path": "paygate_ref/reference.py",
+      "sha256": "fee76d93185a758feb3b9d0d56c6972ae58a3ba0440ade7af34eb8af9fbdff42"
+    },
+    {
+      "bytes": 6820,
+      "path": "pdp_baseline_matrix.py",
+      "sha256": "26f30a042924066892ae098fe67e6b1c91ad6e6480016a13099ed256c5bc85fc"
+    },
+    {
+      "bytes": 3056,
+      "path": "persistent_replay_test.py",
+      "sha256": "27cff3cdbfba042bb6a09a4034182324566d067f6bef92d7944cd0aa6b03c58a"
+    },
+    {
+      "bytes": 1329,
+      "path": "policy_paygate_domain/paygate_policy_v1.json",
+      "sha256": "125fad3a3cace7748754e4738325300f77c866b8b011a6b99504e1d0bab20f4f"
+    },
+    {
+      "bytes": 269,
+      "path": "pyproject.toml",
+      "sha256": "e8c23ff903232b977246b4705ee003ac98c05c6df1a5caa654bb460b621a1956"
+    },
+    {
+      "bytes": 189,
+      "path": "references/README.md",
+      "sha256": "9a4f9438882592adee005c2df7185880dce6464d39bdc0e353382ac603209daf"
+    },
+    {
+      "bytes": 33277,
+      "path": "references/draft-lee-orprg-permit-receipts-00.xml",
+      "sha256": "02420b69feb7fcef3cc9e6e8fb64f400689d95baa74d109ecee775f24ef2a533"
+    },
+    {
+      "bytes": 34033,
+      "path": "references/draft-lee-orprg-permit-receipts-00_packet_render.txt",
+      "sha256": "ea164cf92f89490f8b9ad6c7accf0726f6b33cd72925c3bcc148cb7c65286bac"
+    },
+    {
+      "bytes": 2378,
+      "path": "replay_concurrency.py",
+      "sha256": "2be9bd0cee625f1c334f156b173ab4c10ae324c802af8d078937d7a48acca319"
+    },
+    {
+      "bytes": 33,
+      "path": "requirements.txt",
+      "sha256": "bafd0fe2b692f772820468f56797f9a6c092fafc8c0176550eaf13a7c9e8093a"
+    },
+    {
+      "bytes": 8251,
+      "path": "retrieval_gateway_demo.py",
+      "sha256": "77dd83a1c9a5b4e9cdc1f8543400e23bfc6b1189655d8b5ff3182e5320be5e9d"
+    },
+    {
+      "bytes": 6264,
+      "path": "run_all.py",
+      "sha256": "ecea1c93813179fa2ac077ce1ce1444401dbfdb3fdada7005fd3c7d1dd70b158"
+    },
+    {
+      "bytes": 4931,
+      "path": "run_all_hybrid.py",
+      "sha256": "571f4c422e8ff85cfd130b02a509b106135ab5aa9e422997ba6ae351c0450988"
+    },
+    {
+      "bytes": 2938,
+      "path": "run_vectors.py",
+      "sha256": "9ee4175a4ac904a637564111b4d4ae380d85458b82781f0a790bc740a215d863"
+    },
+    {
+      "bytes": 5464,
+      "path": "schema_fuzz.py",
+      "sha256": "97dc66dd0be0f971c5c429a824fea2e856d8bf55e5c4b5d356a36951a41b6613"
+    },
+    {
+      "bytes": 802,
+      "path": "schemas/agentic_commerce_execution_receipt.schema.json",
+      "sha256": "4696021bd64245d23dcae68f251802cccda60405c2abada627c49b3f1215cdc6"
+    },
+    {
+      "bytes": 558,
+      "path": "schemas/dispute_recourse_packet.schema.json",
+      "sha256": "ec991772ee22e9df38795f8f90114a8a3479b2ef1ea3158fbc59a8ab08794703"
+    },
+    {
+      "bytes": 1345,
+      "path": "schemas/permit_receipt.schema.json",
+      "sha256": "3d7e38fdd0e99e4323418bc640be81aab47b0a9a80e58b208eecf32b4e263fe3"
+    },
+    {
+      "bytes": 413,
+      "path": "schemas/verifier_result.schema.json",
+      "sha256": "5bed31c2e6dd561ada6700038e2ff78fe13f8a5a060638b3cb98f3ee170a3443"
+    },
+    {
+      "bytes": 802,
+      "path": "schemas_orprg_ref/agentic_commerce_execution_receipt.schema.json",
+      "sha256": "4696021bd64245d23dcae68f251802cccda60405c2abada627c49b3f1215cdc6"
+    },
+    {
+      "bytes": 558,
+      "path": "schemas_orprg_ref/dispute_recourse_packet.schema.json",
+      "sha256": "ec991772ee22e9df38795f8f90114a8a3479b2ef1ea3158fbc59a8ab08794703"
+    },
+    {
+      "bytes": 1345,
+      "path": "schemas_orprg_ref/permit_receipt.schema.json",
+      "sha256": "3d7e38fdd0e99e4323418bc640be81aab47b0a9a80e58b208eecf32b4e263fe3"
+    },
+    {
+      "bytes": 413,
+      "path": "schemas_orprg_ref/verifier_result.schema.json",
+      "sha256": "5bed31c2e6dd561ada6700038e2ff78fe13f8a5a060638b3cb98f3ee170a3443"
+    },
+    {
+      "bytes": 1135,
+      "path": "schemas_paygate_domain/paygate.cddl",
+      "sha256": "0ac31c4e52fba3fca6294566a826e88bdf145536542ea8cff0222c223982a1aa"
+    },
+    {
+      "bytes": 2313,
+      "path": "schemas_paygate_domain/payment-action.schema.json",
+      "sha256": "06032fcc5153c213e6aae2107edeab5434acca79bce201f08a95681cd5e14f24"
+    },
+    {
+      "bytes": 654,
+      "path": "schemas_paygate_domain/payment-decision-receipt.schema.json",
+      "sha256": "9ea56e868fd18c93814542a1bed7bdb69401a2863c9cd34dd4e61cd600900779"
+    },
+    {
+      "bytes": 1233,
+      "path": "schemas_paygate_domain/permit-receipt.schema.json",
+      "sha256": "6f1f574e2017e2c5ae5d097aab6336b519f061f5e8470734e645f6fa68dfb590"
+    },
+    {
+      "bytes": 622,
+      "path": "schemas_paygate_domain/sensor-receipt.schema.json",
+      "sha256": "c1446e90b698edb1de9bd958862aab3303689d86de0c201a44c1f888cf6c287a"
+    },
+    {
+      "bytes": 1649,
+      "path": "scripts/run_paygate_ref.py",
+      "sha256": "e726bba7d11348fd7c7d0efd4ed99bb61b8e4d383e870cf833c0a2ebd8cf014b"
+    },
+    {
+      "bytes": 5447,
+      "path": "standard_policy_baseline_matrix.py",
+      "sha256": "747af8b7627c625f402caec22eff3cd079487fcb48f3ab6f375da99a1644277c"
+    },
+    {
+      "bytes": 5315,
+      "path": "summarize_results.py",
+      "sha256": "34ac0e7f001030934f808381308383908e67ce014f216adc7b29dd24e75054a5"
+    },
+    {
+      "bytes": 125,
+      "path": "test_vectors_paygate_domain/README.md",
+      "sha256": "fe70ab845dd9139bf4b11cbab2e2d52702d82a26677899915d9fa745ca8eaf3f"
+    },
+    {
+      "bytes": 2531,
+      "path": "test_vectors_paygate_domain/expected_results.json",
+      "sha256": "71747d88a14b1f71d2f51cc17eff026c573606bda6804c2a5cc0d2dca0a4c599"
+    },
+    {
+      "bytes": 547,
+      "path": "tests/orprg_eval_tests/test_conformance.py",
+      "sha256": "9d47715ae23fdcfa129ecd4d0ca4a88c63e696d9b107878f82aebb53ee48d979"
+    },
+    {
+      "bytes": 714,
+      "path": "tests/orprg_eval_tests/test_merkle.py",
+      "sha256": "04d44126fbc99c05daac378674f314c28d126b96a09868220da5dc6cec0e9a25"
+    },
+    {
+      "bytes": 400,
+      "path": "tests/orprg_eval_tests/test_persistent_replay.py",
+      "sha256": "ed65c74b5b9a0b6d89038d4b4c69188ed361e4dad8d65bd93a874048380de490"
+    },
+    {
+      "bytes": 546,
+      "path": "tests/orprg_eval_tests/test_public_evaluation_vectors.py",
+      "sha256": "e3932e9ce841f5c200dbb88e9938ce96c8f1acc65eb383e458f3205fa2c15fb4"
+    },
+    {
+      "bytes": 1071,
+      "path": "tests/test_hybrid.py",
+      "sha256": "432c22b7725f7fc08e61db33c427d83d3ed53c8d405e76c0408f4103a8e8df52"
+    },
+    {
+      "bytes": 2229,
+      "path": "tests/test_paygate_poc.py",
+      "sha256": "c54a29ac89c9c49c95f605de84a3229da0dbc1631645c76c6674f3a7390865e5"
+    },
+    {
+      "bytes": 1709,
+      "path": "tests/test_paygate_ref.py",
+      "sha256": "68f178d636f578f4051af99f68b8d193ec8a3dd4e66f052a837a789d7a02458d"
+    },
+    {
+      "bytes": 1694,
+      "path": "tools/make_public_manifest.py",
+      "sha256": "cd76346d762f739222d933b7bdc9a75b59929f9bd15de36e420baf1248ce5451"
+    },
+    {
+      "bytes": 6576,
+      "path": "tools/release_gate.py",
+      "sha256": "1ec0b121f2eabc4add831a6f544c2c96b988b32a77910f18172fe0fc885cd77d"
+    },
+    {
+      "bytes": 3336,
+      "path": "tools/run_public_eval.py",
+      "sha256": "d343c4771e3bcf55c727bd8e8c20b0993f57aef9197df7535bcc2bf89a7297e9"
+    },
+    {
+      "bytes": 2148,
+      "path": "tools/validate_public_eval_packet.py",
+      "sha256": "f36d962a55e26db5cde9e47b899d82b4aeb1fd6e3e3961cdf9891c3e1d94194c"
+    },
+    {
+      "bytes": 2172,
+      "path": "verify_manifest.py",
+      "sha256": "65833528b9b34086949c9bf87c92aa5a6c23690f3cf4d5808573ec79b69dbc08"
+    }
+  ],
+  "excludes": [
+    "MANIFEST.json",
+    "MANIFEST.sha256.json",
+    ".git",
+    ".mypy_cache",
+    ".pytest_cache",
+    "__pycache__",
+    "build",
+    "checks",
+    "dist",
+    "results",
+    "tmp"
+  ],
+  "manifest_format": "static-sha256-list-v2",
+  "scope": "static source/provenance files only; generated checks/results directories are intentionally excluded"
+}

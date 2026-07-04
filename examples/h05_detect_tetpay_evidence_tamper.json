@@ -1,0 +1,30 @@
+{
+  "final_outcome": "DENY",
+  "scenario": "H05_DETECT_tetpay_evidence_tamper",
+  "stage": "AUDIT_ONLY_EVIDENCE_VALIDATION",
+  "tetpay_audit": {
+    "mismatches": [
+      {
+        "actual": "sha256:tampered",
+        "expected": "sha256:472b04de58450699342a85fa4042533efbb99200307223a414649885a1a6de84",
+        "field": "cart_digest"
+      },
+      {
+        "actual": "17b45e139d8d77eb0b9dbaa2e6a610bc04b1ec962901d8feb96cc40599777502",
+        "expected": "5c2a862961b26e1beeab4028d274119bc10f3dc43f4c52ce3603553c9af5a160",
+        "field": "orprg_verifier_result_digest"
+      },
+      {
+        "actual": "sha256:344a50b305bb6e8e68e91ebc7847832c90efcde6175c0e065f0bba6e13aed2e2",
+        "expected": "sha256:6b78b40c0165823b54bc69e20ed57a551d0d97369369f43c22f875cfaca0c2a9",
+        "field": "paygate_decision_receipt_digest"
+      },
+      {
+        "actual": "sha256:7f742df1247564fcaf2c316677d940bd6fcf9b4e1029cdeaa1d66d6fb9ea06eb",
+        "expected": "sha256:6156e4a2e10ec7e9c00e0b33abc04aa6fcd94c9c7959e47d776907183e4fdbe1",
+        "field": "provider_commit_digest"
+      }
+    ],
+    "status": "FAIL"
+  }
+}

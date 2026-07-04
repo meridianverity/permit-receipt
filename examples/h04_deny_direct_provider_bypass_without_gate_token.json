@@ -1,0 +1,12 @@
+{
+  "final_outcome": "DENY",
+  "provider_result": {
+    "adapter_id": "provider-card-sim",
+    "provider_status": "DENIED",
+    "reason_codes": [
+      "PROVIDER_DECISION_TOKEN_REQUIRED"
+    ]
+  },
+  "scenario": "H04_DENY_direct_provider_bypass_without_gate_token",
+  "stage": "PROVIDER_ADAPTER"
+}

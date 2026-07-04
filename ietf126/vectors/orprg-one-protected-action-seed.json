@@ -1,0 +1,16 @@
+{
+  "effect_family": "synthetic-data-egress",
+  "packet": "IETF126-ORPRG-one-protected-action-seed",
+  "public_boundary": "No live payment, no live processor, no production API call, no customer data, no regulated data.",
+  "request_hint": {
+    "action_type": "POST",
+    "effect_type": "DATA_EGRESS",
+    "interface_id": "egress-gateway-1",
+    "max_effect_budget": 10,
+    "purpose_id": "support",
+    "representation_class_id": "json-v1",
+    "target_id": "partner-api-submit",
+    "tenant_id": "tenant-A"
+  },
+  "synthetic": true
+}

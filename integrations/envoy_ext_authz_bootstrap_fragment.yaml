@@ -1,0 +1,28 @@
+# Synthetic review-only Envoy ext_authz fragment. Not a production deployment file.
+static_resources:
+  clusters:
+    - name: orprg_ext_authz
+      type: LOGICAL_DNS
+      connect_timeout: 0.25s
+      http2_protocol_options: {}
+      load_assignment:
+        cluster_name: orprg_ext_authz
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: 127.0.0.1
+                      port_value: 18080
+http_filters:
+  - name: envoy.filters.http.ext_authz
+    typed_config:
+      '@type': type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.ExtAuthz
+      transport_api_version: V3
+      failure_mode_allow: false
+      grpc_service:
+        envoy_grpc:
+          cluster_name: orprg_ext_authz
+      metadata_context_namespaces:
+        - orprg
+      include_peer_attestation: true

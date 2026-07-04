@@ -1,0 +1,33 @@
+{
+  "final_outcome": "DENY",
+  "orprg_result": {
+    "constrained_mode": false,
+    "decision": "ALLOW",
+    "denial_reason_code": null,
+    "evidence_digests": {
+      "action_digest": "b2d82110d12ceb1a61a827d1eaca32d8376d55a58c17a37bd29960a478548fbe",
+      "assurance_level_id": "AL5",
+      "authority_profile_id": "AP-SYNTH-AL5",
+      "epoch_id": 72,
+      "policy_digest": "policy-digest-paygate-ref-v0.1",
+      "receipt_digest": "af724d8349de842e51c62fcec8024ab7d78557a94c6df91d6fb246837af1c7fa",
+      "revocation_list_digest": "025e964857757844e59747bbeeeb79fc27acc22f5a0c7eddd69ede1407ba7af8"
+    },
+    "recency_observations": {
+      "revocation_list_age_seconds": 20,
+      "revocation_max_age_seconds": 3600
+    },
+    "timings_ns": {
+      "canonicalization_and_digest_ns": 54402,
+      "revocation_check_ns": 79434,
+      "signature_verification_ns": 256562,
+      "total_ns": 510898
+    }
+  },
+  "paygate_outcome": "DENY",
+  "paygate_reason_codes": [
+    "TSIL_SENSOR_RECEIPT_OBJECT_REQUIRED"
+  ],
+  "scenario": "H03_DENY_paygate_tsil_missing_after_orprg_allow",
+  "stage": "PAYGATE_DOMAIN"
+}

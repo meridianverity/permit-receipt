@@ -1,0 +1,144 @@
+{
+  "adapter_result": {
+    "action_digest": "34bbec86db741d0425bc0ec9b055042c1f672e1345fb92640717b12a967d067f",
+    "adapter": "fake_psp_adapter_v0_1",
+    "http_status": 403,
+    "live_network_settlement": false,
+    "live_pan_used": false,
+    "payment_attempt_digest": "51bbb3cd3e9b1cbd54b65045aaee138226169eae13433326772ac95fdb8b6a7f",
+    "status": "BLOCKED_FAIL_CLOSED"
+  },
+  "execution_receipt": {
+    "agent_ref": {
+      "agent_id": "agent:demo:001",
+      "proof_of_possession": "synthetic-pop-bound-to-request-digest"
+    },
+    "disclosure_views": [
+      "merchant_view",
+      "issuer_view",
+      "consumer_view",
+      "dispute_view",
+      "audit_view"
+    ],
+    "execution_authorization": {
+      "freshness_window_ms": 300000,
+      "policy_epoch": 72,
+      "policy_profile": "paygate-ref-profile-v0.1",
+      "reason_codes": [
+        "DRC-007_REVOKED_CONFIRMED"
+      ],
+      "revocation_status": "UNKNOWN_OR_FAILED",
+      "scope_result": "FAIL"
+    },
+    "intent_ref": {
+      "delegation_scope": "merchant|category|amount|time|item",
+      "intent_digest": "sha256:intent-demo-001",
+      "intent_protocol": "AP2|VerifiableIntent|TAP|Other"
+    },
+    "merchant_request": {
+      "cart_or_order_digest": "cart:sha256:demo-revoked",
+      "merchant_id": "merchant-beta",
+      "recipient_endpoint": "paygate-ref-psp-adapter",
+      "request_digest": "34bbec86db741d0425bc0ec9b055042c1f672e1345fb92640717b12a967d067f"
+    },
+    "payment_attempt": {
+      "authorization_trace_digest": "51bbb3cd3e9b1cbd54b65045aaee138226169eae13433326772ac95fdb8b6a7f",
+      "live_network_settlement": false,
+      "live_pan_used": false,
+      "network_token_ref": "token_ref_redacted_sandbox_only",
+      "payment_attempt_digest": "51bbb3cd3e9b1cbd54b65045aaee138226169eae13433326772ac95fdb8b6a7f",
+      "settlement_state": "NOT_ATTEMPTED_LIVE_SANDBOX"
+    },
+    "receipt_id": "acr_9204adbcf5bb67ce034b8134",
+    "receipt_type": "AgenticCommerceExecutionReceipt",
+    "verification": {
+      "decision": "DENY",
+      "denial_reason_code": "DRC-007_REVOKED_CONFIRMED",
+      "evidence_digests": {
+        "action_digest": "34bbec86db741d0425bc0ec9b055042c1f672e1345fb92640717b12a967d067f",
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "epoch_id": 72,
+        "policy_digest": "policy-digest-paygate-ref-v0.1",
+        "receipt_digest": "e094fb99ae6529a5d0316b9f162c5e9a3f9fa316a54ce78682439d9b6c77ffd8",
+        "revocation_list_digest": "90c0a49e79a57e0171d2b8169bb108f1d6fe6d1297b17dd41ff92975c5fc0021"
+      },
+      "verifier_id": "did:paygate-ref:verifier:001"
+    },
+    "version": "0.1"
+  },
+  "permit_receipt": {
+    "authenticity": {
+      "issuer_id": "issuer-operator-synth",
+      "signature": "uRpqGRQvOsA5LToWq3xkcQO9+eu8deuDiSORKsKZAJ6v6exZn6hzl3iLLVYImYHbQjSycFokqzAhAca3V6mIDw=="
+    },
+    "receipt_core": {
+      "action_digest": "34bbec86db741d0425bc0ec9b055042c1f672e1345fb92640717b12a967d067f",
+      "anti_replay": {
+        "nonce": "nonce-revoked-001"
+      },
+      "assurance_level_id": "AL5",
+      "authority_profile_id": "AP-SYNTH-AL5",
+      "canonicalization_profile_ref": "CP-JSON-2",
+      "epoch_id": 72,
+      "issuer_id": "issuer-operator-synth",
+      "jurisdiction": "US",
+      "permit_provenance_digest": "permit-paygate-ref-001",
+      "policy_digest": "policy-digest-paygate-ref-v0.1",
+      "purpose_id": "agentic_purchase",
+      "scope": {
+        "action_type": "AUTHORIZE_SANDBOX",
+        "effect_type": "PAYMENT_ATTEMPT",
+        "interface_id": "paygate-ref-psp-adapter",
+        "max_effect_budget": 2499,
+        "purpose_id": "agentic_purchase",
+        "representation_class_id": "json-v1",
+        "target_id": "merchant-beta",
+        "tenant_id": "tenant-A"
+      },
+      "tenant_id": "tenant-A",
+      "valid_from": "2026-06-02T00:00:00Z",
+      "valid_to": "2026-06-04T00:00:00Z"
+    }
+  },
+  "request": {
+    "action_type": "AUTHORIZE_SANDBOX",
+    "agent_id": "agent:demo:001",
+    "cart_digest": "cart:sha256:demo-revoked",
+    "currency": "USD",
+    "effect_type": "PAYMENT_ATTEMPT",
+    "interface_id": "paygate-ref-psp-adapter",
+    "max_effect_budget": 2499,
+    "merchant_id": "merchant-beta",
+    "payload_digest": "cart:sha256:demo-revoked",
+    "purpose_id": "agentic_purchase",
+    "representation_class_id": "json-v1",
+    "target_id": "merchant-beta",
+    "tenant_id": "tenant-A"
+  },
+  "scenario": "B2_REVOKED_DELEGATION_FAIL_CLOSED",
+  "verification_result": {
+    "constrained_mode": false,
+    "decision": "DENY",
+    "denial_reason_code": "DRC-007_REVOKED_CONFIRMED",
+    "evidence_digests": {
+      "action_digest": "34bbec86db741d0425bc0ec9b055042c1f672e1345fb92640717b12a967d067f",
+      "assurance_level_id": "AL5",
+      "authority_profile_id": "AP-SYNTH-AL5",
+      "epoch_id": 72,
+      "policy_digest": "policy-digest-paygate-ref-v0.1",
+      "receipt_digest": "e094fb99ae6529a5d0316b9f162c5e9a3f9fa316a54ce78682439d9b6c77ffd8",
+      "revocation_list_digest": "90c0a49e79a57e0171d2b8169bb108f1d6fe6d1297b17dd41ff92975c5fc0021"
+    },
+    "recency_observations": {
+      "revocation_list_age_seconds": 20,
+      "revocation_max_age_seconds": 3600
+    },
+    "timings_ns": {
+      "canonicalization_and_digest_ns": 21683,
+      "revocation_check_ns": 231631,
+      "signature_verification_ns": 198922,
+      "total_ns": 509885
+    }
+  }
+}
