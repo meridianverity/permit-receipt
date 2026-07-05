@@ -6,6 +6,7 @@ one worker should commit; all other workers should observe fail-closed replay
 denial. This is a synthetic reference test, not a production load test.
 """
 from __future__ import annotations
+import argparse
 import concurrent.futures
 import json
 from pathlib import Path
@@ -53,4 +54,7 @@ def main(workers: int = 64):
     print(json.dumps(summary, indent=2, sort_keys=True))
 
 if __name__ == "__main__":
-    main()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--workers", type=int, default=64, help="number of concurrent replay attempts")
+    args = ap.parse_args()
+    main(args.workers)

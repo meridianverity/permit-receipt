@@ -87,9 +87,9 @@ def bench_cold(n):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--warm-sizes", nargs="*", type=int, default=[10000, 100000])
-    ap.add_argument("--cold-sizes", nargs="*", type=int, default=[1000, 10000])
-    ap.add_argument("--merkle-size", type=int, default=10000)
+    ap.add_argument("--warm-sizes", nargs="*", type=int, default=[1000], help="warm-path iteration counts; defaults are bounded for reviewer sandboxes")
+    ap.add_argument("--cold-sizes", nargs="*", type=int, default=[100], help="cold-path iteration counts; defaults are bounded for reviewer sandboxes")
+    ap.add_argument("--merkle-size", type=int, default=1000, help="Merkle-path iteration count; defaults are bounded for reviewer sandboxes")
     args = ap.parse_args()
     rows = []
     for n in args.warm_sizes:

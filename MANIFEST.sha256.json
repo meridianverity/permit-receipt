@@ -32,9 +32,9 @@
       "sha256": "9778cbf9a696e6afe7ae91878287f34fb7829d0b25efbbfe26473eef536eba1f"
     },
     {
-      "bytes": 1107,
+      "bytes": 1145,
       "path": "QUICKSTART.md",
-      "sha256": "e92db7663c4b5cf5cf3968855ea1099a363dbcc99e5e53dc3cf879819e8dc16d"
+      "sha256": "b3d04b4ef03147be402be73de4ea36e86e93179207f34a233047377aff5f1963"
     },
     {
       "bytes": 8897,
@@ -57,9 +57,9 @@
       "sha256": "fce3b0fdcd3fab6bc25818af601db4e953c79a684394528b610fe9c636767041"
     },
     {
-      "bytes": 1616,
+      "bytes": 1876,
       "path": "RELEASE_NOTES_v2_2_4.md",
-      "sha256": "4a987867d1fb79fcff9052be0b3c2a8e5bd6fc2a1fcbebfd10f4a2f245a7c234"
+      "sha256": "887e4641699839c0c0feb302effe3820bb99dbf92e85bc97261690e1d1976044"
     },
     {
       "bytes": 534,
@@ -82,9 +82,9 @@
       "sha256": "d8c24284dcb1de3c4c9f8dc1b655a169c46729b588057c5732201cc40e81495d"
     },
     {
-      "bytes": 2753,
+      "bytes": 2880,
       "path": "attestations/synthetic_evaluation_attestation.json",
-      "sha256": "ed8644ab3edc4bc0bd5de370afd66ee1f362e3df2fac3f3103918901f84693a7"
+      "sha256": "816b589fd8b7d9fddb5c9784755afb3ecda7cb3f4a55d8e791067e53174d5b2c"
     },
     {
       "bytes": 5958,
@@ -92,9 +92,9 @@
       "sha256": "36585d2bf899b33af22f245d49b74c3f01eff02b988d912d78bffe9be59174a1"
     },
     {
-      "bytes": 4571,
+      "bytes": 4794,
       "path": "benchmark.py",
-      "sha256": "011c20ecea5e2cb5668fab5ebe934fc1c2fc28ffd1565d3f08a21134922c6c9e"
+      "sha256": "3b04992ecd5e39507aa903866298c10ddb8950d54ebbc6aca47bfaa9750fd409"
     },
     {
       "bytes": 3690,
@@ -137,9 +137,9 @@
       "sha256": "f768dea8418935986d87983202db3def4ebc0485da3be2b147720720fb19c8e7"
     },
     {
-      "bytes": 2648,
+      "bytes": 2927,
       "path": "docs/HACKATHON_POLISH_AUDIT.md",
-      "sha256": "63a1409be2339c6abc09df1fba1f3f5cead8f1a368f0fa2629b24384d7d3c492"
+      "sha256": "9411d55305ff0668e31c342f8e8c326311d0dd333c7c2b2d5a30b083171996ce"
     },
     {
       "bytes": 4061,
@@ -167,9 +167,9 @@
       "sha256": "4c04b56e073db4ceb8e8534720fd4227bfeb04344f006e14f41f668c1a1aa6ff"
     },
     {
-      "bytes": 1791,
+      "bytes": 1895,
       "path": "docs/QA_REPORT_v2_2_4_PUBLIC_EVAL.md",
-      "sha256": "cb445089c0cb8c718ae65a92a27443480d155ead367efcfbfba8cd2ac23a0872"
+      "sha256": "e09d8d469c59fce232b9c5f5cbb5af170475c9c92f09a6c8d62bb0533f08f447"
     },
     {
       "bytes": 1226,
@@ -687,9 +687,9 @@
       "sha256": "ea164cf92f89490f8b9ad6c7accf0726f6b33cd72925c3bcc148cb7c65286bac"
     },
     {
-      "bytes": 2378,
+      "bytes": 2568,
       "path": "replay_concurrency.py",
-      "sha256": "2be9bd0cee625f1c334f156b173ab4c10ae324c802af8d078937d7a48acca319"
+      "sha256": "ef07e9606d7177fd863969031cc5133ba950f2edde48edf7873b2d0bb725a941"
     },
     {
       "bytes": 33,
@@ -702,9 +702,9 @@
       "sha256": "77dd83a1c9a5b4e9cdc1f8543400e23bfc6b1189655d8b5ff3182e5320be5e9d"
     },
     {
-      "bytes": 6264,
+      "bytes": 6285,
       "path": "run_all.py",
-      "sha256": "ecea1c93813179fa2ac077ce1ce1444401dbfdb3fdada7005fd3c7d1dd70b158"
+      "sha256": "cb292ba6d8dbffef33904d85f32995660cbd30cd670f7090bb6d1dd5a77a6aba"
     },
     {
       "bytes": 4931,
@@ -867,9 +867,9 @@
       "sha256": "060dd4347bed879a5b7a4315637c6a4fb5230d46e2f1647008cb6aaa7fb63578"
     },
     {
-      "bytes": 6615,
+      "bytes": 9723,
       "path": "tools/release_gate.py",
-      "sha256": "fc9f67720ee79a8a8e09922752fb7732b53ee7a43c451a351496e7e6d108df12"
+      "sha256": "dbbd561bdce9fb4caf0dbbcc7c7b1631efcd5b112122ca6ca88b4cbdf2d17fee"
     },
     {
       "bytes": 3336,
@@ -877,9 +877,9 @@
       "sha256": "d343c4771e3bcf55c727bd8e8c20b0993f57aef9197df7535bcc2bf89a7297e9"
     },
     {
-      "bytes": 2148,
+      "bytes": 2206,
       "path": "tools/validate_public_eval_packet.py",
-      "sha256": "f36d962a55e26db5cde9e47b899d82b4aeb1fd6e3e3961cdf9891c3e1d94194c"
+      "sha256": "9ae13bbaa669346a1181fceba09b46d1bd649174675979ed52f4579afdedb99a"
     },
     {
       "bytes": 2197,

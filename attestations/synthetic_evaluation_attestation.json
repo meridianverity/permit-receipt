@@ -19,9 +19,10 @@
       "orprg_evaluation_vectors": 64
     },
     "evidence": {
-      "hybrid_examples_digest": "sha256:e181fecf5822b471066445111c155ddfa9c8e45a91e46a5ad4b58d0bfa2b4d5b",
-      "policy_digest": "sha256:31c029df5946101aea178e63b805c55f13fab00cb0c7db346f499badbcce4a18",
-      "vectors_digest": "sha256:4b77bf9939801269aad60889da7e47eb1c359b9982a19d78852e8dfb09bd99a3"
+      "hybrid_examples_digest": "sha256:7bcb39186d4873fce1128c199d268d43d4d2ecd9421eadc7483315f7dc6c1b15",
+      "hybrid_examples_digest_method": "sha256 over sorted examples/h*.json path + NUL + byte length + NUL + raw bytes + NUL",
+      "policy_digest": "sha256:125fad3a3cace7748754e4738325300f77c866b8b011a6b99504e1d0bab20f4f",
+      "vectors_digest": "sha256:fe1b642d4faae9f3a3549b8d91351464322d024f91d945f0b78cb7ab533baffe"
     },
     "issued_at": "2026-06-05T00:00:00Z",
     "limitations": [
@@ -30,13 +31,13 @@
       "no_pan_or_sad",
       "not_a_certification_or_conformance_program"
     ],
-    "packet": "permit-receipt-ref-eval-v2_2_4_public_eval",
+    "packet": "permit-receipt-ref-eval-v2_2_4-public-eval",
     "result": "PASS",
     "subject": {
       "validator_components": {
-        "orprg_eval/verifier.py": "sha256:358b203d7cab686c9a029682b4b4173830c20484dde7891b581566234b70095b",
+        "orprg_eval/verifier.py": "sha256:257c423b4ea634068a9b0c40ce56aa8583695c32f99083848ec694944bdc3d0a",
         "paygate_hybrid/bridge.py": "sha256:e24d0a636cd735010676c6e5d7b66a28c81b375e574ed5139660dc1da1b569d1",
-        "paygate_hybrid/hybrid_demo.py": "sha256:0df548d472161c7c4d96b5aa3e520d9ad84442f3e076cb74beb56ed290080501",
+        "paygate_hybrid/hybrid_demo.py": "sha256:7262a415dfc5f8a22f3b27cd472e411f45142dc1c152a65a72e4f74d6e28224a",
         "paygate_poc/providers.py": "sha256:06eaf032ca891fcf0352d36e4eff1bf209a304c2a77aa6b20a74a7c687d30a63",
         "paygate_poc/verifier.py": "sha256:3463bbbb98722fd42bec526e095b78688eb7e8a8db70647856c7389d427f13c4"
       },
@@ -47,7 +48,7 @@
       "not_before": "2026-06-05T00:00:00Z",
       "revocation_reference": "synthetic://permit-receipt-ref/v2.2.4/evaluation/status"
     },
-    "version": "2.2.2-public-eval"
+    "version": "2.2.4-public-eval"
   },
   "integrity_note": {
     "canonical_note": "No patent license, trademark license, service mark license, product implementation right, certification right, compliance approval, or endorsement is granted.",

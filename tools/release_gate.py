@@ -96,6 +96,69 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+def sha256_prefixed(path: Path) -> str:
+    return "sha256:" + sha256(path)
+
+
+def digest_path_set(paths: list[Path]) -> str:
+    h = hashlib.sha256()
+    for path in sorted(paths, key=lambda p: p.relative_to(ROOT).as_posix()):
+        rel = path.relative_to(ROOT).as_posix()
+        data = path.read_bytes()
+        h.update(rel.encode("utf-8"))
+        h.update(b"\0")
+        h.update(str(len(data)).encode("ascii"))
+        h.update(b"\0")
+        h.update(data)
+        h.update(b"\0")
+    return "sha256:" + h.hexdigest()
+
+
+def check_synthetic_attestation(findings: list[dict]) -> None:
+    rel_s = "attestations/synthetic_evaluation_attestation.json"
+    path = ROOT / rel_s
+    if not path.exists():
+        findings.append({"path": rel_s, "kind": "missing_attestation", "detail": "synthetic evaluation attestation is required"})
+        return
+    try:
+        attestation = json.loads(path.read_text(encoding="utf-8"))
+        core = attestation["attestation_core"]
+    except Exception as exc:
+        findings.append({"path": rel_s, "kind": "attestation_parse_error", "detail": repr(exc)})
+        return
+
+    expected_version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
+    if core.get("version") != expected_version:
+        findings.append({"path": rel_s, "kind": "attestation_version_mismatch", "detail": f"expected {expected_version}, observed {core.get('version')}"})
+
+    validator_components = (core.get("subject") or {}).get("validator_components") or {}
+    for component, expected_digest in sorted(validator_components.items()):
+        component_path = ROOT / component
+        if not component_path.exists():
+            findings.append({"path": rel_s, "kind": "attestation_component_missing", "detail": component})
+            continue
+        observed = sha256_prefixed(component_path)
+        if observed != expected_digest:
+            findings.append({"path": rel_s, "kind": "attestation_component_digest_mismatch", "detail": f"{component}: expected {expected_digest}, observed {observed}"})
+
+    evidence = core.get("evidence") or {}
+    digest_targets = {
+        "vectors_digest": ROOT / "evaluation_vectors" / "vectors.json",
+        "policy_digest": ROOT / "policy_paygate_domain" / "paygate_policy_v1.json",
+    }
+    for field, target in digest_targets.items():
+        expected_digest = evidence.get(field)
+        observed = sha256_prefixed(target) if target.exists() else "missing"
+        if observed != expected_digest:
+            findings.append({"path": rel_s, "kind": "attestation_evidence_digest_mismatch", "detail": f"{field}: expected {expected_digest}, observed {observed}"})
+
+    hybrid_paths = list((ROOT / "examples").glob("h*.json"))
+    observed_hybrid_digest = digest_path_set(hybrid_paths)
+    expected_hybrid_digest = evidence.get("hybrid_examples_digest")
+    if observed_hybrid_digest != expected_hybrid_digest:
+        findings.append({"path": rel_s, "kind": "attestation_hybrid_examples_digest_mismatch", "detail": f"expected {expected_hybrid_digest}, observed {observed_hybrid_digest}"})
+
+
 def iter_files():
     for p in sorted(ROOT.rglob("*")):
         if not p.is_file():
@@ -170,6 +233,8 @@ def main() -> int:
                             "line": line.strip()[:240],
                         }
                     )
+    check_synthetic_attestation(findings)
+
     report = {
         "artifact": "PermitReceipt Public Evaluation Slice for AI-Agent External Effects v2.2.4",
         "ok": not findings,

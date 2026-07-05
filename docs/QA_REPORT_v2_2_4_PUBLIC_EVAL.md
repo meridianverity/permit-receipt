@@ -15,6 +15,7 @@ make ietf-preflight                              PASS
 python run_vectors.py                           PASS — 64 / 64 vectors
 python -m pytest -q                             PASS — 17 / 17 tests
 python ietf126/run_review_packet.py             PASS — 16 / 16 selected packet checks
+tools/release_gate.py                          PASS — attestation version/digest drift check included
 ```
 
 ## make qa summary

@@ -28,6 +28,7 @@ REQUIRED_FILES = [
     'ietf126/DIGEST_INTEROP_NOTES.md',
     'ietf126/NEGATIVE_VECTOR_PLAN.md',
     'ietf126/schemas/authorization_ref.public-eval.v2.schema.json',
+    'attestations/synthetic_evaluation_attestation.json',
 ]
 
 REQUIRED_README_PHRASES = [

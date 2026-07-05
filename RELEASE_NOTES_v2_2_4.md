@@ -12,6 +12,8 @@ Public-safe IETF 126 review update for the PermitReceipt public evaluation slice
 - Added GitHub issue templates for field-model review, negative-vector review, and cross-reference review.
 - Added GitHub Actions workflows for public QA and IETF packet review.
 - Regenerated the static source manifest after final file changes.
+- Refreshed the synthetic evaluation attestation and added a release-gate drift check for attestation version and digest fields.
+- Bounded bare `benchmark.py` defaults for reviewer sandboxes while retaining explicit full-run sizes through `run_all.py --full`.
 
 ## Public boundary
 

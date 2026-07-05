@@ -56,7 +56,7 @@ def _step_list(full: bool, no_bench: bool) -> List[Tuple[str, Callable[[], int]]
         ("pdp_baseline_matrix.py", lambda: _run_script("pdp_baseline_matrix.py")),
         ("standard_policy_baseline_matrix.py", lambda: _run_script("standard_policy_baseline_matrix.py")),
         ("baseline_compare.py", lambda: _run_script("baseline_compare.py")),
-        ("replay_concurrency.py --workers 16", lambda: _run_script("replay_concurrency.py")),
+        ("replay_concurrency.py --workers 16", lambda: _run_script("replay_concurrency.py", ["--workers", "16"])),
         ("persistent_replay_test.py --workers 16", lambda: _run_script("persistent_replay_test.py", ["--workers", "16"])),
     ]
     if not no_bench:

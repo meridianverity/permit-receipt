@@ -2,7 +2,7 @@
 
 ```bash
 unzip permit-receipt-ref-eval-v2_2_4-public-eval.zip
-cd permit-receipt-ref-eval-v2_2_4-public-eval
+cd permit-receipt-main 2>/dev/null || cd permit-receipt-ref-eval-v2_2_4-public-eval
 python -m pip install -r requirements.txt
 python -m paygate_hybrid.hybrid_demo
 python tools/run_public_eval.py
