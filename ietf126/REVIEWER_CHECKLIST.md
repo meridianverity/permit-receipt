@@ -3,6 +3,7 @@
 ## Run
 
 - [ ] `python ietf126/run_review_packet.py`
+- [ ] `python ietf126/independent_recompute.py`
 - [ ] `python run_vectors.py`
 - [ ] `python tools/run_public_eval.py`
 - [ ] `python tools/validate_public_eval_packet.py`

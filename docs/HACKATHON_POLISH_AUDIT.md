@@ -36,8 +36,9 @@ public evaluation harness: PASS
 public packet validation: PASS
 static manifest verification: PASS
 IETF 126 selected review packet: 16 / 16 PASS
+IETF 126 independent recomputation: 16 / 16 PASS
 ORPRG public evaluation vectors: 64 / 64 PASS
-pytest: 17 passed
+pytest: 19 passed
 release gate findings: 0
 ```
 

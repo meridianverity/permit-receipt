@@ -15,6 +15,7 @@ For IETF 126 Hackathon review, start here:
 ```bash
 python -m pip install -r requirements.txt
 python ietf126/run_review_packet.py
+python ietf126/independent_recompute.py
 ```
 
 Then inspect:
@@ -24,8 +25,9 @@ Then inspect:
 * `ietf126/results/canonical-request.bytes.txt`
 * `ietf126/results/negative-vector-results.json`
 * `ietf126/results/interop-crossref-results.json`
+* `ietf126/results/independent-recompute-results.json`
 
-The IETF 126 packet is under `ietf126/`. It is public-safe, synthetic, remote-reviewable, and designed around one protected action, exact canonical bytes, `action_digest` binding, fail-closed negative vectors, and signature-covered cross-reference interop shape.
+The IETF 126 packet is under `ietf126/`. It is public-safe, synthetic, remote-reviewable, and designed around one protected action, exact canonical bytes, `action_digest` binding, fail-closed negative vectors, signature-covered cross-reference interop shape, and a separate standard-library recomputation check that does not import the main verifier package.
 
 ## Current public-evaluation release
 
@@ -37,7 +39,7 @@ Release status:
 
 Public evaluation release. Not production software.
 
-Release asset hashes should be verified from the GitHub release assets generated at publication time. Do not treat an overlay ZIP hash as the full release artifact hash.
+Release asset hashes should be verified from the GitHub release assets generated at publication time. Do not treat an overlay ZIP hash as the full release artifact hash. Active IETF reviewer-facing release pointers are checked by `python tools/check_ietf126_release_pointers.py` and must point to `v2.2.4-public-eval`.
 
 ## Related public materials
 
@@ -59,6 +61,7 @@ Before interpreting this repository as a technical or standards artifact, review
 * `docs/REPRODUCIBILITY.md`
 * `docs/PRE_RELEASE_AUDIT_CHECKLIST.md`
 * `docs/PUBLIC_STEWARDSHIP.md`
+* `docs/IETF126_RELEASE_POINTER_LOCK.md`
 
 ## IETF status
 
@@ -90,6 +93,7 @@ It does not process live payments, store PAN/SAD, call live processors, provide 
 
 ```bash
 python -m pip install -r requirements.txt
+python -m pip install -e . --no-deps  # optional editable-install smoke check
 python -m paygate_hybrid.hybrid_demo
 python tools/run_public_eval.py
 ```
@@ -147,7 +151,9 @@ make eval       # public evaluation harness
 make manifest   # regenerate static source manifest
 make verify     # verify static source manifest
 make validate   # validate required public-evaluation packet files
+make release-pointers # verify active IETF reviewer-facing release links
 make ietf126    # IETF Hackathon selected review packet
+make independent-interop # recompute canonical bytes/digests without importing the verifier package
 make ietf-preflight # full Hackathon preflight: eval + validate + verify + IETF packet + vectors + tests
 make qa         # eval + validate + manifest verification
 ```
@@ -159,6 +165,7 @@ The v2.2.4 public-evaluation release is expected to pass:
 ```bash
 python verify_manifest.py
 python tools/validate_public_eval_packet.py
+python tools/check_ietf126_release_pointers.py
 make ietf-preflight
 ```
 
@@ -168,8 +175,10 @@ Expected results:
 verify_manifest.py: PASS
 validate_public_eval_packet.py: PASS
 IETF 126 selected review packet: 16 / 16 PASS
+IETF 126 independent recomputation: 16 / 16 PASS
 ORPRG public evaluation vectors: 64 / 64 PASS
-pytest: 17 / 17 PASS
+pytest: 19 / 19 PASS
+release pointer check findings: 0
 release gate findings: 0
 ```
 
@@ -211,9 +220,11 @@ Expected public checks:
 
 ```text
 python ietf126/run_review_packet.py: PASS
+python ietf126/independent_recompute.py: PASS
 python run_vectors.py: PASS
 python tools/run_public_eval.py: PASS
 python tools/validate_public_eval_packet.py: PASS
+python tools/check_ietf126_release_pointers.py: PASS
 python verify_manifest.py: PASS
 python -m pytest -q: PASS
 ```

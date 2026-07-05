@@ -1,8 +1,53 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "permit-receipt-ref-eval"
 version = "2.2.4"
 description = "Synthetic public evaluation for PermitReceipt permit-before-commit external-effect authorization"
+readme = "README.md"
 requires-python = ">=3.10"
+dependencies = [
+  "cryptography>=42.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0",
+]
+
+[tool.setuptools]
+packages = [
+  "orprg_eval",
+  "paygate_hybrid",
+  "paygate_poc",
+  "paygate_ref",
+]
+py-modules = [
+  "baseline_compare",
+  "benchmark",
+  "canonicalization_fuzz",
+  "egress_gateway_demo",
+  "ext_authz_adapter_demo",
+  "gateway_demo",
+  "http_canonicalization_fuzz",
+  "integration_contract_check",
+  "kms_key_release_demo",
+  "make_manifest",
+  "partition_sim",
+  "pdp_baseline_matrix",
+  "persistent_replay_test",
+  "replay_concurrency",
+  "retrieval_gateway_demo",
+  "run_all",
+  "run_all_hybrid",
+  "run_vectors",
+  "schema_fuzz",
+  "standard_policy_baseline_matrix",
+  "summarize_results",
+  "verify_manifest",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

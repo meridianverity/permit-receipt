@@ -16,6 +16,7 @@ The packet is intentionally small, runnable, and falsifiable. It asks one questi
 - Public-boundary language uses **legal/commercial position** instead of legal-claim-facing language.
 - Remote schedule text includes a concrete proposed pre-closing checkpoint for the IETF 126 Hackathon weekend.
 - The release hash is not hardcoded in reviewer-facing text; publish-time release assets should carry their own checksums.
+- The packet now includes `independent_recompute.py`, a separate standard-library recomputation check for canonical bytes, digests, selected negative-vector pass flags, and authorization-reference commitments.
 
 ## The 5-minute reviewer path
 
@@ -23,6 +24,7 @@ From the repository root, or from a standalone extraction containing this `ietf1
 
 ```bash
 python ietf126/run_review_packet.py
+python ietf126/independent_recompute.py
 cat ietf126/results/review-summary.md
 ```
 
@@ -35,6 +37,7 @@ ietf126/results/canonical-request.bytes.txt
 ietf126/results/canonical-request.hex.txt
 ietf126/results/negative-vector-results.json
 ietf126/results/interop-crossref-results.json
+ietf126/results/independent-recompute-results.json
 ietf126/results/public-review-passport.json
 ```
 
@@ -46,8 +49,10 @@ When this packet is applied to the full `permit-receipt` repository:
 python -m pip install -r requirements.txt
 python run_vectors.py
 python ietf126/run_review_packet.py
+python ietf126/independent_recompute.py
 python tools/run_public_eval.py
 python tools/validate_public_eval_packet.py
+python tools/check_ietf126_release_pointers.py
 python verify_manifest.py
 # or run the one-command preflight from the repository root:
 make ietf-preflight
@@ -58,6 +63,7 @@ Expected posture:
 ```text
 ORPRG public evaluation vectors: 64 / 64 PASS
 IETF 126 selected review packet: positive path PASS, selected negative vectors PASS
+Independent recomputation: canonical bytes, action digest, receipt-core digest, selected negative-vector flags, and authorization_ref commitments PASS
 Signature-covered authorization_ref shape checks: PASS for the covered reference case; DENY for name-only, unsigned, mismatched, stale, and unsupported references
 ```
 
@@ -72,7 +78,8 @@ Signature-covered authorization_ref shape checks: PASS for the covered reference
 - revocation/status recency;
 - anti-replay behavior;
 - unsupported canonicalization profile behavior;
-- fail-closed denial reason codes; and
+- fail-closed denial reason codes;
+- standalone/full-repository DRC parity for the selected packet; and
 - the difference between byte-identical digest equality and signature-covered cross-reference interoperability.
 
 ## What is deliberately not claimed
@@ -96,3 +103,4 @@ Do not put customer data, credentials, regulated data, production logs, non-publ
 - `REVIEWER_CHECKLIST.md` — review checklist.
 - `RUNBOOK_10_MIN.md` — timed runbook for a remote slot.
 - `STANDALONE_PACKET.md` — how to run the packet if extracted without the full repository.
+- `independent_recompute.py` — standard-library recomputation check that does not import the main verifier package.

@@ -16,6 +16,7 @@ SKIP_CONTENT = {
     Path("checks/release_gate_report.md"),
     Path(".gitignore"),
 }
+SKIP_GENERATED_DIR_SUFFIXES = (".egg-info",)
 SKIP_DIRS = {
     ".git",
     ".github",
@@ -164,7 +165,7 @@ def iter_files():
         if not p.is_file():
             continue
         rel = p.relative_to(ROOT)
-        if any(part in SKIP_DIRS for part in rel.parts):
+        if any(part in SKIP_DIRS or part.endswith(SKIP_GENERATED_DIR_SUFFIXES) for part in rel.parts):
             continue
         yield rel, p
 

@@ -10,6 +10,7 @@ Runnable packet:
 
 ```bash
 python ietf126/run_review_packet.py
+python ietf126/independent_recompute.py
 ```
 
 Generated artifacts:
@@ -20,6 +21,7 @@ Generated artifacts:
 - `ietf126/results/positive-path.json`
 - `ietf126/results/negative-vector-results.json`
 - `ietf126/results/interop-crossref-results.json`
+- `ietf126/results/independent-recompute-results.json`
 - `ietf126/results/public-review-passport.json`
 - `ietf126/results/review-summary.md`
 
@@ -39,5 +41,6 @@ KNEG-VALIDITY-EXPIRED -> DENY / DRC-004_VALIDITY_WINDOW_EXPIRED
 KNEG-REVOCATION-STATE-STALE -> DENY / DRC-008_REVOCATION_UNKNOWN_OR_STALE
 KNEG-ANTI-REPLAY-NONCE-REUSE -> DENY / DRC-006_ANTI_REPLAY_FAILURE
 KNEG-CANONICALIZATION-PROFILE-MISMATCH -> DENY / DRC-016_CANONICALIZATION_PROFILE_MISMATCH
+KNEG-TRANSPARENCY-PROOF-MISSING -> DENY / DRC-053_TRANSPARENCY_PROOF_MISSING
 ```
 

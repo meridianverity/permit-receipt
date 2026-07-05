@@ -13,7 +13,7 @@ The runner selects representative vectors from the repository public vector set:
 5. stale revocation/status evidence fails;
 6. anti-replay failure fails;
 7. unsupported canonicalization profile fails; and
-8. transparency proof missing or invalid fails where policy requires it.
+8. transparency proof missing fails with `DRC-053_TRANSPARENCY_PROOF_MISSING` where policy requires it.
 
 ## Interop shape checks in this packet
 

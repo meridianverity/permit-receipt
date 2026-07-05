@@ -15,6 +15,7 @@ This Q4 update finalizes `v2.2.4-public-eval` for GitHub manual upload and IETF 
 ```bash
 python -m pip install -r requirements.txt
 python ietf126/run_review_packet.py
+python ietf126/independent_recompute.py
 cat ietf126/results/review-summary.md
 ```
 

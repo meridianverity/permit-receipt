@@ -2,7 +2,7 @@
 
 Synthetic source-available evaluation artifact for PermitReceipt-based permit-before-commit authorization of AI-agent and workload external effects.
 
-This release integrates the IETF 126 remote review packet into the public evaluation slice. It demonstrates one protected action, exact canonical request bytes, an `action_digest`, PermitReceipt decision behavior, fail-closed negative vectors, and signature-covered cross-reference shape checks for public-safe interoperability discussion.
+This release integrates the IETF 126 remote review packet into the public evaluation slice. It demonstrates one protected action, exact canonical request bytes, an `action_digest`, PermitReceipt decision behavior, fail-closed negative vectors, signature-covered cross-reference shape checks, and a separate standard-library recomputation check for public-safe interoperability discussion.
 
 ## Release status
 
@@ -19,6 +19,7 @@ It does not process live payments, store payment credentials, call live processo
 ```bash
 python -m pip install -r requirements.txt
 python ietf126/run_review_packet.py
+python ietf126/independent_recompute.py
 cat ietf126/results/review-summary.md
 ```
 

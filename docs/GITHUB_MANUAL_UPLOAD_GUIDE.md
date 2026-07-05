@@ -15,6 +15,7 @@ The following command should pass without any `.github/` directory or `.gitignor
 ```bash
 python verify_manifest.py
 python ietf126/run_review_packet.py
+python ietf126/independent_recompute.py
 make qa
 ```
 

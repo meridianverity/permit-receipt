@@ -6,6 +6,7 @@ Run:
 
 ```bash
 python ietf126/run_review_packet.py
+python ietf126/independent_recompute.py
 ```
 
 If the repository package `orprg_eval` is not importable, the runner switches to **standalone packet mode**. In that mode it uses only Python's standard library and executes a narrow synthetic evaluator that demonstrates:

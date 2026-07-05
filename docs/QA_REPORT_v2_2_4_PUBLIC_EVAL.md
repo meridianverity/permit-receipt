@@ -8,13 +8,14 @@ This report records the local checks run before packaging the Git-ready v2.2.4 p
 
 ```text
 make clean                                      PASS
-python make_manifest.py                         PASS — 177 static entries
-python verify_manifest.py                       PASS — 177 / 177 static files
+python make_manifest.py                         PASS — 181 static entries
+python verify_manifest.py                       PASS — 181 / 181 static files
 make qa                                         PASS
 make ietf-preflight                              PASS
 python run_vectors.py                           PASS — 64 / 64 vectors
-python -m pytest -q                             PASS — 17 / 17 tests
+python -m pytest -q                             PASS — 19 / 19 tests
 python ietf126/run_review_packet.py             PASS — 16 / 16 selected packet checks
+python ietf126/independent_recompute.py          PASS — 16 / 16 recomputation checks
 tools/release_gate.py                          PASS — attestation version/digest drift check included
 ```
 
@@ -22,9 +23,11 @@ tools/release_gate.py                          PASS — attestation version/dige
 
 ```text
 tools/run_public_eval.py              PASS — 6 / 6 harness steps
-tools/validate_public_eval_packet.py  PASS — ok=true, release_gate_exit=0
-verify_manifest.py                    PASS — ok=true
+tools/validate_public_eval_packet.py  PASS — ok=true, release_gate_exit=0, release_pointer_check_exit=0
+tools/check_ietf126_release_pointers.py PASS — ok=true, finding_count=0
+verify_manifest.py                    PASS — ok=true, 181 / 181
 ietf126/run_review_packet.py          PASS — runner_mode=full-repository, 16 / 16
+ietf126/independent_recompute.py       PASS — 16 / 16
 ```
 
 ## Public boundary
@@ -36,6 +39,7 @@ Synthetic public evaluation artifact only. No production data, no customer data,
 ```bash
 python -m pip install -r requirements.txt
 python ietf126/run_review_packet.py
+python ietf126/independent_recompute.py
 cat ietf126/results/review-summary.md
 ```
 

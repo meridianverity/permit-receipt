@@ -57,6 +57,23 @@ SELECTED_NEGATIVES = [
     "KNEG-TRANSPARENCY-PROOF-MISSING",
 ]
 
+# Standalone mode deliberately mirrors the public DRC registry in
+# orprg_eval.models for the selected IETF review packet. Keeping the codes
+# here explicit prevents packet-only review from drifting away from the full
+# repository verifier.
+STANDALONE_DRC = {
+    "MISSING_RECEIPT": "DRC-000-MISSING_RECEIPT",
+    "EPOCH_MISMATCH": "DRC-003_EPOCH_MISMATCH",
+    "VALIDITY_WINDOW_EXPIRED": "DRC-004_VALIDITY_WINDOW_EXPIRED",
+    "SCOPE_VIOLATION": "DRC-005_SCOPE_VIOLATION",
+    "ANTI_REPLAY_FAILURE": "DRC-006_ANTI_REPLAY_FAILURE",
+    "REVOCATION_UNKNOWN_OR_STALE": "DRC-008_REVOCATION_UNKNOWN_OR_STALE",
+    "ACTION_DIGEST_MISMATCH": "DRC-009_ACTION_DIGEST_MISMATCH",
+    "CANONICALIZATION_PROFILE_MISMATCH": "DRC-016_CANONICALIZATION_PROFILE_MISMATCH",
+    "TRANSPARENCY_PROOF_MISSING": "DRC-053_TRANSPARENCY_PROOF_MISSING",
+    "POLICY_DIGEST_MISMATCH": "DRC-054_POLICY_DIGEST_MISMATCH",
+    "RECEIPT_MALFORMED": "DRC-056_RECEIPT_MALFORMED",
+}
 
 def write_json(path: Path, obj: Any) -> None:
     path.write_text(json.dumps(obj, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -205,38 +222,38 @@ def verify_standalone(
         return {"decision": "DENY", "denial_reason_code": code, "evidence_digests": {}}
 
     if not receipt:
-        return deny("DRC-000-MISSING_RECEIPT")
+        return deny(STANDALONE_DRC["MISSING_RECEIPT"])
     if not isinstance(receipt, dict) or "receipt_core" not in receipt or "authenticity" not in receipt:
-        return deny("DRC-018_RECEIPT_MALFORMED")
+        return deny(STANDALONE_DRC["RECEIPT_MALFORMED"])
     core = receipt["receipt_core"]
     profile = core.get("canonicalization_profile_ref")
     if profile != policy_state.get("canonicalization_profile_ref", STANDALONE_PROFILE):
-        return deny("DRC-016_CANONICALIZATION_PROFILE_MISMATCH")
+        return deny(STANDALONE_DRC["CANONICALIZATION_PROFILE_MISMATCH"])
     try:
         observed_digest = sha256_hex(canonicalize_standalone(request, profile))
     except Exception:
-        return deny("DRC-016_CANONICALIZATION_PROFILE_MISMATCH")
+        return deny(STANDALONE_DRC["CANONICALIZATION_PROFILE_MISMATCH"])
     if observed_digest != core.get("action_digest"):
-        return deny("DRC-009_ACTION_DIGEST_MISMATCH")
+        return deny(STANDALONE_DRC["ACTION_DIGEST_MISMATCH"])
     if core.get("policy_digest") != policy_state.get("policy_digest"):
-        return deny("DRC-012_POLICY_DIGEST_MISMATCH")
+        return deny(STANDALONE_DRC["POLICY_DIGEST_MISMATCH"])
     if int(core.get("epoch_id", -1)) != int(policy_state.get("current_epoch_id", -2)):
-        return deny("DRC-003_EPOCH_MISMATCH")
+        return deny(STANDALONE_DRC["EPOCH_MISMATCH"])
     if core.get("valid_to") <= context.get("now", NOW) or core.get("valid_from") > context.get("now", NOW):
-        return deny("DRC-004_VALIDITY_WINDOW_EXPIRED")
+        return deny(STANDALONE_DRC["VALIDITY_WINDOW_EXPIRED"])
     scope = core.get("scope", {})
     for field in ["effect_type", "interface_id", "action_type", "target_id", "tenant_id", "purpose_id", "representation_class_id"]:
         if scope.get(field) is not None and request.get(field) != scope.get(field):
-            return deny("DRC-005_SCOPE_VIOLATION")
+            return deny(STANDALONE_DRC["SCOPE_VIOLATION"])
     if request.get("max_effect_budget", 0) > scope.get("max_effect_budget", 0):
-        return deny("DRC-005_SCOPE_VIOLATION")
+        return deny(STANDALONE_DRC["SCOPE_VIOLATION"])
     nonce = (core.get("anti_replay") or {}).get("nonce")
     if nonce in set(context.get("used_nonces", [])):
-        return deny("DRC-006_ANTI_REPLAY_FAILURE")
+        return deny(STANDALONE_DRC["ANTI_REPLAY_FAILURE"])
     if revocation_state.get("status") != "fresh":
-        return deny("DRC-008_REVOCATION_UNKNOWN_OR_STALE")
+        return deny(STANDALONE_DRC["REVOCATION_UNKNOWN_OR_STALE"])
     if policy_state.get("require_transparency") and not revocation_state.get("merkle"):
-        return deny("DRC-010_TRANSPARENCY_PROOF_INVALID")
+        return deny(STANDALONE_DRC["TRANSPARENCY_PROOF_MISSING"])
     return {"decision": "ALLOW", "denial_reason_code": None, "evidence_digests": {}}
 
 
@@ -262,17 +279,17 @@ def build_selected_vectors_standalone() -> List[Dict[str, Any]]:
             "expected": {"decision": "DENY", "denial_reason_code": expected_code},
         })
 
-    add("KNEG-MISSING-RECEIPT", "External effect without PermitReceipt is denied.", "DRC-000-MISSING_RECEIPT", receipt=None)
+    add("KNEG-MISSING-RECEIPT", "External effect without PermitReceipt is denied.", STANDALONE_DRC["MISSING_RECEIPT"], receipt=None)
     wrong_req = copy.deepcopy(req); wrong_req["target_id"] = "attacker-exfil-api"
-    add("KNEG-ACTION-DIGEST-MISMATCH", "Receipt binds a different action digest.", "DRC-009_ACTION_DIGEST_MISMATCH", receipt=make_receipt_standalone(wrong_req, nonce="wrong-action"))
+    add("KNEG-ACTION-DIGEST-MISMATCH", "Receipt binds a different action digest.", STANDALONE_DRC["ACTION_DIGEST_MISMATCH"], receipt=make_receipt_standalone(wrong_req, nonce="wrong-action"))
     scope = base_scope_standalone(); scope["target_id"] = "approved-only"
-    add("KNEG-SCOPE-VIOLATION-TARGET", "Receipt scope excludes requested target.", "DRC-005_SCOPE_VIOLATION", receipt=make_receipt_standalone(req, scope=scope, nonce="scope-target"))
-    add("KNEG-VALIDITY-EXPIRED", "Receipt validity window is expired.", "DRC-004_VALIDITY_WINDOW_EXPIRED", receipt=make_receipt_standalone(req, core_overrides={"valid_to": EXPIRED_TO}, nonce="expired"))
-    add("KNEG-REVOCATION-STATE-STALE", "Revocation/status evidence is stale.", "DRC-008_REVOCATION_UNKNOWN_OR_STALE", revocation=base_revocation_standalone(base_rec, status="stale"))
-    add("KNEG-ANTI-REPLAY-NONCE-REUSE", "Receipt nonce reuse is denied.", "DRC-006_ANTI_REPLAY_FAILURE", receipt=base_rec, context={**base_context_standalone(), "used_nonces": ["nonce-standalone"]})
-    add("KNEG-CANONICALIZATION-PROFILE-MISMATCH", "Unsupported canonicalization profile is denied.", "DRC-016_CANONICALIZATION_PROFILE_MISMATCH", receipt=make_receipt_standalone(req, core_overrides={"canonicalization_profile_ref": "CP-OLD"}, nonce="canon"))
+    add("KNEG-SCOPE-VIOLATION-TARGET", "Receipt scope excludes requested target.", STANDALONE_DRC["SCOPE_VIOLATION"], receipt=make_receipt_standalone(req, scope=scope, nonce="scope-target"))
+    add("KNEG-VALIDITY-EXPIRED", "Receipt validity window is expired.", STANDALONE_DRC["VALIDITY_WINDOW_EXPIRED"], receipt=make_receipt_standalone(req, core_overrides={"valid_to": EXPIRED_TO}, nonce="expired"))
+    add("KNEG-REVOCATION-STATE-STALE", "Revocation/status evidence is stale.", STANDALONE_DRC["REVOCATION_UNKNOWN_OR_STALE"], revocation=base_revocation_standalone(base_rec, status="stale"))
+    add("KNEG-ANTI-REPLAY-NONCE-REUSE", "Receipt nonce reuse is denied.", STANDALONE_DRC["ANTI_REPLAY_FAILURE"], receipt=base_rec, context={**base_context_standalone(), "used_nonces": ["nonce-standalone"]})
+    add("KNEG-CANONICALIZATION-PROFILE-MISMATCH", "Unsupported canonicalization profile is denied.", STANDALONE_DRC["CANONICALIZATION_PROFILE_MISMATCH"], receipt=make_receipt_standalone(req, core_overrides={"canonicalization_profile_ref": "CP-OLD"}, nonce="canon"))
     pol_t = copy.deepcopy(pol); pol_t["require_transparency"] = True
-    add("KNEG-TRANSPARENCY-PROOF-MISSING", "Required transparency proof is missing.", "DRC-010_TRANSPARENCY_PROOF_INVALID", policy=pol_t)
+    add("KNEG-TRANSPARENCY-PROOF-MISSING", "Required transparency proof is missing.", STANDALONE_DRC["TRANSPARENCY_PROOF_MISSING"], policy=pol_t)
     return vectors
 
 

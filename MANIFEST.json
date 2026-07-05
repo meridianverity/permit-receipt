@@ -17,9 +17,9 @@
       "sha256": "67892e32ba2547e0bbf5b441f2a1378f83e2d598902299fd92ed91797fa6d5e9"
     },
     {
-      "bytes": 796,
+      "bytes": 1036,
       "path": "Makefile",
-      "sha256": "e4a4c929df1cd7a51c8724202406b9d50f3557ef1999c02a279b94e12fbb046a"
+      "sha256": "448f3259cf9200bbf4fa7bf7d9aaf641aa932d1070288395ec999b05077d1975"
     },
     {
       "bytes": 1050,
@@ -32,14 +32,14 @@
       "sha256": "9778cbf9a696e6afe7ae91878287f34fb7829d0b25efbbfe26473eef536eba1f"
     },
     {
-      "bytes": 1145,
+      "bytes": 1364,
       "path": "QUICKSTART.md",
-      "sha256": "b3d04b4ef03147be402be73de4ea36e86e93179207f34a233047377aff5f1963"
+      "sha256": "346bcff7acb5184b4813e4b23ccc205d7dfe7b5d85beb2dd3db85020f9e0e6e0"
     },
     {
-      "bytes": 8897,
+      "bytes": 9758,
       "path": "README.md",
-      "sha256": "996bc91c58a462858d961074e936b55d67e16b4764f847d14c640f5dd2b5b5a3"
+      "sha256": "3fb8b509af184a36bafb37b4dd35d3597e1ba5c691cd5b18037d3aafb689bf0e"
     },
     {
       "bytes": 2737,
@@ -117,19 +117,19 @@
       "sha256": "1046273339ac7d22edcf70f115b2c9373f902987e95d5bb11926841e8f58cd97"
     },
     {
-      "bytes": 2038,
+      "bytes": 2078,
       "path": "docs/GITHUB_MANUAL_UPLOAD_GUIDE.md",
-      "sha256": "9f199499e738d90bef30097e4b4cd1d76f7fb8f650a84d7a29360c42b5d95cc4"
+      "sha256": "427f49326e52eeab9e4c089dc77fac792ece6b5711dce81a420853ffc7a82b5e"
     },
     {
-      "bytes": 2099,
+      "bytes": 2188,
       "path": "docs/GITHUB_RELEASE_BODY.md",
-      "sha256": "c532ab8f86c5f82a38335592ed39f901a13be815aa629c8ac9c662190b35107a"
+      "sha256": "f153bc8eeea2de03a7efa63be34c8b8ce18ca922cdd88264a0f57072a9a860cc"
     },
     {
-      "bytes": 2644,
+      "bytes": 2897,
       "path": "docs/GITHUB_UPLOAD_CHECKLIST.md",
-      "sha256": "7cf1060d5c6236da076a8bc2ae58877cb22b7d68939a9fffd3353eb4faaa4002"
+      "sha256": "22826a4950d03adbc9525803083c9b0cc921aef8e75da0d88984b462a2f76759"
     },
     {
       "bytes": 687,
@@ -137,14 +137,19 @@
       "sha256": "f768dea8418935986d87983202db3def4ebc0485da3be2b147720720fb19c8e7"
     },
     {
-      "bytes": 2927,
+      "bytes": 2976,
       "path": "docs/HACKATHON_POLISH_AUDIT.md",
-      "sha256": "9411d55305ff0668e31c342f8e8c326311d0dd333c7c2b2d5a30b083171996ce"
+      "sha256": "0b778be456dda819ddde67cee32e7d070874fda7fb6c7a65effd8ccb094cdbd5"
     },
     {
-      "bytes": 4061,
+      "bytes": 1023,
+      "path": "docs/IETF126_RELEASE_POINTER_LOCK.md",
+      "sha256": "b03fc22608dcd0cac13df916f5252b7342fdce5d7e700e7a145115f4815b65a6"
+    },
+    {
+      "bytes": 4369,
       "path": "docs/IETF_HACKATHON_PROJECT_PAGE.md",
-      "sha256": "09e43f75598943f57640c29493e79a94ebce428e2033a94efa42a6f012e6617b"
+      "sha256": "501998d0022e9807e7a222a4489b4e7a274b8f566bbcfbe1ede17a9994cbc1be"
     },
     {
       "bytes": 2561,
@@ -162,14 +167,14 @@
       "sha256": "d242c388adaa5ccc7a125ac4cf8db7d332470851c6954553fe0d3d105a5e7883"
     },
     {
-      "bytes": 1117,
+      "bytes": 1157,
       "path": "docs/Q4_MANUAL_UPLOAD_RELEASE_FINAL.md",
-      "sha256": "4c04b56e073db4ceb8e8534720fd4227bfeb04344f006e14f41f668c1a1aa6ff"
+      "sha256": "1dba4aa7b80f2ed35cde2c180ca9a85c471581549dc1016e8142a20870dc5357"
     },
     {
-      "bytes": 1895,
+      "bytes": 2193,
       "path": "docs/QA_REPORT_v2_2_4_PUBLIC_EVAL.md",
-      "sha256": "e09d8d469c59fce232b9c5f5cbb5af170475c9c92f09a6c8d62bb0533f08f447"
+      "sha256": "cfa6fa034192569b22a07a55c0255c1bd077f5e7d0e2d774e644f394d7cf8dc2"
     },
     {
       "bytes": 1226,
@@ -182,9 +187,9 @@
       "sha256": "0a616e57a3883b79de2c321297ef943c83bc2c2eb82032182c70b4d1daf892b5"
     },
     {
-      "bytes": 1139,
+      "bytes": 1232,
       "path": "docs/RELEASE_DECISION_RECORD_v2_2_4_Q_MANUAL_UPLOAD.md",
-      "sha256": "7f6da024cf1b228ecbec418ca8cbbb93ad49abb738443032f6b24fcf5b3bdca0"
+      "sha256": "e40699b7f7597a90cd58eb848513377bfb6f0b51192c34a13ca4a72a29bd1de0"
     },
     {
       "bytes": 842,
@@ -342,9 +347,9 @@
       "sha256": "25a49568707f2137ccb7029058663f12596f8b3787f695d2daf49fb3b29a64b4"
     },
     {
-      "bytes": 2017,
+      "bytes": 2097,
       "path": "ietf126/CLOSING_PRESENTATION_CARD.md",
-      "sha256": "d088feaeab20ae568e25545e62af910d81a25bcfbf57be29502520c9b0a8a596"
+      "sha256": "e9816e127ba72aea978a3acbab159d9aa20b94f258b76f6e524d0157d4f048de"
     },
     {
       "bytes": 2259,
@@ -352,14 +357,14 @@
       "sha256": "cf7d68e9f936ca8a222b9ed96c9c161eb12fcbcdfe70d8fd15c3bdddc9408afa"
     },
     {
-      "bytes": 2106,
+      "bytes": 2406,
       "path": "ietf126/HACKATHON_JUDGES_BRIEF.md",
-      "sha256": "544a458ce9fb03b97eef1dce8ec3ce43fbe28ba10a455c4ad93d8fce48f71284"
+      "sha256": "4aef2f54aa82bfbe434b8c6b69925241dd0c94a54ede0754f572adf8858e3cc0"
     },
     {
-      "bytes": 1842,
+      "bytes": 2142,
       "path": "ietf126/HACKATHON_REVIEWER_BRIEF.md",
-      "sha256": "1fea88fd200f29e423b8fd05c3043cd70014ef844146f361043357b45bf39a61"
+      "sha256": "06c186be6ca861fd6aa323cf5c433ee37e6ad0ad84442f30b846c6d1aae7c86d"
     },
     {
       "bytes": 891,
@@ -367,9 +372,9 @@
       "sha256": "098f7f5847cc05dd53e41bd6bc2dfdaf927b690677c611777b0bd7c129271cba"
     },
     {
-      "bytes": 1431,
+      "bytes": 1462,
       "path": "ietf126/NEGATIVE_VECTOR_PLAN.md",
-      "sha256": "8f3059e12e3d6ec9734d929825dbc66d689a8d352391f2161a1eba8e5c3c87f7"
+      "sha256": "2ae09a936cba2cd2dd2578db42409c2986a686529cd844eaf6fa384fb3d61282"
     },
     {
       "bytes": 1245,
@@ -382,34 +387,34 @@
       "sha256": "0c3ca8c40a8481bf8ebfaa93e1fb45f3c59980ea1a812a308f695b0edce30f47"
     },
     {
-      "bytes": 1265,
+      "bytes": 1582,
       "path": "ietf126/QA_REPORT.md",
-      "sha256": "708dd63b44f2b16b342f8a54a3d63585d127b33ab75b67e1d5a2e9e5584ba616"
+      "sha256": "dc93f34046083fc0231e81fd1fb5817f99c13041d99f5e4b3cc79916cc38aab5"
     },
     {
-      "bytes": 4744,
+      "bytes": 5466,
       "path": "ietf126/README.md",
-      "sha256": "b7da6cb430796d849ed0a0dc39493e60d2a985244d563a8e048cb1c9e733a99f"
+      "sha256": "dd53eb0c37a0bfd60164509cb036ec85663f893951bc89dcf07c28d846481136"
     },
     {
-      "bytes": 1255,
+      "bytes": 1303,
       "path": "ietf126/REVIEWER_CHECKLIST.md",
-      "sha256": "1ce5fd07ce2bd37a3d8bc1a2eafdbd8ce25d66041ab1cf276cb52914c2649728"
+      "sha256": "79403594ab12e79758689edaf7c0c860bc4aa1e0102ee5d2317256834f8f4158"
     },
     {
-      "bytes": 769,
+      "bytes": 809,
       "path": "ietf126/RUNBOOK_10_MIN.md",
-      "sha256": "a34bb066f31547b8c9832209f6a3fa8feffe82b27eac3eb8df6b45221860b981"
+      "sha256": "49f7ce8b347f74d6bf278154d394d25ca9d43fea3b7893a9512e687e8fdf9721"
     },
     {
-      "bytes": 1069,
+      "bytes": 1109,
       "path": "ietf126/STANDALONE_PACKET.md",
-      "sha256": "54d906354aab94299f3de6eb221d19d01802686fc5fbb6d2d8f8484bbc5fd446"
+      "sha256": "1e27e293d0b876a466c2eb255946a2c4a3022ce9aedd252fff907fcd40265da6"
     },
     {
-      "bytes": 4061,
+      "bytes": 4369,
       "path": "ietf126/SUBMISSION_TEXT.md",
-      "sha256": "09e43f75598943f57640c29493e79a94ebce428e2033a94efa42a6f012e6617b"
+      "sha256": "501998d0022e9807e7a222a4489b4e7a274b8f566bbcfbe1ede17a9994cbc1be"
     },
     {
       "bytes": 1202,
@@ -417,9 +422,9 @@
       "sha256": "b762ede5aadbbefa849629ceb6f2f58fd91e0c8d8ab27ecc6df04932b5b5b3d2"
     },
     {
-      "bytes": 1309,
+      "bytes": 1356,
       "path": "ietf126/TEAM_SCHEDULE_TEXT.md",
-      "sha256": "60abf048da2d1d98ccd3c5bcfe994baa8380f8c5460e52ee2ce52e16ae630800"
+      "sha256": "fa0e80f5919e3ae3b002a1e45da51df7c68df5db503f299c26fe323ab8edefa4"
     },
     {
       "bytes": 1023,
@@ -427,14 +432,19 @@
       "sha256": "5c31833ee1d1a107580e295e449aa8ba8c5d87516772fde507f6105d18181ad7"
     },
     {
-      "bytes": 1254,
+      "bytes": 1426,
       "path": "ietf126/VECTOR_INDEX.md",
-      "sha256": "70476c1834560d1fc55ff8bb59a86fc733acae71fda7ffdc5d163b4eba43e0de"
+      "sha256": "d933b3995d0950e723bb8b129c3bd449d0addf033b7b9148f42011aff41ec816"
     },
     {
-      "bytes": 29384,
+      "bytes": 6789,
+      "path": "ietf126/independent_recompute.py",
+      "sha256": "c0a0bffd16e53e2a538d7dc26d8f5a76bd23ce643d4ec5c46762e0d5b01cdf8f"
+    },
+    {
+      "bytes": 30500,
       "path": "ietf126/run_review_packet.py",
-      "sha256": "844d558122f62776d1c11d859b54ab0c6fb575c82efbdfc9af21064068b459cb"
+      "sha256": "0dcde2a66935b33caf175c01c7392040d9cd965889fa147166b481ee813528dd"
     },
     {
       "bytes": 2556,
@@ -482,9 +492,9 @@
       "sha256": "c628ffbf0abd693f1c5309af068ddd7715077b3b3a6fffc65fd6a65a6ad2f12e"
     },
     {
-      "bytes": 1714,
+      "bytes": 1829,
       "path": "make_manifest.py",
-      "sha256": "2155fe4f2debfbb230fbd7a620f46934614d9e2e9f413f9e91278f19a87b0ca4"
+      "sha256": "3eea0c19603a5fdf9675265010c1ef8b34e3ead88e814893aea81d3134258253"
     },
     {
       "bytes": 215,
@@ -667,9 +677,9 @@
       "sha256": "125fad3a3cace7748754e4738325300f77c866b8b011a6b99504e1d0bab20f4f"
     },
     {
-      "bytes": 269,
+      "bytes": 1118,
       "path": "pyproject.toml",
-      "sha256": "e8c23ff903232b977246b4705ee003ac98c05c6df1a5caa654bb460b621a1956"
+      "sha256": "ad44944896ba8743697ef7ee8e4fb8174380e972c1e94ba067d819fdb663336b"
     },
     {
       "bytes": 189,
@@ -847,6 +857,11 @@
       "sha256": "432c22b7725f7fc08e61db33c427d83d3ed53c8d405e76c0408f4103a8e8df52"
     },
     {
+      "bytes": 1647,
+      "path": "tests/test_ietf126_standalone_parity.py",
+      "sha256": "265e238623148c1b8836534b388a686a59257f77e2f619cf8686ba99dcc24cc3"
+    },
+    {
       "bytes": 2229,
       "path": "tests/test_paygate_poc.py",
       "sha256": "c54a29ac89c9c49c95f605de84a3229da0dbc1631645c76c6674f3a7390865e5"
@@ -857,9 +872,14 @@
       "sha256": "68f178d636f578f4051af99f68b8d193ec8a3dd4e66f052a837a789d7a02458d"
     },
     {
-      "bytes": 1718,
+      "bytes": 3408,
+      "path": "tools/check_ietf126_release_pointers.py",
+      "sha256": "7511da85e45a1acfa5dbb66ee6ded702b2688055c35390b2f77bec05798102f8"
+    },
+    {
+      "bytes": 1833,
       "path": "tools/make_public_manifest.py",
-      "sha256": "0b809f41b5f168dd65d70e0bdbf2fd4894da7d233481f4b97e626bb3c79d5dcf"
+      "sha256": "59e9364047af0b3e26a1a4a62ac1a9f4a00a4a016a8fdbf39a102618e6a4ee70"
     },
     {
       "bytes": 1699,
@@ -867,9 +887,9 @@
       "sha256": "060dd4347bed879a5b7a4315637c6a4fb5230d46e2f1647008cb6aaa7fb63578"
     },
     {
-      "bytes": 9723,
+      "bytes": 9814,
       "path": "tools/release_gate.py",
-      "sha256": "dbbd561bdce9fb4caf0dbbcc7c7b1631efcd5b112122ca6ca88b4cbdf2d17fee"
+      "sha256": "afd9917f06c7d6767160625e1b37452e255d51bb2dcaf2fd38a942921b4d02b7"
     },
     {
       "bytes": 3336,
@@ -877,14 +897,14 @@
       "sha256": "d343c4771e3bcf55c727bd8e8c20b0993f57aef9197df7535bcc2bf89a7297e9"
     },
     {
-      "bytes": 2206,
+      "bytes": 2511,
       "path": "tools/validate_public_eval_packet.py",
-      "sha256": "9ae13bbaa669346a1181fceba09b46d1bd649174675979ed52f4579afdedb99a"
+      "sha256": "d2cc25ccc26a3660efce950c389928dd695d6cb0357fce8f1c58ce17dba6070c"
     },
     {
-      "bytes": 2197,
+      "bytes": 2294,
       "path": "verify_manifest.py",
-      "sha256": "5766224c725b1eb98b83027bbc66a2fbac4d6c50a559dcc2b874df5f873bb629"
+      "sha256": "032451dbe3fbcafcbe2a0fc99f42bf472e7764dc8953048a6707db151d5f8e04"
     }
   ],
   "excludes": [
@@ -900,7 +920,8 @@
     "checks",
     "dist",
     "results",
-    "tmp"
+    "tmp",
+    "*.egg-info/"
   ],
   "manifest_format": "static-sha256-list-v2",
   "scope": "static source/provenance files only; generated checks/results directories are intentionally excluded"

@@ -8,6 +8,7 @@ We made the PermitReceipt pre-commit authorization question runnable: one protec
 
 ```bash
 python ietf126/run_review_packet.py
+python ietf126/independent_recompute.py
 cat ietf126/results/review-summary.md
 ```
 
@@ -18,6 +19,7 @@ One protected-action positive path: PASS
 Selected executable negative vectors: 8 / 8 PASS
 Interop authorization_ref shape checks: 7 / 7 PASS
 Overall selected packet: 16 / 16 PASS
+Independent recomputation: 16 / 16 PASS
 ```
 
 ## What to show in 3-5 minutes

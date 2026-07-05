@@ -13,7 +13,7 @@ The public evaluation evidence does not depend on those files. Therefore:
 - `.github/` and `.gitignore` are excluded from the static public evaluation manifest;
 - visible template copies are provided under `github-ui-files/`;
 - `tools/materialize_github_files.py` can recreate the optional dot-path files when a local checkout is available;
-- `python verify_manifest.py`, `python ietf126/run_review_packet.py`, and `make qa` remain the core public review checks.
+- `python verify_manifest.py`, `python ietf126/run_review_packet.py`, `python ietf126/independent_recompute.py`, `python tools/check_ietf126_release_pointers.py`, and `make qa` remain the core public review checks.
 
 ## Boundary
 

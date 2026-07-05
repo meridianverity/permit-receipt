@@ -30,7 +30,7 @@ Set as latest: optional; recommended OFF for conservative rollout
 Before upload:
 
 1. Apply this repository state at the GitHub repo root.
-2. Confirm `ietf126/` exists and includes `run_review_packet.py`, `README.md`, `AUTHORIZATION_REF_PROFILE.md`, `DIGEST_INTEROP_NOTES.md`, `NEGATIVE_VECTOR_PLAN.md`, and `schemas/authorization_ref.public-eval.v2.schema.json`.
+2. Confirm `ietf126/` exists and includes `run_review_packet.py`, `independent_recompute.py`, `README.md`, `AUTHORIZATION_REF_PROFILE.md`, `DIGEST_INTEROP_NOTES.md`, `NEGATIVE_VECTOR_PLAN.md`, and `schemas/authorization_ref.public-eval.v2.schema.json`.
 3. Do not add non-public annexes, claim charts, legal opinions, field-of-use analysis, private implementation mapping, customer data, production logs, credentials, live payment or processor materials, or commercial strategy.
 4. Do not add generated cache or run-output directories such as `__pycache__/`, `.pytest_cache/`, `checks/`, `results/`, `ietf126/results/`, `dist/`, or `build/`.
 5. Do not describe this release as production software, an official IETF reference implementation, an IETF standard, a certification program, a conformance program, a public trust anchor, or a production non-bypassability proof.
@@ -42,9 +42,11 @@ python -m pip install -r requirements.txt
 make clean
 python make_manifest.py
 python verify_manifest.py
+python tools/check_ietf126_release_pointers.py
+python ietf126/run_review_packet.py
+python ietf126/independent_recompute.py
 make qa
-python run_vectors.py
-python -m pytest -q
+make qa-full
 ```
 
 Expected result:
@@ -52,12 +54,15 @@ Expected result:
 ```text
 verify_manifest.py: PASS
 make qa: PASS
+make qa-full: PASS
 run_vectors.py: PASS
 pytest: PASS
 ietf126/run_review_packet.py: PASS
+ietf126/independent_recompute.py: PASS
+release pointer check: PASS
 ```
 
-IETF Hackathon page pointer:
+IETF Hackathon page pointer (see `docs/IETF126_RELEASE_POINTER_LOCK.md`):
 
 ```text
 https://github.com/meridianverity/permit-receipt/tree/main/ietf126

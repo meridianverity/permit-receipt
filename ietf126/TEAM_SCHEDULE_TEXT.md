@@ -12,7 +12,7 @@ Materials:
 
 - Project page text: `ietf126/SUBMISSION_TEXT.md`
 - Review packet: `https://github.com/meridianverity/permit-receipt/tree/main/ietf126`
-- Runner: `python ietf126/run_review_packet.py`
+- Runner: `python ietf126/run_review_packet.py` plus `python ietf126/independent_recompute.py`
 
 Suggested flow:
 

@@ -40,13 +40,14 @@ The project includes a provider-neutral synthetic agentic-commerce profile as on
 
 ## Suggested reviewer path
 
-1. Run `python ietf126/run_review_packet.py`.
+1. Run `python ietf126/run_review_packet.py` and `python ietf126/independent_recompute.py`.
 2. Inspect the canonical request bytes and `action_digest`.
 3. Compare one allow path and at least three deny paths.
 4. Inspect `interop-crossref-results.json` to see why name-only references are non-authorizing.
-5. Open GitHub issues for unclear fields, missing negative vectors, or interoperability gaps.
+5. Inspect `independent-recompute-results.json` to verify package-independent byte and digest recomputation.
+6. Open GitHub issues for unclear fields, missing negative vectors, or interoperability gaps.
 
-The runner is dual-mode: it uses the full repository evaluation package when available, and otherwise falls back to a narrow standalone public packet using only Python's standard library.
+The runner is dual-mode: it uses the full repository evaluation package when available, and otherwise falls back to a narrow standalone public packet using only Python's standard library. A separate `independent_recompute.py` check rereads generated outputs and recomputes canonical bytes and digests without importing the verifier package.
 
 ## Expected outputs
 

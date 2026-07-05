@@ -16,10 +16,11 @@ PermitReceipt tests whether one AI-agent or workload external effect can be cano
 
 ```bash
 python ietf126/run_review_packet.py
+python ietf126/independent_recompute.py
 cat ietf126/results/review-summary.md
 ```
 
-The runner is dual-mode. In the full repository it uses the `orprg_eval` package and vector corpus. If extracted as an IETF packet only, it runs a narrow standard-library evaluator so review can still proceed.
+The runner is dual-mode. In the full repository it uses the `orprg_eval` package and vector corpus. If extracted as an IETF packet only, it runs a narrow standard-library evaluator so review can still proceed. The separate `independent_recompute.py` check rereads generated outputs and recomputes canonical bytes and digests without importing the verifier package.
 
 ## What to inspect
 
@@ -27,7 +28,8 @@ The runner is dual-mode. In the full repository it uses the `orprg_eval` package
 2. `one-protected-action.json` — the request, PermitReceipt, `action_digest`, and verifier result.
 3. `negative-vector-results.json` — selected fail-closed failures.
 4. `interop-crossref-results.json` — why name-only references are non-authorizing and why signature-covered cross-reference is the primary interop model.
-5. `public-review-passport.json` — a compact run summary.
+5. `independent-recompute-results.json` — package-independent canonical-byte and digest recomputation.
+6. `public-review-passport.json` — a compact run summary.
 
 ## Why it matters
 

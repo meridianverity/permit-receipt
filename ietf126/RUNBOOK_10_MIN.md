@@ -12,6 +12,7 @@ python -m pip install -r requirements.txt
 
 ```bash
 python ietf126/run_review_packet.py
+python ietf126/independent_recompute.py
 ```
 
 ## Minute 3-5: inspect the proof surface

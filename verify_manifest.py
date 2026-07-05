@@ -6,6 +6,7 @@ MANIFEST = ROOT / 'MANIFEST.sha256.json'
 EXCLUDE_DIRS = {'.git', '.github', '__pycache__', '.pytest_cache', '.mypy_cache', 'tmp', 'dist', 'build', 'results', 'checks'}
 EXCLUDE_SUFFIXES = {'.pyc'}
 EXCLUDE_FILES = {'MANIFEST.json', 'MANIFEST.sha256.json', '.gitignore'}
+EXCLUDE_GENERATED_DIR_SUFFIXES = ('.egg-info',)
 
 def sha(path: Path) -> str:
     h = hashlib.sha256()
@@ -21,7 +22,7 @@ def included_paths():
             continue
         rel = p.relative_to(ROOT)
         rel_s = rel.as_posix()
-        if any(part in EXCLUDE_DIRS for part in rel.parts):
+        if any(part in EXCLUDE_DIRS or part.endswith(EXCLUDE_GENERATED_DIR_SUFFIXES) for part in rel.parts):
             continue
         if p.suffix in EXCLUDE_SUFFIXES:
             continue
