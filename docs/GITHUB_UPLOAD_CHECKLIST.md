@@ -18,13 +18,13 @@ Release tag:
 
 Release title:
 
-`PermitReceipt Public Evaluation Slice v2.2.4 — IETF 126 Review Artifact`
+`v2.2.4 Public Evaluation — IETF 126 Review Packet`
 
 Release settings:
 
 ```text
 Pre-release: OFF / unchecked
-Set as latest: optional; recommended OFF for conservative rollout
+Set as latest: release-manager choice; acceptable for the active public-evaluation entry point
 ```
 
 Before upload:
@@ -34,6 +34,8 @@ Before upload:
 3. Do not add non-public annexes, claim charts, legal opinions, field-of-use analysis, private implementation mapping, customer data, production logs, credentials, live payment or processor materials, or commercial strategy.
 4. Do not add generated cache or run-output directories such as `__pycache__/`, `.pytest_cache/`, `checks/`, `results/`, `ietf126/results/`, `dist/`, or `build/`.
 5. Do not describe this release as production software, an official IETF reference implementation, an IETF standard, a certification program, a conformance program, a public trust anchor, or a production non-bypassability proof.
+6. Use the exact release asset name `permit-receipt-ref-eval-v2_2_4-public-eval.zip`.
+7. Use the exact checksum sidecar name `permit-receipt-ref-eval-v2_2_4-public-eval.zip.sha256`, and make the sidecar line name the ZIP exactly as `permit-receipt-ref-eval-v2_2_4-public-eval.zip`. Do not reuse older sidecar text such as `permit-receipt-main-v2_2_4-ietf126-hardened.zip`.
 
 Pre-upload commands:
 
@@ -47,6 +49,20 @@ python ietf126/run_review_packet.py
 python ietf126/independent_recompute.py
 make qa
 make qa-full
+```
+
+
+Release-asset checksum sidecar:
+
+```bash
+sha256sum permit-receipt-ref-eval-v2_2_4-public-eval.zip > permit-receipt-ref-eval-v2_2_4-public-eval.zip.sha256
+grep -F "permit-receipt-ref-eval-v2_2_4-public-eval.zip" permit-receipt-ref-eval-v2_2_4-public-eval.zip.sha256
+```
+
+Expected checksum sidecar shape:
+
+```text
+<64-hex-sha256>  permit-receipt-ref-eval-v2_2_4-public-eval.zip
 ```
 
 Expected result:

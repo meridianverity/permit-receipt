@@ -1,4 +1,4 @@
-# PermitReceipt Public Evaluation Slice v2.2.4 — IETF 126 Review Artifact
+# v2.2.4 Public Evaluation — IETF 126 Review Packet
 
 Synthetic source-available evaluation artifact for PermitReceipt-based permit-before-commit authorization of AI-agent and workload external effects.
 
@@ -6,7 +6,7 @@ This release integrates the IETF 126 remote review packet into the public evalua
 
 ## Release status
 
-Public evaluation release. Not production software. GitHub pre-release checkbox left unchecked.
+Public evaluation release. Not production software. GitHub pre-release checkbox left unchecked. May be marked Latest when this tag is the active public-evaluation entry point.
 
 ## Scope
 
@@ -55,6 +55,12 @@ https://datatracker.ietf.org/ipr/7308/
 
 Attach a companion `.sha256` asset for the published ZIP checksum. Release asset hashes should be verified from the release assets generated at publication time.
 
-Suggested release asset name:
+Release asset name:
 
 `permit-receipt-ref-eval-v2_2_4-public-eval.zip`
+
+Checksum sidecar name:
+
+`permit-receipt-ref-eval-v2_2_4-public-eval.zip.sha256`
+
+The sidecar line must name `permit-receipt-ref-eval-v2_2_4-public-eval.zip` exactly. Do not publish a sidecar that names an older staging artifact such as `permit-receipt-main-v2_2_4-ietf126-hardened.zip`.

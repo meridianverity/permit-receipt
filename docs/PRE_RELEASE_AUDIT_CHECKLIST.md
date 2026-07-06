@@ -58,9 +58,10 @@ Expected:
 ## 5. Upload posture
 
 - GitHub release: leave the pre-release checkbox **unchecked** for `v2.2.4-public-eval`.
-- `Latest` is optional; for conservative rollout, do not set it as latest until you decide the repository should advertise it as the default release.
-- Release title should include `Public Evaluation Slice` and `IETF 126 Review Artifact`.
-- Attach the ZIP and SHA-256 file only.
+- `Latest` is a release-manager choice; it is acceptable once this tag is intended to be the active public-evaluation entry point.
+- Release title should be `v2.2.4 Public Evaluation — IETF 126 Review Packet`.
+- Attach the ZIP and SHA-256 sidecar only. ZIP: `permit-receipt-ref-eval-v2_2_4-public-eval.zip`. Sidecar: `permit-receipt-ref-eval-v2_2_4-public-eval.zip.sha256`.
+- Confirm the sidecar line names `permit-receipt-ref-eval-v2_2_4-public-eval.zip` exactly; do not ship a stale sidecar naming `permit-receipt-main-v2_2_4-ietf126-hardened.zip`.
 - Do not attach patent PDFs, claim charts, legal analyses, partner materials, or private annexes.
 
 ## 6. Human review gate

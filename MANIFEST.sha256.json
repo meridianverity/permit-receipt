@@ -122,14 +122,14 @@
       "sha256": "427f49326e52eeab9e4c089dc77fac792ece6b5711dce81a420853ffc7a82b5e"
     },
     {
-      "bytes": 2188,
+      "bytes": 2524,
       "path": "docs/GITHUB_RELEASE_BODY.md",
-      "sha256": "f153bc8eeea2de03a7efa63be34c8b8ce18ca922cdd88264a0f57072a9a860cc"
+      "sha256": "0fec000f05b64c621bf97b209c59cf2282c7bc01eff79c5292e4af13fc018e40"
     },
     {
-      "bytes": 2897,
+      "bytes": 3659,
       "path": "docs/GITHUB_UPLOAD_CHECKLIST.md",
-      "sha256": "22826a4950d03adbc9525803083c9b0cc921aef8e75da0d88984b462a2f76759"
+      "sha256": "e31831efe26f658a37a16202e9c449eef4e572e2d9f7519f8d992ade8ca77491"
     },
     {
       "bytes": 687,
@@ -142,9 +142,9 @@
       "sha256": "0b778be456dda819ddde67cee32e7d070874fda7fb6c7a65effd8ccb094cdbd5"
     },
     {
-      "bytes": 1023,
+      "bytes": 1812,
       "path": "docs/IETF126_RELEASE_POINTER_LOCK.md",
-      "sha256": "b03fc22608dcd0cac13df916f5252b7342fdce5d7e700e7a145115f4815b65a6"
+      "sha256": "dcb516cd9a1dae8d13fd1af1ec0c01f345235ea189ca9e28fe6fead6b58a2dfa"
     },
     {
       "bytes": 4369,
@@ -152,9 +152,9 @@
       "sha256": "501998d0022e9807e7a222a4489b4e7a274b8f566bbcfbe1ede17a9994cbc1be"
     },
     {
-      "bytes": 2561,
+      "bytes": 2835,
       "path": "docs/PRE_RELEASE_AUDIT_CHECKLIST.md",
-      "sha256": "aea56560faa430eaca2b519d0dab3d2fe7afd18ad08634c49a194f3f6168dd3c"
+      "sha256": "c1b0a6eba9dbedcd7507927ee990dac5188be4b72f2ad6c0b5bd4aa94f1db130"
     },
     {
       "bytes": 1292,
@@ -427,9 +427,9 @@
       "sha256": "fa0e80f5919e3ae3b002a1e45da51df7c68df5db503f299c26fe323ab8edefa4"
     },
     {
-      "bytes": 1023,
+      "bytes": 1034,
       "path": "ietf126/V2_RELEASE_NOTES.md",
-      "sha256": "5c31833ee1d1a107580e295e449aa8ba8c5d87516772fde507f6105d18181ad7"
+      "sha256": "6969e4e796bb977dc3d9e4e25d247580a6de694765807886c7c2e6d371955937"
     },
     {
       "bytes": 1426,
@@ -872,9 +872,9 @@
       "sha256": "68f178d636f578f4051af99f68b8d193ec8a3dd4e66f052a837a789d7a02458d"
     },
     {
-      "bytes": 3408,
+      "bytes": 5377,
       "path": "tools/check_ietf126_release_pointers.py",
-      "sha256": "7511da85e45a1acfa5dbb66ee6ded702b2688055c35390b2f77bec05798102f8"
+      "sha256": "584c468c3e57393e5eacc13c66115bc5839fbec3aec12d544b2fec82bb8b3638"
     },
     {
       "bytes": 1833,
