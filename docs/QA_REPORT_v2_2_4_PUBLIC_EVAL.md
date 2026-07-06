@@ -12,10 +12,10 @@ python make_manifest.py                         PASS — 181 static entries
 python verify_manifest.py                       PASS — 181 / 181 static files
 make qa                                         PASS
 make ietf-preflight                              PASS
-python run_vectors.py                           PASS — 64 / 64 vectors
-python -m pytest -q                             PASS — 19 / 19 tests
-python ietf126/run_review_packet.py             PASS — 16 / 16 selected packet checks
-python ietf126/independent_recompute.py          PASS — 16 / 16 recomputation checks
+python run_vectors.py                           PASS — 65 / 65 vectors
+python -m pytest -q                             PASS — 21 / 21 tests
+python ietf126/run_review_packet.py             PASS — 17 / 17 selected packet checks
+python ietf126/independent_recompute.py          PASS — 17 / 17 recomputation checks
 tools/release_gate.py                          PASS — attestation version/digest drift check included
 ```
 
@@ -26,8 +26,8 @@ tools/run_public_eval.py              PASS — 6 / 6 harness steps
 tools/validate_public_eval_packet.py  PASS — ok=true, release_gate_exit=0, release_pointer_check_exit=0
 tools/check_ietf126_release_pointers.py PASS — ok=true, finding_count=0
 verify_manifest.py                    PASS — ok=true, 181 / 181
-ietf126/run_review_packet.py          PASS — runner_mode=full-repository, 16 / 16
-ietf126/independent_recompute.py       PASS — 16 / 16
+ietf126/run_review_packet.py          PASS — runner_mode=full-repository, 17 / 17
+ietf126/independent_recompute.py       PASS — 17 / 17
 ```
 
 ## Public boundary

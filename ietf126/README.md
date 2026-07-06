@@ -61,7 +61,7 @@ make ietf-preflight
 Expected posture:
 
 ```text
-ORPRG public evaluation vectors: 64 / 64 PASS
+ORPRG public evaluation vectors: 65 / 65 PASS
 IETF 126 selected review packet: positive path PASS, selected negative vectors PASS
 Independent recomputation: canonical bytes, action digest, receipt-core digest, selected negative-vector flags, and authorization_ref commitments PASS
 Signature-covered authorization_ref shape checks: PASS for the covered reference case; DENY for name-only, unsigned, mismatched, stale, and unsupported references

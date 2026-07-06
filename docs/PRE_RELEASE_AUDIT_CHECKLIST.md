@@ -49,7 +49,7 @@ make verify
 Expected:
 
 - public evaluation harness: PASS;
-- ORPRG public evaluation vectors: 64/64 PASS;
+- ORPRG public evaluation vectors: 65/65 PASS;
 - pytest: PASS;
 - release gate: PASS;
 - packet validation: PASS;

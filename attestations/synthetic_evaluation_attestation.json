@@ -16,13 +16,13 @@
         "PROVIDER_DECISION_TOKEN_REQUIRED",
         "TETPAY_EVIDENCE_TAMPER_DETECTED"
       ],
-      "orprg_evaluation_vectors": 64
+      "orprg_evaluation_vectors": 65
     },
     "evidence": {
       "hybrid_examples_digest": "sha256:7bcb39186d4873fce1128c199d268d43d4d2ecd9421eadc7483315f7dc6c1b15",
       "hybrid_examples_digest_method": "sha256 over sorted examples/h*.json path + NUL + byte length + NUL + raw bytes + NUL",
       "policy_digest": "sha256:125fad3a3cace7748754e4738325300f77c866b8b011a6b99504e1d0bab20f4f",
-      "vectors_digest": "sha256:fe1b642d4faae9f3a3549b8d91351464322d024f91d945f0b78cb7ab533baffe"
+      "vectors_digest": "sha256:1671a29095272c191f7ef6422721ccc9fd7369522809ac28b54ef08aa0c09cc9"
     },
     "issued_at": "2026-06-05T00:00:00Z",
     "limitations": [
@@ -35,7 +35,7 @@
     "result": "PASS",
     "subject": {
       "validator_components": {
-        "orprg_eval/verifier.py": "sha256:257c423b4ea634068a9b0c40ce56aa8583695c32f99083848ec694944bdc3d0a",
+        "orprg_eval/verifier.py": "sha256:c364842012fc93850695fbcfb9c25a249a9369fe28865e0c77c4c165d3e90b3f",
         "paygate_hybrid/bridge.py": "sha256:e24d0a636cd735010676c6e5d7b66a28c81b375e574ed5139660dc1da1b569d1",
         "paygate_hybrid/hybrid_demo.py": "sha256:7262a415dfc5f8a22f3b27cd472e411f45142dc1c152a65a72e4f74d6e28224a",
         "paygate_poc/providers.py": "sha256:06eaf032ca891fcf0352d36e4eff1bf209a304c2a77aa6b20a74a7c687d30a63",

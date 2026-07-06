@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "ietf126" / "results"
 SUPPORTED_PROFILE = "CP-JSON-2"
 EXPECTED_TRANSPARENCY_MISSING = "DRC-053_TRANSPARENCY_PROOF_MISSING"
+EXPECTED_SCOPE_VIOLATION = "DRC-005_SCOPE_VIOLATION"
 
 
 def normalize(value: Any) -> Any:
@@ -109,6 +110,15 @@ def main() -> int:
     expected_transparency = transparency_rows[0].get("expected", {}).get("denial_reason_code") if transparency_rows else None
     check(observed_transparency == EXPECTED_TRANSPARENCY_MISSING, checks, "transparency-missing-code-observed", str(observed_transparency))
     check(expected_transparency == EXPECTED_TRANSPARENCY_MISSING, checks, "transparency-missing-code-expected", str(expected_transparency))
+    budget_rows = [row for row in neg_rows if row.get("vector_id") == "KNEG-SCOPE-VIOLATION-BUDGET-OMITTED"]
+    budget_observed = budget_rows[0].get("observed", {}).get("denial_reason_code") if budget_rows else None
+    budget_expected = budget_rows[0].get("expected", {}).get("denial_reason_code") if budget_rows else None
+    check(
+        len(budget_rows) == 1 and budget_observed == EXPECTED_SCOPE_VIOLATION and budget_expected == EXPECTED_SCOPE_VIOLATION,
+        checks,
+        "budget-omission-scope-violation-observed",
+        f"observed={budget_observed}, expected={budget_expected}",
+    )
 
     cross_rows = crossref.get("results", [])
     check(bool(cross_rows), checks, "crossref-rows-present", str(len(cross_rows)))

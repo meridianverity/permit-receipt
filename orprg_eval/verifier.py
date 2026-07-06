@@ -99,8 +99,14 @@ def _scope_code(request: Mapping[str, Any], scope: Mapping[str, Any]) -> Optiona
             return DRC["KEY_RELEASE_DENIED"] if request.get("effect_type") == "KEY_RELEASE" else DRC["SCOPE_VIOLATION"]
     if "key_ops" in scope and request.get("key_op") not in set(scope["key_ops"]):
         return DRC["KEY_RELEASE_DENIED"]
-    if "max_effect_budget" in scope and "max_effect_budget" in request and int(request["max_effect_budget"]) > int(scope["max_effect_budget"]):
-        return DRC["SCOPE_VIOLATION"]
+    if "max_effect_budget" in scope:
+        if "max_effect_budget" not in request:
+            return DRC["SCOPE_VIOLATION"]
+        try:
+            if int(request["max_effect_budget"]) > int(scope["max_effect_budget"]):
+                return DRC["SCOPE_VIOLATION"]
+        except (TypeError, ValueError):
+            return DRC["SCOPE_VIOLATION"]
     return None
 
 

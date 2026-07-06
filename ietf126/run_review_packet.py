@@ -50,6 +50,7 @@ SELECTED_NEGATIVES = [
     "KNEG-MISSING-RECEIPT",
     "KNEG-ACTION-DIGEST-MISMATCH",
     "KNEG-SCOPE-VIOLATION-TARGET",
+    "KNEG-SCOPE-VIOLATION-BUDGET-OMITTED",
     "KNEG-VALIDITY-EXPIRED",
     "KNEG-REVOCATION-STATE-STALE",
     "KNEG-ANTI-REPLAY-NONCE-REUSE",
@@ -245,8 +246,14 @@ def verify_standalone(
     for field in ["effect_type", "interface_id", "action_type", "target_id", "tenant_id", "purpose_id", "representation_class_id"]:
         if scope.get(field) is not None and request.get(field) != scope.get(field):
             return deny(STANDALONE_DRC["SCOPE_VIOLATION"])
-    if request.get("max_effect_budget", 0) > scope.get("max_effect_budget", 0):
-        return deny(STANDALONE_DRC["SCOPE_VIOLATION"])
+    if "max_effect_budget" in scope:
+        if "max_effect_budget" not in request:
+            return deny(STANDALONE_DRC["SCOPE_VIOLATION"])
+        try:
+            if request.get("max_effect_budget", 0) > scope.get("max_effect_budget", 0):
+                return deny(STANDALONE_DRC["SCOPE_VIOLATION"])
+        except TypeError:
+            return deny(STANDALONE_DRC["SCOPE_VIOLATION"])
     nonce = (core.get("anti_replay") or {}).get("nonce")
     if nonce in set(context.get("used_nonces", [])):
         return deny(STANDALONE_DRC["ANTI_REPLAY_FAILURE"])
@@ -284,6 +291,9 @@ def build_selected_vectors_standalone() -> List[Dict[str, Any]]:
     add("KNEG-ACTION-DIGEST-MISMATCH", "Receipt binds a different action digest.", STANDALONE_DRC["ACTION_DIGEST_MISMATCH"], receipt=make_receipt_standalone(wrong_req, nonce="wrong-action"))
     scope = base_scope_standalone(); scope["target_id"] = "approved-only"
     add("KNEG-SCOPE-VIOLATION-TARGET", "Receipt scope excludes requested target.", STANDALONE_DRC["SCOPE_VIOLATION"], receipt=make_receipt_standalone(req, scope=scope, nonce="scope-target"))
+    req_no_budget = copy.deepcopy(req); req_no_budget.pop("max_effect_budget", None)
+    scope = base_scope_standalone()
+    add("KNEG-SCOPE-VIOLATION-BUDGET-OMITTED", "Receipt scope constrains max_effect_budget, so omission by the request fails closed.", STANDALONE_DRC["SCOPE_VIOLATION"], request=req_no_budget, receipt=make_receipt_standalone(req_no_budget, scope=scope, nonce="scope-budget-omitted"))
     add("KNEG-VALIDITY-EXPIRED", "Receipt validity window is expired.", STANDALONE_DRC["VALIDITY_WINDOW_EXPIRED"], receipt=make_receipt_standalone(req, core_overrides={"valid_to": EXPIRED_TO}, nonce="expired"))
     add("KNEG-REVOCATION-STATE-STALE", "Revocation/status evidence is stale.", STANDALONE_DRC["REVOCATION_UNKNOWN_OR_STALE"], revocation=base_revocation_standalone(base_rec, status="stale"))
     add("KNEG-ANTI-REPLAY-NONCE-REUSE", "Receipt nonce reuse is denied.", STANDALONE_DRC["ANTI_REPLAY_FAILURE"], receipt=base_rec, context={**base_context_standalone(), "used_nonces": ["nonce-standalone"]})

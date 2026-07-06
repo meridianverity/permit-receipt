@@ -174,10 +174,10 @@ Expected results:
 ```text
 verify_manifest.py: PASS
 validate_public_eval_packet.py: PASS
-IETF 126 selected review packet: 16 / 16 PASS
-IETF 126 independent recomputation: 16 / 16 PASS
-ORPRG public evaluation vectors: 64 / 64 PASS
-pytest: 19 / 19 PASS
+IETF 126 selected review packet: 17 / 17 PASS
+IETF 126 independent recomputation: 17 / 17 PASS
+ORPRG public evaluation vectors: 65 / 65 PASS
+pytest: 21 / 21 PASS
 release pointer check findings: 0
 release gate findings: 0
 ```

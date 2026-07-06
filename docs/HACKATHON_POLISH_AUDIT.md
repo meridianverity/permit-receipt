@@ -35,10 +35,10 @@ Observed posture after the polish:
 public evaluation harness: PASS
 public packet validation: PASS
 static manifest verification: PASS
-IETF 126 selected review packet: 16 / 16 PASS
-IETF 126 independent recomputation: 16 / 16 PASS
-ORPRG public evaluation vectors: 64 / 64 PASS
-pytest: 19 passed
+IETF 126 selected review packet: 17 / 17 PASS
+IETF 126 independent recomputation: 17 / 17 PASS
+ORPRG public evaluation vectors: 65 / 65 PASS
+pytest: 21 passed
 release gate findings: 0
 ```
 

@@ -230,6 +230,9 @@ def build_vectors() -> List[Dict[str, Any]]:
     out.append(_v("KNEG-SCOPE-VIOLATION-TARGET", "Receipt scope excludes requested target.", "I5", DENY, DRC["SCOPE_VIOLATION"], receipt=make_receipt(scope=scope, nonce="scope-target")))
     scope = base_scope(); scope["max_effect_budget"] = 5
     out.append(_v("KNEG-SCOPE-VIOLATION-BUDGET", "Requested effect budget exceeds receipt scope.", "I5", DENY, DRC["SCOPE_VIOLATION"], receipt=make_receipt(scope=scope, nonce="scope-budget")))
+    req_no_budget = base_request(); req_no_budget.pop("max_effect_budget", None)
+    scope = base_scope()
+    out.append(_v("KNEG-SCOPE-VIOLATION-BUDGET-OMITTED", "Receipt scope constrains max_effect_budget, so omission by the request fails closed.", "I5", DENY, DRC["SCOPE_VIOLATION"], request=req_no_budget, receipt=make_receipt(req_no_budget, scope=scope, nonce="scope-budget-omitted")))
     reqB = base_request(); reqB["tenant_id"] = "tenant-B"
     recB = make_receipt(reqB, scope={**base_scope(), "tenant_id": "tenant-B"}, core_overrides={"tenant_id": "tenant-A"}, nonce="tenant-core")
     ctxB = base_context(); ctxB["resolved_tenant_id"] = "tenant-B"

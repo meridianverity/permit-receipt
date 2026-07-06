@@ -17,7 +17,7 @@ public evaluation harness: PASS
 release gate: PASS
 packet validation: PASS
 strict manifest verification: PASS
-ORPRG evaluation vectors: 64 / 64 PASS
+ORPRG evaluation vectors: 65 / 65 PASS
 pytest suite: PASS
 ```
 
