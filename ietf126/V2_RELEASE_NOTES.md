@@ -12,6 +12,7 @@ V2 is a public-safe submission packet for IETF 126 Hackathon review.
   - standalone packet mode runs from an `ietf126/`-only extraction using Python's standard library.
 - Adds a concrete proposed remote checkpoint slot suitable for the Team Schedule.
 - Removes hardcoded full-release ZIP hash from reviewer-facing README text; publish-time release assets should carry their own checksums.
+- Adds a selected fail-closed negative for scoped `max_effect_budget` omission in both full-repository and standalone packet modes.
 
 ## V2 posture
 

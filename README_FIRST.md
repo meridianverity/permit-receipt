@@ -23,6 +23,10 @@ PayGate is included only as one optional synthetic agentic-commerce profile. It 
 11. `docs/REPRODUCIBILITY.md` — clean-run and manifest expectations.
 12. `docs/PRE_RELEASE_AUDIT_CHECKLIST.md` — public-release audit checklist; filename retained for continuity.
 13. `docs/PUBLIC_STEWARDSHIP.md` — public-good posture.
+14. `docs/RELEASE_LINEAGE_v2_2_5.md` — fresh-tag lineage and same-tag asset-refresh handling.
+15. `docs/RELEASE_PUBLISHING_PROTOCOL_v2_2_5.md` — publish-time digest and no-replacement protocol.
+16. `docs/RELEASE_PROVENANCE_AND_ASSET_BINDING.md` — active release tuple and sidecar-binding guidance.
+17. `docs/REVIEWER_FAST_PATH_v2_2_5.md` — shortest useful reviewer path.
 
 ## Quickstart
 

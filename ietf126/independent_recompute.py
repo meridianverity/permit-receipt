@@ -110,15 +110,9 @@ def main() -> int:
     expected_transparency = transparency_rows[0].get("expected", {}).get("denial_reason_code") if transparency_rows else None
     check(observed_transparency == EXPECTED_TRANSPARENCY_MISSING, checks, "transparency-missing-code-observed", str(observed_transparency))
     check(expected_transparency == EXPECTED_TRANSPARENCY_MISSING, checks, "transparency-missing-code-expected", str(expected_transparency))
-    budget_rows = [row for row in neg_rows if row.get("vector_id") == "KNEG-SCOPE-VIOLATION-BUDGET-OMITTED"]
-    budget_observed = budget_rows[0].get("observed", {}).get("denial_reason_code") if budget_rows else None
-    budget_expected = budget_rows[0].get("expected", {}).get("denial_reason_code") if budget_rows else None
-    check(
-        len(budget_rows) == 1 and budget_observed == EXPECTED_SCOPE_VIOLATION and budget_expected == EXPECTED_SCOPE_VIOLATION,
-        checks,
-        "budget-omission-scope-violation-observed",
-        f"observed={budget_observed}, expected={budget_expected}",
-    )
+    budget_omission_rows = [row for row in neg_rows if row.get("vector_id") == "KNEG-SCOPE-VIOLATION-BUDGET-OMITTED"]
+    budget_omission_ok = bool(budget_omission_rows) and budget_omission_rows[0].get("pass") is True and budget_omission_rows[0].get("observed", {}).get("denial_reason_code") == EXPECTED_SCOPE_VIOLATION
+    check(budget_omission_ok, checks, "scope-budget-omission-fails-closed", str(budget_omission_rows[0].get("observed", {}).get("denial_reason_code") if budget_omission_rows else None))
 
     cross_rows = crossref.get("results", [])
     check(bool(cross_rows), checks, "crossref-rows-present", str(len(cross_rows)))

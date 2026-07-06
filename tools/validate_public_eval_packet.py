@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import json, subprocess, sys
+
+import json
+import subprocess
+import sys
 from pathlib import Path
+
 ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = [
@@ -14,15 +18,27 @@ REQUIRED_FILES = [
     'PATENT-NOTICE.md',
     'SECURITY.md',
     'CONTRIBUTING.md',
+    'VERSION',
+    'RELEASE_NOTES_v2_2_5.md',
     'docs/EVALUATION_BOUNDARY.md',
     'docs/STANDARDS_STATUS_AND_IPR.md',
     'docs/PUBLIC_REVIEWER_GUIDE.md',
     'docs/REPRODUCIBILITY.md',
     'docs/IETF_HACKATHON_PROJECT_PAGE.md',
     'docs/IETF126_RELEASE_POINTER_LOCK.md',
+    'docs/RELEASE_DECISION_RECORD_v2_2_5.md',
+    'docs/GIT_UPDATE_CHECKLIST_v2_2_5.md',
+    'docs/RELEASE_LINEAGE_v2_2_5.md',
+    'docs/RELEASE_PUBLISHING_PROTOCOL_v2_2_5.md',
+    'docs/RELEASE_PROVENANCE_AND_ASSET_BINDING.md',
+    'docs/REVIEWER_FAST_PATH_v2_2_5.md',
+    'docs/QA_REPORT_v2_2_5_PUBLIC_EVAL.md',
     'tools/release_gate.py',
-    'tools/run_public_eval.py',
+    'tools/check_release_lineage.py',
     'tools/check_ietf126_release_pointers.py',
+    'tools/build_release_asset.py',
+    'tools/verify_release_artifact.py',
+    'tools/run_public_eval.py',
     'evaluation_vectors/vectors.json',
     'ietf126/README.md',
     'ietf126/run_review_packet.py',
@@ -46,23 +62,26 @@ REQUIRED_README_PHRASES = [
 
 
 def main() -> int:
-    missing = [p for p in REQUIRED_FILES if not (ROOT/p).exists()]
-    readme = (ROOT/'README.md').read_text(encoding='utf-8') if (ROOT/'README.md').exists() else ''
+    missing = [p for p in REQUIRED_FILES if not (ROOT / p).exists()]
+    readme = (ROOT / 'README.md').read_text(encoding='utf-8') if (ROOT / 'README.md').exists() else ''
     missing_phrases = [phrase for phrase in REQUIRED_README_PHRASES if phrase not in readme]
-    rc = subprocess.call([sys.executable, str(ROOT/'tools/release_gate.py')])
-    pointer_rc = subprocess.call([sys.executable, str(ROOT/'tools/check_ietf126_release_pointers.py')])
+    rc = subprocess.call([sys.executable, str(ROOT / 'tools/release_gate.py')])
+    lineage_rc = subprocess.call([sys.executable, str(ROOT / 'tools/check_release_lineage.py')])
+    pointer_rc = subprocess.call([sys.executable, str(ROOT / 'tools/check_ietf126_release_pointers.py')])
     report = {
-        'ok': not missing and not missing_phrases and rc == 0 and pointer_rc == 0,
+        'ok': not missing and not missing_phrases and rc == 0 and lineage_rc == 0 and pointer_rc == 0,
         'missing': missing,
         'missing_readme_phrases': missing_phrases,
         'release_gate_exit': rc,
+        'release_lineage_check_exit': lineage_rc,
         'release_pointer_check_exit': pointer_rc,
-        'artifact': 'PermitReceipt Public Evaluation Slice v2.2.4',
+        'artifact': 'PermitReceipt Public Evaluation Slice v2.2.5',
     }
-    (ROOT/'checks').mkdir(exist_ok=True)
-    (ROOT/'checks'/'public_packet_validation.json').write_text(json.dumps(report, indent=2, sort_keys=True), encoding='utf-8')
+    (ROOT / 'checks').mkdir(exist_ok=True)
+    (ROOT / 'checks' / 'public_packet_validation.json').write_text(json.dumps(report, indent=2, sort_keys=True), encoding='utf-8')
     print(json.dumps(report, indent=2, sort_keys=True))
     return 0 if report['ok'] else 1
+
 
 if __name__ == '__main__':
     raise SystemExit(main())

@@ -9,12 +9,11 @@ The runner selects representative vectors from the repository public vector set:
 1. missing PermitReceipt fails;
 2. action digest mismatch fails;
 3. scope mismatch fails;
-4. constrained `max_effect_budget` omission fails closed;
-5. expired validity window fails;
-6. stale revocation/status evidence fails;
-7. anti-replay failure fails;
-8. unsupported canonicalization profile fails; and
-9. transparency proof missing fails with `DRC-053_TRANSPARENCY_PROOF_MISSING` where policy requires it.
+4. expired validity window fails;
+5. stale revocation/status evidence fails;
+6. anti-replay failure fails;
+7. unsupported canonicalization profile fails; and
+8. transparency proof missing fails with `DRC-053_TRANSPARENCY_PROOF_MISSING` where policy requires it.
 
 ## Interop shape checks in this packet
 

@@ -5,20 +5,29 @@ from orprg_eval.verifier import verify_permit_receipt
 
 def test_scope_constrained_optional_field_cannot_be_omitted_by_request():
     request = base_request()
-    request.pop("max_effect_budget", None)
-    scope = base_scope()
-    receipt = make_receipt(request, scope=scope, nonce="scope-budget-omitted")
+    scope = {
+        "effect_type": "DATA_EGRESS",
+        "interface_id": "egress-gateway-1",
+        "action_type": "POST",
+        "target_id": "partner-api-submit",
+        "tenant_id": "tenant-A",
+        "purpose_id": "support",
+        "representation_class_id": "json-v1",
+        "artifact_id": "artifact:approved",
+        "max_effect_budget": 10,
+    }
+    receipt = make_receipt(request, scope=scope, nonce="scope-artifact-required")
 
     result = verify_permit_receipt(request, receipt, base_policy(), base_revocation(receipt), base_context())
     assert result.decision == DENY
     assert result.denial_reason_code == DRC["SCOPE_VIOLATION"]
 
-
-def test_scope_constrained_optional_field_allows_when_present_and_within_budget():
+def test_scope_constrained_budget_cannot_be_omitted_by_request():
     request = base_request()
-    scope = base_scope()
-    receipt = make_receipt(request, scope=scope, nonce="scope-budget-present")
+    del request["max_effect_budget"]
+    receipt = make_receipt(request, scope=base_scope(), nonce="scope-budget-omitted")
 
     result = verify_permit_receipt(request, receipt, base_policy(), base_revocation(receipt), base_context())
-    assert result.decision == "ALLOW"
-    assert result.denial_reason_code is None
+    assert result.decision == DENY
+    assert result.denial_reason_code == DRC["SCOPE_VIOLATION"]
+

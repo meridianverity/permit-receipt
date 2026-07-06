@@ -15,7 +15,7 @@ Repository:
 https://github.com/meridianverity/permit-receipt
 
 Public evaluation release:
-https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.4-public-eval
+https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.5-public-eval
 
 Remote review packet:
 https://github.com/meridianverity/permit-receipt/tree/main/ietf126

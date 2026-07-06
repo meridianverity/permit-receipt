@@ -102,10 +102,7 @@ def _scope_code(request: Mapping[str, Any], scope: Mapping[str, Any]) -> Optiona
     if "max_effect_budget" in scope:
         if "max_effect_budget" not in request:
             return DRC["SCOPE_VIOLATION"]
-        try:
-            if int(request["max_effect_budget"]) > int(scope["max_effect_budget"]):
-                return DRC["SCOPE_VIOLATION"]
-        except (TypeError, ValueError):
+        if int(request["max_effect_budget"]) > int(scope["max_effect_budget"]):
             return DRC["SCOPE_VIOLATION"]
     return None
 

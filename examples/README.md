@@ -1,6 +1,6 @@
 # Synthetic Example JSON Files
 
-These examples are generated from the v2.2.4 public evaluation code and contain no live payment data, PAN, SAD, merchant secrets, bank credentials, or live settlement tokens.
+These examples are generated from the v2.2.5 public evaluation code and contain no live payment data, PAN, SAD, merchant secrets, bank credentials, or live settlement tokens.
 
 Key examples:
 

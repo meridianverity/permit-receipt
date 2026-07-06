@@ -34,12 +34,14 @@ def test_standalone_selected_vectors_have_modern_drc_codes() -> None:
     for vector in vectors:
         assert vector["expected"]["denial_reason_code"] == expected_by_vector[vector["vector_id"]]
 
-def test_standalone_scope_constrained_optional_field_cannot_be_omitted_by_request() -> None:
+def test_standalone_denies_scope_required_budget_omission() -> None:
     request = packet.base_request_standalone()
-    request.pop("max_effect_budget", None)
-    scope = packet.base_scope_standalone()
-    receipt = packet.make_receipt_standalone(request, scope=scope, nonce="scope-budget-omitted")
-
+    del request["max_effect_budget"]
+    receipt = packet.make_receipt_standalone(
+        request,
+        scope=packet.base_scope_standalone(),
+        nonce="scope-budget-omitted",
+    )
     observed = packet.verify_standalone(
         request,
         receipt,
@@ -49,3 +51,4 @@ def test_standalone_scope_constrained_optional_field_cannot_be_omitted_by_reques
     )
     assert observed["decision"] == "DENY"
     assert observed["denial_reason_code"] == "DRC-005_SCOPE_VIOLATION"
+

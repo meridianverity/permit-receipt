@@ -1,6 +1,6 @@
 # IETF 126 V2 QA Report
 
-Local QA status after applying the V2 public review packet overlay to the full repository:
+Local QA status after applying the V2 public review packet overlay to the full repository. The selected negative set includes the scope-constrained `max_effect_budget` omission case.
 
 ```text
 python ietf126/run_review_packet.py          PASS — 17 / 17 selected packet checks · full-repository mode

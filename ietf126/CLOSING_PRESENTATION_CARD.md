@@ -26,7 +26,7 @@ Independent recomputation: 17 / 17 PASS
 
 1. `canonical-request.bytes.txt` — the exact UTF-8 bytes hashed.
 2. `one-protected-action.json` — `request`, `action_digest`, PermitReceipt core, and ALLOW result.
-3. `negative-vector-results.json` — fail-closed DENY for missing receipt, digest mismatch, scope violation, constrained budget omission, expired validity, stale status, replay, unsupported canonicalization, and missing transparency proof.
+3. `negative-vector-results.json` — fail-closed DENY for missing receipt, digest mismatch, scope violation, omitted budget under constrained scope, expired validity, stale status, replay, unsupported canonicalization, and missing transparency proof.
 4. `interop-crossref-results.json` — name-only references are non-authorizing; signature-covered cross-reference is the safe public-eval bridge when byte-identical digest equality is not proven.
 
 ## Reviewer asks

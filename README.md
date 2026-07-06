@@ -33,13 +33,23 @@ The IETF 126 packet is under `ietf126/`. It is public-safe, synthetic, remote-re
 
 Current public evaluation tag:
 
-`v2.2.4-public-eval`
+`v2.2.5-public-eval`
+
+Current release asset:
+
+`permit-receipt-ref-eval-v2_2_5-public-eval.zip`
+
+Current checksum sidecar:
+
+`permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256`
 
 Release status:
 
 Public evaluation release. Not production software.
 
-Release asset hashes should be verified from the GitHub release assets generated at publication time. Do not treat an overlay ZIP hash as the full release artifact hash. Active IETF reviewer-facing release pointers are checked by `python tools/check_ietf126_release_pointers.py` and must point to `v2.2.4-public-eval`.
+Release-lineage hygiene: this fresh tag is the canonical reviewer-facing pointer for the current public-evaluation packet. Do not replace release assets under this tag after checksum publication. If any byte changes, issue a fresh tag and fresh checksum.
+
+Release asset hashes should be verified from the GitHub release assets generated at publication time. Do not treat an overlay ZIP hash as the full release artifact hash. Active IETF reviewer-facing release pointers are checked by `python tools/check_ietf126_release_pointers.py` and must point to `v2.2.5-public-eval`.
 
 ## Related public materials
 
@@ -62,6 +72,10 @@ Before interpreting this repository as a technical or standards artifact, review
 * `docs/PRE_RELEASE_AUDIT_CHECKLIST.md`
 * `docs/PUBLIC_STEWARDSHIP.md`
 * `docs/IETF126_RELEASE_POINTER_LOCK.md`
+* `docs/RELEASE_PUBLISHING_PROTOCOL_v2_2_5.md`
+* `docs/RELEASE_LINEAGE_v2_2_5.md`
+* `docs/RELEASE_PROVENANCE_AND_ASSET_BINDING.md`
+* `docs/REVIEWER_FAST_PATH_v2_2_5.md`
 
 ## IETF status
 
@@ -152,19 +166,22 @@ make manifest   # regenerate static source manifest
 make verify     # verify static source manifest
 make validate   # validate required public-evaluation packet files
 make release-pointers # verify active IETF reviewer-facing release links
+make release-lineage # verify v2.2.5 release-lineage tuple
 make ietf126    # IETF Hackathon selected review packet
 make independent-interop # recompute canonical bytes/digests without importing the verifier package
 make ietf-preflight # full Hackathon preflight: eval + validate + verify + IETF packet + vectors + tests
 make qa         # eval + validate + manifest verification
+make package    # build release ZIP + .sha256 sidecar under dist/
 ```
 
 ## Verification
 
-The v2.2.4 public-evaluation release is expected to pass:
+The v2.2.5 public-evaluation release is expected to pass:
 
 ```bash
 python verify_manifest.py
 python tools/validate_public_eval_packet.py
+python tools/check_release_lineage.py
 python tools/check_ietf126_release_pointers.py
 make ietf-preflight
 ```
@@ -174,6 +191,7 @@ Expected results:
 ```text
 verify_manifest.py: PASS
 validate_public_eval_packet.py: PASS
+check_release_lineage.py: PASS
 IETF 126 selected review packet: 17 / 17 PASS
 IETF 126 independent recomputation: 17 / 17 PASS
 ORPRG public evaluation vectors: 65 / 65 PASS
@@ -202,6 +220,7 @@ Before using this artifact, review:
 * `docs/REPRODUCIBILITY.md`
 * `docs/PRE_RELEASE_AUDIT_CHECKLIST.md`
 * `docs/PUBLIC_STEWARDSHIP.md`
+* `docs/RELEASE_PROVENANCE_AND_ASSET_BINDING.md`
 
 
 ## GitHub Web UI / manual upload note
@@ -210,7 +229,7 @@ This release is manual-upload friendly. The public evaluation manifest does not 
 
 ## GitHub update / IETF 126 review
 
-For the GitHub update, publish this as `v2.2.4-public-eval` with the GitHub pre-release checkbox left unchecked. The IETF Hackathon project page should point reviewers to:
+For the GitHub update, publish this as `v2.2.5-public-eval` with the GitHub pre-release checkbox left unchecked. The IETF Hackathon project page should point reviewers to:
 
 ```text
 https://github.com/meridianverity/permit-receipt/tree/main/ietf126
@@ -224,6 +243,7 @@ python ietf126/independent_recompute.py: PASS
 python run_vectors.py: PASS
 python tools/run_public_eval.py: PASS
 python tools/validate_public_eval_packet.py: PASS
+python tools/check_release_lineage.py: PASS
 python tools/check_ietf126_release_pointers.py: PASS
 python verify_manifest.py: PASS
 python -m pytest -q: PASS

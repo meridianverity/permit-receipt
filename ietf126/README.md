@@ -18,6 +18,20 @@ The packet is intentionally small, runnable, and falsifiable. It asks one questi
 - The release hash is not hardcoded in reviewer-facing text; publish-time release assets should carry their own checksums.
 - The packet now includes `independent_recompute.py`, a separate standard-library recomputation check for canonical bytes, digests, selected negative-vector pass flags, and authorization-reference commitments.
 
+## Canonical public-evaluation pointer
+
+Active public evaluation release:
+
+```text
+https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.5-public-eval
+```
+
+Active release asset:
+
+```text
+permit-receipt-ref-eval-v2_2_5-public-eval.zip
+```
+
 ## The 5-minute reviewer path
 
 From the repository root, or from a standalone extraction containing this `ietf126/` directory:

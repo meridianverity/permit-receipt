@@ -237,7 +237,7 @@ def main() -> int:
     check_synthetic_attestation(findings)
 
     report = {
-        "artifact": "PermitReceipt Public Evaluation Slice for AI-Agent External Effects v2.2.4",
+        "artifact": "PermitReceipt Public Evaluation Slice for AI-Agent External Effects v2.2.5",
         "ok": not findings,
         "file_count": len(files),
         "finding_count": len(findings),

@@ -1,6 +1,6 @@
 # IETF 126 Hackathon Polish Audit
 
-This note records the final public-review polish applied after the v2.2.4 public-evaluation packet was already passing QA.
+This note records the final public-review polish applied after the v2.2.5 public-evaluation packet was already passing QA.
 
 ## Code hardening
 
@@ -9,7 +9,7 @@ This note records the final public-review polish applied after the v2.2.4 public
 - Merkle entry construction now rejects duplicate entry keys to avoid ambiguous sorted-set proofs.
 - Scope checking now denies when a receipt scope constrains an optional field and the request omits that field. Omission is not treated as a bypass.
 - Regression tests were added for Merkle proof hardening and scope-constrained optional-field omission.
-- The synthetic evaluation attestation was refreshed to the current v2.2.4 file set, and release-gate validation now catches version or digest drift.
+- The synthetic evaluation attestation was refreshed to the current v2.2.5 file set, and release-gate validation now catches version or digest drift.
 - Bare benchmark defaults are bounded for reviewer sandboxes; full benchmark sizes remain explicit through the aggregate runner.
 
 ## Hackathon reviewer UX

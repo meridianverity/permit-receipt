@@ -140,7 +140,7 @@ def run_hybrid_scenarios() -> dict[str, Any]:
     provider_neutral = run_provider_neutral_scenarios()
     ok = all(s["final_outcome"] == ("ALLOW" if s["scenario"].startswith("H01") else "DENY") for s in scenarios)
     return {
-        "packet": "permit-receipt-ref-eval-v2_2_4",
+        "packet": "permit-receipt-ref-eval-v2_2_5",
         "thesis": "ORPRG-style evaluation core + provider-neutral synthetic profile + optional TSIL-shaped evidence + deterministic public evaluation vector corpus",
         "hybrid_scenarios": scenarios,
         "hybrid_ok": ok,
@@ -173,7 +173,7 @@ def main() -> None:
     if args.json:
         print(json.dumps(result, indent=2, sort_keys=True))
         return
-    print("PermitReceipt Public Evaluation Slice for AI-Agent External Effects v2.2.4")
+    print("PermitReceipt Public Evaluation Slice for AI-Agent External Effects v2.2.5")
     print(f"hybrid_ok: {result['hybrid_ok']}")
     print("")
     for s in result["hybrid_scenarios"]:

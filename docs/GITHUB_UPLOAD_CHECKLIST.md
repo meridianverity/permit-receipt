@@ -1,4 +1,4 @@
-# GitHub Upload Checklist — v2.2.4-public-eval
+# GitHub Upload Checklist — v2.2.5-public-eval
 
 Repository title suggestion:
 
@@ -14,17 +14,23 @@ Repository description suggestion:
 
 Release tag:
 
-`v2.2.4-public-eval`
+`v2.2.5-public-eval`
 
 Release title:
 
-`v2.2.4 Public Evaluation — IETF 126 Review Packet`
+`v2.2.5 Public Evaluation — IETF 126 Review Packet`
 
 Release settings:
 
 ```text
 Pre-release: OFF / unchecked
 Set as latest: release-manager choice; acceptable for the active public-evaluation entry point
+```
+
+Release-lineage rule:
+
+```text
+Do not replace the ZIP or sidecar after publication. If any byte changes after the checksum has been shared, publish a fresh tag and fresh checksum instead.
 ```
 
 Before upload:
@@ -34,8 +40,10 @@ Before upload:
 3. Do not add non-public annexes, claim charts, legal opinions, field-of-use analysis, private implementation mapping, customer data, production logs, credentials, live payment or processor materials, or commercial strategy.
 4. Do not add generated cache or run-output directories such as `__pycache__/`, `.pytest_cache/`, `checks/`, `results/`, `ietf126/results/`, `dist/`, or `build/`.
 5. Do not describe this release as production software, an official IETF reference implementation, an IETF standard, a certification program, a conformance program, a public trust anchor, or a production non-bypassability proof.
-6. Use the exact release asset name `permit-receipt-ref-eval-v2_2_4-public-eval.zip`.
-7. Use the exact checksum sidecar name `permit-receipt-ref-eval-v2_2_4-public-eval.zip.sha256`, and make the sidecar line name the ZIP exactly as `permit-receipt-ref-eval-v2_2_4-public-eval.zip`. Do not reuse older sidecar text such as `permit-receipt-main-v2_2_4-ietf126-hardened.zip`.
+6. Use the exact release asset name `permit-receipt-ref-eval-v2_2_5-public-eval.zip`.
+7. Use the exact checksum sidecar name `permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256`, and make the sidecar line name the ZIP exactly as `permit-receipt-ref-eval-v2_2_5-public-eval.zip`.
+8. Use a post-build GitHub release body generated outside the ZIP. It must include the final SHA-256 value from the generated sidecar and the final asset size. Do not paste an in-repository placeholder line into the published release body.
+9. Leave older public-evaluation tags available as historical references; do not ask reviewers to use them as the active Vienna/IETF pointer.
 
 Pre-upload commands:
 
@@ -44,6 +52,7 @@ python -m pip install -r requirements.txt
 make clean
 python make_manifest.py
 python verify_manifest.py
+python tools/check_release_lineage.py
 python tools/check_ietf126_release_pointers.py
 python ietf126/run_review_packet.py
 python ietf126/independent_recompute.py
@@ -51,19 +60,18 @@ make qa
 make qa-full
 ```
 
-
 Release-asset checksum sidecar:
 
 ```bash
-sha256sum permit-receipt-ref-eval-v2_2_4-public-eval.zip > permit-receipt-ref-eval-v2_2_4-public-eval.zip.sha256
-grep -F "permit-receipt-ref-eval-v2_2_4-public-eval.zip" permit-receipt-ref-eval-v2_2_4-public-eval.zip.sha256
+sha256sum permit-receipt-ref-eval-v2_2_5-public-eval.zip > permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256
+grep -F "permit-receipt-ref-eval-v2_2_5-public-eval.zip" permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256
 ```
 
-Expected checksum sidecar shape:
+Expected checksum sidecar:
 
-```text
-<64-hex-sha256>  permit-receipt-ref-eval-v2_2_4-public-eval.zip
-```
+- exactly one non-empty line;
+- first field: the final publication-time SHA-256 from the generated sidecar;
+- second field: `permit-receipt-ref-eval-v2_2_5-public-eval.zip` exactly.
 
 Expected result:
 
@@ -75,6 +83,7 @@ run_vectors.py: PASS
 pytest: PASS
 ietf126/run_review_packet.py: PASS
 ietf126/independent_recompute.py: PASS
+release lineage check: PASS
 release pointer check: PASS
 ```
 
@@ -87,7 +96,7 @@ https://github.com/meridianverity/permit-receipt/tree/main/ietf126
 IETF release pointer after publishing:
 
 ```text
-https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.4-public-eval
+https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.5-public-eval
 ```
 
 ## Manual-upload friendly option

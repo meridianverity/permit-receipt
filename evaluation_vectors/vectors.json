@@ -1819,6 +1819,117 @@
       "used_capability_nonces": [],
       "used_nonces": []
     },
+    "description": "Receipt scope requires max_effect_budget but request omits it.",
+    "expected": {
+      "decision": "DENY",
+      "denial_reason_code": "DRC-005_SCOPE_VIOLATION"
+    },
+    "invariant": "I5",
+    "permit_receipt": {
+      "authenticity": {
+        "issuer_id": "issuer-operator-synth",
+        "signature": "kDBIcLf3pnBNC8y/g+GWjnlTsMoYAM6QviDRSV6FyiiFZHpG1DG1ZfDwgAO/Qt1kEhB5n/2BfH/Daxst6PepDg=="
+      },
+      "receipt_core": {
+        "action_digest": "fc335ba63dc50d109e0f0bfcd08b54455ca87dc91239ce836072827d8abc2127",
+        "anti_replay": {
+          "nonce": "scope-budget-omitted"
+        },
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "canonicalization_profile_ref": "CP-JSON-2",
+        "epoch_id": 47,
+        "issuer_id": "issuer-operator-synth",
+        "jurisdiction": "US",
+        "permit_provenance_digest": "permit-synth-001",
+        "policy_digest": "policy-digest-synth-v12",
+        "purpose_id": "support",
+        "scope": {
+          "action_type": "POST",
+          "effect_type": "DATA_EGRESS",
+          "interface_id": "egress-gateway-1",
+          "max_effect_budget": 10,
+          "purpose_id": "support",
+          "representation_class_id": "json-v1",
+          "target_id": "partner-api-submit",
+          "tenant_id": "tenant-A"
+        },
+        "tenant_id": "tenant-A",
+        "valid_from": "2026-06-02T00:00:00Z",
+        "valid_to": "2026-06-04T00:00:00Z"
+      }
+    },
+    "policy_state": {
+      "canonicalization_profile_ref": "CP-JSON-2",
+      "checkpoint_max_age_seconds": 3600,
+      "current_epoch_id": 47,
+      "epoch_compatibility": "strict",
+      "max_clock_drift_seconds": 300,
+      "minimum_epoch_id": 47,
+      "now": "2026-06-03T00:00:00Z",
+      "offline_constrained_effect_types": [],
+      "offline_constrained_mode_allowed": false,
+      "policy_digest": "policy-digest-synth-v12",
+      "require_assurance_evidence": false,
+      "require_capability_token": false,
+      "require_identity_binding": false,
+      "require_merkle_revocation_proof": false,
+      "require_permit_provenance": true,
+      "require_purpose": false,
+      "require_signed_revocation_list": true,
+      "require_transparency": false,
+      "revocation_authorities": {
+        "revocation-authority-synth": "3zvvzkQosJ+eTKNF/pq0Rik4InaH30HMBB5pevoPz0k="
+      },
+      "revocation_max_age_seconds": 3600,
+      "transparency_logs": {
+        "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
+      },
+      "trusted_capability_issuers": {
+        "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
+      },
+      "trusted_issuers": {
+        "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
+      }
+    },
+    "request": {
+      "action_type": "POST",
+      "effect_type": "DATA_EGRESS",
+      "interface_id": "egress-gateway-1",
+      "payload_digest": "payload-synth-001",
+      "purpose_id": "support",
+      "representation_class_id": "json-v1",
+      "target_id": "partner-api-submit",
+      "tenant_id": "tenant-A"
+    },
+    "revocation_state": {
+      "last_updated": "2026-06-02T23:59:40Z",
+      "signed_revocation_list": {
+        "authenticity": {
+          "issuer_id": "revocation-authority-synth",
+          "signature": "Ms/jGCMDRPAJEF8jSlMlx95bbh1wqZ7mKo4hrO779jeolbcMmjWz0a7flbEbukJ2bh5fFd0Rrqd3RphjsUBuAw=="
+        },
+        "body": {
+          "issued_at": "2026-06-02T23:59:40Z",
+          "issuer_id": "revocation-authority-synth",
+          "revoked_issuers": [],
+          "revoked_receipt_digests": [],
+          "sequence": 100
+        }
+      },
+      "status": "fresh"
+    },
+    "vector_id": "KNEG-SCOPE-VIOLATION-BUDGET-OMITTED"
+  },
+  {
+    "category": "core",
+    "context": {
+      "jurisdiction": "US",
+      "now": "2026-06-03T00:00:00Z",
+      "resolved_tenant_id": "tenant-A",
+      "used_capability_nonces": [],
+      "used_nonces": []
+    },
     "description": "Requested effect budget exceeds receipt scope.",
     "expected": {
       "decision": "DENY",
@@ -1921,117 +2032,6 @@
       "status": "fresh"
     },
     "vector_id": "KNEG-SCOPE-VIOLATION-BUDGET"
-  },
-  {
-    "category": "core",
-    "context": {
-      "jurisdiction": "US",
-      "now": "2026-06-03T00:00:00Z",
-      "resolved_tenant_id": "tenant-A",
-      "used_capability_nonces": [],
-      "used_nonces": []
-    },
-    "description": "Receipt scope constrains max_effect_budget, so omission by the request fails closed.",
-    "expected": {
-      "decision": "DENY",
-      "denial_reason_code": "DRC-005_SCOPE_VIOLATION"
-    },
-    "invariant": "I5",
-    "permit_receipt": {
-      "authenticity": {
-        "issuer_id": "issuer-operator-synth",
-        "signature": "kDBIcLf3pnBNC8y/g+GWjnlTsMoYAM6QviDRSV6FyiiFZHpG1DG1ZfDwgAO/Qt1kEhB5n/2BfH/Daxst6PepDg=="
-      },
-      "receipt_core": {
-        "action_digest": "fc335ba63dc50d109e0f0bfcd08b54455ca87dc91239ce836072827d8abc2127",
-        "anti_replay": {
-          "nonce": "scope-budget-omitted"
-        },
-        "assurance_level_id": "AL5",
-        "authority_profile_id": "AP-SYNTH-AL5",
-        "canonicalization_profile_ref": "CP-JSON-2",
-        "epoch_id": 47,
-        "issuer_id": "issuer-operator-synth",
-        "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
-        "policy_digest": "policy-digest-synth-v12",
-        "purpose_id": "support",
-        "scope": {
-          "action_type": "POST",
-          "effect_type": "DATA_EGRESS",
-          "interface_id": "egress-gateway-1",
-          "max_effect_budget": 10,
-          "purpose_id": "support",
-          "representation_class_id": "json-v1",
-          "target_id": "partner-api-submit",
-          "tenant_id": "tenant-A"
-        },
-        "tenant_id": "tenant-A",
-        "valid_from": "2026-06-02T00:00:00Z",
-        "valid_to": "2026-06-04T00:00:00Z"
-      }
-    },
-    "policy_state": {
-      "canonicalization_profile_ref": "CP-JSON-2",
-      "checkpoint_max_age_seconds": 3600,
-      "current_epoch_id": 47,
-      "epoch_compatibility": "strict",
-      "max_clock_drift_seconds": 300,
-      "minimum_epoch_id": 47,
-      "now": "2026-06-03T00:00:00Z",
-      "offline_constrained_effect_types": [],
-      "offline_constrained_mode_allowed": false,
-      "policy_digest": "policy-digest-synth-v12",
-      "require_assurance_evidence": false,
-      "require_capability_token": false,
-      "require_identity_binding": false,
-      "require_merkle_revocation_proof": false,
-      "require_permit_provenance": true,
-      "require_purpose": false,
-      "require_signed_revocation_list": true,
-      "require_transparency": false,
-      "revocation_authorities": {
-        "revocation-authority-synth": "3zvvzkQosJ+eTKNF/pq0Rik4InaH30HMBB5pevoPz0k="
-      },
-      "revocation_max_age_seconds": 3600,
-      "transparency_logs": {
-        "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
-      },
-      "trusted_capability_issuers": {
-        "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
-      },
-      "trusted_issuers": {
-        "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
-    },
-    "request": {
-      "action_type": "POST",
-      "effect_type": "DATA_EGRESS",
-      "interface_id": "egress-gateway-1",
-      "payload_digest": "payload-synth-001",
-      "purpose_id": "support",
-      "representation_class_id": "json-v1",
-      "target_id": "partner-api-submit",
-      "tenant_id": "tenant-A"
-    },
-    "revocation_state": {
-      "last_updated": "2026-06-02T23:59:40Z",
-      "signed_revocation_list": {
-        "authenticity": {
-          "issuer_id": "revocation-authority-synth",
-          "signature": "Ms/jGCMDRPAJEF8jSlMlx95bbh1wqZ7mKo4hrO779jeolbcMmjWz0a7flbEbukJ2bh5fFd0Rrqd3RphjsUBuAw=="
-        },
-        "body": {
-          "issued_at": "2026-06-02T23:59:40Z",
-          "issuer_id": "revocation-authority-synth",
-          "revoked_issuers": [],
-          "revoked_receipt_digests": [],
-          "sequence": 100
-        }
-      },
-      "status": "fresh"
-    },
-    "vector_id": "KNEG-SCOPE-VIOLATION-BUDGET-OMITTED"
   },
   {
     "category": "core",

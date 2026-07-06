@@ -2,6 +2,8 @@
 
 Status: PASS.
 
+This revision includes the scope-constrained `max_effect_budget` omission hardening check: a request that omits `max_effect_budget` while the receipt scope constrains it fails closed with `DRC-005_SCOPE_VIOLATION`.
+
 This report records the local checks run before packaging the Git-ready v2.2.4 public evaluation update.
 
 ## Commands

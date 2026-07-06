@@ -13,6 +13,7 @@ Public-safe IETF 126 review update for the PermitReceipt public evaluation slice
 - Added GitHub Actions workflows for public QA and IETF packet review.
 - Regenerated the static source manifest after final file changes.
 - Refreshed the synthetic evaluation attestation and added a release-gate drift check for attestation version and digest fields.
+- Hardened constrained-scope budget checks so a request that omits `max_effect_budget` while the receipt scope constrains it fails closed with `DRC-005_SCOPE_VIOLATION`; added full-repo and IETF selected-vector coverage.
 - Bounded bare `benchmark.py` defaults for reviewer sandboxes while retaining explicit full-run sizes through `run_all.py --full`.
 
 ## Public boundary

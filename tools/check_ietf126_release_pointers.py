@@ -9,9 +9,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CHECKS = ROOT / "checks"
-CURRENT_TAG = "v2.2.4-public-eval"
+CURRENT_TAG = "v2.2.5-public-eval"
 CURRENT_RELEASE_URL = f"https://github.com/meridianverity/permit-receipt/releases/tag/{CURRENT_TAG}"
-CURRENT_ASSET_NAME = "permit-receipt-ref-eval-v2_2_4-public-eval.zip"
+CURRENT_ASSET_NAME = "permit-receipt-ref-eval-v2_2_5-public-eval.zip"
 CURRENT_SIDECAR_NAME = f"{CURRENT_ASSET_NAME}.sha256"
 
 # Active, reviewer-facing files. Historical release notes and decision records are
@@ -34,8 +34,8 @@ CURRENT_URL_REQUIRED_FILES = [
 ]
 
 RELEASE_TAG_RE = re.compile(r"https://github\.com/meridianverity/permit-receipt/releases/tag/([^\s)]+)")
-STALE_TAG_RE = re.compile(r"v2\.2\.[0-3]-public-eval")
-STALE_ASSET_RE = re.compile(r"permit-receipt-main-v2_2_4-ietf126-hardened\.zip|permit-receipt-ref-eval-v2_2_[0-3][^\s`]*\.zip")
+STALE_TAG_RE = re.compile(r"v2\.2\.[0-4]-public-eval")
+STALE_ASSET_RE = re.compile(r"permit-receipt-main-v2_2_[0-5]-ietf126-hardened\.zip|permit-receipt-ref-eval-v2_2_[0-4][^\s`]*\.zip")
 ASSET_REQUIRED_FILES = {
     "docs/GITHUB_RELEASE_BODY.md",
     "docs/GITHUB_UPLOAD_CHECKLIST.md",
@@ -52,16 +52,35 @@ NEGATION_MARKERS = (
     "do not ",
     "must not ",
     "not ",
+    "not current",
+    "not canonical",
     "stale",
     "older",
+    "previous",
+    "historical",
+    "superseded",
+    "supersedes",
+    "review-reference only",
+    "release-lineage",
     "avoid",
     "do not reuse",
     "do not publish",
     "do not ship",
+    "superseded",
+    "historical",
+    "history",
+    "earlier",
+    "previous",
 )
 
 
-def stale_asset_is_negated(line: str, start: int) -> bool:
+def stale_mention_is_historical(line: str, start: int) -> bool:
+    before = line[max(0, start - 160):start].lower()
+    full = line.lower()
+    return any(marker in before or marker in full for marker in NEGATION_MARKERS)
+
+
+def stale_reference_is_historical_or_negated(line: str, start: int) -> bool:
     before = line[max(0, start - 120):start].lower()
     full = line.lower()
     return any(marker in before or marker in full for marker in NEGATION_MARKERS)
@@ -80,16 +99,28 @@ def main() -> int:
         for match in RELEASE_TAG_RE.finditer(text):
             observed_tag = match.group(1).rstrip(".,`>")
             if observed_tag != CURRENT_TAG:
-                findings.append({"path": rel, "kind": "stale_release_url", "detail": observed_tag})
+                line_start = text.rfind("\n", 0, match.start()) + 1
+                line_end = text.find("\n", match.end())
+                if line_end == -1:
+                    line_end = len(text)
+                line = text[line_start:line_end]
+                if not stale_reference_is_historical_or_negated(line, match.start() - line_start):
+                    findings.append({"path": rel, "kind": "stale_release_url", "detail": observed_tag})
         for match in STALE_TAG_RE.finditer(text):
-            findings.append({"path": rel, "kind": "stale_release_tag_text", "detail": match.group(0)})
+            line_start = text.rfind("\n", 0, match.start()) + 1
+            line_end = text.find("\n", match.end())
+            if line_end == -1:
+                line_end = len(text)
+            line = text[line_start:line_end]
+            if not stale_mention_is_historical(line, match.start() - line_start):
+                findings.append({"path": rel, "kind": "stale_release_tag_text", "detail": match.group(0)})
         for match in STALE_ASSET_RE.finditer(text):
             line_start = text.rfind("\n", 0, match.start()) + 1
             line_end = text.find("\n", match.end())
             if line_end == -1:
                 line_end = len(text)
             line = text[line_start:line_end]
-            if not stale_asset_is_negated(line, match.start() - line_start):
+            if not stale_reference_is_historical_or_negated(line, match.start() - line_start):
                 findings.append({"path": rel, "kind": "stale_asset_name_text", "detail": match.group(0)})
         if rel in ASSET_REQUIRED_FILES and CURRENT_ASSET_NAME not in text:
             findings.append({"path": rel, "kind": "canonical_asset_name_missing", "detail": CURRENT_ASSET_NAME})
