@@ -25,7 +25,7 @@ def main() -> int:
         if rel.as_posix() in EXCLUDE_FILES: continue
         entries.append({'path': rel.as_posix(), 'bytes': p.stat().st_size, 'sha256': sha256(p)})
     manifest = {
-        'artifact': 'PermitReceipt Public Evaluation Slice for AI-Agent External Effects v2.2.4',
+        'artifact': 'PermitReceipt Public Evaluation Slice for AI-Agent External Effects v2.2.5',
         'manifest_format': 'static-sha256-list-v2',
         'scope': 'static source/provenance files only; generated checks/results directories are intentionally excluded',
         'excludes': sorted(EXCLUDE_FILES) + sorted(EXCLUDE_DIRS) + ['*.egg-info/'],
