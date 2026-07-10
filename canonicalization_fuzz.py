@@ -89,6 +89,11 @@ def main(equivalent_cases: int = 10000, distinct_cases: int = 10000, seed: int =
         md.append(f"| {k} | {v} |")
     (RESULTS / "canonicalization_fuzz_summary.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2, sort_keys=True))
+    return 0 if (
+        stable == equivalent_cases
+        and distinct == distinct_cases
+        and rejected == 0
+    ) else 1
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
@@ -96,4 +101,4 @@ if __name__ == "__main__":
     ap.add_argument("--distinct", type=int, default=None)
     ap.add_argument("--seed", type=int, default=1337)
     args = ap.parse_args()
-    main(equivalent_cases=args.iterations, distinct_cases=args.distinct or args.iterations, seed=args.seed)
+    raise SystemExit(main(equivalent_cases=args.iterations, distinct_cases=args.distinct or args.iterations, seed=args.seed))

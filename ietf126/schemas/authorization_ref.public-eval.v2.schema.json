@@ -1,46 +1,32 @@
 {
-  "$id": "https://meridianverity.com/schemas/orprg/authorization_ref.public-eval.v2.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meridianverity.com/schemas/orprg/authorization_ref.public-eval.v2.schema.json",
+  "title": "ORPRG public-evaluation authorization_ref v2",
+  "description": "Strict verifier-readable, signature-covered cross-reference shape selected by PermitReceipt public evaluation v2.2.6.",
+  "type": "object",
   "additionalProperties": false,
+  "required": [
+    "ref_profile",
+    "ref_kind",
+    "ref_artifact_digest",
+    "issuer_or_signer",
+    "digest_algorithm",
+    "canonicalization_profile_ref",
+    "domain_sep",
+    "action_commitment",
+    "audience",
+    "scope",
+    "valid_from",
+    "valid_until",
+    "policy_epoch",
+    "anti_replay",
+    "signature_coverage",
+    "status",
+    "verifier_behavior"
+  ],
   "properties": {
-    "action_commitment": {
-      "pattern": "^sha256:[0-9a-f]{64}$",
-      "type": "string"
-    },
-    "anti_replay": {
-      "type": "object"
-    },
-    "audience": {
-      "type": "string"
-    },
-    "canonicalization_profile_ref": {
-      "type": "string"
-    },
-    "digest_algorithm": {
-      "enum": [
-        "sha-256"
-      ],
-      "type": "string"
-    },
-    "domain_sep": {
-      "type": "string"
-    },
-    "issuer_or_signer": {
-      "minLength": 1,
-      "type": "string"
-    },
-    "key_id": {
-      "type": "string"
-    },
-    "policy_epoch": {
-      "type": "string"
-    },
-    "ref_artifact_digest": {
-      "pattern": "^sha256:[0-9a-f]{64}$",
-      "type": "string"
-    },
-    "ref_artifact_id": {
-      "type": "string"
+    "ref_profile": {
+      "const": "orprg.authorization-ref.public-eval.v2"
     },
     "ref_kind": {
       "enum": [
@@ -48,20 +34,126 @@
         "MachineMandate",
         "authorization_credential",
         "other"
-      ],
-      "type": "string"
+      ]
     },
-    "ref_profile": {
-      "const": "orprg.authorization-ref.public-eval.v2"
+    "ref_artifact_digest": {
+      "$ref": "#/$defs/sha256Digest"
+    },
+    "ref_artifact_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "issuer_or_signer": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "key_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "digest_algorithm": {
+      "const": "sha-256"
+    },
+    "canonicalization_profile_ref": {
+      "const": "CP-JSON-2"
+    },
+    "domain_sep": {
+      "const": "PermitReceipt.authorization_ref.public-eval.v2"
+    },
+    "action_commitment": {
+      "$ref": "#/$defs/sha256Digest"
+    },
+    "audience": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
     },
     "scope": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "effect_type",
+        "interface_id",
+        "action_type",
+        "target_id",
+        "tenant_id",
+        "purpose_id"
+      ],
+      "properties": {
+        "effect_type": {
+          "$ref": "#/$defs/identifier"
+        },
+        "interface_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "action_type": {
+          "$ref": "#/$defs/identifier"
+        },
+        "target_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "tenant_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "purpose_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "representation_class_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "artifact_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "key_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "key_op": {
+          "$ref": "#/$defs/identifier"
+        },
+        "key_ops": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10000,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/identifier"
+          }
+        },
+        "max_effect_budget": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9223372036854775807
+        }
+      }
+    },
+    "valid_from": {
+      "$ref": "#/$defs/rfc3339"
+    },
+    "valid_until": {
+      "$ref": "#/$defs/rfc3339"
+    },
+    "policy_epoch": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9223372036854775807
+    },
+    "anti_replay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nonce_commitment"
+      ],
+      "properties": {
+        "nonce_commitment": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      }
     },
     "signature_coverage": {
-      "type": "boolean"
+      "const": true
     },
     "status": {
       "enum": [
@@ -69,58 +161,42 @@
         "stale",
         "revoked",
         "unknown"
-      ],
-      "type": "string"
-    },
-    "valid_from": {
-      "type": "string"
-    },
-    "valid_until": {
-      "type": "string"
+      ]
     },
     "verifier_behavior": {
+      "type": "object",
       "additionalProperties": false,
-      "properties": {
-        "on_mismatch": {
-          "enum": [
-            "DENY",
-            "HOLD"
-          ],
-          "type": "string"
-        },
-        "on_unsupported_profile": {
-          "enum": [
-            "DENY",
-            "HOLD"
-          ],
-          "type": "string"
-        },
-        "on_unverifiable": {
-          "enum": [
-            "DENY",
-            "HOLD"
-          ],
-          "type": "string"
-        }
-      },
       "required": [
         "on_unsupported_profile",
         "on_mismatch",
         "on_unverifiable"
       ],
-      "type": "object"
+      "properties": {
+        "on_unsupported_profile": {
+          "const": "DENY"
+        },
+        "on_mismatch": {
+          "const": "DENY"
+        },
+        "on_unverifiable": {
+          "const": "DENY"
+        }
+      }
     }
   },
-  "required": [
-    "ref_profile",
-    "ref_kind",
-    "ref_artifact_digest",
-    "issuer_or_signer",
-    "digest_algorithm",
-    "action_commitment",
-    "signature_coverage",
-    "verifier_behavior"
-  ],
-  "title": "ORPRG public-eval authorization_ref v2",
-  "type": "object"
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "rfc3339": {
+      "type": "string",
+      "pattern": "^(?!.*-00:00$)[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]{1,6})?(Z|[+-][0-9]{2}:[0-9]{2})$"
+    }
+  }
 }

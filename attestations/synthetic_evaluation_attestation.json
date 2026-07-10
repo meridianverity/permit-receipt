@@ -10,49 +10,73 @@
         "H05_DETECT_tetpay_evidence_tamper": "DENY"
       },
       "hybrid_scenarios": 5,
-      "negative_paths": [
-        "ORPRG_SCOPE_DENIAL",
-        "PAYGATE_TSIL_EVIDENCE_DENIAL",
-        "PROVIDER_DECISION_TOKEN_REQUIRED",
-        "TETPAY_EVIDENCE_TAMPER_DETECTED"
+      "ietf126_review_checks": 20,
+      "independent_crypto_checks": 19,
+      "independent_recompute_checks": 17,
+      "orprg_eval_branch_coverage_percent": 98.4419,
+      "orprg_eval_statement_coverage_percent": 99.3281,
+      "orprg_evaluation_vectors": 76,
+      "repository_branch_coverage_percent": 85.1351,
+      "repository_combined_coverage_percent": 92.4744,
+      "repository_statement_coverage_percent": 94.1895,
+      "security_core_branch_coverage_percent": 99.705,
+      "security_core_line_coverage_percent": 100.0,
+      "security_properties": [
+        "strict_typed_ingress",
+        "duplicate_key_rejection",
+        "timezone_invariant_rfc3339",
+        "transactional_anti_replay",
+        "constrained_mode_mandatory_checks",
+        "capability_receipt_binding",
+        "signed_authorization_ref_carrier"
       ],
-      "orprg_evaluation_vectors": 65
+      "strict_pytest_cases": 323
     },
     "evidence": {
-      "hybrid_examples_digest": "sha256:7bcb39186d4873fce1128c199d268d43d4d2ecd9421eadc7483315f7dc6c1b15",
+      "dependency_lock_digest": "sha256:df743541e498f73cfccdb1a8bf6b5a77975614c520ea1ebdedb5525368fe3caa",
+      "hybrid_examples_digest": "sha256:7f6e7b986d869c2746ccd821649e91c6a0d381809d29e893f333bb20b6faf6fd",
       "hybrid_examples_digest_method": "sha256 over sorted examples/h*.json path + NUL + byte length + NUL + raw bytes + NUL",
-      "policy_digest": "sha256:125fad3a3cace7748754e4738325300f77c866b8b011a6b99504e1d0bab20f4f",
-      "vectors_digest": "sha256:4de9e08053225d621fdf1b365215485602ea6282b0c4ad12869d198cb5d21ec8"
+      "policy_digest": "sha256:59fff8b2b1fcf22007e1dbfffabfe157fa7186956f7a4723678e7e7945f5d1d8",
+      "sbom_digest": "sha256:9afb8c11d91620b25b8bfc1b84cba02ced4f5f0708ef1b0e483fc263b636244f",
+      "vectors_digest": "sha256:d34e01ad710bdcde0da632326735332804553a50c051890511734f43e27d3aae"
     },
-    "issued_at": "2026-07-06T00:00:00Z",
+    "issued_at": "2026-07-10T00:00:00Z",
     "limitations": [
       "synthetic_evaluation_only",
+      "not_production_software",
       "no_live_payments",
       "no_pan_or_sad",
-      "not_a_certification_or_conformance_program"
+      "not_an_ietf_standard_or_endorsement",
+      "not_a_certification_or_conformance_program",
+      "no_patent_license_grant"
     ],
-    "packet": "permit-receipt-ref-eval-v2_2_5-public-eval",
+    "packet": "permit-receipt-ref-eval-v2_2_6-public-eval",
     "result": "PASS",
     "subject": {
       "validator_components": {
-        "orprg_eval/verifier.py": "sha256:3270ca44e57a2422b729a4781cc85c98967d0f2a497fde646eb204780a2830df",
-        "paygate_hybrid/bridge.py": "sha256:e24d0a636cd735010676c6e5d7b66a28c81b375e574ed5139660dc1da1b569d1",
-        "paygate_hybrid/hybrid_demo.py": "sha256:1b762cfedda3ac184e502f981661f4a1ac6b6cc789127e95cc00550f4bcdd692",
-        "paygate_poc/providers.py": "sha256:06eaf032ca891fcf0352d36e4eff1bf209a304c2a77aa6b20a74a7c687d30a63",
-        "paygate_poc/verifier.py": "sha256:3463bbbb98722fd42bec526e095b78688eb7e8a8db70647856c7389d427f13c4"
+        "ietf126/independent_crypto_verify.py": "sha256:4135aef252b9827c0795b0466f39c22206ccb620b24ba3f5a2258bd716e29406",
+        "orprg_eval/canonicalization.py": "sha256:2ad787f23ff8885f1de01c7655dfab632fc7bb315dfddfa9d0f5fac89b8158f0",
+        "orprg_eval/crypto.py": "sha256:9268c532b620a6aa4ae82e913f20db32d29134fce6eda7fdcb4a22a8899a5d4d",
+        "orprg_eval/httpio.py": "sha256:4eeb0a2014607164bb79ff731f9e8c0a8e69ffa5b30190eb6ebb39c9f91da718",
+        "orprg_eval/jsonio.py": "sha256:bea4bd85535ada36a4f51c88af0ed79e88556e892379e0ec8fb0f17ceed6a55e",
+        "orprg_eval/persistent_replay.py": "sha256:3a3fecc6ee1907f71117440e487d8b2722be1bc3ca0a0d00c091c61f6b4f707e",
+        "orprg_eval/replay.py": "sha256:f01988d17a95e4d76bda36970d56658cb7ddb6a214ec0a4cb464a96ea4e4283b",
+        "orprg_eval/schema.py": "sha256:3d62e431f1fcad659abbaf980f116584faa58e5f25b3d8e2b7523f7b87e85eee",
+        "orprg_eval/timeutil.py": "sha256:9b45cd4780a80240b4ada4ad7bba56c286d723194c6822e831b953625bd5f400",
+        "orprg_eval/verifier.py": "sha256:aa7ef6b59c799d1c4c39fd938da07b6966de14712de71134dd51516963fbe525"
       },
-      "validator_id": "permit-receipt-ref-eval-v2.2.5-public-eval"
+      "validator_id": "permit-receipt-ref-eval-v2.2.6-public-eval"
     },
     "validity": {
-      "not_after": "2026-12-31T23:59:59Z",
-      "not_before": "2026-07-06T00:00:00Z",
-      "revocation_reference": "synthetic://permit-receipt-ref/v2.2.5/evaluation/status"
+      "not_after": "2027-01-31T23:59:59Z",
+      "not_before": "2026-07-10T00:00:00Z",
+      "revocation_reference": "synthetic://permit-receipt-ref/v2.2.6/evaluation/status"
     },
-    "version": "2.2.5-public-eval"
+    "version": "2.2.6-public-eval"
   },
   "integrity_note": {
-    "canonical_note": "No patent license, trademark license, service mark license, product implementation right, certification right, compliance approval, or endorsement is granted.",
-    "description": "This artifact is a synthetic evaluation attestation for reproducibility review only. It is not a production attestation, certification program output, public trust anchor, security warranty, or compliance approval.",
+    "canonical_note": "No patent license, trademark license, service mark license, product implementation right, certification right, conformance-program right, compliance approval, or endorsement is granted.",
+    "description": "Reproducibility metadata only; not a production attestation, security warranty, compliance approval, certification output, or trust anchor.",
     "type": "synthetic_public_evaluation_metadata"
   }
 }

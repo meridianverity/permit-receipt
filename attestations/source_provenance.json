@@ -1,0 +1,63 @@
+{
+  "_type": "https://in-toto.io/Statement/v1",
+  "predicate": {
+    "buildDefinition": {
+      "buildType": "https://meridianverity.com/buildtypes/permit-receipt-source-slice/v1",
+      "externalParameters": {
+        "tag": "v2.2.6-public-eval",
+        "version": "2.2.6-public-eval"
+      },
+      "internalParameters": {
+        "excluded_self": "attestations/source_provenance.json",
+        "excluded_static_manifests": [
+          "MANIFEST.json",
+          "MANIFEST.sha256.json"
+        ],
+        "inventory_algorithm": "sorted path + NUL + decimal byte length + NUL + lowercase SHA-256 + NUL"
+      },
+      "resolvedDependencies": [
+        {
+          "digest": {
+            "sha256": "df743541e498f73cfccdb1a8bf6b5a77975614c520ea1ebdedb5525368fe3caa"
+          },
+          "uri": "requirements-lock-py313-linux-x86_64.txt"
+        },
+        {
+          "digest": {
+            "sha256": "9afb8c11d91620b25b8bfc1b84cba02ced4f5f0708ef1b0e483fc263b636244f"
+          },
+          "uri": "sbom.cdx.json"
+        }
+      ]
+    },
+    "runDetails": {
+      "builder": {
+        "id": "https://github.com/meridianverity/permit-receipt/tools/generate_supply_chain_metadata.py"
+      },
+      "byproducts": [
+        {
+          "content": "230",
+          "name": "source-entry-count"
+        },
+        {
+          "content": "This statement binds the deterministic source-tree digest. Final publication must additionally bind the exact Git commit in the external release provenance and signed tag.",
+          "name": "commit-binding"
+        }
+      ],
+      "metadata": {
+        "finishedOn": "2026-07-10T00:00:00Z",
+        "invocationId": "v2.2.6-public-eval",
+        "startedOn": "2026-07-10T00:00:00Z"
+      }
+    }
+  },
+  "predicateType": "https://slsa.dev/provenance/v1",
+  "subject": [
+    {
+      "digest": {
+        "sha256": "f5e80fa138f6a1bf67dadf043caf231c4e1991a3debaefbeb95e97b26411c2cd"
+      },
+      "name": "PermitReceipt Public Evaluation Slice for AI-Agent External Effects v2.2.6"
+    }
+  ]
+}

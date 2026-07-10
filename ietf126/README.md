@@ -23,13 +23,13 @@ The packet is intentionally small, runnable, and falsifiable. It asks one questi
 Active public evaluation release:
 
 ```text
-https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.5-public-eval
+https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.6-public-eval
 ```
 
 Active release asset:
 
 ```text
-permit-receipt-ref-eval-v2_2_5-public-eval.zip
+permit-receipt-ref-eval-v2_2_6-public-eval.zip
 ```
 
 ## The 5-minute reviewer path
@@ -39,6 +39,7 @@ From the repository root, or from a standalone extraction containing this `ietf1
 ```bash
 python ietf126/run_review_packet.py
 python ietf126/independent_recompute.py
+python ietf126/independent_crypto_verify.py
 cat ietf126/results/review-summary.md
 ```
 
@@ -64,6 +65,7 @@ python -m pip install -r requirements.txt
 python run_vectors.py
 python ietf126/run_review_packet.py
 python ietf126/independent_recompute.py
+python ietf126/independent_crypto_verify.py
 python tools/run_public_eval.py
 python tools/validate_public_eval_packet.py
 python tools/check_ietf126_release_pointers.py
@@ -75,7 +77,7 @@ make ietf-preflight
 Expected posture:
 
 ```text
-ORPRG public evaluation vectors: 65 / 65 PASS
+ORPRG public evaluation vectors: 76 / 76 PASS
 IETF 126 selected review packet: positive path PASS, selected negative vectors PASS
 Independent recomputation: canonical bytes, action digest, receipt-core digest, selected negative-vector flags, and authorization_ref commitments PASS
 Signature-covered authorization_ref shape checks: PASS for the covered reference case; DENY for name-only, unsigned, mismatched, stale, and unsupported references

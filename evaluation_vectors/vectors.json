@@ -6,7 +6,9 @@
       "now": "2026-06-03T00:00:00Z",
       "resolved_tenant_id": "tenant-A",
       "used_capability_nonces": [],
-      "used_nonces": []
+      "used_nonces": [
+        "nonce-KPOS-BASELINE-ALLOW"
+      ]
     },
     "description": "Valid receipt, signed revocation list, current epoch, exact action.",
     "expected": {
@@ -17,7 +19,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "Vik8QXCHkmZCuigs3mRBpzsTfX4peF0ExTbRRbm7ideAp37JRDaX7hRMGZfB3sLdu2JNTDn7NVWNYz1B09LzCg=="
+        "signature": "Zw8ur35v/gpJiR2jyIl0+Vg1UKYtEo8rvY7NOkoWKcGslJ36Gd9IRPrfIs6WYt9Kh8nP1f1p1/2IMTEP2w8iDA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -30,7 +32,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -74,12 +76,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -118,7 +129,9 @@
       "now": "2026-06-03T00:00:00Z",
       "resolved_tenant_id": "tenant-A",
       "used_capability_nonces": [],
-      "used_nonces": []
+      "used_nonces": [
+        "nonce-KPOS-MERKLE"
+      ]
     },
     "description": "Valid signed checkpoint plus receipt/issuer non-inclusion proofs allow.",
     "expected": {
@@ -129,7 +142,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "RI6LwpdzoZoJuVN6ojSQqihpHZmfLsEPSgH/Tgd+D5bddbjxRFXngDY0hlkmioRqVr5TYKV9rIYJX311F0E0CQ=="
+        "signature": "zy2fkppYOnRleDl7FD7d7+Xk0UEdNEPoVt3x+bmrF63BWFFjq2QqjqRSUrZaK5h8ZbEY7e/v6pBb3gbkdprAAA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -142,7 +155,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -186,12 +199,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -214,7 +236,7 @@
         },
         "receipt_proof": {
           "proof_type": "non_inclusion",
-          "target_key": "receipt:b6a9768e1f297a0d75effab9d107d30a3a81e0e849409c8a4da8da812576f9b9",
+          "target_key": "receipt:bbdc24ff3d42f8e7fd37d9b0bc5329174e049898403b0b3232553d58d0b9ca78",
           "tree_size": 0
         },
         "signed_checkpoint": {
@@ -252,7 +274,7 @@
       "capability_token": {
         "authenticity": {
           "issuer_id": "capability-issuer-synth",
-          "signature": "6a6wdTQ+Q+lt+86uWyJsPUUQ82V8emwTEn62ktwYWiD28MzgWc2xzexHl0TPlvFTgDYcKN5qYFbhs/2zYMaWBQ=="
+          "signature": "Z78UMmN/5hxPDMtKldYdFUmL4WjSz7OU404pbJmWN4phee8q2zwth7itq50MVnBM3m2QNPt/vfOBuQG575tAAg=="
         },
         "token_core": {
           "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -260,7 +282,7 @@
           "epoch_id": 47,
           "nonce": "cap-KPOS",
           "policy_digest": "policy-digest-synth-v12",
-          "receipt_digest": "46acc5596944a61d79fe02f57567bbde8e5a99a948306b167a4a83799c0ac5f3",
+          "receipt_digest": "e12c7a829b06d4627d370a3ea5c8aa47aa4b2ac04c7cdd54ac04da672111d920",
           "tenant_id": "tenant-A",
           "valid_to": "2026-06-04T00:00:00Z"
         }
@@ -268,8 +290,12 @@
       "jurisdiction": "US",
       "now": "2026-06-03T00:00:00Z",
       "resolved_tenant_id": "tenant-A",
-      "used_capability_nonces": [],
-      "used_nonces": []
+      "used_capability_nonces": [
+        "cap-KPOS"
+      ],
+      "used_nonces": [
+        "nonce-KPOS-CAP"
+      ]
     },
     "description": "Valid audience-bound signed capability token allows dual-enforcement path.",
     "expected": {
@@ -280,7 +306,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "OAv+zlVyt0+3fPiFhdXRWRRO7fEPLDjbSoi4yb84sejjhijAyBPCahuQWvyuQxbWkjhhLpkRCsutiKC0h80UAg=="
+        "signature": "aaAjTcQShqCOjGttkJVYSkQQe3nRDST3nnos8r4EE/qAYT3Mwstc/YxLaCKPq9okQLzd81gPDYIsp4M4WbkrBw=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -293,7 +319,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -337,12 +363,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -416,12 +451,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -497,12 +541,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -576,12 +629,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -630,7 +692,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "3SGCLBz9W4M1IsskJYgVGBWC2P8MZGxTgKTqtoGmA0HCD9ZE18irwT5koXUyATUNP4KzIHlvY9rzD1vj0FMOCg=="
+        "signature": "B0nOULxH9G2oyIQZOhcq1YJWpLJmBqI8g9qZGnNWhrXi0KWSewtBjvjU6qhEmuotFauWr2bTJgYctS+VHsnnBg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -643,7 +705,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "purpose_id": "support",
         "scope": {
           "action_type": "POST",
@@ -686,12 +748,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -741,7 +812,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "GeoBMKVRWa3pUw17+9gnsq/kO6slFqfjlXx5E96kVhMD5yXcQYek894rLyKB6EtV9yGgytHb0cPFYo3mAAAAAAAA"
+        "signature": "8jZ+q1F8Kp+yYYG7spekNn8L5a3axXCnW62SuteTrKHnetGEMReRVpP0rDcB+xkvh8Cu5xwydJwfwt9LAAAAAAAA"
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -754,7 +825,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -798,12 +869,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -853,7 +933,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-rogue-synth",
-        "signature": "of9FMSF7Ciht/AIO8FEF1J7qpaowym2P07v4G6b0uiHNQHrEF0xcQPUSEhos8/7+xP/BVcheYW4/kPGcsXG7CA=="
+        "signature": "uvKNJEtObag/yhW5Lqe7QYrhon5rwfDRyyvauqhUIHfP5yRLgqipQ950HCB1vA+FLD9IyuPi5j7PPHKrep1FDw=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -866,7 +946,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -910,12 +990,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -965,7 +1054,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-rogue-synth",
-        "signature": "hSg5ncoStFR9OECkvUC2OAmOaSAgZDJH19Qk2/KdGyDV1DDiqCTNR7CMgI4PwImBG8Hod9Jr+P4m0TM+NtSWDQ=="
+        "signature": "XrAIHCAwYyuLvhW/e5mdpxe0JjVBYxLOMJ8PJb4qsuZ2L88tDJ6t/VcnPFHnjgUjmwvn2JTmmD7NXcGQMr1fAg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -978,7 +1067,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-rogue-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -1022,12 +1111,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -1077,7 +1175,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "VXYXGvev0irw2kmLaPIT9okPlN2ycb/7Ag1YRjwraOh1nA1TJYRP4+66wKjq5q2o2CBHRqmr1cNazPy/qenPBA=="
+        "signature": "jfkAD6sU92gxxFEZlfxaEL+ePkHUD5KBD0cxV7rCun5qyEKOP4kfF7/OfZmtJxmLNpizFgHDUG/yK3wYX9QLCA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -1090,7 +1188,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "old-policy",
         "purpose_id": "support",
         "scope": {
@@ -1134,12 +1232,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -1189,7 +1296,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "pCdadF3jJMVvKjnSeOVeYlpSW7y3YybCHM78oMQCsTzaEcwH2gXYU/vq8sM2pvHv9TP4gGYAeICj7Q+yJiUnDw=="
+        "signature": "OVypCsVm8ujuIUcWcCXKjaqQCvnQzuWGIfj7QPFfgo7VPuTYlIWNrYAOYEihmdqctkrD8beeKa2Bg6/esri4CA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -1202,7 +1309,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -1246,12 +1353,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -1301,7 +1417,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "427lw/8mIHuivdOEutDgvke9pXypfH9VNr+tcpoYBzIueaatJJsgHPCAHE0A6YQoX+aH7/m5Jeu6l5KbeSZxAw=="
+        "signature": "qu5xkBD40CWZoS+sfTwYTAfZyerSZCEuwAF28/YN074rHjex+6WW7cgWQHqHrHza2H5Oxlcteoy8oHhsf9KoBA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -1314,7 +1430,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -1358,12 +1474,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -1413,7 +1538,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "WhI5ipKIu3xeznEx+Q4u96d4bJy749O+aENebhyi0lxxCH1qcmHyKrhClfttPUW8rUPT0gdJAKTBmZVQE2IvBA=="
+        "signature": "130FCcWDQxp88l2n/OtU5k32Y8pBb/W8lokHH9Mk0P/2K81/kj3vBA9sVXEhMmDJH+M2hlM9Hbi7UV+9Jny5Dw=="
       },
       "receipt_core": {
         "action_digest": "a7d672711f3ffe3ae5b780ea39e3e3b6ebbd08e18c0e213d2d561135e5893e60",
@@ -1426,7 +1551,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -1470,12 +1595,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -1525,7 +1659,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "zNBsbKfE+25SRWeq+db5Y6zZ3UKqBNPKo3zYch5q8z0jaSONLT2u6AphWUD9WyMpTzIjtsOkS51Tn+OY1f79Aw=="
+        "signature": "KbuT1yJNGMHyXlEImOhPDNXkSwcPljgBD/OqFx9w6/D3VxzqLQPPkYgoDKd934MEiKi8eTLt7iyBmcpIuB4mBg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -1538,7 +1672,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -1582,12 +1716,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -1661,12 +1804,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -1716,7 +1868,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "pbSzv2kk+A7yJXBaYIA/WxpfMIw9XhtJdqVMJNb1hof0M5cKgWaSvXRcZhA0sdjHPOVQUHxCP6Lkdru+qvNtCg=="
+        "signature": "EkxvH0JZlDGsWZ1AdOYD5p6pHwbYDdjH1EIhncE3ztULh2SffO3DtKA/Q2U+mm76vfaZ1v6gmqP3UswPWuFQDQ=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -1729,7 +1881,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -1773,12 +1925,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -1828,7 +1989,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "kDBIcLf3pnBNC8y/g+GWjnlTsMoYAM6QviDRSV6FyiiFZHpG1DG1ZfDwgAO/Qt1kEhB5n/2BfH/Daxst6PepDg=="
+        "signature": "05ClYjJfP3OoHpRff4Me9cG1pq640tFgfWWcSKIFdbuLoTXSTcCifbySGR9UTGLar2lxaQJWSP0cK/+qGR/dAA=="
       },
       "receipt_core": {
         "action_digest": "fc335ba63dc50d109e0f0bfcd08b54455ca87dc91239ce836072827d8abc2127",
@@ -1841,7 +2002,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -1885,12 +2046,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -1939,7 +2109,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "LZ/9J4YAgzgjf+JAvQIHzX4XNBhbSsRyrz6essOel6emfe8DrB9fCoIMBwU9ToVY+IS8YWs0CilSu8CesWbJBg=="
+        "signature": "Y4BDreO6HgcQJw4KDLaF5mcub8RBl4QQSQ4QkmyDQJkP666cL+4QEdBJoFZJC5B7W2Z2COwPgR9KLLRfirvbAQ=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -1952,7 +2122,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -1996,12 +2166,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -2051,7 +2230,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "YfuTAvHMm6u7eAWLeXGrL1gdZndh0g8NK3cF5qDnH+qzAXojZbabvstPHAtuYiiNnTy8gnykrzQgLdBOFBM4Dg=="
+        "signature": "4sIV100tJYiYR073wbK4zRHp0rRn17c1tLd3QbPtHS4lwcGk/t4dQVb3D6kyC18gTzpEmbEyldYgbWYpAz3/BA=="
       },
       "receipt_core": {
         "action_digest": "56dbb47cf9388a85909aa453efdd73363b0858248395f898231b865c9030989f",
@@ -2064,7 +2243,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -2108,12 +2287,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -2163,7 +2351,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "wsf2Q9ck5sCo1JJVKuHOU54zQVQR6Yl+E5HZlOR5lhfAgOlhac7iMR4abGBdjgoEMwIicKW94ZufWU/f4qliBw=="
+        "signature": "rNah78g94DxqnZgxE4DT+3SgWdDRrcb9e3uDDiao3vN/DyA+WrDJ1PnYup3h+pHSW8WRyU3rudNTGGiIJ11ZCA=="
       },
       "receipt_core": {
         "action_digest": "56dbb47cf9388a85909aa453efdd73363b0858248395f898231b865c9030989f",
@@ -2176,7 +2364,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -2220,12 +2408,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -2276,7 +2473,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "1zq8i1Z/WLC+N6jYTeJnnpSgwH2pyQ3L+CMoxEJzOtFYr/pkk7BzcXDt62J1t4lCFoSuo0QE49MaR7rIaSpPAA=="
+        "signature": "O/7KjjQNMQ6TUtY4EZrzdZKOFuARbPHxXYIPu52p3DQl93BzQgOYW8Hf01nqtnSExy00i3oFEn7qQzoAjBDgCg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -2289,7 +2486,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "marketing",
         "scope": {
@@ -2333,12 +2530,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -2388,7 +2594,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "f1X3kDC8DPMdj+ngQwcsUFi87CP0DhcrCDSsr0buXLGOsHgv5IPehREBpSpkpEilG+wW5oIATVJg9+K95rPZDQ=="
+        "signature": "77DVdOj22SYlMP1GnW/zO7UcTJ4RbUC6N1YjFBFYckGwEtj0wta4UTHuGgU9NjX9Km7+BBySttGJguy+oSkwCg=="
       },
       "receipt_core": {
         "action_digest": "47df08668f3a843f4b044bb3d51212ac473b0aa10355ee07d0628b948bb53ef1",
@@ -2401,7 +2607,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -2445,12 +2651,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -2503,7 +2718,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "xOK1TwhbBKJ4LjBr0sDyXsQQ1SXGCtcaMQe2PTJvk2tuyXWAkd7JQUaCnRS1LVxdr1BMHu925M0x3GvVKIJwCg=="
+        "signature": "Ey8nn7l7YU8QX3Sc7MEs7Ajhkr8fHSfyiYW8TzS3SGhpnp2JSJLfBicVl2H3Ns2lyRjPoGDSUU/uDFy0VRupAg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -2519,7 +2734,7 @@
         },
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -2563,12 +2778,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -2619,7 +2843,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "tg+UbrS152/GBzD5bMFb5u8TLe7ojKU38cgQtjiCkBgpk8W2NiAYijgAn71JhpxiAF3SxtcGoarfQwbr2G1JDA=="
+        "signature": "byjclCbiUPl+uToTcdUQZJTVjlW+by1FAb29AX66YFnolqgeJXmcFTmbvO0wTkxkrjaiqZb5Uw49VGtaLCqkDA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -2632,7 +2856,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -2676,12 +2900,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -2731,7 +2964,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "mExi5DrYDKbYvpq7e5rwKLpZFRHxsZTpnXNtxpkAXoA3hXl6BmcuPztDtrkom8aPOeHkez7sbq4VCFBTqBFIBQ=="
+        "signature": "pFRmkXUhEra+gB1OBS3IaKiJVvlz1B93BP7wvCqfCv9a5TaBUn26iYneCv5hGxWU3M/cS4u2M2/lzn6MgjAvCg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -2744,7 +2977,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "EU",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -2788,12 +3021,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -2844,7 +3086,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "nHCDGTLIy3B9U7Q4HXnB+dCfWMEc5pKgCdCU6MAUASzCMZEIkr0WOwGLZ0qE3s3wPMqlggS6TleQGpmLY8YmAQ=="
+        "signature": "REsLipLa3YFM9D5jnsaISIFDvFNY2dHRVImd2PEgRYo6mJK91aIQHESjLXQJJ/iI48iR8ggkjAlzupyZvg8ICQ=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -2857,7 +3099,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -2901,12 +3143,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -3012,12 +3263,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -3067,7 +3327,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "ZM4rJjjwyMxGkv3KqXjz2L40UMAEItaol6nbeLWjmg8OYGpgzQ9i6oR8jtlnZYknOU8OgQWZTZTcA+mpkescBw=="
+        "signature": "zuFDemFzD52WPrg5SC2QCx/l3DmORNbgRN84Mt9XmDaSraS27JW+tumDIGpQ8qp+ZH8kbk7Lvh+FtIN2/CvGBA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -3080,7 +3340,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -3124,12 +3384,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -3181,7 +3450,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "yRWN4x2PhLAz1wkkmW7cGT/GBQlHkjDBZJ5QA1XyZucw6P4Z4WyX8AG74DotwDgJUuav8SkHPsUciUTPdLRaBA=="
+        "signature": "xJWWG6r858ae+TgGibGTViF5LzvQZttOHjhwIJGWqbsuhyG5lAtxJBuu8Oh+RTU7Y5Y474YypNoJ3eHZ0ss0Aw=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -3194,7 +3463,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -3238,12 +3507,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -3295,7 +3573,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "rN4bCjRO3zx+8lc08GT8PJCHyKEYuSz7WeXRKsb8VAAgmS4o+w5AP5ybWjoGBO6sjHciNCxb0LkmGGjrTDETBg=="
+        "signature": "giW+PFjvhqHG/sXK9KwCryHd208s3XH28Kc6I+Hkp0LNnrTSjOg7F3eFVv/INIgQlxEG34cgWkoZzq37aA3HAw=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -3308,7 +3586,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -3352,12 +3630,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -3408,7 +3695,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "Gr6dgS+J0H/ce3YlxOXYNoiemIwV9/T/DoDAp2HHG93zSr791qiJQqTJEBhvDpZjuEQWrG7exc7gTve9OJ4ZAA=="
+        "signature": "HGkXrZsa3rDfgIp2ImsgxhDcxpGlP1VHPa4vJqeVa/HosaNxxI2uXEfCegNzv6k690fT4TA8Xc27iGdCkkZxAQ=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -3421,7 +3708,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -3465,12 +3752,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -3521,7 +3817,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "FQ2sL0y7+Z8sVc9h+yjApt23cHVIm7nNl0CVLOHYL2BEIDT19IuCM1BZpo0zdAog3Ru2+uPxB3dNJDLt7BmgBQ=="
+        "signature": "vQbR1M0dy02uskwKgEECLQ/AJqZZ0KmOv/KXMoSai/Sklg358fPc2UTwIOeHYmEBeyQyajHKKCoblua0zDymAQ=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -3534,7 +3830,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -3578,12 +3874,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -3633,7 +3938,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "ND+VoZDal4vkIi/wgvGIpldH7mRCkhOzyj1QYm/f26D0zrROqtqD3bfWwg6myiqCYgQnh4uXF9INIcxk5pxiBg=="
+        "signature": "mGLHQDucw4jwSGzY4HMx9n0Ik/5O26D76OCNLd+rHmU5k387Q35c2kCDsbGUB9jD7m6HJunNj7cXfViayxlqAw=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -3646,7 +3951,7 @@
         "epoch_id": 48,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -3690,12 +3995,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -3745,7 +4059,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "uX/Wgn7j4w2Lrj9jQCzGNBNgc+5Hs1decjBBguDVi6tM92nd626syWxPwSO9CHve1DTWPaKm8SFWgZE53VXAAA=="
+        "signature": "7+C++wP/YoFPtuL7gTCITaXDXqaCH31uUmLxyectbkkkmQ00UCwWYftD5uiKgOmW7exuuVBcLXvA44exBKBuDg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -3758,7 +4072,7 @@
         "epoch_id": 46,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -3802,12 +4116,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -3861,7 +4184,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "GjSoT+RSMkX/lXMes44YOXGIhQVj5aF5XC2RwsEP4IIayneRp/4f+qJsBu4aTCRIeZ0NBp6+PPPnCXFSpNitBQ=="
+        "signature": "SCBJHzSwhsQ5UaBOAQ7rSJlJTTaD6+elnhPZx/q17pNje7PsCEXSsobUuna19L79PvHt5pc5uwkOgC5XvwmKBw=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -3874,7 +4197,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -3918,12 +4241,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -3973,7 +4305,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "lpZVii3I7HqWesgzECIhkhNuJALuePnx7iP/1YDVDlNCCtU0PA4L1s/Lvop28+uuKxYrD7IwiDAkW6M2n/fSAw=="
+        "signature": "9wN3VMDlElEFBJHPkrMDEcmMLieF7TiYdIHhTAe7/E0XrL3NPmshKrlM4teHau5mIBFIvIk2bEEYoQgAK17CDg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -3986,7 +4318,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -4030,12 +4362,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -4072,7 +4413,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "vrQ5wnA/ZR2KBzxVAIdj6Ah4g3QZikza0xdJBDQ+vsypoHyAV50H2eYyNLBOtQgndV6/UnOhLqEbF+I7PKM9Bw=="
+        "signature": "jqsSoEM62TLZ0gdigIY2KYrIy93J7Fk37e6vJ5ckODiLTlyeAlEJgXLes9lSYatqDE0lxhI0JAXJZHk43WtQDA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -4085,7 +4426,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -4129,12 +4470,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -4170,7 +4520,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "nNaSEJYIcaOf/FPhFI/uqNuIDdizPObLgIVR0h1JjMAZb+AU3j1mN7Cw3dpT94uy4+lL8f7XLG62GmEAVDUECg=="
+        "signature": "gPv58VQBtZ0wJOH0sDLJRGBEQ9n5Hj/H+L62AZ4kp6yatU/asqsoNPlhivKtZGpSYHb+idY/W9KUBeEdSYrJCg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -4183,7 +4533,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -4227,12 +4577,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -4282,7 +4641,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "Fw0JPPspk0Hwg96KpMMALNKwrKAwrMj8qLTuXYzx1eCO3FO8f+IcY9HrVHsaealdl79fFJyEnJnX8AV6Vj7ICA=="
+        "signature": "a11oUU+vybZjNK9Q8LyyWoGPbOuq71jubkaE6RC7PuMIc/+XkSSp9Rb9RQZoTr1fFgAkoEmaQ8fOxvvuY7KWCg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -4295,7 +4654,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -4339,12 +4698,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -4362,14 +4730,14 @@
       "signed_revocation_list": {
         "authenticity": {
           "issuer_id": "revocation-authority-synth",
-          "signature": "9uuUS72X/xOdF3ZkR8PaVfIobk4/q241mAA6X25xugaZ2R1xRsN5vJVljImX8pkugn+KQLykJRsxcT53vwl1CQ=="
+          "signature": "DGsB/RxrnpEZ7GZcWjeD84MfSNe8942SW9K2bccUXSZfQcCIjdEvudixY2+b8GNqKeZyO8pJhXn1TT+VrDB9Cw=="
         },
         "body": {
           "issued_at": "2026-06-02T23:59:40Z",
           "issuer_id": "revocation-authority-synth",
           "revoked_issuers": [],
           "revoked_receipt_digests": [
-            "5538974b1d57913441dc4914f8501ba25d827b8a3841d7061abd3c0618cf1627"
+            "a634d7028434c6a8b1f8fa2f91ec607385e560910c69b82447eb0fc7f1b3e002"
           ],
           "sequence": 100
         }
@@ -4396,7 +4764,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "gBQ6Ty5ygL2OS3v8fqu87L9jLj4xTxTipLHKGAoNSAEyRpOwmN9ZHUOVmU5lWhAm2nFnP9gaN9VjkO5aJ+LjBg=="
+        "signature": "6kwHKGDz0mI3UEnhLPT+TXplrXWOpQDlZRAc2lawLxFx5ZcgWnCVzw+JXSvIhOPYi3bFsWrIyQCPihZGfzwBCA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -4409,7 +4777,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -4453,12 +4821,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -4510,7 +4887,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "zgDG8WEeSfizFOLmQl52o80p1PUu8JIU+tVbE5Exycs7JP/6599CZ6MT2eEoQvTvpNmHqJNAfhM1hwrMrKCVCA=="
+        "signature": "NEdIDuBmyA0zUNu3AOi0K1J/t1/b58U7xCZWLjmERdtB5GcV9aiAAeXeEaGJYtkcWr3M5La0q5VcnIqt0asXAw=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -4523,7 +4900,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -4567,12 +4944,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -4622,7 +5008,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "/nH+TVLump4LJwmtXnaNzaL/LNgnnMvK2rcwNUv/EtvglqtJfhWiKteEfl4TlxGHt3C5N8auDRg/h49+E3rTCQ=="
+        "signature": "/RBesvLZyRr6fhswbZNbhP4HZ9GB2gx+CQj6kROs6gdWB6JsmW9qVKpRjf8ecE5nvcReKPQv4JUd5B/GXZpbBg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -4635,7 +5021,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -4679,12 +5065,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -4734,7 +5129,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "/nH+TVLump4LJwmtXnaNzaL/LNgnnMvK2rcwNUv/EtvglqtJfhWiKteEfl4TlxGHt3C5N8auDRg/h49+E3rTCQ=="
+        "signature": "/RBesvLZyRr6fhswbZNbhP4HZ9GB2gx+CQj6kROs6gdWB6JsmW9qVKpRjf8ecE5nvcReKPQv4JUd5B/GXZpbBg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -4747,7 +5142,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -4791,12 +5186,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -4819,7 +5223,7 @@
         },
         "receipt_proof": {
           "proof_type": "non_inclusion",
-          "target_key": "receipt:e4000c1b6c23cc5773626fccd2cdd03188046600473cfefaa8c20875cbb6aa00",
+          "target_key": "receipt:50af98989b7440e2ce8bed5a709f39a579309a6b9c1c9c699e9683fc52faf06c",
           "tree_size": 0
         },
         "signed_checkpoint": {
@@ -4869,7 +5273,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "/nH+TVLump4LJwmtXnaNzaL/LNgnnMvK2rcwNUv/EtvglqtJfhWiKteEfl4TlxGHt3C5N8auDRg/h49+E3rTCQ=="
+        "signature": "/RBesvLZyRr6fhswbZNbhP4HZ9GB2gx+CQj6kROs6gdWB6JsmW9qVKpRjf8ecE5nvcReKPQv4JUd5B/GXZpbBg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -4882,7 +5286,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -4926,12 +5330,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -4954,7 +5367,7 @@
         },
         "receipt_proof": {
           "proof_type": "non_inclusion",
-          "target_key": "receipt:e4000c1b6c23cc5773626fccd2cdd03188046600473cfefaa8c20875cbb6aa00",
+          "target_key": "receipt:50af98989b7440e2ce8bed5a709f39a579309a6b9c1c9c699e9683fc52faf06c",
           "tree_size": 0
         },
         "signed_checkpoint": {
@@ -5004,7 +5417,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "/nH+TVLump4LJwmtXnaNzaL/LNgnnMvK2rcwNUv/EtvglqtJfhWiKteEfl4TlxGHt3C5N8auDRg/h49+E3rTCQ=="
+        "signature": "/RBesvLZyRr6fhswbZNbhP4HZ9GB2gx+CQj6kROs6gdWB6JsmW9qVKpRjf8ecE5nvcReKPQv4JUd5B/GXZpbBg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -5017,7 +5430,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -5061,12 +5474,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -5139,7 +5561,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "/nH+TVLump4LJwmtXnaNzaL/LNgnnMvK2rcwNUv/EtvglqtJfhWiKteEfl4TlxGHt3C5N8auDRg/h49+E3rTCQ=="
+        "signature": "/RBesvLZyRr6fhswbZNbhP4HZ9GB2gx+CQj6kROs6gdWB6JsmW9qVKpRjf8ecE5nvcReKPQv4JUd5B/GXZpbBg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -5152,7 +5574,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -5196,12 +5618,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -5221,8 +5652,8 @@
           "next": {
             "audit_path": [],
             "entry": {
-              "identifier": "some-other-digest",
-              "key": "receipt:some-other-digest",
+              "identifier": "1111111111111111111111111111111111111111111111111111111111111111",
+              "key": "receipt:1111111111111111111111111111111111111111111111111111111111111111",
               "kind": "receipt",
               "reason": "revoked"
             },
@@ -5235,11 +5666,11 @@
           "tree_size": 1
         },
         "receipt_proof": {
-          "next": {
+          "prev": {
             "audit_path": [],
             "entry": {
-              "identifier": "some-other-digest",
-              "key": "receipt:some-other-digest",
+              "identifier": "1111111111111111111111111111111111111111111111111111111111111111",
+              "key": "receipt:1111111111111111111111111111111111111111111111111111111111111111",
               "kind": "receipt",
               "reason": "revoked"
             },
@@ -5247,36 +5678,33 @@
             "proof_type": "inclusion",
             "tree_size": 1
           },
-          "prev": {
-            "audit_path": []
-          },
           "proof_type": "non_inclusion",
           "target_key": "receipt:corrupt",
           "tree_size": 1
         },
         "signed_checkpoint": {
           "checkpoint": {
-            "entries_digest": "30b164f5950219d0c289eec2c1a27452fd2e83c8dc966ee589825939fc3a22ef",
+            "entries_digest": "99273f4cb5fa7e73d8b28b83fdeadf371abeeb8b0d4a4d81052da0d62c518ec1",
             "issued_at": "2026-06-02T23:59:40Z",
             "log_id": "revocation-log-synth",
-            "root_hash": "759a14a4746f81efa5f6447d8a9ea57a3b9528cb4df6b131675faea72c7e1074",
+            "root_hash": "5eb1ef8bc116bebc25ea561f919ccaaefc4c0e8c701ac27adf2fc044fedeed4c",
             "sequence": 100,
             "tree_size": 1
           },
-          "signature": "1+aZHW8tXULKk4jHIqoaYj4xuI3zp2jBDCKC6XccbqkSl9IlKvbU8OPQhUrhys4F+cKtdKhIaOY0Dle5dZypAw=="
+          "signature": "3lBxEeVL6G9QDLstIYrJ1bj5g6pQMY8cPbfxiXEPB2fPU7U9WUHiVA11+aC2uhNPD3dOJ5KVoKgEmbdeasi1CA=="
         }
       },
       "signed_revocation_list": {
         "authenticity": {
           "issuer_id": "revocation-authority-synth",
-          "signature": "NcDUoe8xd3GUnOIP10rU2nLqDWxzdH3OZswsewKQAoBeLGHdgotrAq8R9sBB8pbvqqEX4kTz8ObssWg9Gq16Aw=="
+          "signature": "pouEpsZXpMRqhX0p0TqRtljm1TI+8bwXTqFeVI2Jrn6k/CKgfDj9HRnGQaRIAaolprAJWmEwWNM6DHi2cV6SBA=="
         },
         "body": {
           "issued_at": "2026-06-02T23:59:40Z",
           "issuer_id": "revocation-authority-synth",
           "revoked_issuers": [],
           "revoked_receipt_digests": [
-            "some-other-digest"
+            "1111111111111111111111111111111111111111111111111111111111111111"
           ],
           "sequence": 100
         }
@@ -5303,7 +5731,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "7D3z5o6HmDJwUK4lJzxBCY9UKV4Z2pRdD/4MoXXA2yqSmi2ANrPn95fdU7fjjH17/kdpilFbMSnCMPlVRPA3CQ=="
+        "signature": "BjTQ00y1TvRcvSN8q4NthVA0l7tt6CcIx6bZwlAd15HTJwKmy5b86UIICIg5yETB2eji/Dh2J9Mw7IlCwX+pDg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -5316,7 +5744,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -5360,12 +5788,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -5385,8 +5822,8 @@
           "next": {
             "audit_path": [],
             "entry": {
-              "identifier": "001f56d9c281025894d847f00b999e91629890784ac3ef4bc1750803279232f1",
-              "key": "receipt:001f56d9c281025894d847f00b999e91629890784ac3ef4bc1750803279232f1",
+              "identifier": "aca8f9158892ff3f89272275f45dceecb2548f601fdcf754d0758eca056c0c5b",
+              "key": "receipt:aca8f9158892ff3f89272275f45dceecb2548f601fdcf754d0758eca056c0c5b",
               "kind": "receipt",
               "reason": "revoked"
             },
@@ -5401,8 +5838,8 @@
         "receipt_proof": {
           "audit_path": [],
           "entry": {
-            "identifier": "001f56d9c281025894d847f00b999e91629890784ac3ef4bc1750803279232f1",
-            "key": "receipt:001f56d9c281025894d847f00b999e91629890784ac3ef4bc1750803279232f1",
+            "identifier": "aca8f9158892ff3f89272275f45dceecb2548f601fdcf754d0758eca056c0c5b",
+            "key": "receipt:aca8f9158892ff3f89272275f45dceecb2548f601fdcf754d0758eca056c0c5b",
             "kind": "receipt",
             "reason": "revoked"
           },
@@ -5412,27 +5849,27 @@
         },
         "signed_checkpoint": {
           "checkpoint": {
-            "entries_digest": "bb1cb6c71c3b791e1c73acf1c40d2f0668b10634565b3ffa1b92f68823714e46",
+            "entries_digest": "07cc628f6e1edc02369e7b485805aeabb22a4c9d533f105c2ec65e562c054239",
             "issued_at": "2026-06-02T23:59:40Z",
             "log_id": "revocation-log-synth",
-            "root_hash": "8a219118cd79617dc44876feded62d5238d1466917d6004cd43b371d863fdbb1",
+            "root_hash": "afdff0432b7c61cfe15736780a78b70b28a3b12ea24cf2462c3393394c63e270",
             "sequence": 100,
             "tree_size": 1
           },
-          "signature": "5u8fhF69syDHOPawFbqcYPmCWyh+5BbyUWVzd6AgwItF8+hrigbbfNxgwrfaxDOMdcunbiCqYo1NchCXvm1dCg=="
+          "signature": "ZECZJ0aqEb1RDYKCVBZyE3l4WBY7JKSyhHhHaa/5uyRuWa4bhezQG4eWfzpsryxDy+0FnWBw215GLD82vfBpBw=="
         }
       },
       "signed_revocation_list": {
         "authenticity": {
           "issuer_id": "revocation-authority-synth",
-          "signature": "RaPEd2Q0O+/SQy5ZiD67Xr+GAMaNKVJ6AcLHd2CmN+JaYL/Xt+YxgPXkDoDiafAn4gKWoEoheoavzQMyc9twAQ=="
+          "signature": "N8ibe/yfZSANotJLF6MYu3eEEklT//r7wxeyBVZd87G4umtnuBOt7yJoCqIeXgwlWcqJzXiJNOtCQunDBDldBA=="
         },
         "body": {
           "issued_at": "2026-06-02T23:59:40Z",
           "issuer_id": "revocation-authority-synth",
           "revoked_issuers": [],
           "revoked_receipt_digests": [
-            "001f56d9c281025894d847f00b999e91629890784ac3ef4bc1750803279232f1"
+            "aca8f9158892ff3f89272275f45dceecb2548f601fdcf754d0758eca056c0c5b"
           ],
           "sequence": 100
         }
@@ -5459,7 +5896,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "NDKmBgVm4gnqSHxxa5ibpK/gkEHSD1211iMfK/zmx982bFw39aBs35PNlODfN13tuJdCcDejiYC2l+dp7qvNCQ=="
+        "signature": "odQveNBQD48MWmykSXrR7gCpMTWnBW2yKIg6+UKwYYon5d3+aWwmngPqYY77xRQbH4PhDeUIwUqwQEQ+FGtBCg=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -5472,7 +5909,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -5516,12 +5953,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -5563,7 +6009,7 @@
             "tree_size": 1
           },
           "proof_type": "non_inclusion",
-          "target_key": "receipt:e812fa6887ea5d300fc37a6bae5af3067a1394ba7e27e8c67f030f05bebdd0f4",
+          "target_key": "receipt:3bfcce78e80c6bb058435ca5dbd7b9edd45716f656923c104013ba0c451c37e4",
           "tree_size": 1
         },
         "signed_checkpoint": {
@@ -5615,7 +6061,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "dTLN66X+vN05O6rsG2Cpx+CXyYKc5XqMS2Hvt9IcHAE2VUy/bfrLX3zqjUZxl4Y3Aycv4IJfyNMsHKU6ZuD+Cw=="
+        "signature": "NJjowqTtn3gKZijll15nGdal9Gn8oLhmxzm6e/QPfxM+zCnw8tPXm8ocSIGR9zsofV9cveDIJBcwV+muUkqdCQ=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -5628,7 +6074,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -5672,12 +6118,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -5729,7 +6184,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "GiCFgVv4r84B3XHxL8L1qPIX6ByEjgwP8/i03X4uA2qoMC3GKYTETZc+dnSLiyAmbh36SA/hUtf1gQWEu1pMBQ=="
+        "signature": "7JhxTcsnCwqFSIlv0EhHa3RAXwI/li7O6lRNeYR8qJBo2uMzKK/jUYh7V4itNSVmJfwrdoRhjt7fq3lp2tEVDQ=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -5742,7 +6197,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -5786,12 +6241,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -5841,7 +6305,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "gkHvi2ZijTbsXqp2aNptQ+gnGWLTPf1wQMBkCqfyCtoyKC8vjDc5yKdttCa570uiVoq4FK/CyJMS+oUjEELtBQ=="
+        "signature": "154vrVjIsx5uSc4Q9sG0RDi4fcbM1CrdbfkvdOsyacE84BEKAgdc0DlfdxWphZj/oZ+ecQcKTFwjNaDSseShCQ=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -5854,7 +6318,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -5898,12 +6362,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -5941,7 +6414,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "Y/wStM+8pfnGp3dbwhoUnZ1WBngvfr7OeyrWu8aaRQQ+PPcekiIDj3aeQcPXVnquLxe220fRfOAl9+k2J5RuBw=="
+        "signature": "wrJh8HQVX2L4fJGV/QF2Q3+FaxL+wNQ976JiY2BXTkUQPHc01Eh4pIMiKMFPbrf/JptlNPm1on/VqCVnJafDAQ=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -5954,7 +6427,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -5998,12 +6471,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -6053,7 +6535,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "rALTTprDltpfVl0vMmfAgQ3eHUIZU4kdck8BFrfQODH6ZWLn79feCCJzi2a+H0/2qK6nhmghyHiAhZ7BBWLmBg=="
+        "signature": "1SlW/0a1Y7B0k3YCL0mFKFHT+yuFDLoO9WtqON1YowpT2XBwVkT3xqjBV8dl1Lt7zc52+PZklZcXk5OQ1mmsDg=="
       },
       "receipt_core": {
         "action_digest": "001d272234288249f09aa38422636dc1aa901db5a865b31c685cc3dc036da85f",
@@ -6066,7 +6548,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -6114,12 +6596,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "KEY_OP",
@@ -6173,7 +6664,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "oxR1l9WXRngyORIbOGf2OQOmuseVJ93t0ZPG2t3U/VOkYBet6gjhm3t7W2GeaLcVZwNhPdOF5s+7pOx+VITICA=="
+        "signature": "E9zS41WH4HNlvAIJHiEx1GCZVpInGyHJSXvf6AD6VfldxliGP1m787Ryn63N4iswl4+JHYWfERiLdCic2HKZDg=="
       },
       "receipt_core": {
         "action_digest": "19a6ba98dcd359a092a35a44528f18df11ca88d83399e64cea157175754f5df6",
@@ -6186,7 +6677,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -6234,12 +6725,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "KEY_OP",
@@ -6291,7 +6791,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "S/h3X8RfL6QNZPD9JQBkS6XZ4CgzOkUlQqpX0af1vs84I28PxyCm8Os4bt4wghF4RLr4piM0/GP3xKj4XYNrCA=="
+        "signature": "ZOguVQIROyb/KscrNweGKUvx+3fHd9dh4HKtzDugggpYQet3B4w4ES19i8r+aDjIPAGxNATQRQFFec8Be+hdCA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -6304,7 +6804,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -6348,12 +6848,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -6391,7 +6900,7 @@
       "capability_token": {
         "authenticity": {
           "issuer_id": "capability-issuer-synth",
-          "signature": "CCCCGfeh1SjZMvAGswC2lGy4gl7b5ESWkn3Y+/wLiMSsDy3xJ2vuj9XtnjiRvzfjrAKqiIhrWi0z2GNveCxrCg=="
+          "signature": "CCCCtPcYxPfpoxtcL3ecObB5C3pCrFEkbzWxkb/i/W2+p/4mKASVGZDq4aWUnWzkZDACJUd6cI1xXscSeKVzAQ=="
         },
         "token_core": {
           "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -6399,7 +6908,7 @@
           "epoch_id": 47,
           "nonce": "cap-invalid-sig",
           "policy_digest": "policy-digest-synth-v12",
-          "receipt_digest": "d47c98c1f2a20a6ee92dd6b7fd4a0d4431a6519348ab18fd71eb158de5f2a9bb",
+          "receipt_digest": "9180e28b4a0904ba349b5d591dbbf6c15a03ef47b2f8839589afb38d03afb33e",
           "tenant_id": "tenant-A",
           "valid_to": "2026-06-04T00:00:00Z"
         }
@@ -6419,7 +6928,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "S/h3X8RfL6QNZPD9JQBkS6XZ4CgzOkUlQqpX0af1vs84I28PxyCm8Os4bt4wghF4RLr4piM0/GP3xKj4XYNrCA=="
+        "signature": "ZOguVQIROyb/KscrNweGKUvx+3fHd9dh4HKtzDugggpYQet3B4w4ES19i8r+aDjIPAGxNATQRQFFec8Be+hdCA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -6432,7 +6941,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -6476,12 +6985,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -6519,7 +7037,7 @@
       "capability_token": {
         "authenticity": {
           "issuer_id": "capability-issuer-synth",
-          "signature": "OQckXJzd3ohtaszyc6qzbk4fKavDBX24Rx5J4HYDUcsnBgIUY1KlKiCcFy0zkZeY35WsSoA3zCVwDAyjkm+FCw=="
+          "signature": "Q7WFi+a1r/Tf3eVqwuD4HFDWXtTtvSXf3vVl/tdXsLYfMpGhN8bY39ap2pFFJMx0TYZyuA/GAI+UOjpAkuy3BQ=="
         },
         "token_core": {
           "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -6527,7 +7045,7 @@
           "epoch_id": 47,
           "nonce": "cap-aud",
           "policy_digest": "policy-digest-synth-v12",
-          "receipt_digest": "d47c98c1f2a20a6ee92dd6b7fd4a0d4431a6519348ab18fd71eb158de5f2a9bb",
+          "receipt_digest": "9180e28b4a0904ba349b5d591dbbf6c15a03ef47b2f8839589afb38d03afb33e",
           "tenant_id": "tenant-A",
           "valid_to": "2026-06-04T00:00:00Z"
         }
@@ -6547,7 +7065,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "S/h3X8RfL6QNZPD9JQBkS6XZ4CgzOkUlQqpX0af1vs84I28PxyCm8Os4bt4wghF4RLr4piM0/GP3xKj4XYNrCA=="
+        "signature": "ZOguVQIROyb/KscrNweGKUvx+3fHd9dh4HKtzDugggpYQet3B4w4ES19i8r+aDjIPAGxNATQRQFFec8Be+hdCA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -6560,7 +7078,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -6604,12 +7122,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -6647,7 +7174,7 @@
       "capability_token": {
         "authenticity": {
           "issuer_id": "capability-issuer-synth",
-          "signature": "hg2g9v9zSfyqT0xYs3GYcslsX1M3XklgVQu+xszlaOxKlnsvXoTAfS+QAxEcoDh2PVoAFe6R46QqHOhRpc5TAw=="
+          "signature": "FLQO0YTDZUHw90RFSS+fNJl0BqUnDn+BWe9/+37RqlT86KJMY4heHQ7coiSc5Cu+QQRdv44XrSI1LdTNvYETAQ=="
         },
         "token_core": {
           "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -6655,7 +7182,7 @@
           "epoch_id": 47,
           "nonce": "cap-exp",
           "policy_digest": "policy-digest-synth-v12",
-          "receipt_digest": "d47c98c1f2a20a6ee92dd6b7fd4a0d4431a6519348ab18fd71eb158de5f2a9bb",
+          "receipt_digest": "9180e28b4a0904ba349b5d591dbbf6c15a03ef47b2f8839589afb38d03afb33e",
           "tenant_id": "tenant-A",
           "valid_to": "2026-06-02T00:00:00Z"
         }
@@ -6675,7 +7202,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "S/h3X8RfL6QNZPD9JQBkS6XZ4CgzOkUlQqpX0af1vs84I28PxyCm8Os4bt4wghF4RLr4piM0/GP3xKj4XYNrCA=="
+        "signature": "ZOguVQIROyb/KscrNweGKUvx+3fHd9dh4HKtzDugggpYQet3B4w4ES19i8r+aDjIPAGxNATQRQFFec8Be+hdCA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -6688,7 +7215,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -6732,12 +7259,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -6775,7 +7311,7 @@
       "capability_token": {
         "authenticity": {
           "issuer_id": "capability-issuer-synth",
-          "signature": "n11iDltTqR4HjD0IqS6pQ+Si2M+eXGF64GRXErsXZX9M0P2Q7DoekvxFREjP2NCn7tT6YVVjdyrbvId0OaecAw=="
+          "signature": "MfkydI0dHDLls+r2BDSIs1inmgQ7J7nSoPds/cCCyoTzMsWlhaHVFwFbNWiUEfMcq1aTVcepPIyR6QTmU1rUBw=="
         },
         "token_core": {
           "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -6783,7 +7319,7 @@
           "epoch_id": 47,
           "nonce": "cap-replay",
           "policy_digest": "policy-digest-synth-v12",
-          "receipt_digest": "d47c98c1f2a20a6ee92dd6b7fd4a0d4431a6519348ab18fd71eb158de5f2a9bb",
+          "receipt_digest": "9180e28b4a0904ba349b5d591dbbf6c15a03ef47b2f8839589afb38d03afb33e",
           "tenant_id": "tenant-A",
           "valid_to": "2026-06-04T00:00:00Z"
         }
@@ -6805,7 +7341,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "S/h3X8RfL6QNZPD9JQBkS6XZ4CgzOkUlQqpX0af1vs84I28PxyCm8Os4bt4wghF4RLr4piM0/GP3xKj4XYNrCA=="
+        "signature": "ZOguVQIROyb/KscrNweGKUvx+3fHd9dh4HKtzDugggpYQet3B4w4ES19i8r+aDjIPAGxNATQRQFFec8Be+hdCA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -6818,7 +7354,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -6862,12 +7398,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -6905,7 +7450,7 @@
       "capability_token": {
         "authenticity": {
           "issuer_id": "capability-issuer-synth",
-          "signature": "D8gJKKHFn2plQmDxzZBj3bcah45alHCGM7lhFrNO6LQa/F07Zj0DdTZSbqQId8fKccS6VlNQulOW2+sjq8yKAw=="
+          "signature": "oTjk4ByqwiKBMissuO5/AwOMS/wcDfZY2cpgXiuLjFjpsi3nJ/HwonGUYy8u7AjxZvXULHszcmT0VcumPkPXAA=="
         },
         "token_core": {
           "action_digest": "0000000000000000000000000000000000000000000000000000000000000000",
@@ -6913,7 +7458,7 @@
           "epoch_id": 47,
           "nonce": "cap-action",
           "policy_digest": "policy-digest-synth-v12",
-          "receipt_digest": "d47c98c1f2a20a6ee92dd6b7fd4a0d4431a6519348ab18fd71eb158de5f2a9bb",
+          "receipt_digest": "9180e28b4a0904ba349b5d591dbbf6c15a03ef47b2f8839589afb38d03afb33e",
           "tenant_id": "tenant-A",
           "valid_to": "2026-06-04T00:00:00Z"
         }
@@ -6933,7 +7478,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "S/h3X8RfL6QNZPD9JQBkS6XZ4CgzOkUlQqpX0af1vs84I28PxyCm8Os4bt4wghF4RLr4piM0/GP3xKj4XYNrCA=="
+        "signature": "ZOguVQIROyb/KscrNweGKUvx+3fHd9dh4HKtzDugggpYQet3B4w4ES19i8r+aDjIPAGxNATQRQFFec8Be+hdCA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -6946,7 +7491,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -6990,12 +7535,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -7033,7 +7587,7 @@
       "capability_token": {
         "authenticity": {
           "issuer_id": "capability-issuer-synth",
-          "signature": "VYc++8ISpwfNAARIyEd3fCoVXpgaA3uxw3btqDaiJ2L818se2qEVCbCPP8BbRyBnh7g3gLwf6HJGdZC1VwccAg=="
+          "signature": "OCUvYIu3Cd4uLxoAN2/rnWE1K/zNp0qI9eFYL6i2LHc0k3dwwBkpVxm6yZCqb4f/9nGp9CImg/lyAggkwz11Ag=="
         },
         "token_core": {
           "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -7041,7 +7595,7 @@
           "epoch_id": 47,
           "nonce": "cap-tenant",
           "policy_digest": "policy-digest-synth-v12",
-          "receipt_digest": "d47c98c1f2a20a6ee92dd6b7fd4a0d4431a6519348ab18fd71eb158de5f2a9bb",
+          "receipt_digest": "9180e28b4a0904ba349b5d591dbbf6c15a03ef47b2f8839589afb38d03afb33e",
           "tenant_id": "tenant-B",
           "valid_to": "2026-06-04T00:00:00Z"
         }
@@ -7061,7 +7615,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "S/h3X8RfL6QNZPD9JQBkS6XZ4CgzOkUlQqpX0af1vs84I28PxyCm8Os4bt4wghF4RLr4piM0/GP3xKj4XYNrCA=="
+        "signature": "ZOguVQIROyb/KscrNweGKUvx+3fHd9dh4HKtzDugggpYQet3B4w4ES19i8r+aDjIPAGxNATQRQFFec8Be+hdCA=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -7074,7 +7628,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -7118,12 +7672,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -7163,7 +7726,9 @@
       "partitioned": true,
       "resolved_tenant_id": "tenant-A",
       "used_capability_nonces": [],
-      "used_nonces": []
+      "used_nonces": [
+        "offline-allow"
+      ]
     },
     "description": "Partitioned node allows only explicitly constrained safety heartbeat.",
     "expected": {
@@ -7174,7 +7739,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "02v81X8l0qpPPsSzZRuyvDsR5Uu5MG10+Ba/tBaM0qnYxHsy3JUC2NFt7ZreMFLXDMCci+xbbeupgAFC7cPpCQ=="
+        "signature": "nyzdl1vhZAbDRw3kdKk/rf/iW/6LAEH1E9rnb7t6mSf/hMVSpWaFNOXh7d9rvK+ZwaI+Sk//BiutcpN7NxqUCw=="
       },
       "receipt_core": {
         "action_digest": "238bf072b371c904286f7ea8184be346a879ecb8d52213b485f8febdc431b018",
@@ -7187,7 +7752,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -7233,12 +7798,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "PUBLISH",
@@ -7275,7 +7849,7 @@
     "permit_receipt": {
       "authenticity": {
         "issuer_id": "issuer-operator-synth",
-        "signature": "jhHY+jjkea4WbLDfcscYHb++QNi1QwMHgfdtZ4fgkaE/ac1RBQDrgKN++6QI2LnQ7q5laV/L9z/xnhhSd1k6Cw=="
+        "signature": "n+XYuio6P7IYCbdz3LuA27lYLT0rRb9UyIt6DgCL1XSFdN92F2S7aKTlGkryDR3IUM332HFK+C4MpWufvY22Cw=="
       },
       "receipt_core": {
         "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
@@ -7288,7 +7862,7 @@
         "epoch_id": 47,
         "issuer_id": "issuer-operator-synth",
         "jurisdiction": "US",
-        "permit_provenance_digest": "permit-synth-001",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
         "policy_digest": "policy-digest-synth-v12",
         "purpose_id": "support",
         "scope": {
@@ -7334,12 +7908,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "POST",
@@ -7356,6 +7939,1346 @@
       "status": "missing"
     },
     "vector_id": "KNEG-OFFLINE-NONCONSTRAINED-DENY"
+  },
+  {
+    "category": "v226_adversarial",
+    "context": {
+      "jurisdiction": "US",
+      "now": "2026-06-03T00:00:00Z",
+      "resolved_tenant_id": "tenant-A",
+      "used_capability_nonces": [],
+      "used_nonces": []
+    },
+    "description": "Correctly signed receipt without an anti-replay nonce fails schema validation.",
+    "expected": {
+      "decision": "DENY",
+      "denial_reason_code": "DRC-057_SCHEMA_VALIDATION_FAILURE"
+    },
+    "invariant": "I8",
+    "permit_receipt": {
+      "authenticity": {
+        "issuer_id": "issuer-operator-synth",
+        "signature": "+bTFGPEoJWXjO1aEICn1wSn8VPXAXhX6AmuuSHBgA4hxq+MwdM+99mP0penvd/+eL8dYYjV/veNCK+DMbNCOAQ=="
+      },
+      "receipt_core": {
+        "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
+        "anti_replay": {},
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "canonicalization_profile_ref": "CP-JSON-2",
+        "epoch_id": 47,
+        "issuer_id": "issuer-operator-synth",
+        "jurisdiction": "US",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
+        "policy_digest": "policy-digest-synth-v12",
+        "purpose_id": "support",
+        "scope": {
+          "action_type": "POST",
+          "effect_type": "DATA_EGRESS",
+          "interface_id": "egress-gateway-1",
+          "max_effect_budget": 10,
+          "purpose_id": "support",
+          "representation_class_id": "json-v1",
+          "target_id": "partner-api-submit",
+          "tenant_id": "tenant-A"
+        },
+        "tenant_id": "tenant-A",
+        "valid_from": "2026-06-02T00:00:00Z",
+        "valid_to": "2026-06-04T00:00:00Z"
+      }
+    },
+    "policy_state": {
+      "canonicalization_profile_ref": "CP-JSON-2",
+      "checkpoint_max_age_seconds": 3600,
+      "current_epoch_id": 47,
+      "epoch_compatibility": "strict",
+      "max_clock_drift_seconds": 300,
+      "minimum_epoch_id": 47,
+      "now": "2026-06-03T00:00:00Z",
+      "offline_constrained_effect_types": [],
+      "offline_constrained_mode_allowed": false,
+      "policy_digest": "policy-digest-synth-v12",
+      "require_assurance_evidence": false,
+      "require_capability_token": false,
+      "require_identity_binding": false,
+      "require_merkle_revocation_proof": false,
+      "require_permit_provenance": true,
+      "require_purpose": false,
+      "require_signed_revocation_list": true,
+      "require_transparency": false,
+      "revocation_authorities": {
+        "revocation-authority-synth": "3zvvzkQosJ+eTKNF/pq0Rik4InaH30HMBB5pevoPz0k="
+      },
+      "revocation_max_age_seconds": 3600,
+      "transparency_logs": {
+        "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
+      },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
+      "trusted_capability_issuers": {
+        "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
+      },
+      "trusted_issuers": {
+        "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
+    },
+    "request": {
+      "action_type": "POST",
+      "effect_type": "DATA_EGRESS",
+      "interface_id": "egress-gateway-1",
+      "max_effect_budget": 10,
+      "payload_digest": "payload-synth-001",
+      "purpose_id": "support",
+      "representation_class_id": "json-v1",
+      "target_id": "partner-api-submit",
+      "tenant_id": "tenant-A"
+    },
+    "revocation_state": {
+      "last_updated": "2026-06-02T23:59:40Z",
+      "signed_revocation_list": {
+        "authenticity": {
+          "issuer_id": "revocation-authority-synth",
+          "signature": "Ms/jGCMDRPAJEF8jSlMlx95bbh1wqZ7mKo4hrO779jeolbcMmjWz0a7flbEbukJ2bh5fFd0Rrqd3RphjsUBuAw=="
+        },
+        "body": {
+          "issued_at": "2026-06-02T23:59:40Z",
+          "issuer_id": "revocation-authority-synth",
+          "revoked_issuers": [],
+          "revoked_receipt_digests": [],
+          "sequence": 100
+        }
+      },
+      "status": "fresh"
+    },
+    "vector_id": "KNEG-SIGNED-RECEIPT-NONCE-MISSING"
+  },
+  {
+    "category": "v226_adversarial",
+    "context": {
+      "jurisdiction": "US",
+      "now": "2026-06-03T00:00:00Z",
+      "resolved_tenant_id": "tenant-A",
+      "used_capability_nonces": [],
+      "used_nonces": []
+    },
+    "description": "Correctly signed receipt with a null nonce fails closed.",
+    "expected": {
+      "decision": "DENY",
+      "denial_reason_code": "DRC-057_SCHEMA_VALIDATION_FAILURE"
+    },
+    "invariant": "I8",
+    "permit_receipt": {
+      "authenticity": {
+        "issuer_id": "issuer-operator-synth",
+        "signature": "RhIja4xkUeOlSes2RRp92/DmLqgQCNL5iTLn8VgwFWtR/al2V6ShGFrBHKHep4rNfWvEO7RofXbmqZCb5SEQCg=="
+      },
+      "receipt_core": {
+        "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
+        "anti_replay": {
+          "nonce": null
+        },
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "canonicalization_profile_ref": "CP-JSON-2",
+        "epoch_id": 47,
+        "issuer_id": "issuer-operator-synth",
+        "jurisdiction": "US",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
+        "policy_digest": "policy-digest-synth-v12",
+        "purpose_id": "support",
+        "scope": {
+          "action_type": "POST",
+          "effect_type": "DATA_EGRESS",
+          "interface_id": "egress-gateway-1",
+          "max_effect_budget": 10,
+          "purpose_id": "support",
+          "representation_class_id": "json-v1",
+          "target_id": "partner-api-submit",
+          "tenant_id": "tenant-A"
+        },
+        "tenant_id": "tenant-A",
+        "valid_from": "2026-06-02T00:00:00Z",
+        "valid_to": "2026-06-04T00:00:00Z"
+      }
+    },
+    "policy_state": {
+      "canonicalization_profile_ref": "CP-JSON-2",
+      "checkpoint_max_age_seconds": 3600,
+      "current_epoch_id": 47,
+      "epoch_compatibility": "strict",
+      "max_clock_drift_seconds": 300,
+      "minimum_epoch_id": 47,
+      "now": "2026-06-03T00:00:00Z",
+      "offline_constrained_effect_types": [],
+      "offline_constrained_mode_allowed": false,
+      "policy_digest": "policy-digest-synth-v12",
+      "require_assurance_evidence": false,
+      "require_capability_token": false,
+      "require_identity_binding": false,
+      "require_merkle_revocation_proof": false,
+      "require_permit_provenance": true,
+      "require_purpose": false,
+      "require_signed_revocation_list": true,
+      "require_transparency": false,
+      "revocation_authorities": {
+        "revocation-authority-synth": "3zvvzkQosJ+eTKNF/pq0Rik4InaH30HMBB5pevoPz0k="
+      },
+      "revocation_max_age_seconds": 3600,
+      "transparency_logs": {
+        "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
+      },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
+      "trusted_capability_issuers": {
+        "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
+      },
+      "trusted_issuers": {
+        "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
+    },
+    "request": {
+      "action_type": "POST",
+      "effect_type": "DATA_EGRESS",
+      "interface_id": "egress-gateway-1",
+      "max_effect_budget": 10,
+      "payload_digest": "payload-synth-001",
+      "purpose_id": "support",
+      "representation_class_id": "json-v1",
+      "target_id": "partner-api-submit",
+      "tenant_id": "tenant-A"
+    },
+    "revocation_state": {
+      "last_updated": "2026-06-02T23:59:40Z",
+      "signed_revocation_list": {
+        "authenticity": {
+          "issuer_id": "revocation-authority-synth",
+          "signature": "Ms/jGCMDRPAJEF8jSlMlx95bbh1wqZ7mKo4hrO779jeolbcMmjWz0a7flbEbukJ2bh5fFd0Rrqd3RphjsUBuAw=="
+        },
+        "body": {
+          "issued_at": "2026-06-02T23:59:40Z",
+          "issuer_id": "revocation-authority-synth",
+          "revoked_issuers": [],
+          "revoked_receipt_digests": [],
+          "sequence": 100
+        }
+      },
+      "status": "fresh"
+    },
+    "vector_id": "KNEG-SIGNED-RECEIPT-NONCE-NULL"
+  },
+  {
+    "category": "v226_adversarial",
+    "context": {
+      "jurisdiction": "US",
+      "now": "2026-06-03T00:00:00Z",
+      "resolved_tenant_id": "tenant-A",
+      "used_capability_nonces": [],
+      "used_nonces": []
+    },
+    "description": "Correctly signed receipt with a timezone-naive timestamp is rejected on every host.",
+    "expected": {
+      "decision": "DENY",
+      "denial_reason_code": "DRC-057_SCHEMA_VALIDATION_FAILURE"
+    },
+    "invariant": "I3/I7",
+    "permit_receipt": {
+      "authenticity": {
+        "issuer_id": "issuer-operator-synth",
+        "signature": "j5EK5MrxGpxwQe7QngL1+HkG7KudEUBTp6GMaaWGTMCucFqQ5N6lb70+4GS42CXPbyoXMLk3E7BZ6CkTNWl/Ag=="
+      },
+      "receipt_core": {
+        "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
+        "anti_replay": {
+          "nonce": "signed-naive-time"
+        },
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "canonicalization_profile_ref": "CP-JSON-2",
+        "epoch_id": 47,
+        "issuer_id": "issuer-operator-synth",
+        "jurisdiction": "US",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
+        "policy_digest": "policy-digest-synth-v12",
+        "purpose_id": "support",
+        "scope": {
+          "action_type": "POST",
+          "effect_type": "DATA_EGRESS",
+          "interface_id": "egress-gateway-1",
+          "max_effect_budget": 10,
+          "purpose_id": "support",
+          "representation_class_id": "json-v1",
+          "target_id": "partner-api-submit",
+          "tenant_id": "tenant-A"
+        },
+        "tenant_id": "tenant-A",
+        "valid_from": "2026-06-02T00:00:00",
+        "valid_to": "2026-06-04T00:00:00Z"
+      }
+    },
+    "policy_state": {
+      "canonicalization_profile_ref": "CP-JSON-2",
+      "checkpoint_max_age_seconds": 3600,
+      "current_epoch_id": 47,
+      "epoch_compatibility": "strict",
+      "max_clock_drift_seconds": 300,
+      "minimum_epoch_id": 47,
+      "now": "2026-06-03T00:00:00Z",
+      "offline_constrained_effect_types": [],
+      "offline_constrained_mode_allowed": false,
+      "policy_digest": "policy-digest-synth-v12",
+      "require_assurance_evidence": false,
+      "require_capability_token": false,
+      "require_identity_binding": false,
+      "require_merkle_revocation_proof": false,
+      "require_permit_provenance": true,
+      "require_purpose": false,
+      "require_signed_revocation_list": true,
+      "require_transparency": false,
+      "revocation_authorities": {
+        "revocation-authority-synth": "3zvvzkQosJ+eTKNF/pq0Rik4InaH30HMBB5pevoPz0k="
+      },
+      "revocation_max_age_seconds": 3600,
+      "transparency_logs": {
+        "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
+      },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
+      "trusted_capability_issuers": {
+        "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
+      },
+      "trusted_issuers": {
+        "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
+    },
+    "request": {
+      "action_type": "POST",
+      "effect_type": "DATA_EGRESS",
+      "interface_id": "egress-gateway-1",
+      "max_effect_budget": 10,
+      "payload_digest": "payload-synth-001",
+      "purpose_id": "support",
+      "representation_class_id": "json-v1",
+      "target_id": "partner-api-submit",
+      "tenant_id": "tenant-A"
+    },
+    "revocation_state": {
+      "last_updated": "2026-06-02T23:59:40Z",
+      "signed_revocation_list": {
+        "authenticity": {
+          "issuer_id": "revocation-authority-synth",
+          "signature": "Ms/jGCMDRPAJEF8jSlMlx95bbh1wqZ7mKo4hrO779jeolbcMmjWz0a7flbEbukJ2bh5fFd0Rrqd3RphjsUBuAw=="
+        },
+        "body": {
+          "issued_at": "2026-06-02T23:59:40Z",
+          "issuer_id": "revocation-authority-synth",
+          "revoked_issuers": [],
+          "revoked_receipt_digests": [],
+          "sequence": 100
+        }
+      },
+      "status": "fresh"
+    },
+    "vector_id": "KNEG-SIGNED-RECEIPT-NAIVE-TIMESTAMP"
+  },
+  {
+    "category": "v226_adversarial",
+    "context": {
+      "clock_drift_seconds": -301,
+      "jurisdiction": "US",
+      "now": "2026-06-03T00:00:00Z",
+      "resolved_tenant_id": "tenant-A",
+      "used_capability_nonces": [],
+      "used_nonces": []
+    },
+    "description": "Clock drift beyond the allowed magnitude is denied in either direction.",
+    "expected": {
+      "decision": "DENY",
+      "denial_reason_code": "DRC-022_TIME_SOURCE_UNTRUSTED_OR_DRIFT"
+    },
+    "invariant": "I3",
+    "permit_receipt": {
+      "authenticity": {
+        "issuer_id": "issuer-operator-synth",
+        "signature": "0cAUHu1Kn3Rh5xl342x7yCDF6USIvT9Z3khvtoJPjW6a1S7KlNewjxZMSCWUOq2Q2/pe6Ki+Gbnd/wurJCjNAw=="
+      },
+      "receipt_core": {
+        "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
+        "anti_replay": {
+          "nonce": "nonce-KNEG-NEGATIVE-CLOCK-DRIFT-ABSOLUTE"
+        },
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "canonicalization_profile_ref": "CP-JSON-2",
+        "epoch_id": 47,
+        "issuer_id": "issuer-operator-synth",
+        "jurisdiction": "US",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
+        "policy_digest": "policy-digest-synth-v12",
+        "purpose_id": "support",
+        "scope": {
+          "action_type": "POST",
+          "effect_type": "DATA_EGRESS",
+          "interface_id": "egress-gateway-1",
+          "max_effect_budget": 10,
+          "purpose_id": "support",
+          "representation_class_id": "json-v1",
+          "target_id": "partner-api-submit",
+          "tenant_id": "tenant-A"
+        },
+        "tenant_id": "tenant-A",
+        "valid_from": "2026-06-02T00:00:00Z",
+        "valid_to": "2026-06-04T00:00:00Z"
+      }
+    },
+    "policy_state": {
+      "canonicalization_profile_ref": "CP-JSON-2",
+      "checkpoint_max_age_seconds": 3600,
+      "current_epoch_id": 47,
+      "epoch_compatibility": "strict",
+      "max_clock_drift_seconds": 300,
+      "minimum_epoch_id": 47,
+      "now": "2026-06-03T00:00:00Z",
+      "offline_constrained_effect_types": [],
+      "offline_constrained_mode_allowed": false,
+      "policy_digest": "policy-digest-synth-v12",
+      "require_assurance_evidence": false,
+      "require_capability_token": false,
+      "require_identity_binding": false,
+      "require_merkle_revocation_proof": false,
+      "require_permit_provenance": true,
+      "require_purpose": false,
+      "require_signed_revocation_list": true,
+      "require_transparency": false,
+      "revocation_authorities": {
+        "revocation-authority-synth": "3zvvzkQosJ+eTKNF/pq0Rik4InaH30HMBB5pevoPz0k="
+      },
+      "revocation_max_age_seconds": 3600,
+      "transparency_logs": {
+        "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
+      },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
+      "trusted_capability_issuers": {
+        "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
+      },
+      "trusted_issuers": {
+        "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
+    },
+    "request": {
+      "action_type": "POST",
+      "effect_type": "DATA_EGRESS",
+      "interface_id": "egress-gateway-1",
+      "max_effect_budget": 10,
+      "payload_digest": "payload-synth-001",
+      "purpose_id": "support",
+      "representation_class_id": "json-v1",
+      "target_id": "partner-api-submit",
+      "tenant_id": "tenant-A"
+    },
+    "revocation_state": {
+      "last_updated": "2026-06-02T23:59:40Z",
+      "signed_revocation_list": {
+        "authenticity": {
+          "issuer_id": "revocation-authority-synth",
+          "signature": "Ms/jGCMDRPAJEF8jSlMlx95bbh1wqZ7mKo4hrO779jeolbcMmjWz0a7flbEbukJ2bh5fFd0Rrqd3RphjsUBuAw=="
+        },
+        "body": {
+          "issued_at": "2026-06-02T23:59:40Z",
+          "issuer_id": "revocation-authority-synth",
+          "revoked_issuers": [],
+          "revoked_receipt_digests": [],
+          "sequence": 100
+        }
+      },
+      "status": "fresh"
+    },
+    "vector_id": "KNEG-NEGATIVE-CLOCK-DRIFT-ABSOLUTE"
+  },
+  {
+    "category": "v226_adversarial",
+    "context": {
+      "jurisdiction": "US",
+      "now": "2026-06-03T00:00:00Z",
+      "resolved_tenant_id": "tenant-A",
+      "used_capability_nonces": [],
+      "used_nonces": []
+    },
+    "description": "A literal top-level revoked status cannot produce ALLOW.",
+    "expected": {
+      "decision": "DENY",
+      "denial_reason_code": "DRC-007_REVOKED_CONFIRMED"
+    },
+    "invariant": "I4",
+    "permit_receipt": {
+      "authenticity": {
+        "issuer_id": "issuer-operator-synth",
+        "signature": "EjKpvwXOJuBkW6mjJ6XD1Hi+qJ730lACZclaM1T6OuCdOq102BTIzo9+vqJ+m3SyBTeI8K6FEQM3ynTVnFbMBA=="
+      },
+      "receipt_core": {
+        "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
+        "anti_replay": {
+          "nonce": "status-revoked"
+        },
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "canonicalization_profile_ref": "CP-JSON-2",
+        "epoch_id": 47,
+        "issuer_id": "issuer-operator-synth",
+        "jurisdiction": "US",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
+        "policy_digest": "policy-digest-synth-v12",
+        "purpose_id": "support",
+        "scope": {
+          "action_type": "POST",
+          "effect_type": "DATA_EGRESS",
+          "interface_id": "egress-gateway-1",
+          "max_effect_budget": 10,
+          "purpose_id": "support",
+          "representation_class_id": "json-v1",
+          "target_id": "partner-api-submit",
+          "tenant_id": "tenant-A"
+        },
+        "tenant_id": "tenant-A",
+        "valid_from": "2026-06-02T00:00:00Z",
+        "valid_to": "2026-06-04T00:00:00Z"
+      }
+    },
+    "policy_state": {
+      "canonicalization_profile_ref": "CP-JSON-2",
+      "checkpoint_max_age_seconds": 3600,
+      "current_epoch_id": 47,
+      "epoch_compatibility": "strict",
+      "max_clock_drift_seconds": 300,
+      "minimum_epoch_id": 47,
+      "now": "2026-06-03T00:00:00Z",
+      "offline_constrained_effect_types": [],
+      "offline_constrained_mode_allowed": false,
+      "policy_digest": "policy-digest-synth-v12",
+      "require_assurance_evidence": false,
+      "require_capability_token": false,
+      "require_identity_binding": false,
+      "require_merkle_revocation_proof": false,
+      "require_permit_provenance": true,
+      "require_purpose": false,
+      "require_signed_revocation_list": true,
+      "require_transparency": false,
+      "revocation_authorities": {
+        "revocation-authority-synth": "3zvvzkQosJ+eTKNF/pq0Rik4InaH30HMBB5pevoPz0k="
+      },
+      "revocation_max_age_seconds": 3600,
+      "transparency_logs": {
+        "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
+      },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
+      "trusted_capability_issuers": {
+        "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
+      },
+      "trusted_issuers": {
+        "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
+    },
+    "request": {
+      "action_type": "POST",
+      "effect_type": "DATA_EGRESS",
+      "interface_id": "egress-gateway-1",
+      "max_effect_budget": 10,
+      "payload_digest": "payload-synth-001",
+      "purpose_id": "support",
+      "representation_class_id": "json-v1",
+      "target_id": "partner-api-submit",
+      "tenant_id": "tenant-A"
+    },
+    "revocation_state": {
+      "last_updated": "2026-06-02T23:59:40Z",
+      "signed_revocation_list": {
+        "authenticity": {
+          "issuer_id": "revocation-authority-synth",
+          "signature": "Ms/jGCMDRPAJEF8jSlMlx95bbh1wqZ7mKo4hrO779jeolbcMmjWz0a7flbEbukJ2bh5fFd0Rrqd3RphjsUBuAw=="
+        },
+        "body": {
+          "issued_at": "2026-06-02T23:59:40Z",
+          "issuer_id": "revocation-authority-synth",
+          "revoked_issuers": [],
+          "revoked_receipt_digests": [],
+          "sequence": 100
+        }
+      },
+      "status": "revoked"
+    },
+    "vector_id": "KNEG-REVOCATION-TOPLEVEL-REVOKED"
+  },
+  {
+    "category": "v226_adversarial",
+    "context": {
+      "jurisdiction": "US",
+      "now": "2026-06-03T00:00:00Z",
+      "resolved_tenant_id": "tenant-A",
+      "used_capability_nonces": [],
+      "used_nonces": []
+    },
+    "description": "A revocation state without an explicit status cannot default to fresh.",
+    "expected": {
+      "decision": "DENY",
+      "denial_reason_code": "DRC-057_SCHEMA_VALIDATION_FAILURE"
+    },
+    "invariant": "I4/I7",
+    "permit_receipt": {
+      "authenticity": {
+        "issuer_id": "issuer-operator-synth",
+        "signature": "4o5yo/m9v8gysOXyOibqDWDVZbgh/zJ2LtIvPZU9Ooj1UmzPOakD3AiYlpgxt2t6Z/5TBvDpLjoJJkLe+nyzCA=="
+      },
+      "receipt_core": {
+        "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
+        "anti_replay": {
+          "nonce": "status-missing-field"
+        },
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "canonicalization_profile_ref": "CP-JSON-2",
+        "epoch_id": 47,
+        "issuer_id": "issuer-operator-synth",
+        "jurisdiction": "US",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
+        "policy_digest": "policy-digest-synth-v12",
+        "purpose_id": "support",
+        "scope": {
+          "action_type": "POST",
+          "effect_type": "DATA_EGRESS",
+          "interface_id": "egress-gateway-1",
+          "max_effect_budget": 10,
+          "purpose_id": "support",
+          "representation_class_id": "json-v1",
+          "target_id": "partner-api-submit",
+          "tenant_id": "tenant-A"
+        },
+        "tenant_id": "tenant-A",
+        "valid_from": "2026-06-02T00:00:00Z",
+        "valid_to": "2026-06-04T00:00:00Z"
+      }
+    },
+    "policy_state": {
+      "canonicalization_profile_ref": "CP-JSON-2",
+      "checkpoint_max_age_seconds": 3600,
+      "current_epoch_id": 47,
+      "epoch_compatibility": "strict",
+      "max_clock_drift_seconds": 300,
+      "minimum_epoch_id": 47,
+      "now": "2026-06-03T00:00:00Z",
+      "offline_constrained_effect_types": [],
+      "offline_constrained_mode_allowed": false,
+      "policy_digest": "policy-digest-synth-v12",
+      "require_assurance_evidence": false,
+      "require_capability_token": false,
+      "require_identity_binding": false,
+      "require_merkle_revocation_proof": false,
+      "require_permit_provenance": true,
+      "require_purpose": false,
+      "require_signed_revocation_list": true,
+      "require_transparency": false,
+      "revocation_authorities": {
+        "revocation-authority-synth": "3zvvzkQosJ+eTKNF/pq0Rik4InaH30HMBB5pevoPz0k="
+      },
+      "revocation_max_age_seconds": 3600,
+      "transparency_logs": {
+        "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
+      },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
+      "trusted_capability_issuers": {
+        "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
+      },
+      "trusted_issuers": {
+        "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
+    },
+    "request": {
+      "action_type": "POST",
+      "effect_type": "DATA_EGRESS",
+      "interface_id": "egress-gateway-1",
+      "max_effect_budget": 10,
+      "payload_digest": "payload-synth-001",
+      "purpose_id": "support",
+      "representation_class_id": "json-v1",
+      "target_id": "partner-api-submit",
+      "tenant_id": "tenant-A"
+    },
+    "revocation_state": {
+      "last_updated": "2026-06-02T23:59:40Z",
+      "signed_revocation_list": {
+        "authenticity": {
+          "issuer_id": "revocation-authority-synth",
+          "signature": "Ms/jGCMDRPAJEF8jSlMlx95bbh1wqZ7mKo4hrO779jeolbcMmjWz0a7flbEbukJ2bh5fFd0Rrqd3RphjsUBuAw=="
+        },
+        "body": {
+          "issued_at": "2026-06-02T23:59:40Z",
+          "issuer_id": "revocation-authority-synth",
+          "revoked_issuers": [],
+          "revoked_receipt_digests": [],
+          "sequence": 100
+        }
+      }
+    },
+    "vector_id": "KNEG-REVOCATION-STATUS-FIELD-MISSING"
+  },
+  {
+    "category": "v226_adversarial",
+    "context": {
+      "jurisdiction": "US",
+      "now": "2026-06-03T00:00:00Z",
+      "resolved_tenant_id": "tenant-A",
+      "used_capability_nonces": [],
+      "used_nonces": []
+    },
+    "description": "An unsupported revocation status value fails schema validation.",
+    "expected": {
+      "decision": "DENY",
+      "denial_reason_code": "DRC-057_SCHEMA_VALIDATION_FAILURE"
+    },
+    "invariant": "I4/I7",
+    "permit_receipt": {
+      "authenticity": {
+        "issuer_id": "issuer-operator-synth",
+        "signature": "X9owHocSbBI1JxxfppAqxvT1AL3xdAbqFXyj8C8Xjb12pkDBIIATEj+2PYx4psblITg18UJfxc/hw1J636P3Cg=="
+      },
+      "receipt_core": {
+        "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
+        "anti_replay": {
+          "nonce": "status-invalid"
+        },
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "canonicalization_profile_ref": "CP-JSON-2",
+        "epoch_id": 47,
+        "issuer_id": "issuer-operator-synth",
+        "jurisdiction": "US",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
+        "policy_digest": "policy-digest-synth-v12",
+        "purpose_id": "support",
+        "scope": {
+          "action_type": "POST",
+          "effect_type": "DATA_EGRESS",
+          "interface_id": "egress-gateway-1",
+          "max_effect_budget": 10,
+          "purpose_id": "support",
+          "representation_class_id": "json-v1",
+          "target_id": "partner-api-submit",
+          "tenant_id": "tenant-A"
+        },
+        "tenant_id": "tenant-A",
+        "valid_from": "2026-06-02T00:00:00Z",
+        "valid_to": "2026-06-04T00:00:00Z"
+      }
+    },
+    "policy_state": {
+      "canonicalization_profile_ref": "CP-JSON-2",
+      "checkpoint_max_age_seconds": 3600,
+      "current_epoch_id": 47,
+      "epoch_compatibility": "strict",
+      "max_clock_drift_seconds": 300,
+      "minimum_epoch_id": 47,
+      "now": "2026-06-03T00:00:00Z",
+      "offline_constrained_effect_types": [],
+      "offline_constrained_mode_allowed": false,
+      "policy_digest": "policy-digest-synth-v12",
+      "require_assurance_evidence": false,
+      "require_capability_token": false,
+      "require_identity_binding": false,
+      "require_merkle_revocation_proof": false,
+      "require_permit_provenance": true,
+      "require_purpose": false,
+      "require_signed_revocation_list": true,
+      "require_transparency": false,
+      "revocation_authorities": {
+        "revocation-authority-synth": "3zvvzkQosJ+eTKNF/pq0Rik4InaH30HMBB5pevoPz0k="
+      },
+      "revocation_max_age_seconds": 3600,
+      "transparency_logs": {
+        "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
+      },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
+      "trusted_capability_issuers": {
+        "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
+      },
+      "trusted_issuers": {
+        "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
+    },
+    "request": {
+      "action_type": "POST",
+      "effect_type": "DATA_EGRESS",
+      "interface_id": "egress-gateway-1",
+      "max_effect_budget": 10,
+      "payload_digest": "payload-synth-001",
+      "purpose_id": "support",
+      "representation_class_id": "json-v1",
+      "target_id": "partner-api-submit",
+      "tenant_id": "tenant-A"
+    },
+    "revocation_state": {
+      "last_updated": "2026-06-02T23:59:40Z",
+      "signed_revocation_list": {
+        "authenticity": {
+          "issuer_id": "revocation-authority-synth",
+          "signature": "Ms/jGCMDRPAJEF8jSlMlx95bbh1wqZ7mKo4hrO779jeolbcMmjWz0a7flbEbukJ2bh5fFd0Rrqd3RphjsUBuAw=="
+        },
+        "body": {
+          "issued_at": "2026-06-02T23:59:40Z",
+          "issuer_id": "revocation-authority-synth",
+          "revoked_issuers": [],
+          "revoked_receipt_digests": [],
+          "sequence": 100
+        }
+      },
+      "status": "unsupported-status"
+    },
+    "vector_id": "KNEG-REVOCATION-TOPLEVEL-UNKNOWN-ENUM"
+  },
+  {
+    "category": "v226_adversarial",
+    "context": {
+      "capability_token": {
+        "authenticity": {
+          "issuer_id": "capability-issuer-synth",
+          "signature": "UfTYCxRTYYM5qRDVtQi68mk9HuGDK3CZGjN+yw1V50HbEcbXUc/W7nyKkxsdVw6o7e4/cUTTOzSqYaZGIxLBAg=="
+        },
+        "token_core": {
+          "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
+          "audience": "egress-gateway-1",
+          "epoch_id": 47,
+          "nonce": "cap-binding-wrong",
+          "policy_digest": "policy-digest-synth-v12",
+          "receipt_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+          "tenant_id": "tenant-A",
+          "valid_to": "2026-06-04T00:00:00Z"
+        }
+      },
+      "jurisdiction": "US",
+      "now": "2026-06-03T00:00:00Z",
+      "resolved_tenant_id": "tenant-A",
+      "used_capability_nonces": [],
+      "used_nonces": []
+    },
+    "description": "A correctly signed capability bound to another receipt is denied.",
+    "expected": {
+      "decision": "DENY",
+      "denial_reason_code": "DRC-067_CAPABILITY_RECEIPT_BINDING_MISMATCH"
+    },
+    "invariant": "I6",
+    "permit_receipt": {
+      "authenticity": {
+        "issuer_id": "issuer-operator-synth",
+        "signature": "ivYaLPlj4rygaJfQfplNVxDCSGuE8jON1YTM/wT4l8WpbB2OmsNTicolGE6HyZP1ulBVUXJXiepd1I4fxCiUBQ=="
+      },
+      "receipt_core": {
+        "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
+        "anti_replay": {
+          "nonce": "cap-binding-receipt"
+        },
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "canonicalization_profile_ref": "CP-JSON-2",
+        "epoch_id": 47,
+        "issuer_id": "issuer-operator-synth",
+        "jurisdiction": "US",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
+        "policy_digest": "policy-digest-synth-v12",
+        "purpose_id": "support",
+        "scope": {
+          "action_type": "POST",
+          "effect_type": "DATA_EGRESS",
+          "interface_id": "egress-gateway-1",
+          "max_effect_budget": 10,
+          "purpose_id": "support",
+          "representation_class_id": "json-v1",
+          "target_id": "partner-api-submit",
+          "tenant_id": "tenant-A"
+        },
+        "tenant_id": "tenant-A",
+        "valid_from": "2026-06-02T00:00:00Z",
+        "valid_to": "2026-06-04T00:00:00Z"
+      }
+    },
+    "policy_state": {
+      "canonicalization_profile_ref": "CP-JSON-2",
+      "checkpoint_max_age_seconds": 3600,
+      "current_epoch_id": 47,
+      "epoch_compatibility": "strict",
+      "max_clock_drift_seconds": 300,
+      "minimum_epoch_id": 47,
+      "now": "2026-06-03T00:00:00Z",
+      "offline_constrained_effect_types": [],
+      "offline_constrained_mode_allowed": false,
+      "policy_digest": "policy-digest-synth-v12",
+      "require_assurance_evidence": false,
+      "require_capability_token": true,
+      "require_identity_binding": false,
+      "require_merkle_revocation_proof": false,
+      "require_permit_provenance": true,
+      "require_purpose": false,
+      "require_signed_revocation_list": true,
+      "require_transparency": false,
+      "revocation_authorities": {
+        "revocation-authority-synth": "3zvvzkQosJ+eTKNF/pq0Rik4InaH30HMBB5pevoPz0k="
+      },
+      "revocation_max_age_seconds": 3600,
+      "transparency_logs": {
+        "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
+      },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
+      "trusted_capability_issuers": {
+        "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
+      },
+      "trusted_issuers": {
+        "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
+    },
+    "request": {
+      "action_type": "POST",
+      "effect_type": "DATA_EGRESS",
+      "interface_id": "egress-gateway-1",
+      "max_effect_budget": 10,
+      "payload_digest": "payload-synth-001",
+      "purpose_id": "support",
+      "representation_class_id": "json-v1",
+      "target_id": "partner-api-submit",
+      "tenant_id": "tenant-A"
+    },
+    "revocation_state": {
+      "last_updated": "2026-06-02T23:59:40Z",
+      "signed_revocation_list": {
+        "authenticity": {
+          "issuer_id": "revocation-authority-synth",
+          "signature": "Ms/jGCMDRPAJEF8jSlMlx95bbh1wqZ7mKo4hrO779jeolbcMmjWz0a7flbEbukJ2bh5fFd0Rrqd3RphjsUBuAw=="
+        },
+        "body": {
+          "issued_at": "2026-06-02T23:59:40Z",
+          "issuer_id": "revocation-authority-synth",
+          "revoked_issuers": [],
+          "revoked_receipt_digests": [],
+          "sequence": 100
+        }
+      },
+      "status": "fresh"
+    },
+    "vector_id": "KNEG-CAPABILITY-RECEIPT-BINDING-MISMATCH"
+  },
+  {
+    "category": "v226_adversarial",
+    "context": {
+      "capability_token": {
+        "authenticity": {
+          "issuer_id": "capability-issuer-synth",
+          "signature": "fmZdBj7fJuX9R96YH2fJUFlifymgquNr+OojDwjP7FJV5bZYGa4lAF6M05EMnKMw2pKKUMTnpQ22q26qINIkDg=="
+        },
+        "token_core": {
+          "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
+          "audience": "egress-gateway-1",
+          "epoch_id": 47,
+          "policy_digest": "policy-digest-synth-v12",
+          "receipt_digest": "e2a2c3307fd5b3faafcd9602ebe91e2410c9a2685c93c9e5da4da6a69a7fb557",
+          "tenant_id": "tenant-A",
+          "valid_to": "2026-06-04T00:00:00Z"
+        }
+      },
+      "jurisdiction": "US",
+      "now": "2026-06-03T00:00:00Z",
+      "resolved_tenant_id": "tenant-A",
+      "used_capability_nonces": [],
+      "used_nonces": []
+    },
+    "description": "Correctly signed capability without a nonce fails closed.",
+    "expected": {
+      "decision": "DENY",
+      "denial_reason_code": "DRC-017_CAPABILITY_TOKEN_INVALID_OR_MISSING"
+    },
+    "invariant": "I6/I8",
+    "permit_receipt": {
+      "authenticity": {
+        "issuer_id": "issuer-operator-synth",
+        "signature": "ivYaLPlj4rygaJfQfplNVxDCSGuE8jON1YTM/wT4l8WpbB2OmsNTicolGE6HyZP1ulBVUXJXiepd1I4fxCiUBQ=="
+      },
+      "receipt_core": {
+        "action_digest": "72ecca2ed96a2d587e1dfe9c174a431cacc220e823171e05681f2468793adc30",
+        "anti_replay": {
+          "nonce": "cap-binding-receipt"
+        },
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "canonicalization_profile_ref": "CP-JSON-2",
+        "epoch_id": 47,
+        "issuer_id": "issuer-operator-synth",
+        "jurisdiction": "US",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
+        "policy_digest": "policy-digest-synth-v12",
+        "purpose_id": "support",
+        "scope": {
+          "action_type": "POST",
+          "effect_type": "DATA_EGRESS",
+          "interface_id": "egress-gateway-1",
+          "max_effect_budget": 10,
+          "purpose_id": "support",
+          "representation_class_id": "json-v1",
+          "target_id": "partner-api-submit",
+          "tenant_id": "tenant-A"
+        },
+        "tenant_id": "tenant-A",
+        "valid_from": "2026-06-02T00:00:00Z",
+        "valid_to": "2026-06-04T00:00:00Z"
+      }
+    },
+    "policy_state": {
+      "canonicalization_profile_ref": "CP-JSON-2",
+      "checkpoint_max_age_seconds": 3600,
+      "current_epoch_id": 47,
+      "epoch_compatibility": "strict",
+      "max_clock_drift_seconds": 300,
+      "minimum_epoch_id": 47,
+      "now": "2026-06-03T00:00:00Z",
+      "offline_constrained_effect_types": [],
+      "offline_constrained_mode_allowed": false,
+      "policy_digest": "policy-digest-synth-v12",
+      "require_assurance_evidence": false,
+      "require_capability_token": true,
+      "require_identity_binding": false,
+      "require_merkle_revocation_proof": false,
+      "require_permit_provenance": true,
+      "require_purpose": false,
+      "require_signed_revocation_list": true,
+      "require_transparency": false,
+      "revocation_authorities": {
+        "revocation-authority-synth": "3zvvzkQosJ+eTKNF/pq0Rik4InaH30HMBB5pevoPz0k="
+      },
+      "revocation_max_age_seconds": 3600,
+      "transparency_logs": {
+        "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
+      },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
+      "trusted_capability_issuers": {
+        "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
+      },
+      "trusted_issuers": {
+        "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
+    },
+    "request": {
+      "action_type": "POST",
+      "effect_type": "DATA_EGRESS",
+      "interface_id": "egress-gateway-1",
+      "max_effect_budget": 10,
+      "payload_digest": "payload-synth-001",
+      "purpose_id": "support",
+      "representation_class_id": "json-v1",
+      "target_id": "partner-api-submit",
+      "tenant_id": "tenant-A"
+    },
+    "revocation_state": {
+      "last_updated": "2026-06-02T23:59:40Z",
+      "signed_revocation_list": {
+        "authenticity": {
+          "issuer_id": "revocation-authority-synth",
+          "signature": "Ms/jGCMDRPAJEF8jSlMlx95bbh1wqZ7mKo4hrO779jeolbcMmjWz0a7flbEbukJ2bh5fFd0Rrqd3RphjsUBuAw=="
+        },
+        "body": {
+          "issued_at": "2026-06-02T23:59:40Z",
+          "issuer_id": "revocation-authority-synth",
+          "revoked_issuers": [],
+          "revoked_receipt_digests": [],
+          "sequence": 100
+        }
+      },
+      "status": "fresh"
+    },
+    "vector_id": "KNEG-SIGNED-CAPABILITY-NONCE-MISSING"
+  },
+  {
+    "category": "v226_adversarial",
+    "context": {
+      "jurisdiction": "US",
+      "now": "2026-06-03T00:00:00Z",
+      "partitioned": true,
+      "resolved_tenant_id": "tenant-A",
+      "used_capability_nonces": [],
+      "used_nonces": [
+        "offline-replayed-nonce"
+      ]
+    },
+    "description": "Constrained operation never waives receipt anti-replay.",
+    "expected": {
+      "decision": "DENY",
+      "denial_reason_code": "DRC-006_ANTI_REPLAY_FAILURE"
+    },
+    "invariant": "I8/I9",
+    "permit_receipt": {
+      "authenticity": {
+        "issuer_id": "issuer-operator-synth",
+        "signature": "cgoP/mHAZhOl+xvOXS7owIvqhtdiGB7GNvqTx73W5o5UjnRk8cBJelaa1u+Fa6L6TPDAKdXWwdjeVidEpipjBg=="
+      },
+      "receipt_core": {
+        "action_digest": "238bf072b371c904286f7ea8184be346a879ecb8d52213b485f8febdc431b018",
+        "anti_replay": {
+          "nonce": "offline-replayed-nonce"
+        },
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "canonicalization_profile_ref": "CP-JSON-2",
+        "epoch_id": 47,
+        "issuer_id": "issuer-operator-synth",
+        "jurisdiction": "US",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
+        "policy_digest": "policy-digest-synth-v12",
+        "purpose_id": "support",
+        "scope": {
+          "action_type": "PUBLISH",
+          "effect_type": "SAFETY_HEARTBEAT",
+          "interface_id": "safety-bus-1",
+          "max_effect_budget": 10,
+          "purpose_id": "support",
+          "representation_class_id": "json-v1",
+          "target_id": "heartbeat",
+          "tenant_id": "tenant-A"
+        },
+        "tenant_id": "tenant-A",
+        "valid_from": "2026-06-02T00:00:00Z",
+        "valid_to": "2026-06-04T00:00:00Z"
+      }
+    },
+    "policy_state": {
+      "canonicalization_profile_ref": "CP-JSON-2",
+      "checkpoint_max_age_seconds": 3600,
+      "current_epoch_id": 47,
+      "epoch_compatibility": "strict",
+      "max_clock_drift_seconds": 300,
+      "minimum_epoch_id": 47,
+      "now": "2026-06-03T00:00:00Z",
+      "offline_constrained_effect_types": [
+        "SAFETY_HEARTBEAT"
+      ],
+      "offline_constrained_mode_allowed": true,
+      "policy_digest": "policy-digest-synth-v12",
+      "require_assurance_evidence": false,
+      "require_capability_token": false,
+      "require_identity_binding": false,
+      "require_merkle_revocation_proof": false,
+      "require_permit_provenance": true,
+      "require_purpose": false,
+      "require_signed_revocation_list": true,
+      "require_transparency": false,
+      "revocation_authorities": {
+        "revocation-authority-synth": "3zvvzkQosJ+eTKNF/pq0Rik4InaH30HMBB5pevoPz0k="
+      },
+      "revocation_max_age_seconds": 3600,
+      "transparency_logs": {
+        "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
+      },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
+      "trusted_capability_issuers": {
+        "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
+      },
+      "trusted_issuers": {
+        "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
+    },
+    "request": {
+      "action_type": "PUBLISH",
+      "effect_type": "SAFETY_HEARTBEAT",
+      "interface_id": "safety-bus-1",
+      "max_effect_budget": 10,
+      "payload_digest": "payload-synth-001",
+      "purpose_id": "support",
+      "representation_class_id": "json-v1",
+      "target_id": "heartbeat",
+      "tenant_id": "tenant-A"
+    },
+    "revocation_state": {
+      "status": "missing"
+    },
+    "vector_id": "KNEG-OFFLINE-CONSTRAINED-REPLAY"
+  },
+  {
+    "category": "v226_adversarial",
+    "context": {
+      "jurisdiction": "US",
+      "now": "2026-06-03T00:00:00Z",
+      "partitioned": true,
+      "resolved_tenant_id": "tenant-A",
+      "used_capability_nonces": [],
+      "used_nonces": []
+    },
+    "description": "Constrained operation never waives a required downstream capability.",
+    "expected": {
+      "decision": "DENY",
+      "denial_reason_code": "DRC-017_CAPABILITY_TOKEN_INVALID_OR_MISSING"
+    },
+    "invariant": "I6/I9",
+    "permit_receipt": {
+      "authenticity": {
+        "issuer_id": "issuer-operator-synth",
+        "signature": "u6pBuFZ73pLrelvcwaQKR6FnRxSYlYNeo376p/DCp60eZQvqdjhSdOkFcoDXco8eTmJTRGuQjv5Gi+Ae0lHNCg=="
+      },
+      "receipt_core": {
+        "action_digest": "238bf072b371c904286f7ea8184be346a879ecb8d52213b485f8febdc431b018",
+        "anti_replay": {
+          "nonce": "offline-capability-required"
+        },
+        "assurance_level_id": "AL5",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "canonicalization_profile_ref": "CP-JSON-2",
+        "epoch_id": 47,
+        "issuer_id": "issuer-operator-synth",
+        "jurisdiction": "US",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
+        "policy_digest": "policy-digest-synth-v12",
+        "purpose_id": "support",
+        "scope": {
+          "action_type": "PUBLISH",
+          "effect_type": "SAFETY_HEARTBEAT",
+          "interface_id": "safety-bus-1",
+          "max_effect_budget": 10,
+          "purpose_id": "support",
+          "representation_class_id": "json-v1",
+          "target_id": "heartbeat",
+          "tenant_id": "tenant-A"
+        },
+        "tenant_id": "tenant-A",
+        "valid_from": "2026-06-02T00:00:00Z",
+        "valid_to": "2026-06-04T00:00:00Z"
+      }
+    },
+    "policy_state": {
+      "canonicalization_profile_ref": "CP-JSON-2",
+      "checkpoint_max_age_seconds": 3600,
+      "current_epoch_id": 47,
+      "epoch_compatibility": "strict",
+      "max_clock_drift_seconds": 300,
+      "minimum_epoch_id": 47,
+      "now": "2026-06-03T00:00:00Z",
+      "offline_constrained_effect_types": [
+        "SAFETY_HEARTBEAT"
+      ],
+      "offline_constrained_mode_allowed": true,
+      "policy_digest": "policy-digest-synth-v12",
+      "require_assurance_evidence": false,
+      "require_capability_token": true,
+      "require_identity_binding": false,
+      "require_merkle_revocation_proof": false,
+      "require_permit_provenance": true,
+      "require_purpose": false,
+      "require_signed_revocation_list": true,
+      "require_transparency": false,
+      "revocation_authorities": {
+        "revocation-authority-synth": "3zvvzkQosJ+eTKNF/pq0Rik4InaH30HMBB5pevoPz0k="
+      },
+      "revocation_max_age_seconds": 3600,
+      "transparency_logs": {
+        "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
+      },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
+      "trusted_capability_issuers": {
+        "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
+      },
+      "trusted_issuers": {
+        "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
+    },
+    "request": {
+      "action_type": "PUBLISH",
+      "effect_type": "SAFETY_HEARTBEAT",
+      "interface_id": "safety-bus-1",
+      "max_effect_budget": 10,
+      "payload_digest": "payload-synth-001",
+      "purpose_id": "support",
+      "representation_class_id": "json-v1",
+      "target_id": "heartbeat",
+      "tenant_id": "tenant-A"
+    },
+    "revocation_state": {
+      "status": "missing"
+    },
+    "vector_id": "KNEG-OFFLINE-CONSTRAINED-CAPABILITY-MISSING"
   },
   {
     "category": "schema",
@@ -7399,12 +9322,21 @@
       "transparency_logs": {
         "revocation-log-synth": "4Y6Dwn29xvAgFtyPRq/9OZaLrPjdkQen2fSu+1xirkc="
       },
+      "trusted_assurance_level_ids": [
+        "AL5"
+      ],
+      "trusted_authority_profile_ids": [
+        "AP-SYNTH-AL5"
+      ],
       "trusted_capability_issuers": {
         "capability-issuer-synth": "MhHIxyeKIWQ+eTcjrRER3fjN02v5QvzN4zB0WcWb1P0="
       },
       "trusted_issuers": {
         "issuer-operator-synth": "6Mn+bQdVVkvIdqNH8CeD+WsW7C4xcrcQh7Vcgklpwgg="
-      }
+      },
+      "trusted_permit_provenance_digests": [
+        "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
+      ]
     },
     "request": {
       "action_type": "INSTALL",

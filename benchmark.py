@@ -6,7 +6,7 @@ import json
 import statistics
 import time
 from pathlib import Path
-from orprg_eval.vector_factory import base_request, base_policy, make_receipt, make_revocation_state, add_merkle_proofs
+from orprg_eval.vector_factory import base_context, base_request, base_policy, make_receipt, make_revocation_state, add_merkle_proofs
 from orprg_eval.verifier import verify_permit_receipt
 
 ROOT = Path(__file__).resolve().parent
@@ -34,14 +34,14 @@ def bench_warm(n, merkle=False):
     if merkle:
         rev = add_merkle_proofs(rev, rec)
     # Warm crypto caches.
-    verify_permit_receipt(req, rec, pol, rev, {"now": pol["now"], "jurisdiction":"US", "resolved_tenant_id":"tenant-A"})
+    verify_permit_receipt(req, rec, pol, rev, base_context())
     lat = []
     canon = []
     sig = []
     revlat = []
     start = time.perf_counter()
     for _ in range(n):
-        r = verify_permit_receipt(req, rec, pol, rev, {"now": pol["now"], "jurisdiction":"US", "resolved_tenant_id":"tenant-A"})
+        r = verify_permit_receipt(req, rec, pol, rev, base_context())
         if r.decision != "ALLOW":
             raise RuntimeError(r.to_dict())
         lat.append(r.timings_ns["total_ns"] / 1e6)
@@ -50,7 +50,7 @@ def bench_warm(n, merkle=False):
         revlat.append(r.timings_ns.get("revocation_check_ns", 0) / 1e6)
     elapsed = time.perf_counter() - start
     return {
-        "mode": "warm_merkle" if merkle else "warm_signed_list",
+        "mode": "warm_merkle_fresh_replay_context" if merkle else "warm_signed_list_fresh_replay_context",
         "n": n,
         "elapsed_seconds": elapsed,
         "throughput_ops_per_sec": n / elapsed,
@@ -70,7 +70,7 @@ def bench_cold(n):
         req = base_request(); req["payload_digest"] = f"payload-{i}"
         rec = make_receipt(req, policy=pol, nonce=f"bench-cold-{i}")
         rev = make_revocation_state()
-        r = verify_permit_receipt(req, rec, pol, rev, {"now": pol["now"], "jurisdiction":"US", "resolved_tenant_id":"tenant-A"})
+        r = verify_permit_receipt(req, rec, pol, rev, base_context())
         if r.decision != "ALLOW":
             raise RuntimeError(r.to_dict())
         lat.append(r.timings_ns["total_ns"] / 1e6)
@@ -101,7 +101,7 @@ def main():
     with (RESULTS / "benchmark.csv").open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=sorted({k for r in rows for k in r}))
         writer.writeheader(); writer.writerows(rows)
-    md = ["# Benchmark Summary", "", "Synthetic microbenchmark. Latency is environment-specific and not a production claim.", "", "| Mode | n | Throughput ops/s | p50 ms | p95 ms | p99 ms |", "|---|---:|---:|---:|---:|---:|"]
+    md = ["# Benchmark Summary", "", "Synthetic microbenchmark. Each warm-path operation uses a fresh replay transaction context so the benchmark measures successful full verification rather than intentional replay denial. Latency is environment-specific and not a production claim.", "", "| Mode | n | Throughput ops/s | p50 ms | p95 ms | p99 ms |", "|---|---:|---:|---:|---:|---:|"]
     for r in rows:
         md.append(f"| {r['mode']} | {r['n']} | {r['throughput_ops_per_sec']:.2f} | {r['p50_ms']:.4f} | {r['p95_ms']:.4f} | {r['p99_ms']:.4f} |")
     (RESULTS / "benchmark_summary.md").write_text("\n".join(md) + "\n", encoding="utf-8")

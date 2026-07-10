@@ -1,104 +1,96 @@
-# GitHub Upload Checklist — v2.2.5-public-eval
+# GitHub Upload Checklist — v2.2.6-public-eval
 
-Repository title suggestion:
-
-`PermitReceipt Public Evaluation Slice for AI-Agent External Effects`
-
-Repository name:
-
-`permit-receipt`
-
-Repository description suggestion:
-
-`Synthetic source-available public evaluation artifact for PermitReceipt permit-before-commit external-effect authorization using action digests, policy epochs, status/recency checks, anti-replay, fail-closed denial, deterministic public vectors, and IETF 126 review materials.`
-
-Release tag:
-
-`v2.2.5-public-eval`
-
-Release title:
-
-`v2.2.5 Public Evaluation — IETF 126 Review Packet`
-
-Release settings:
+## Exact publication identity
 
 ```text
-Pre-release: OFF / unchecked
-Set as latest: release-manager choice; acceptable for the active public-evaluation entry point
+Repository:   meridianverity/permit-receipt
+Tag:          v2.2.6-public-eval
+Title:        v2.2.6 Public Evaluation — IETF 126 Review Packet
+ZIP:          permit-receipt-ref-eval-v2_2_6-public-eval.zip
+Checksum:     permit-receipt-ref-eval-v2_2_6-public-eval.zip.sha256
+Manifest:     permit-receipt-ref-eval-v2_2_6-public-eval.zip.manifest.json
+Provenance:   permit-receipt-ref-eval-v2_2_6-public-eval.zip.provenance.json
+Release URL:  https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.6-public-eval
 ```
 
-Release-lineage rule:
+`v2.2.6-public-eval` is the intended active public-evaluation entry point. The pre-release checkbox should be **unchecked**. Marking it `Latest` is appropriate only after the four public assets have been downloaded and independently reverified.
 
-```text
-Do not replace the ZIP or sidecar after publication. If any byte changes after the checksum has been shared, publish a fresh tag and fresh checksum instead.
-```
+## Before creating the tag
 
-Before upload:
-
-1. Apply this repository state at the GitHub repo root.
-2. Confirm `ietf126/` exists and includes `run_review_packet.py`, `independent_recompute.py`, `README.md`, `AUTHORIZATION_REF_PROFILE.md`, `DIGEST_INTEROP_NOTES.md`, `NEGATIVE_VECTOR_PLAN.md`, and `schemas/authorization_ref.public-eval.v2.schema.json`.
-3. Do not add non-public annexes, claim charts, legal opinions, field-of-use analysis, private implementation mapping, customer data, production logs, credentials, live payment or processor materials, or commercial strategy.
-4. Do not add generated cache or run-output directories such as `__pycache__/`, `.pytest_cache/`, `checks/`, `results/`, `ietf126/results/`, `dist/`, or `build/`.
-5. Do not describe this release as production software, an official IETF reference implementation, an IETF standard, a certification program, a conformance program, a public trust anchor, or a production non-bypassability proof.
-6. Use the exact release asset name `permit-receipt-ref-eval-v2_2_5-public-eval.zip`.
-7. Use the exact checksum sidecar name `permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256`, and make the sidecar line name the ZIP exactly as `permit-receipt-ref-eval-v2_2_5-public-eval.zip`.
-8. Use a post-build GitHub release body generated outside the ZIP. It must include the final SHA-256 value from the generated sidecar and the final asset size. Do not paste an in-repository placeholder line into the published release body.
-9. Leave older public-evaluation tags available as historical references; do not ask reviewers to use them as the active Vienna/IETF pointer.
-
-Pre-upload commands:
+1. Apply the reviewed source tree at the repository root.
+2. Materialize `.github/` from `github-ui-files/` when publishing through a workflow that omits dotfiles.
+3. Confirm that no private annex, legal opinion, claim chart, customer data, production log, credential, live payment/processor material, regulated data, or commercial strategy is present.
+4. Confirm that generated directories are absent: `__pycache__/`, `.pytest_cache/`, `checks/`, `results/`, `ietf126/results/`, `dist/`, `build/`, and coverage outputs.
+5. Keep all boundary wording intact: this is not production software, an IETF standard, an official IETF reference implementation, a certification program, a conformance program, a public trust anchor, or a patent-license grant.
+6. Run the release preflight from the hash-locked Python 3.13 Linux x86-64 environment where available.
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install --require-hashes -r requirements-lock-py313-linux-x86_64.txt
+python -m pip install --no-build-isolation -e . --no-deps
+python tools/generate_supply_chain_metadata.py
+python tools/make_public_manifest.py
 make clean
-python make_manifest.py
-python verify_manifest.py
-python tools/check_release_lineage.py
-python tools/check_ietf126_release_pointers.py
-python ietf126/run_review_packet.py
-python ietf126/independent_recompute.py
-make qa
 make qa-full
 ```
 
-Release-asset checksum sidecar:
+Expected evidence:
+
+```text
+Strict pytest:                       323 / 323 PASS
+Evaluation vectors:                  76 / 76 PASS
+IETF selected review packet:         20 / 20 PASS
+Independent recomputation:           17 / 17 PASS
+Independent crypto verification:     19 / 19 PASS
+Critical-module line coverage:       >= 99%
+Critical-module branch coverage:     >= 97.5%
+Manifest, lineage, pointers:         PASS
+```
+
+## Build and verify the immutable tuple
 
 ```bash
-sha256sum permit-receipt-ref-eval-v2_2_5-public-eval.zip > permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256
-grep -F "permit-receipt-ref-eval-v2_2_5-public-eval.zip" permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256
+rm -rf /tmp/permit-a /tmp/permit-b
+python tools/build_release_asset.py \
+  --source-repository https://github.com/meridianverity/permit-receipt \
+  --source-commit "$(git rev-parse HEAD)" \
+  --out-dir /tmp/permit-a
+python tools/build_release_asset.py \
+  --source-repository https://github.com/meridianverity/permit-receipt \
+  --source-commit "$(git rev-parse HEAD)" \
+  --out-dir /tmp/permit-b
+
+for suffix in \
+  .zip \
+  .zip.sha256 \
+  .zip.manifest.json \
+  .zip.provenance.json; do
+  cmp "/tmp/permit-a/permit-receipt-ref-eval-v2_2_6-public-eval${suffix}" \
+      "/tmp/permit-b/permit-receipt-ref-eval-v2_2_6-public-eval${suffix}"
+done
+
+python tools/verify_release_artifact.py \
+  /tmp/permit-a/permit-receipt-ref-eval-v2_2_6-public-eval.zip \
+  /tmp/permit-a/permit-receipt-ref-eval-v2_2_6-public-eval.zip.sha256 \
+  --manifest /tmp/permit-a/permit-receipt-ref-eval-v2_2_6-public-eval.zip.manifest.json \
+  --provenance /tmp/permit-a/permit-receipt-ref-eval-v2_2_6-public-eval.zip.provenance.json \
+  --require-source-revision \
+  --expected-source-repository https://github.com/meridianverity/permit-receipt \
+  --expected-source-commit "$(git rev-parse HEAD)"
 ```
 
-Expected checksum sidecar:
+The checksum sidecar must contain exactly one non-empty line and name the ZIP exactly. Do not hand-edit any generated asset.
 
-- exactly one non-empty line;
-- first field: the final publication-time SHA-256 from the generated sidecar;
-- second field: `permit-receipt-ref-eval-v2_2_5-public-eval.zip` exactly.
+## Publish and reverify
 
-Expected result:
+1. Tag the exact reviewed commit as `v2.2.6-public-eval`.
+2. Create the release with the exact title above.
+3. Attach all four generated assets: ZIP, checksum sidecar, asset manifest, and provenance statement.
+4. Copy the final ZIP SHA-256 and byte size from the generated manifest into the release body.
+5. Download all four assets in a clean directory while logged out.
+6. Run `sha256sum -c`, `tools/verify_release_artifact.py`, extract the ZIP, install dependencies, and run `make qa-full` from the downloaded bytes.
+7. Only after that succeeds, update the live IETF 126 Hackathon pointer to the exact release URL.
+8. Reopen the GitHub release and IETF page while logged out and verify every link.
 
-```text
-verify_manifest.py: PASS
-make qa: PASS
-make qa-full: PASS
-run_vectors.py: PASS
-pytest: PASS
-ietf126/run_review_packet.py: PASS
-ietf126/independent_recompute.py: PASS
-release lineage check: PASS
-release pointer check: PASS
-```
+## Immutability rule
 
-IETF Hackathon page pointer (see `docs/IETF126_RELEASE_POINTER_LOCK.md`):
-
-```text
-https://github.com/meridianverity/permit-receipt/tree/main/ietf126
-```
-
-IETF release pointer after publishing:
-
-```text
-https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.5-public-eval
-```
-
-## Manual-upload friendly option
-
-If you are using GitHub Web UI upload and cannot easily select dotfiles, do not block the public evaluation on `.github/` or `.gitignore`. The manifest excludes those optional repository-hygiene files. Upload the visible repository files, then optionally create GitHub Actions and issue templates from `github-ui-files/` using `docs/GITHUB_MANUAL_UPLOAD_GUIDE.md`.
+Never replace any asset under this tag. Any changed byte requires a fresh tag, fresh asset names, fresh sidecar, and a new checksum. Keep v2.2.5 and earlier tags available as historical evidence, but do not direct active reviewers to them after v2.2.6 is public and independently verified.

@@ -87,7 +87,7 @@ def orprg(v):
     r = verify_permit_receipt(v["request"], v["permit_receipt"], v["policy_state"], v["revocation_state"], v["context"])
     return r.decision
 
-def main():
+def main() -> int:
     vectors = build_vectors()
     models = {
         "no_gate": no_gate,
@@ -119,6 +119,8 @@ def main():
         md.append(f"| {r['model']} | {r['true_allow']} | {r['true_deny']} | {r['false_allow']} | {r['false_deny']} |")
     (RESULTS / "baseline_compare_summary.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2, sort_keys=True))
+    reference = next(row for row in rows if row["model"] == "orprg_v3_2_reference")
+    return 0 if reference["false_allow"] == 0 and reference["false_deny"] == 0 else 1
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

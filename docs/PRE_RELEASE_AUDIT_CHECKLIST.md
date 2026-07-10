@@ -1,65 +1,82 @@
-# Pre-Release Audit Checklist
+# Pre-Release Audit Checklist — v2.2.6-public-eval
 
-Use this checklist before publishing any public evaluation slice. The filename is retained for continuity with earlier review packets; the current active public-evaluation release is `v2.2.5-public-eval` with the GitHub pre-release checkbox unchecked.
-
-## Boundary check
+## Public-boundary review
 
 - [ ] Public synthetic artifacts only.
-- [ ] No customer data, PAN/SAD, regulated payment data, production logs, live credentials, live processor configuration, claim charts, non-public legal mapping, commercial strategy, or restricted annexes.
-- [ ] README and release notes say the artifact is not production software, not an IETF standard, not an official IETF reference implementation, not a certification program, not a conformance program, and not a patent license grant.
-- [ ] No public text claims production non-bypassability, certification, compliance approval, IETF endorsement, commercial commitment, certificate-registry operation, or production authorization.
+- [ ] No customer data, regulated payment data, production logs, live credentials, live processor configuration, claim charts, non-public legal mapping, commercial strategy, or restricted annexes.
+- [ ] README and release notes retain the non-production, non-IETF-endorsement, non-certification, non-conformance-program, and no-patent-license boundaries.
+- [ ] No public text claims production non-bypassability, compliance approval, IETF endorsement, commercial commitment, certificate-registry operation, or production authorization.
 
-## Reproducibility check
+## Source and supply-chain freeze
 
+- [ ] `python tools/generate_supply_chain_metadata.py`
 - [ ] `python tools/make_public_manifest.py`
 - [ ] `python verify_manifest.py`
+- [ ] Hash-locked install succeeds for `requirements-lock-py313-linux-x86_64.txt`.
+- [ ] CycloneDX SBOM and source provenance match the current source tree.
+- [ ] GitHub Actions are full-SHA pinned and declare `permissions: contents: read`.
+- [ ] No generated cache, result, coverage, build, or distribution directory is included.
+
+## Executable release gate
+
 - [ ] `python tools/release_gate.py`
+- [ ] `python tools/static_security_scan.py`
 - [ ] `python tools/validate_public_eval_packet.py`
 - [ ] `python tools/check_release_lineage.py`
 - [ ] `python tools/check_ietf126_release_pointers.py`
 - [ ] `python ietf126/run_review_packet.py`
 - [ ] `python ietf126/independent_recompute.py`
+- [ ] `python ietf126/independent_crypto_verify.py`
 - [ ] `python run_vectors.py`
-- [ ] `python -m pytest -q`
+- [ ] `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONWARNINGS=error python -m pytest -q`
+- [ ] `python tools/check_core_coverage.py`
 - [ ] `make qa-full`
 
-Expected public checks:
+Expected source-tree evidence:
 
 ```text
-Manifest verification:        PASS
-Release gate:                 PASS
-Packet validation:            PASS
-Release lineage check:        PASS
-Release pointer check:        PASS
-IETF review packet:           17 / 17 PASS
-Independent recomputation:    17 / 17 PASS
-Evaluation vectors:           65 / 65 PASS
-Pytest:                       21 / 21 PASS
-QA full:                      PASS
+Manifest verification:              PASS
+Release gate and static scan:       PASS
+Packet validation:                  PASS
+Release lineage and pointers:       PASS
+IETF selected review packet:        20 / 20 PASS
+Independent recomputation:          17 / 17 PASS
+Independent crypto verification:    19 / 19 PASS
+Evaluation vectors:                 76 / 76 PASS
+Strict pytest:                      323 / 323 PASS
+Critical-module line coverage:      >= 99%
+Critical-module branch coverage:    >= 97.5%
 ```
 
-## Release pointer check
+## Exact release tuple
 
-- [ ] GitHub release tag is `v2.2.5-public-eval`.
-- [ ] Release title is `v2.2.5 Public Evaluation — IETF 126 Review Packet`.
-- [ ] Release asset is `permit-receipt-ref-eval-v2_2_5-public-eval.zip`.
-- [ ] Sidecar asset is `permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256`.
-- [ ] Sidecar line names `permit-receipt-ref-eval-v2_2_5-public-eval.zip` exactly.
-- [ ] Active reviewer-facing text uses `https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.5-public-eval`.
-- [ ] Superseded prior public-evaluation references appear only in historical / superseded context.
+- [ ] Tag: `v2.2.6-public-eval`
+- [ ] ZIP: `permit-receipt-ref-eval-v2_2_6-public-eval.zip`
+- [ ] Checksum: `permit-receipt-ref-eval-v2_2_6-public-eval.zip.sha256`
+- [ ] Manifest: `permit-receipt-ref-eval-v2_2_6-public-eval.zip.manifest.json`
+- [ ] Provenance: `permit-receipt-ref-eval-v2_2_6-public-eval.zip.provenance.json`
+- [ ] Release URL: `https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.6-public-eval`
+- [ ] Sidecar has one line and names the ZIP exactly.
+- [ ] Active reviewer-facing text uses the exact tag and URL.
+- [ ] Older release references appear only in clearly historical or superseded context.
+
+## Reproducible build and public-byte verification
+
+- [ ] Two clean builds produce byte-identical ZIPs.
+- [ ] Their sidecars, manifests, and provenance statements are also byte-identical.
+- [ ] `tools/verify_release_artifact.py` passes on the frozen tuple.
+- [ ] ZIP CRC and source-inventory comparison pass.
+- [ ] The downloaded public tuple—not the working tree—passes verification in a clean directory.
+- [ ] The extracted public ZIP passes the reviewer fast path.
+- [ ] GitHub and IETF links are rechecked while logged out.
 
 ## Fresh-tag rule
 
-Once the release tag, asset name, and digest have been emailed or wired into a reviewer matrix, do not replace the bytes under that same tag. If the release asset changes, publish a fresh tag, fresh asset name, fresh sidecar, and fresh emailed checksum.
+After publication, never replace an asset under `v2.2.6-public-eval`. Any changed byte requires a new tag and an entirely new immutable asset tuple.
 
-## Upload posture
+## Human review
 
-GitHub release: leave the pre-release checkbox **unchecked** for `v2.2.5-public-eval`.
+- [ ] Counsel/IP/trademark/public-disclosure review is complete.
+- [ ] The public claims are no stronger than the executable evidence.
 
-`Latest` is a release-manager choice; it is acceptable once this tag is intended to be the active public-evaluation entry point.
-
-Attach the ZIP and SHA-256 sidecar only. ZIP: `permit-receipt-ref-eval-v2_2_5-public-eval.zip`. Sidecar: `permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256`.
-
-## Human review gate
-
-Before broader promotion, perform counsel/IP/trademark/public-disclosure review. This checklist is not legal advice.
+This checklist is technical release hygiene, not legal advice.

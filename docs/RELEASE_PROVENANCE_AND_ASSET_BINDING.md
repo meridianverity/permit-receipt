@@ -1,61 +1,47 @@
-# Release Provenance and Asset Binding — v2.2.5-public-eval
+# Release Provenance and Asset Binding — v2.2.6-public-eval
 
-This file is the reviewer-facing provenance note for the active public evaluation pointer.
-
-## Canonical tuple
+## Canonical immutable tuple
 
 ```text
-Tag:      v2.2.5-public-eval
-Asset:    permit-receipt-ref-eval-v2_2_5-public-eval.zip
-Sidecar:  permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256
-Release:  https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.5-public-eval
+Tag:        v2.2.6-public-eval
+Asset:      permit-receipt-ref-eval-v2_2_6-public-eval.zip
+Sidecar:    permit-receipt-ref-eval-v2_2_6-public-eval.zip.sha256
+Manifest:   permit-receipt-ref-eval-v2_2_6-public-eval.zip.manifest.json
+Provenance: permit-receipt-ref-eval-v2_2_6-public-eval.zip.provenance.json
+Release:    https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.6-public-eval
 ```
 
-The review pointer is the tuple above, not the tag name alone.
+The reviewer pointer is this complete tuple, not the tag name alone. v2.2.6 supersedes v2.2.5 for active review-reference purposes; the older tag and assets remain immutable historical evidence.
 
-## Why this exists
-
-This release is a fresh-tag review pointer. It supersedes `v2.2.4-public-eval` for active review-reference purposes because same-tag asset refresh ambiguity is exactly the kind of ambiguity a digest-binding exercise should avoid.
-
-A benign asset refresh and an unintended byte change are not distinguishable from a name-only pointer. The public review path therefore uses a fresh tag, a fresh asset name, a sidecar that names that asset exactly, and local verification commands.
-
-## Reviewer verification after download
-
-From the directory containing the downloaded ZIP and sidecar:
+## Verification after download
 
 ```bash
-sha256sum -c permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256
-unzip -q permit-receipt-ref-eval-v2_2_5-public-eval.zip
-cd permit-receipt-main 2>/dev/null || cd permit-receipt-ref-eval-v2_2_5-public-eval
+sha256sum -c permit-receipt-ref-eval-v2_2_6-public-eval.zip.sha256
+unzip -q permit-receipt-ref-eval-v2_2_6-public-eval.zip
+cd permit-receipt-main
+python tools/verify_release_artifact.py \
+  ../permit-receipt-ref-eval-v2_2_6-public-eval.zip \
+  ../permit-receipt-ref-eval-v2_2_6-public-eval.zip.sha256 \
+  --manifest ../permit-receipt-ref-eval-v2_2_6-public-eval.zip.manifest.json \
+  --provenance ../permit-receipt-ref-eval-v2_2_6-public-eval.zip.provenance.json
 python -m pip install -r requirements.txt
-python verify_manifest.py
-python tools/validate_public_eval_packet.py
-python tools/check_release_lineage.py
-python tools/check_ietf126_release_pointers.py
-python ietf126/run_review_packet.py
-python ietf126/independent_recompute.py
-python run_vectors.py
-python -m pytest -q
+make qa-full
 ```
 
-Expected results:
+Expected high-level evidence:
 
 ```text
-sha256sum -c:                 OK
-Manifest verification:        PASS
-Packet validation:            PASS
-Release lineage check:        PASS
-Release pointer check:        PASS
-IETF review packet:           17 / 17 PASS
+IETF review packet:           20 / 20 PASS
 Independent recomputation:    17 / 17 PASS
-Evaluation vectors:           65 / 65 PASS
-Pytest:                       21 / 21 PASS
+Independent crypto:           19 / 19 PASS
+Evaluation vectors:           76 / 76 PASS
+Strict pytest:               323 / 323 PASS
 ```
 
-## Publisher rule
+## Immutable-publication rule
 
-If bytes behind an active review pointer need to change after publication, do not replace the active asset in place. Publish a fresh tag and a fresh asset name, then update this lock file and reviewer-facing pointers.
+After publication, do not force-update the tag or replace any of the four assets. Every changed byte requires a fresh tag, asset names, sidecar, manifest, provenance statement, and external pointer update.
 
 ## Boundary
 
-This note is about public artifact reproducibility and review hygiene. It is not a certification program, not a conformance program, not an endorsement, not production authorization, and not a patent license grant.
+This note concerns public artifact reproducibility and review hygiene. It is not a certification program, conformance program, endorsement, production authorization, or patent-license grant.

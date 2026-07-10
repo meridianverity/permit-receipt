@@ -14,7 +14,7 @@ Public release boundary:
 - Use a fresh tag and fresh asset name for each active digest-bound review packet.
 - Once a tag, asset name, and SHA-256 have been emailed or wired into a reviewer matrix, do not replace bytes under that same tag.
 - If bytes change, publish a new tag, new asset name, and new sidecar; preserve the earlier tag as historical / superseded rather than deleting the audit trail.
-- Active IETF reviewer-facing pointers for this packet should use `v2.2.5-public-eval` and `permit-receipt-ref-eval-v2_2_5-public-eval.zip`.
+- Active IETF reviewer-facing pointers for this packet should use `v2.2.6-public-eval` and `permit-receipt-ref-eval-v2_2_6-public-eval.zip`.
 
 
 Release-lineage discipline:

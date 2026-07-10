@@ -1,57 +1,52 @@
 # Reproducibility
 
-The public evaluation slice is designed for clean-extract reproducibility.
+The public evaluation slice is designed for deterministic source manifests, reproducible test evidence, and byte-identical release builds.
 
-## Clean run
+## Certified clean source-tree gate (CPython 3.13 / Linux x86_64)
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install --require-hashes -r requirements-lock-py313-linux-x86_64.txt
+python -m pip install --no-build-isolation -e . --no-deps
+python tools/generate_supply_chain_metadata.py
+python tools/make_public_manifest.py
 make clean
-make qa
+make qa-full
 ```
+
+For other supported platforms, `requirements.txt` is the portable compatibility path and is not described as byte-for-byte hash locked.
 
 Expected high-level outcomes:
 
 ```text
 public evaluation harness: PASS
-release gate: PASS
-packet validation: PASS
-strict manifest verification: PASS
-ORPRG evaluation vectors: 65 / 65 PASS
-pytest suite: PASS
+release, lineage, and pointer gates: PASS
+static manifest verification: PASS
+ORPRG evaluation vectors: 76 / 76 PASS
+strict pytest: 323 / 323 PASS
+security-core coverage gate: PASS
 ```
 
-## Manifest model
+## Static manifest model
 
-`MANIFEST.sha256.json` covers static source and provenance files. Generated run-output directories are intentionally excluded:
+`MANIFEST.sha256.json` covers the static source and provenance slice. Generated run-output, cache, coverage, build, and distribution directories are excluded. `verify_manifest.py` checks both digest integrity and static-file completeness.
 
-```text
-checks/
-results/
-.pytest_cache/
-__pycache__/
-dist/
-build/
-tmp/
-```
+## Deterministic release tuple
 
-`verify_manifest.py` checks both hash integrity and static-file completeness for the included static scope.
-
-## Determinism note
-
-The vector expectations are deterministic for the synthetic inputs and included policy state. This does not imply production security, production compliance, certification, or production non-bypassability.
-
-
-## Release asset verification
-
-The full ZIP archive digest is carried outside the archive in the release sidecar, because embedding the full-archive digest inside the archive would be circular.
-
-After download, verify the publication-time sidecar from the directory containing both files:
+Build twice in separate directories:
 
 ```bash
-sha256sum -c permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256
+python tools/build_release_asset.py --out-dir /tmp/permit-a
+python tools/build_release_asset.py --out-dir /tmp/permit-b
 ```
 
-Expected sidecar line:
+The ZIP, checksum sidecar, asset manifest, and provenance statement must be byte-identical between builds. The full ZIP digest is carried outside the archive to avoid circular self-reference.
 
-The generated `.sha256` file contains exactly one line: the final publication-time SHA-256 value, two spaces, and `permit-receipt-ref-eval-v2_2_5-public-eval.zip`. Copy the generated line exactly; do not publish a placeholder digest.
+After download:
+
+```bash
+sha256sum -c permit-receipt-ref-eval-v2_2_6-public-eval.zip.sha256
+```
+
+## Boundary
+
+Deterministic synthetic evidence does not imply production security, deployment non-bypassability, compliance approval, certification, IETF endorsement, or a patent-license grant.

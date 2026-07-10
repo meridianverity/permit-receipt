@@ -1,92 +1,76 @@
-# v2.2.5 Public Evaluation — IETF 126 Review Packet
+# v2.2.6 Public Evaluation — IETF 126 Review Packet
 
-Synthetic source-available evaluation artifact for PermitReceipt-based permit-before-commit authorization of AI-agent and workload external effects.
+This release is the active canonical public-evaluation pointer for PermitReceipt / ORPRG IETF 126 Hackathon coordination and reproducible running-code review.
 
-This release is the `v2.2.5-public-eval` fresh-tag public evaluation packet for IETF 126 Hackathon coordination and reproducible running-code review. It demonstrates one protected action, exact canonical request bytes, an `action_digest`, PermitReceipt decision behavior, fail-closed negative vectors, signature-covered cross-reference shape checks, and a separate standard-library recomputation check for public-safe interoperability discussion.
+It asks one narrow question: **before a protected external effect commits, is there current permit evidence authorizing that exact effect?**
 
-## Release-lineage note
+## What changed
 
-Canonical tag: `v2.2.5-public-eval`.
+v2.2.6 closes the adversarial findings disclosed for v2.2.5:
 
+- one schema-valid `authorization_ref` field model across documentation, runner, generated sample, signed carrier, schemas, and independent verification;
+- total fail-closed behavior for recognized malformed verifier inputs;
+- required bounded receipt and capability nonces;
+- replay reservations committed only after all mandatory semantic checks;
+- replay namespaces scoped by issuer/profile/policy/epoch/tenant/audience;
+- constrained mode that cannot bypass replay or a required downstream capability;
+- strict timezone-aware RFC 3339 parsing and absolute drift limits;
+- explicit revocation-status precedence, with `revoked` always denying;
+- cryptographic capability-to-receipt binding;
+- strict duplicate-key and resource-bounded JSON/HTTP ingress;
+- bounded CP-JSON-2 canonicalization and strict Base64 decoding;
+- independent Ed25519 verification with positive and tamper-negative checks; and
+- a hash-locked QA and build environment, CycloneDX SBOM, deterministic asset manifest, and provenance statement;
+- patched cryptographic/test dependencies and exact PEP 517 build-backend pins; and
+- executable `make independent-crypto` plus explicit fail-closed replay-invariant handling.
 
-This fresh tag is the canonical reviewer-facing pointer for the current public-evaluation packet. It is published to remove same-tag asset-refresh ambiguity from the review path. After publication, do not replace the ZIP or sidecar under this tag. If any byte must change, publish a new tag and new checksum instead.
+## Measured release evidence
 
-## Release status
-
-Public evaluation release. Not production software. GitHub pre-release checkbox left unchecked. May be marked Latest when this tag is the active public-evaluation entry point.
-
-## Scope
-
-This is a synthetic public evaluation artifact only.
-
-It does not process live payments, store payment credentials, call live processors, provide production non-bypassability, serve as a certification program, serve as a conformance program, act as an official IETF reference implementation, provide a public trust anchor, make a legal/commercial position, or grant a patent license.
-
-## Quick start
-
-```bash
-python -m pip install -r requirements.txt
-python ietf126/run_review_packet.py
-python ietf126/independent_recompute.py
-cat ietf126/results/review-summary.md
+```text
+Strict pytest:                         323 / 323 PASS
+Evaluation vectors:                    76 / 76 PASS
+IETF selected review packet:           20 / 20 PASS
+Independent recomputation:             17 / 17 PASS
+Independent crypto verification:       19 / 19 PASS
+Critical-module line coverage:         >= 99%
+Critical-module branch coverage:       >= 97.5%
 ```
 
-Optional full QA:
+The final release verification report records the exact observed coverage percentages, asset byte size, SHA-256 values, and clean-room extraction result.
+
+## Immutable lineage
+
+`v2.2.6-public-eval` supersedes `v2.2.5-public-eval` for active review-reference purposes. v2.2.5 remains immutable historical evidence. After publication, do not replace any v2.2.6 asset; any changed byte requires a fresh tag and asset tuple.
+
+## Release tuple
+
+```text
+Tag:         v2.2.6-public-eval
+ZIP:         permit-receipt-ref-eval-v2_2_6-public-eval.zip
+Checksum:    permit-receipt-ref-eval-v2_2_6-public-eval.zip.sha256
+Manifest:    permit-receipt-ref-eval-v2_2_6-public-eval.zip.manifest.json
+Provenance:  permit-receipt-ref-eval-v2_2_6-public-eval.zip.provenance.json
+Release:     https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.6-public-eval
+```
+
+Copy the exact checksum line and asset byte size from the final generated sidecar/manifest into the public release after the assets are frozen.
+
+## Reviewer fast path
 
 ```bash
+sha256sum -c permit-receipt-ref-eval-v2_2_6-public-eval.zip.sha256
+unzip -q permit-receipt-ref-eval-v2_2_6-public-eval.zip
+cd permit-receipt-main
+python tools/verify_release_artifact.py \
+  ../permit-receipt-ref-eval-v2_2_6-public-eval.zip \
+  ../permit-receipt-ref-eval-v2_2_6-public-eval.zip.sha256 \
+  --manifest ../permit-receipt-ref-eval-v2_2_6-public-eval.zip.manifest.json \
+  --provenance ../permit-receipt-ref-eval-v2_2_6-public-eval.zip.provenance.json
+python -m pip install --require-hashes -r requirements-lock-py313-linux-x86_64.txt
+python -m pip install --no-build-isolation -e . --no-deps
 make qa-full
 ```
 
-## Demonstrated behaviors
+## Boundary
 
-- deterministic canonicalization;
-- exact canonical request bytes;
-- `action_digest` binding;
-- PermitReceipt verification;
-- policy epoch and validity checks;
-- status/recency handling;
-- scope checks, including scoped `max_effect_budget` omission;
-- anti-replay handling;
-- fail-closed denial semantics;
-- synthetic negative vectors;
-- signature-covered `authorization_ref` shape checks for interop review;
-- package-independent recomputation of reviewer-facing canonical bytes and digests; and
-- explicit release-lineage handling for digest-bound review.
-
-## Canonical related draft
-
-IETF Internet-Draft:
-https://datatracker.ietf.org/doc/draft-lee-orprg-permit-receipts/
-
-Related IPR disclosure:
-https://datatracker.ietf.org/ipr/7308/
-
-## Verification
-
-Attach a companion `.sha256` asset for the published ZIP checksum. Release asset hashes must be verified from the final release assets generated at publication time.
-
-Release asset name:
-
-`permit-receipt-ref-eval-v2_2_5-public-eval.zip`
-
-Checksum sidecar name:
-
-`permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256`
-
-Publication-time digest and size:
-
-The exact SHA-256 value and byte size are properties of the final ZIP bytes produced after this repository tree is packaged. Because this file is itself inside the ZIP whose bytes are hashed, this in-repository copy intentionally does not embed the final ZIP SHA-256 or a template sidecar line.
-
-For the GitHub release page, use a post-build release body generated outside the ZIP and copy the exact sidecar line from the attached `.sha256` asset. Do not paste any template digest or other placeholder into the published release body.
-
-Reviewer verification after download:
-
-```bash
-sha256sum -c permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256
-unzip -q permit-receipt-ref-eval-v2_2_5-public-eval.zip
-cd permit-receipt-main
-python tools/verify_release_artifact.py \
-  ../permit-receipt-ref-eval-v2_2_5-public-eval.zip \
-  ../permit-receipt-ref-eval-v2_2_5-public-eval.zip.sha256
-```
-
-The sidecar line must name `permit-receipt-ref-eval-v2_2_5-public-eval.zip` exactly. Do not publish a sidecar that names any older staging artifact. Do not replace release assets after publication; publish a fresh tag for any byte-level change.
+Public evaluation release. Not production software. This artifact does not process live payments, store payment credentials, call live processors, prove deployment non-bypassability, serve as a certification or conformance program, act as an official IETF reference implementation, state a legal/commercial position, or grant a patent license.

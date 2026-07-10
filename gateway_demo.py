@@ -8,6 +8,7 @@ from orprg_eval.vector_factory import base_policy, base_context, base_request, m
 from orprg_eval.verifier import verify_permit_receipt
 from orprg_eval.models import ALLOW, DENY, DRC
 from orprg_eval.replay import ReplayCache
+from orprg_eval.canonicalization import digest_obj
 
 ROOT = Path(__file__).resolve().parent
 RESULTS = ROOT / "results"
@@ -19,25 +20,27 @@ def row(name, req, cap, policy, context, expected_decision, expected_code=None):
     ok = out["decision"] == expected_decision and out["denial_reason_code"] == expected_code
     return {"scenario": name, "expected": {"decision": expected_decision, "denial_reason_code": expected_code}, "observed": out, "pass": ok}
 
-def main():
+def main() -> int:
     pol = base_policy(); pol["require_capability_token"] = False
     req = base_request()
     rec = make_receipt(req, policy=pol, nonce="gw-receipt")
     vr = verify_permit_receipt(req, rec, pol, __import__('orprg_eval.vector_factory', fromlist=['make_revocation_state']).make_revocation_state(), base_context())
-    assert vr.decision == ALLOW
+    if vr.decision != ALLOW:
+        raise RuntimeError(f"baseline receipt verification failed closed: {vr.to_dict()}")
     cap = make_capability(req, rec, pol, nonce="gw-cap")
     rows = []
-    rows.append(row("valid downstream capability", req, cap, pol, base_context(), ALLOW))
-    rows.append(row("direct bypass without capability", req, None, pol, base_context(), DENY, DRC["GATEWAY_BYPASS_DENIED"]))
+    downstream = {**base_context(), "expected_receipt_digest": digest_obj(rec["receipt_core"])}
+    rows.append(row("valid downstream capability", req, cap, pol, downstream, ALLOW))
+    rows.append(row("direct bypass without capability", req, None, pol, downstream, DENY, DRC["GATEWAY_BYPASS_DENIED"]))
     bad = deepcopy(cap); bad["token_core"]["audience"] = "other-gateway"  # signature now invalid because token core changed.
-    rows.append(row("tampered capability", req, bad, pol, base_context(), DENY, DRC["CAPABILITY_SIGNATURE_INVALID"]))
+    rows.append(row("tampered capability", req, bad, pol, downstream, DENY, DRC["CAPABILITY_SIGNATURE_INVALID"]))
     cap2 = make_capability(req, rec, pol, nonce="gw-replay")
     cache = ReplayCache()
-    first = row("capability first use", req, cap2, pol, {**base_context(), "capability_replay_cache": cache}, ALLOW)
-    second = row("capability replay second use", req, cap2, pol, {**base_context(), "capability_replay_cache": cache}, DENY, DRC["CAPABILITY_REPLAY"])
+    first = row("capability first use", req, cap2, pol, {**downstream, "capability_replay_cache": cache}, ALLOW)
+    second = row("capability replay second use", req, cap2, pol, {**downstream, "capability_replay_cache": cache}, DENY, DRC["CAPABILITY_REPLAY"])
     rows.extend([first, second])
     reqB = deepcopy(req); reqB["tenant_id"] = "tenant-B"
-    rows.append(row("tenant replay blocked", reqB, cap, pol, base_context(), DENY, DRC["CAPABILITY_TOKEN_INVALID_OR_MISSING"]))
+    rows.append(row("tenant replay blocked", reqB, cap, pol, downstream, DENY, DRC["CAPABILITY_TOKEN_INVALID_OR_MISSING"]))
     summary = {"total": len(rows), "passed": sum(1 for r in rows if r["pass"]), "failed": sum(1 for r in rows if not r["pass"]), "rows": rows, "synthetic": True}
     (RESULTS / "gateway_summary.json").write_text(json.dumps(summary, indent=2, sort_keys=True, default=str), encoding="utf-8")
     md = ["# Mock Egress Gateway Dual-Enforcement Summary", "", "Synthetic downstream capability-token verification scenarios.", "", "| Scenario | Expected | Observed | Reason | Pass |", "|---|---|---|---|---:|"]
@@ -45,6 +48,7 @@ def main():
         md.append(f"| {r['scenario']} | {r['expected']['decision']} | {r['observed']['decision']} | {r['observed']['denial_reason_code'] or ''} | {r['pass']} |")
     (RESULTS / "gateway_summary.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print(json.dumps({k: summary[k] for k in ("total","passed","failed","synthetic")}, indent=2, sort_keys=True))
+    return 0 if summary["failed"] == 0 else 1
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

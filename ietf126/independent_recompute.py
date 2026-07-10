@@ -20,26 +20,60 @@ RESULTS = ROOT / "ietf126" / "results"
 SUPPORTED_PROFILE = "CP-JSON-2"
 EXPECTED_TRANSPARENCY_MISSING = "DRC-053_TRANSPARENCY_PROOF_MISSING"
 EXPECTED_SCOPE_VIOLATION = "DRC-005_SCOPE_VIOLATION"
+MAX_CANONICAL_DEPTH = 32
+MAX_CONTAINER_ITEMS = 10_000
+MAX_TOTAL_NODES = 50_000
+MAX_STRING_UTF8_BYTES = 65_536
+MAX_CANONICAL_BYTES = 1_048_576
+MAX_INPUT_FILE_BYTES = 8 * 1_048_576
+MIN_PROFILE_INTEGER = -(2**63)
+MAX_PROFILE_INTEGER = 2**63 - 1
 
 
-def normalize(value: Any) -> Any:
-    if value is None or isinstance(value, (bool, int)):
+def _normalize_text(value: str) -> str:
+    if any(0xD800 <= ord(character) <= 0xDFFF for character in value):
+        raise ValueError("CP-JSON-2 rejects lone UTF-16 surrogate code points")
+    normalized = unicodedata.normalize("NFC", value)
+    if len(normalized.encode("utf-8")) > MAX_STRING_UTF8_BYTES:
+        raise ValueError("CP-JSON-2 string length limit exceeded")
+    return normalized
+
+
+def normalize(
+    value: Any, *, depth: int = 0, budget: list[int] | None = None
+) -> Any:
+    if budget is None:
+        budget = [0]
+    budget[0] += 1
+    if budget[0] > MAX_TOTAL_NODES:
+        raise ValueError("CP-JSON-2 node limit exceeded")
+    if depth > MAX_CANONICAL_DEPTH:
+        raise ValueError("CP-JSON-2 nesting limit exceeded")
+    if value is None or isinstance(value, bool):
+        return value
+    if isinstance(value, int):
+        if value < MIN_PROFILE_INTEGER or value > MAX_PROFILE_INTEGER:
+            raise ValueError("CP-JSON-2 integer outside signed 64-bit profile")
         return value
     if isinstance(value, float):
         raise ValueError("CP-JSON-2 rejects floating point inputs")
     if isinstance(value, str):
-        return unicodedata.normalize("NFC", value)
-    if isinstance(value, list):
-        return [normalize(item) for item in value]
-    if isinstance(value, tuple):
-        return [normalize(item) for item in value]
+        return _normalize_text(value)
+    if isinstance(value, (list, tuple)):
+        if len(value) > MAX_CONTAINER_ITEMS:
+            raise ValueError("CP-JSON-2 array item limit exceeded")
+        return [normalize(item, depth=depth + 1, budget=budget) for item in value]
     if isinstance(value, Mapping):
+        if len(value) > MAX_CONTAINER_ITEMS:
+            raise ValueError("CP-JSON-2 object member limit exceeded")
         out: dict[str, Any] = {}
         for key, item in value.items():
-            normalized_key = unicodedata.normalize("NFC", str(key))
+            if not isinstance(key, str):
+                raise ValueError("CP-JSON-2 object member names must be strings")
+            normalized_key = _normalize_text(key)
             if normalized_key in out:
                 raise ValueError(f"duplicate normalized key: {normalized_key}")
-            out[normalized_key] = normalize(item)
+            out[normalized_key] = normalize(item, depth=depth + 1, budget=budget)
         return {key: out[key] for key in sorted(out)}
     raise ValueError(f"unsupported canonicalization type: {type(value)!r}")
 
@@ -47,7 +81,18 @@ def normalize(value: Any) -> Any:
 def canonicalize(value: Mapping[str, Any], profile: str = SUPPORTED_PROFILE) -> bytes:
     if profile != SUPPORTED_PROFILE:
         raise ValueError(f"unsupported canonicalization profile: {profile}")
-    return json.dumps(normalize(value), sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+    if not isinstance(value, Mapping):
+        raise ValueError("canonicalize expects a mapping")
+    encoded = json.dumps(
+        normalize(value),
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+        allow_nan=False,
+    ).encode("utf-8")
+    if len(encoded) > MAX_CANONICAL_BYTES:
+        raise ValueError("CP-JSON-2 canonical byte limit exceeded")
+    return encoded
 
 
 def sha256_hex(data: bytes) -> str:
@@ -55,7 +100,40 @@ def sha256_hex(data: bytes) -> str:
 
 
 def load_json(path: Path) -> Any:
-    return json.loads(path.read_text(encoding="utf-8"))
+    raw = path.read_bytes()
+    if len(raw) > MAX_INPUT_FILE_BYTES:
+        raise ValueError(f"input exceeds independent recompute limit: {path.name}")
+
+    def pairs_hook(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        out: dict[str, Any] = {}
+        normalized_names: set[str] = set()
+        for key, value in pairs:
+            if key in out:
+                raise ValueError(f"duplicate JSON member: {key}")
+            normalized = _normalize_text(key)
+            if normalized in normalized_names:
+                raise ValueError(f"duplicate normalized JSON member: {normalized}")
+            normalized_names.add(normalized)
+            out[key] = value
+        return out
+
+    def parse_int(text: str) -> int:
+        value = int(text, 10)
+        if value < MIN_PROFILE_INTEGER or value > MAX_PROFILE_INTEGER:
+            raise ValueError("JSON integer outside signed 64-bit profile")
+        return value
+
+    try:
+        text = raw.decode("utf-8", errors="strict")
+        return json.loads(
+            text,
+            object_pairs_hook=pairs_hook,
+            parse_int=parse_int,
+            parse_float=lambda _text: (_ for _ in ()).throw(ValueError("floating point rejected")),
+            parse_constant=lambda _text: (_ for _ in ()).throw(ValueError("nonfinite number rejected")),
+        )
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValueError(f"invalid strict JSON: {path.name}") from exc
 
 
 def check(condition: bool, checks: list[dict[str, Any]], check_id: str, detail: str = "") -> None:
@@ -98,8 +176,8 @@ def main() -> int:
     check(one.get("permit_receipt_core_digest") == receipt_core_digest, checks, "receipt-core-digest-recomputed", receipt_core_digest)
 
     auth_ref = one.get("authorization_ref_sample") or {}
-    check(auth_ref.get("protected_action_commitment") == action_digest, checks, "authref-commits-to-action-digest")
-    check(auth_ref.get("artifact_digest") == receipt_core_digest, checks, "authref-artifact-digest-recomputed")
+    check(auth_ref.get("action_commitment") == "sha256:" + action_digest, checks, "authref-commits-to-action-digest")
+    check(auth_ref.get("ref_artifact_digest") == "sha256:" + receipt_core_digest, checks, "authref-artifact-digest-recomputed")
     check(auth_ref.get("signature_coverage") is True, checks, "authref-signature-coverage-marker")
 
     neg_rows = negative.get("selected_negative_vectors", [])

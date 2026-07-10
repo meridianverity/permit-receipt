@@ -1,40 +1,42 @@
-# IETF 126 Project-Results Card — PermitReceipt
+# IETF 126 Project-Results Card — PermitReceipt v2.2.6
 
 ## One-line result
 
-We made the PermitReceipt pre-commit authorization question runnable: one protected external effect is canonicalized into exact bytes, bound to an `action_digest`, checked against a signed synthetic PermitReceipt, and denied fail-closed when proof is missing, stale, mismatched, replayed, unsupported, or unverifiable.
+The packet makes one narrow pre-commit authorization question executable: does the attempted external effect have current, signature-bound PermitReceipt evidence for the exact canonicalized action before commit?
 
 ## Demo path
 
 ```bash
 python ietf126/run_review_packet.py
 python ietf126/independent_recompute.py
+python ietf126/independent_crypto_verify.py
 cat ietf126/results/review-summary.md
 ```
 
-Expected selected packet posture:
+Expected posture:
 
 ```text
-One protected-action positive path: PASS
-Selected executable negative vectors: 9 / 9 PASS
-Interop authorization_ref shape checks: 7 / 7 PASS
-Overall selected packet: 17 / 17 PASS
-Independent recomputation: 17 / 17 PASS
+One protected-action positive path:      PASS
+Selected executable negative vectors:   9 / 9 PASS
+Authorization-reference checks:        10 / 10 PASS
+Overall selected packet:              20 / 20 PASS
+Independent recomputation:            17 / 17 PASS
+Independent crypto verification:      19 / 19 PASS
 ```
 
-## What to show in 3-5 minutes
+## What to show in 3–5 minutes
 
 1. `canonical-request.bytes.txt` — the exact UTF-8 bytes hashed.
-2. `one-protected-action.json` — `request`, `action_digest`, PermitReceipt core, and ALLOW result.
-3. `negative-vector-results.json` — fail-closed DENY for missing receipt, digest mismatch, scope violation, omitted budget under constrained scope, expired validity, stale status, replay, unsupported canonicalization, and missing transparency proof.
-4. `interop-crossref-results.json` — name-only references are non-authorizing; signature-covered cross-reference is the safe public-eval bridge when byte-identical digest equality is not proven.
+2. `one-protected-action.json` — the request, action commitment, signed receipt, signed authorization-reference carrier, and ALLOW result.
+3. `negative-vector-results.json` — fail-closed behavior for missing, malformed, stale, mismatched, replayed, or unsupported evidence.
+4. `interop-crossref-results.json` — name-only references are non-authorizing; schema-valid signature-covered references bind the protected action.
+5. `independent-crypto-verification.json` — separately implemented Ed25519 verification and tamper negatives.
 
-## Reviewer asks
+## Reviewer questions
 
-- Are the field names understandable to implementers from adjacent work?
-- Which negative vectors are missing for future public evaluation?
-- Should future draft work split requirements, architecture, data model, public evaluation vectors, and wire profiles?
-- Is the `authorization_ref` shape sufficient for discussion of signature-covered cross-reference interop?
+- Are the profile semantics implementable without guessing?
+- Which additional cross-language vectors would most improve interoperability review?
+- Which requirements belong in architecture, data-model, evaluation-profile, and future wire-profile documents?
 
 ## Public boundary
 

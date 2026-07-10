@@ -30,15 +30,35 @@ OUT = ROOT / "ietf126" / "results"
 OUT.mkdir(parents=True, exist_ok=True)
 
 AUTH_REF_PROFILE = "orprg.authorization-ref.public-eval.v2"
+AUTH_REF_CARRIER_PROFILE = "PermitReceipt.authorization-ref.carrier.public-eval.v1"
 STANDALONE_PROFILE = "CP-JSON-2"
 NOW = "2026-06-03T00:00:00Z"
 VALID_FROM = "2026-06-02T00:00:00Z"
 VALID_TO = "2026-06-04T00:00:00Z"
 EXPIRED_TO = "2026-06-02T00:00:00Z"
 
+# CP-JSON-2 resource and type limits. These are duplicated deliberately so the
+# standalone packet does not depend on the repository package.
+MAX_CANONICAL_DEPTH = 32
+MAX_CONTAINER_ITEMS = 10_000
+MAX_TOTAL_NODES = 50_000
+MAX_STRING_UTF8_BYTES = 65_536
+MAX_CANONICAL_BYTES = 1_048_576
+MIN_PROFILE_INTEGER = -(2**63)
+MAX_PROFILE_INTEGER = 2**63 - 1
+
 try:  # Full-repository mode.
     from orprg_eval.canonicalization import SUPPORTED_PROFILE, canonicalize_request, compute_action_digest, digest_obj
-    from orprg_eval.vector_factory import base_context, base_policy, base_request, base_revocation, build_vectors, make_receipt
+    from orprg_eval.crypto import sign_object, verify_signature
+    from orprg_eval.vector_factory import (
+        ISSUER_KEY,
+        base_context,
+        base_policy,
+        base_request,
+        base_revocation,
+        build_vectors,
+        make_receipt,
+    )
     from orprg_eval.verifier import verify_permit_receipt
     HAVE_ORPRG_EVAL = True
 except Exception as import_error:  # Standalone overlay mode.
@@ -84,32 +104,79 @@ def sha256_hex(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def _normalize_standalone(x: Any) -> Any:
-    if x is None or isinstance(x, (bool, int)):
-        return x
-    if isinstance(x, float):
+def _normalize_text_standalone(value: str) -> str:
+    if any(0xD800 <= ord(character) <= 0xDFFF for character in value):
+        raise ValueError("CP-JSON-2 rejects lone UTF-16 surrogate code points")
+    normalized = unicodedata.normalize("NFC", value)
+    if len(normalized.encode("utf-8")) > MAX_STRING_UTF8_BYTES:
+        raise ValueError("CP-JSON-2 string length limit exceeded")
+    return normalized
+
+
+def _normalize_standalone(
+    value: Any,
+    *,
+    depth: int = 0,
+    budget: Optional[List[int]] = None,
+) -> Any:
+    if budget is None:
+        budget = [0]
+    budget[0] += 1
+    if budget[0] > MAX_TOTAL_NODES:
+        raise ValueError("CP-JSON-2 node limit exceeded")
+    if depth > MAX_CANONICAL_DEPTH:
+        raise ValueError("CP-JSON-2 nesting limit exceeded")
+    if value is None or isinstance(value, bool):
+        return value
+    if isinstance(value, int):
+        if value < MIN_PROFILE_INTEGER or value > MAX_PROFILE_INTEGER:
+            raise ValueError("CP-JSON-2 integer outside signed 64-bit profile")
+        return value
+    if isinstance(value, float):
         raise ValueError("CP-JSON-2 rejects floating point inputs")
-    if isinstance(x, str):
-        return unicodedata.normalize("NFC", x)
-    if isinstance(x, list):
-        return [_normalize_standalone(v) for v in x]
-    if isinstance(x, tuple):
-        return [_normalize_standalone(v) for v in x]
-    if isinstance(x, Mapping):
+    if isinstance(value, str):
+        return _normalize_text_standalone(value)
+    if isinstance(value, (list, tuple)):
+        if len(value) > MAX_CONTAINER_ITEMS:
+            raise ValueError("CP-JSON-2 array item limit exceeded")
+        return [
+            _normalize_standalone(item, depth=depth + 1, budget=budget)
+            for item in value
+        ]
+    if isinstance(value, Mapping):
+        if len(value) > MAX_CONTAINER_ITEMS:
+            raise ValueError("CP-JSON-2 object member limit exceeded")
         normalized: Dict[str, Any] = {}
-        for k, v in x.items():
-            nk = unicodedata.normalize("NFC", str(k))
-            if nk in normalized:
-                raise ValueError(f"duplicate normalized key: {nk}")
-            normalized[nk] = _normalize_standalone(v)
-        return {k: normalized[k] for k in sorted(normalized)}
-    raise ValueError(f"unsupported canonicalization type: {type(x)!r}")
+        for key, item in value.items():
+            if not isinstance(key, str):
+                raise ValueError("CP-JSON-2 object member names must be strings")
+            normalized_key = _normalize_text_standalone(key)
+            if normalized_key in normalized:
+                raise ValueError(f"duplicate normalized key: {normalized_key}")
+            normalized[normalized_key] = _normalize_standalone(
+                item, depth=depth + 1, budget=budget
+            )
+        return {key: normalized[key] for key in sorted(normalized)}
+    raise ValueError(f"unsupported canonicalization type: {type(value)!r}")
 
 
-def canonicalize_standalone(obj: Mapping[str, Any], profile: str = STANDALONE_PROFILE) -> bytes:
+def canonicalize_standalone(
+    obj: Mapping[str, Any], profile: str = STANDALONE_PROFILE
+) -> bytes:
     if profile != STANDALONE_PROFILE:
         raise ValueError(f"unsupported canonicalization profile {profile}")
-    return json.dumps(_normalize_standalone(obj), sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+    if not isinstance(obj, Mapping):
+        raise ValueError("canonicalize expects a mapping")
+    encoded = json.dumps(
+        _normalize_standalone(obj),
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+        allow_nan=False,
+    ).encode("utf-8")
+    if len(encoded) > MAX_CANONICAL_BYTES:
+        raise ValueError("CP-JSON-2 canonical byte limit exceeded")
+    return encoded
 
 
 def digest_obj_standalone(obj: Mapping[str, Any]) -> str:
@@ -175,7 +242,6 @@ def make_receipt_standalone(
     profile = pol.get("canonicalization_profile_ref", STANDALONE_PROFILE)
     action_digest = sha256_hex(canonicalize_standalone(req, profile))
     core: Dict[str, Any] = {
-        "receipt_type": "PermitReceipt",
         "policy_digest": pol["policy_digest"],
         "epoch_id": pol["current_epoch_id"],
         "issuer_id": "issuer-operator-synth",
@@ -186,8 +252,11 @@ def make_receipt_standalone(
         "anti_replay": {"nonce": nonce},
         "tenant_id": sc.get("tenant_id"),
         "purpose_id": sc.get("purpose_id"),
+        "jurisdiction": "US",
         "canonicalization_profile_ref": profile,
-        "permit_provenance_digest": "permit-synth-001",
+        "authority_profile_id": "AP-SYNTH-AL5",
+        "assurance_level_id": "AL5",
+        "permit_provenance_digest": "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a",
     }
     if core_overrides:
         core.update(copy.deepcopy(core_overrides))
@@ -195,7 +264,6 @@ def make_receipt_standalone(
         "receipt_core": core,
         "authenticity": {
             "issuer_id": core["issuer_id"],
-            "signature_coverage": "receipt_core",
             "signature": sha256_hex(("synthetic-signature:" + digest_obj_standalone(core)).encode("utf-8")),
         },
     }
@@ -206,8 +274,17 @@ def base_revocation_standalone(receipt: Optional[Dict[str, Any]] = None, *, stat
         "status": status,
         "last_updated": "2026-06-02T23:59:40Z",
         "signed_revocation_list": {
-            "body": {"issuer_id": "revocation-authority-synth", "revoked_receipt_digests": [], "revoked_issuers": []},
-            "authenticity": {"issuer_id": "revocation-authority-synth", "signature_coverage": "body"},
+            "body": {
+                "issuer_id": "revocation-authority-synth",
+                "issued_at": "2026-06-02T23:59:40Z",
+                "sequence": 100,
+                "revoked_receipt_digests": [],
+                "revoked_issuers": [],
+            },
+            "authenticity": {
+                "issuer_id": "revocation-authority-synth",
+                "signature": "standalone-synthetic-signature",
+            },
         },
     }
 
@@ -299,34 +376,40 @@ def build_selected_vectors_standalone() -> List[Dict[str, Any]]:
     return vectors
 
 
-def crossref_decision(ref: Any, *, expected_action_commitment: str, supported_profile: str) -> Dict[str, Any]:
-    """Public-eval shape checker for signature-covered authorization references.
+def _sha256_commitment(text: str, *, domain: str) -> str:
+    framed = domain.encode("utf-8") + b"\x00" + text.encode("utf-8")
+    return "sha256:" + hashlib.sha256(framed).hexdigest()
 
-    This is intentionally not a cryptographic signature implementation. It checks
-    whether a downstream artifact exposes the minimum verifier-readable,
-    signature-covered reference shape needed for ORPRG interop review. Actual
-    signature validation remains the job of the carrying artifact and/or the
-    referenced artifact.
+
+def _prefixed_sha256(value: str) -> str:
+    return value if value.startswith("sha256:") else "sha256:" + value
+
+
+def crossref_decision(ref: Any, *, expected_action_commitment: str, supported_profile: str) -> Dict[str, Any]:
+    """Strict public-eval checker for a signature-covered authorization reference.
+
+    The checker validates the exact selected field model and fail-closed
+    semantics.  It does not claim that a boolean marker proves a carrier
+    signature; the carrying artifact still has to authenticate these fields.
     """
     if not isinstance(ref, dict):
         return {"decision": "DENY", "reason": "AUTHREF_NOT_AN_OBJECT"}
-    if ("action_id" in ref or "action_type" in ref) and "protected_action_commitment" not in ref:
+    if ("action_id" in ref or "action_type" in ref) and "action_commitment" not in ref:
         return {"decision": "DENY", "reason": "AUTHREF_NAME_ONLY_NON_AUTHORIZING"}
-    required = [
-        "ref_profile",
-        "reference_kind",
-        "artifact_digest",
-        "issuer_id",
-        "digest_algorithm",
-        "canonicalization_profile_ref",
-        "domain_sep",
-        "protected_action_commitment",
-        "signature_coverage",
-        "failure_behavior",
-    ]
-    missing = [k for k in required if k not in ref]
+    required = {
+        "ref_profile", "ref_kind", "ref_artifact_digest", "issuer_or_signer",
+        "digest_algorithm", "canonicalization_profile_ref", "domain_sep",
+        "action_commitment", "audience", "scope", "valid_from", "valid_until",
+        "policy_epoch", "anti_replay", "signature_coverage", "status",
+        "verifier_behavior",
+    }
+    allowed = required | {"ref_artifact_id", "key_id"}
+    missing = sorted(required - set(ref))
     if missing:
         return {"decision": "DENY", "reason": "AUTHREF_REQUIRED_FIELD_MISSING", "missing": missing}
+    unknown = sorted(set(ref) - allowed)
+    if unknown:
+        return {"decision": "DENY", "reason": "AUTHREF_UNKNOWN_FIELD", "unknown": unknown}
     if ref.get("ref_profile") != AUTH_REF_PROFILE:
         return {"decision": "DENY", "reason": "AUTHREF_PROFILE_UNSUPPORTED"}
     if ref.get("signature_coverage") is not True:
@@ -335,10 +418,43 @@ def crossref_decision(ref: Any, *, expected_action_commitment: str, supported_pr
         return {"decision": "DENY", "reason": "AUTHREF_DIGEST_ALGORITHM_UNSUPPORTED"}
     if ref.get("canonicalization_profile_ref") != supported_profile:
         return {"decision": "DENY", "reason": "AUTHREF_CANONICALIZATION_PROFILE_UNSUPPORTED"}
-    if ref.get("protected_action_commitment") != expected_action_commitment:
-        return {"decision": "DENY", "reason": "AUTHREF_PROTECTED_ACTION_COMMITMENT_MISMATCH"}
-    if ref.get("status") == "stale":
-        return {"decision": "DENY", "reason": "AUTHREF_STATUS_STALE"}
+    if ref.get("domain_sep") != "PermitReceipt.authorization_ref.public-eval.v2":
+        return {"decision": "DENY", "reason": "AUTHREF_DOMAIN_SEPARATOR_MISMATCH"}
+    expected = _prefixed_sha256(expected_action_commitment)
+    if ref.get("action_commitment") != expected:
+        return {"decision": "DENY", "reason": "AUTHREF_ACTION_COMMITMENT_MISMATCH"}
+    for digest_field in ("ref_artifact_digest", "action_commitment"):
+        value = ref.get(digest_field)
+        if not isinstance(value, str) or len(value) != 71 or not value.startswith("sha256:"):
+            return {"decision": "DENY", "reason": "AUTHREF_DIGEST_MALFORMED", "field": digest_field}
+        try:
+            int(value[7:], 16)
+        except ValueError:
+            return {"decision": "DENY", "reason": "AUTHREF_DIGEST_MALFORMED", "field": digest_field}
+    if not isinstance(ref.get("issuer_or_signer"), str) or not ref["issuer_or_signer"]:
+        return {"decision": "DENY", "reason": "AUTHREF_ISSUER_MALFORMED"}
+    if not isinstance(ref.get("audience"), str) or not ref["audience"]:
+        return {"decision": "DENY", "reason": "AUTHREF_AUDIENCE_MALFORMED"}
+    if not isinstance(ref.get("policy_epoch"), int) or isinstance(ref.get("policy_epoch"), bool) or ref["policy_epoch"] < 0:
+        return {"decision": "DENY", "reason": "AUTHREF_POLICY_EPOCH_MALFORMED"}
+    scope = ref.get("scope")
+    required_scope = {"effect_type", "interface_id", "action_type", "target_id", "tenant_id", "purpose_id"}
+    if not isinstance(scope, dict) or required_scope - set(scope) or any(not isinstance(scope.get(k), str) or not scope.get(k) for k in required_scope):
+        return {"decision": "DENY", "reason": "AUTHREF_SCOPE_MALFORMED"}
+    anti_replay = ref.get("anti_replay")
+    nonce_commitment = anti_replay.get("nonce_commitment") if isinstance(anti_replay, dict) else None
+    if set(anti_replay or {}) != {"nonce_commitment"} or not isinstance(nonce_commitment, str) or len(nonce_commitment) != 71 or not nonce_commitment.startswith("sha256:"):
+        return {"decision": "DENY", "reason": "AUTHREF_ANTI_REPLAY_MALFORMED"}
+    if ref.get("status") != "valid":
+        return {"decision": "DENY", "reason": "AUTHREF_STATUS_NOT_VALID"}
+    behavior = ref.get("verifier_behavior")
+    expected_behavior = {
+        "on_unsupported_profile": "DENY",
+        "on_mismatch": "DENY",
+        "on_unverifiable": "DENY",
+    }
+    if behavior != expected_behavior:
+        return {"decision": "DENY", "reason": "AUTHREF_FAILURE_BEHAVIOR_NOT_FAIL_CLOSED"}
     return {"decision": "BOUND", "reason": None}
 
 
@@ -348,33 +464,110 @@ def make_authorization_ref(receipt: Dict[str, Any], action_digest: str, *, overr
         artifact_digest = digest_obj(core)
     else:
         artifact_digest = digest_obj_standalone(core)
+    scope = core.get("scope", {})
+    nonce = (core.get("anti_replay") or {}).get("nonce", "")
     ref: Dict[str, Any] = {
         "ref_profile": AUTH_REF_PROFILE,
-        "reference_kind": "PermitReceipt",
-        "artifact_digest": artifact_digest,
-        "issuer_id": receipt["authenticity"]["issuer_id"],
+        "ref_kind": "PermitReceipt",
+        "ref_artifact_digest": _prefixed_sha256(artifact_digest),
+        "issuer_or_signer": receipt["authenticity"]["issuer_id"],
         "digest_algorithm": "sha-256",
         "canonicalization_profile_ref": core.get("canonicalization_profile_ref", SUPPORTED_PROFILE),
-        "domain_sep": None,
-        "protected_action_commitment": action_digest,
+        "domain_sep": "PermitReceipt.authorization_ref.public-eval.v2",
+        "action_commitment": _prefixed_sha256(action_digest),
+        "audience": scope.get("interface_id"),
         "scope": {
-            "effect_type": core.get("scope", {}).get("effect_type"),
-            "interface_id": core.get("scope", {}).get("interface_id"),
-            "target_id": core.get("scope", {}).get("target_id"),
-            "tenant_id": core.get("tenant_id"),
-            "purpose_id": core.get("purpose_id"),
+            key: scope[key]
+            for key in (
+                "effect_type", "interface_id", "action_type", "target_id",
+                "tenant_id", "purpose_id", "representation_class_id",
+                "artifact_id", "key_id", "key_op", "key_ops", "max_effect_budget",
+            )
+            if key in scope
         },
-        "validity": {"valid_from": core.get("valid_from"), "valid_to": core.get("valid_to")},
-        "epoch_id": core.get("epoch_id"),
-        "anti_replay": core.get("anti_replay"),
+        "valid_from": core.get("valid_from"),
+        "valid_until": core.get("valid_to"),
+        "policy_epoch": core.get("epoch_id"),
+        "anti_replay": {
+            "nonce_commitment": _sha256_commitment(
+                str(nonce), domain="PermitReceipt.authorization_ref.nonce.public-eval.v2"
+            )
+        },
         "signature_coverage": True,
-        "failure_behavior": "DENY when unsupported, mismatched, stale, replayed, or unverifiable",
-        "status": "fresh",
-        "note": "Public-eval shape. Field names are not a wire-profile requirement.",
+        "status": "valid",
+        "verifier_behavior": {
+            "on_unsupported_profile": "DENY",
+            "on_mismatch": "DENY",
+            "on_unverifiable": "DENY",
+        },
     }
     if overrides:
         ref.update(overrides)
     return ref
+
+
+def make_authorization_ref_carrier(authorization_ref: Mapping[str, Any]) -> Optional[Dict[str, Any]]:
+    """Create an actually signed carrier in full-repository mode.
+
+    Standalone packet mode intentionally returns ``None`` because the standard
+    library does not provide Ed25519. It never fabricates cryptographic proof.
+    """
+
+    if not HAVE_ORPRG_EVAL:
+        return None
+    body = {
+        "carrier_profile": AUTH_REF_CARRIER_PROFILE,
+        "authorization_ref": dict(authorization_ref),
+    }
+    return {
+        "carrier": body,
+        "authenticity": {
+            "issuer_id": authorization_ref["issuer_or_signer"],
+            "signature_algorithm": "ed25519",
+            "signature": sign_object(ISSUER_KEY, body),
+        },
+    }
+
+
+def crossref_carrier_decision(
+    carrier: Any,
+    *,
+    expected_action_commitment: str,
+    supported_profile: str,
+    trusted_issuers: Mapping[str, str],
+) -> Dict[str, Any]:
+    """Authenticate the carrier before interpreting its authorization_ref."""
+
+    if not HAVE_ORPRG_EVAL:
+        return {"decision": "DENY", "reason": "AUTHREF_CRYPTO_UNAVAILABLE_IN_STANDALONE_MODE"}
+    if not isinstance(carrier, dict) or set(carrier) != {"carrier", "authenticity"}:
+        return {"decision": "DENY", "reason": "AUTHREF_CARRIER_MALFORMED"}
+    body = carrier.get("carrier")
+    authenticity = carrier.get("authenticity")
+    if not isinstance(body, dict) or set(body) != {"carrier_profile", "authorization_ref"}:
+        return {"decision": "DENY", "reason": "AUTHREF_CARRIER_BODY_MALFORMED"}
+    if body.get("carrier_profile") != AUTH_REF_CARRIER_PROFILE:
+        return {"decision": "DENY", "reason": "AUTHREF_CARRIER_PROFILE_UNSUPPORTED"}
+    if not isinstance(authenticity, dict) or set(authenticity) != {
+        "issuer_id", "signature_algorithm", "signature"
+    }:
+        return {"decision": "DENY", "reason": "AUTHREF_CARRIER_AUTHENTICITY_MALFORMED"}
+    if authenticity.get("signature_algorithm") != "ed25519":
+        return {"decision": "DENY", "reason": "AUTHREF_CARRIER_SIGNATURE_ALGORITHM_UNSUPPORTED"}
+    authorization_ref = body.get("authorization_ref")
+    issuer_id = authenticity.get("issuer_id")
+    if not isinstance(authorization_ref, dict) or issuer_id != authorization_ref.get("issuer_or_signer"):
+        return {"decision": "DENY", "reason": "AUTHREF_CARRIER_ISSUER_MISMATCH"}
+    public_key = trusted_issuers.get(issuer_id) if isinstance(issuer_id, str) else None
+    if not isinstance(public_key, str):
+        return {"decision": "DENY", "reason": "AUTHREF_CARRIER_ISSUER_UNTRUSTED"}
+    if not verify_signature(public_key, authenticity.get("signature"), body):
+        return {"decision": "DENY", "reason": "AUTHREF_CARRIER_SIGNATURE_INVALID"}
+    return crossref_decision(
+        authorization_ref,
+        expected_action_commitment=expected_action_commitment,
+        supported_profile=supported_profile,
+    )
 
 
 def main() -> int:
@@ -409,6 +602,17 @@ def main() -> int:
 
     authorization_ref = make_authorization_ref(receipt, action_digest)
     authorization_ref_result = crossref_decision(authorization_ref, expected_action_commitment=action_digest, supported_profile=SUPPORTED_PROFILE)
+    authorization_ref_carrier = make_authorization_ref_carrier(authorization_ref)
+    authorization_ref_carrier_result = (
+        crossref_carrier_decision(
+            authorization_ref_carrier,
+            expected_action_commitment=action_digest,
+            supported_profile=SUPPORTED_PROFILE,
+            trusted_issuers=policy_state.get("trusted_issuers", {}),
+        )
+        if authorization_ref_carrier is not None
+        else {"decision": "NOT_RUN", "reason": "standalone_mode_has_no_ed25519"}
+    )
 
     one_action: Dict[str, Any] = {
         "packet": "IETF126-ORPRG-one-protected-action-v2",
@@ -417,7 +621,7 @@ def main() -> int:
         "public_boundary": "Synthetic public artifact only; no production credentials, no live payment, no customer data, no regulated data.",
         "canonicalization_profile_ref": SUPPORTED_PROFILE,
         "digest_algorithm": "sha-256",
-        "domain_sep": None,
+        "domain_sep": "PermitReceipt.action.public-eval.v2",
         "request": request,
         "canonical_request_utf8": canonical_text,
         "canonical_request_hex": canonical_bytes.hex(),
@@ -430,15 +634,20 @@ def main() -> int:
             "current_epoch_id": policy_state["current_epoch_id"],
             "minimum_epoch_id": policy_state.get("minimum_epoch_id"),
             "canonicalization_profile_ref": policy_state["canonicalization_profile_ref"],
+            "trusted_issuers": policy_state.get("trusted_issuers", {}),
+            "revocation_authorities": policy_state.get("revocation_authorities", {}),
         },
         "revocation_state_public_subset": {
             "status": revocation_state["status"],
             "last_updated": revocation_state["last_updated"],
             "signed_revocation_list_digest": signed_revocation_list_digest,
+            "signed_revocation_list": revocation_state.get("signed_revocation_list"),
         },
         "verifier_result": verifier_result,
         "authorization_ref_sample": authorization_ref,
         "authorization_ref_sample_result": authorization_ref_result,
+        "authorization_ref_carrier": authorization_ref_carrier,
+        "authorization_ref_carrier_result": authorization_ref_carrier_result,
     }
     if not HAVE_ORPRG_EVAL:
         one_action["standalone_note"] = "orprg_eval package was not importable; ran the standard-library IETF packet evaluator. Apply this overlay to the full permit-receipt repo to run the full public vector corpus."
@@ -509,7 +718,7 @@ def main() -> int:
         {
             "case_id": "AUTHREF-NEG-COMMITMENT-MISMATCH",
             "description": "Reference commits to a different protected action.",
-            "ref": make_authorization_ref(receipt, "sha256:deadbeef", overrides={}),
+            "ref": make_authorization_ref(receipt, "de" * 32, overrides={}),
             "expected_decision": "DENY",
         },
         {
@@ -531,6 +740,36 @@ def main() -> int:
             "expected_decision": "DENY",
         },
     ]
+    if authorization_ref_carrier is not None:
+        tampered_signature = copy.deepcopy(authorization_ref_carrier)
+        tampered_signature["authenticity"]["signature"] = (
+            "A" + tampered_signature["authenticity"]["signature"][1:]
+        )
+        tampered_ref = copy.deepcopy(authorization_ref_carrier)
+        tampered_ref["carrier"]["authorization_ref"]["action_commitment"] = "sha256:" + ("00" * 32)
+        carrier_cases = [
+            {
+                "case_id": "AUTHREF-CARRIER-POS-VALID-SIGNATURE",
+                "description": "Ed25519-authenticated carrier covers the selected authorization_ref.",
+                "carrier": authorization_ref_carrier,
+                "expected_decision": "BOUND",
+            },
+            {
+                "case_id": "AUTHREF-CARRIER-NEG-SIGNATURE-TAMPER",
+                "description": "A changed carrier signature fails closed.",
+                "carrier": tampered_signature,
+                "expected_decision": "DENY",
+            },
+            {
+                "case_id": "AUTHREF-CARRIER-NEG-REF-TAMPER",
+                "description": "Changing a signed authorization_ref commitment invalidates the carrier.",
+                "carrier": tampered_ref,
+                "expected_decision": "DENY",
+            },
+        ]
+    else:
+        carrier_cases = []
+
     crossref_results: List[Dict[str, Any]] = []
     for case in crossref_cases:
         observed = crossref_decision(case["ref"], expected_action_commitment=action_digest, supported_profile=SUPPORTED_PROFILE)
@@ -542,6 +781,21 @@ def main() -> int:
             "observed": observed,
             "pass": passed,
         })
+    for case in carrier_cases:
+        observed = crossref_carrier_decision(
+            case["carrier"],
+            expected_action_commitment=action_digest,
+            supported_profile=SUPPORTED_PROFILE,
+            trusted_issuers=policy_state.get("trusted_issuers", {}),
+        )
+        crossref_results.append({
+            "case_id": case["case_id"],
+            "description": case["description"],
+            "expected_decision": case["expected_decision"],
+            "observed": observed,
+            "pass": observed["decision"] == case["expected_decision"],
+        })
+
     write_json(OUT / "interop-crossref-results.json", {
         "profile": AUTH_REF_PROFILE,
         "runner_mode": runner_mode,
@@ -570,7 +824,7 @@ def main() -> int:
         "interop_crossref_checks_total": len(crossref_results),
         "action_digest": action_digest,
         "canonicalization_profile_ref": SUPPORTED_PROFILE,
-        "domain_sep": None,
+        "domain_sep": "PermitReceipt.action.public-eval.v2",
         "outputs": [
             "one-protected-action.json",
             "canonical-request.bytes.txt",
@@ -598,7 +852,7 @@ def main() -> int:
         "## One protected action",
         "",
         f"- canonicalization_profile_ref: `{SUPPORTED_PROFILE}`",
-        "- domain_sep: `null` in this synthetic profile; interop uses signature-covered cross-references unless byte equality is proven",
+        "- action domain separator: `PermitReceipt.action.public-eval.v2`; authorization_ref domain separator: `PermitReceipt.authorization_ref.public-eval.v2`",
         f"- canonical_request_length_bytes: `{len(canonical_bytes)}`",
         f"- action_digest: `{action_digest}`",
         f"- permit_receipt_core_digest: `{receipt_core_digest}`",

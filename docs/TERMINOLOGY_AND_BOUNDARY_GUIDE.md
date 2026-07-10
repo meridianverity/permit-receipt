@@ -38,7 +38,7 @@ Private or separately licensed:
 - receipt issuance service;
 - production cryptographic key management;
 - non-bypassable enforcement adapters;
-- no signed conformance suites;
+- separately licensed signed test or interoperability suites;
 - certificate or certification registries;
 - partner-specific integrations;
 - non-public legal mapping and claim charts;
