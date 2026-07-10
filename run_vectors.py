@@ -45,8 +45,8 @@ summary = {
 # Convert Counter to normal dict.
 summary["by_category"] = dict(summary["by_category"])
 
-(ROOT / "evaluation_vectors" / "vectors.json").write_text(json.dumps(serializable_vectors, indent=2, sort_keys=True), encoding="utf-8")
-(RESULTS / "results.json").write_text(json.dumps({"summary": summary, "results": results}, indent=2, sort_keys=True), encoding="utf-8")
+(ROOT / "evaluation_vectors" / "vectors.json").write_text(json.dumps(serializable_vectors, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+(RESULTS / "results.json").write_text(json.dumps({"summary": summary, "results": results}, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 md = []
 md.append("# ORPRG-Eval v3.2 Evaluation Vector Results\n")
@@ -67,3 +67,4 @@ for r in results:
     md.append(f"| {r['vector_id']} | {r['category']} | {r['expected']['decision']} | {r['observed']['decision']} | {r['observed']['denial_reason_code'] or ''} | {r['pass']} |")
 (RESULTS / "evaluation_summary.md").write_text("\n".join(md) + "\n", encoding="utf-8")
 print(json.dumps(summary, indent=2, sort_keys=True))
+raise SystemExit(0 if summary["failed"] == 0 else 1)

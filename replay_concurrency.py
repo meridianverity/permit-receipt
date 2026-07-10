@@ -14,6 +14,7 @@ from pathlib import Path
 from orprg_eval.gateway import MockEgressGateway
 from orprg_eval.vector_factory import base_policy, base_request, make_receipt, make_capability
 from orprg_eval.models import ALLOW, DRC
+from orprg_eval.canonicalization import digest_obj
 from orprg_eval.replay import ReplayCache
 
 ROOT = Path(__file__).resolve().parent
@@ -21,14 +22,14 @@ RESULTS = ROOT / "results"
 RESULTS.mkdir(exist_ok=True)
 
 
-def main(workers: int = 64):
+def main(workers: int = 64) -> int:
     policy = base_policy()
     req = base_request()
     receipt = make_receipt(req, policy=policy, nonce="replay-concurrency-receipt")
     cap = make_capability(req, receipt, policy=policy, nonce="replay-concurrency-cap")
     gateway = MockEgressGateway(req["interface_id"])
     cache = ReplayCache()
-    ctx = {"now": policy["now"], "capability_replay_cache": cache, "resolved_tenant_id": req["tenant_id"]}
+    ctx = {"now": policy["now"], "capability_replay_cache": cache, "resolved_tenant_id": req["tenant_id"], "expected_receipt_digest": digest_obj(receipt["receipt_core"])}
 
     def attempt(_idx: int):
         return gateway.commit(req, cap, policy, ctx)
@@ -52,9 +53,10 @@ def main(workers: int = 64):
         md.append(f"| {k} | {v} |")
     (RESULTS / "replay_concurrency_summary.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2, sort_keys=True))
+    return 0 if summary["passed"] else 1
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=64, help="number of concurrent replay attempts")
     args = ap.parse_args()
-    main(args.workers)
+    raise SystemExit(main(args.workers))

@@ -14,7 +14,7 @@ def scenario(name, request, receipt, policy, revocation, context, expected_decis
     r = verify_permit_receipt(request, receipt, policy, revocation, context)
     return {"scenario": name, "expected": {"decision": expected_decision, "denial_reason_code": expected_code}, "observed": r.to_dict(), "pass": r.decision == expected_decision and r.denial_reason_code == expected_code}
 
-def main():
+def main() -> int:
     pol = base_policy()
     req = base_request()
     rec = make_receipt(req, policy=pol, nonce="partition-base")
@@ -37,6 +37,7 @@ def main():
         md.append(f"| {r['scenario']} | {r['expected']['decision']} | {r['observed']['decision']} | {r['observed']['denial_reason_code'] or ''} | {r['pass']} |")
     (RESULTS / "partition_summary.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print(json.dumps({k: summary[k] for k in ("total","passed","failed","synthetic")}, indent=2, sort_keys=True))
+    return 0 if summary["failed"] == 0 else 1
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

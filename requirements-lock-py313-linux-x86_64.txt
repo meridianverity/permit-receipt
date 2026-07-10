@@ -1,0 +1,37 @@
+# Hash-locked QA and build environment for CPython 3.13 on Linux x86_64.
+# Generated from the exact wheels used to certify v2.2.6-public-eval.
+# Includes runtime, test, transitive, and PEP 517 build-backend packages.
+# Install with: python -m pip install --require-hashes -r requirements-lock-py313-linux-x86_64.txt
+
+attrs==26.1.0 \
+    --hash=sha256:c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309  # attrs-26.1.0-py3-none-any.whl
+cffi==2.1.0 \
+    --hash=sha256:799416bae98336e400981ff6e532d67d5c709cfb30afb79865a1315f94b0e224  # cffi-2.1.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+coverage==7.15.0 \
+    --hash=sha256:27f31ecb458da3f859aab3f15ada871eb7a7768807d88df4a9f186bb17737970  # coverage-7.15.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
+cryptography==49.0.0 \
+    --hash=sha256:cbc77da8c523d5abd028635ba850a6966fcee2c82e2bf65a41d1d8afe0f98be9  # cryptography-49.0.0-cp311-abi3-manylinux_2_34_x86_64.whl
+iniconfig==2.3.0 \
+    --hash=sha256:f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12  # iniconfig-2.3.0-py3-none-any.whl
+jsonschema==4.26.0 \
+    --hash=sha256:d489f15263b8d200f8387e64b4c3a75f06629559fb73deb8fdfb525f2dab50ce  # jsonschema-4.26.0-py3-none-any.whl
+jsonschema-specifications==2025.9.1 \
+    --hash=sha256:98802fee3a11ee76ecaca44429fda8a41bff98b00a0f2838151b113f210cc6fe  # jsonschema_specifications-2025.9.1-py3-none-any.whl
+packaging==26.2 \
+    --hash=sha256:5fc45236b9446107ff2415ce77c807cee2862cb6fac22b8a73826d0693b0980e  # packaging-26.2-py3-none-any.whl
+pluggy==1.6.0 \
+    --hash=sha256:e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746  # pluggy-1.6.0-py3-none-any.whl
+pycparser==3.0 \
+    --hash=sha256:b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992  # pycparser-3.0-py3-none-any.whl
+pygments==2.20.0 \
+    --hash=sha256:81a9e26dd42fd28a23a2d169d86d7ac03b46e2f8b59ed4698fb4785f946d0176  # pygments-2.20.0-py3-none-any.whl
+pytest==9.1.1 \
+    --hash=sha256:37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c  # pytest-9.1.1-py3-none-any.whl
+referencing==0.37.0 \
+    --hash=sha256:381329a9f99628c9069361716891d34ad94af76e461dcb0335825aecc7692231  # referencing-0.37.0-py3-none-any.whl
+rpds-py==2026.6.3 \
+    --hash=sha256:acac386b453c2516111b50985d60ce46e7fadb5ea71ae7b25f4c946935bf27cf  # rpds_py-2026.6.3-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+setuptools==83.0.0 \
+    --hash=sha256:29b23c360f22f414dc7336bb39178cc7bcbf6021ed2733cde173f09dba19abb3  # setuptools-83.0.0-py3-none-any.whl
+wheel==0.47.0 \
+    --hash=sha256:212281cab4dff978f6cedd499cd893e1f620791ca6ff7107cf270781e587eced  # wheel-0.47.0-py3-none-any.whl

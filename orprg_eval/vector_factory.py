@@ -21,6 +21,7 @@ ROGUE_ID = "issuer-rogue-synth"
 REVOCATION_ID = "revocation-authority-synth"
 LOG_ID = "revocation-log-synth"
 CAP_ID = "capability-issuer-synth"
+DEFAULT_PERMIT_PROVENANCE_DIGEST = "sha256:25981c1dfe8af9109a3edaea029af66cbeca1f423ff3953b0007871a8effbf7a"
 
 ISSUER_KEY = deterministic_private_key(ISSUER_ID)
 ROGUE_KEY = deterministic_private_key(ROGUE_ID)
@@ -74,6 +75,9 @@ def base_policy() -> Dict[str, Any]:
         "revocation_authorities": {REVOCATION_ID: REVOCATION_PUB},
         "transparency_logs": {LOG_ID: LOG_PUB},
         "trusted_capability_issuers": {CAP_ID: CAP_PUB},
+        "trusted_authority_profile_ids": ["AP-SYNTH-AL5"],
+        "trusted_assurance_level_ids": ["AL5"],
+        "trusted_permit_provenance_digests": [DEFAULT_PERMIT_PROVENANCE_DIGEST],
         "max_clock_drift_seconds": 300,
         "revocation_max_age_seconds": 3600,
         "checkpoint_max_age_seconds": 3600,
@@ -137,7 +141,7 @@ def base_revocation(receipt: Optional[Dict[str, Any]] = None, merkle: bool = Fal
     return state
 
 
-def make_receipt(request: Optional[Dict[str, Any]] = None, policy: Optional[Dict[str, Any]] = None, *, core_overrides: Optional[Dict[str, Any]] = None, scope: Optional[Dict[str, Any]] = None, key=ISSUER_KEY, issuer_id: str = ISSUER_ID, nonce: str = "nonce-base", permit_provenance_digest: Optional[str] = "permit-synth-001", extras: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+def make_receipt(request: Optional[Dict[str, Any]] = None, policy: Optional[Dict[str, Any]] = None, *, core_overrides: Optional[Dict[str, Any]] = None, scope: Optional[Dict[str, Any]] = None, key=ISSUER_KEY, issuer_id: str = ISSUER_ID, nonce: str = "nonce-base", permit_provenance_digest: Optional[str] = DEFAULT_PERMIT_PROVENANCE_DIGEST, extras: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     req = deepcopy(request or base_request())
     pol = deepcopy(policy or base_policy())
     sc = deepcopy(scope or base_scope())
@@ -280,7 +284,7 @@ def build_vectors() -> List[Dict[str, Any]]:
     out.append(_v("KNEG-MERKLE-CHECKPOINT-STALE", "Signed checkpoint is stale.", "I4", DENY, DRC["REVOCATION_UNKNOWN_OR_STALE"], receipt=recM, policy_state=polM, revocation_state=state, category="merkle"))
     state = add_merkle_proofs(make_revocation_state(), recM); state["merkle"]["receipt_proof"]["target_key"] = "receipt:wrong"
     out.append(_v("KNEG-MERKLE-NON-INCLUSION-TARGET-MISMATCH", "Non-inclusion proof targets a different digest.", "I4", DENY, DRC["NON_INCLUSION_PROOF_INVALID"], receipt=recM, policy_state=polM, revocation_state=state, category="merkle"))
-    state = add_merkle_proofs(make_revocation_state(revoked_receipts=["some-other-digest"]), recM); state["merkle"]["receipt_proof"].setdefault("prev", {}).setdefault("audit_path", [])
+    state = add_merkle_proofs(make_revocation_state(revoked_receipts=["11" * 32]), recM); state["merkle"]["receipt_proof"].setdefault("prev", {}).setdefault("audit_path", [])
     if state["merkle"]["receipt_proof"].get("prev", {}).get("audit_path"):
         state["merkle"]["receipt_proof"]["prev"]["audit_path"][0]["hash"] = "00" * 32
     else:
@@ -326,6 +330,191 @@ def build_vectors() -> List[Dict[str, Any]]:
     scopeSafe = {**base_scope(), "effect_type":"SAFETY_HEARTBEAT", "interface_id":"safety-bus-1", "action_type":"PUBLISH", "target_id":"heartbeat"}
     out.append(_v("KPOS-OFFLINE-CONSTRAINED-ALLOW", "Partitioned node allows only explicitly constrained safety heartbeat.", "I9", ALLOW, None, request=reqSafe, receipt=make_receipt(reqSafe, policy=polOff, scope=scopeSafe, nonce="offline-allow"), policy_state=polOff, revocation_state={"status":"missing"}, context={**base_context(), "partitioned": True}, category="partition"))
     out.append(_v("KNEG-OFFLINE-NONCONSTRAINED-DENY", "Partitioned node denies non-constrained data egress.", "I9", DENY, DRC["CONSTRAINED_MODE_DENIAL"], policy_state=polOff, revocation_state={"status":"missing"}, context={**base_context(), "partitioned": True}, category="partition"))
+
+    # v2.2.6 signed adversarial regressions. These objects are re-signed after
+    # mutation so the verifier must reject profile semantics, not merely a bad
+    # signature.
+    signed_core = deepcopy(make_receipt(nonce="signed-missing-nonce")["receipt_core"])
+    signed_core["anti_replay"] = {}
+    out.append(_v(
+        "KNEG-SIGNED-RECEIPT-NONCE-MISSING",
+        "Correctly signed receipt without an anti-replay nonce fails schema validation.",
+        "I8",
+        DENY,
+        DRC["SCHEMA_VALIDATION_FAILURE"],
+        receipt=issue_receipt(signed_core, ISSUER_KEY),
+        category="v226_adversarial",
+    ))
+
+    signed_core = deepcopy(make_receipt(nonce="signed-null-nonce")["receipt_core"])
+    signed_core["anti_replay"] = {"nonce": None}
+    out.append(_v(
+        "KNEG-SIGNED-RECEIPT-NONCE-NULL",
+        "Correctly signed receipt with a null nonce fails closed.",
+        "I8",
+        DENY,
+        DRC["SCHEMA_VALIDATION_FAILURE"],
+        receipt=issue_receipt(signed_core, ISSUER_KEY),
+        category="v226_adversarial",
+    ))
+
+    signed_core = deepcopy(make_receipt(nonce="signed-naive-time")["receipt_core"])
+    signed_core["valid_from"] = "2026-06-02T00:00:00"
+    out.append(_v(
+        "KNEG-SIGNED-RECEIPT-NAIVE-TIMESTAMP",
+        "Correctly signed receipt with a timezone-naive timestamp is rejected on every host.",
+        "I3/I7",
+        DENY,
+        DRC["SCHEMA_VALIDATION_FAILURE"],
+        receipt=issue_receipt(signed_core, ISSUER_KEY),
+        category="v226_adversarial",
+    ))
+
+    out.append(_v(
+        "KNEG-NEGATIVE-CLOCK-DRIFT-ABSOLUTE",
+        "Clock drift beyond the allowed magnitude is denied in either direction.",
+        "I3",
+        DENY,
+        DRC["TIME_SOURCE_UNTRUSTED_OR_DRIFT"],
+        context={**base_context(), "clock_drift_seconds": -301},
+        category="v226_adversarial",
+    ))
+
+    revoked_status_receipt = make_receipt(nonce="status-revoked")
+    revoked_status_state = base_revocation(revoked_status_receipt)
+    revoked_status_state["status"] = "revoked"
+    out.append(_v(
+        "KNEG-REVOCATION-TOPLEVEL-REVOKED",
+        "A literal top-level revoked status cannot produce ALLOW.",
+        "I4",
+        DENY,
+        DRC["REVOKED_CONFIRMED"],
+        receipt=revoked_status_receipt,
+        revocation_state=revoked_status_state,
+        category="v226_adversarial",
+    ))
+
+    missing_status_receipt = make_receipt(nonce="status-missing-field")
+    missing_status_state = base_revocation(missing_status_receipt)
+    del missing_status_state["status"]
+    out.append(_v(
+        "KNEG-REVOCATION-STATUS-FIELD-MISSING",
+        "A revocation state without an explicit status cannot default to fresh.",
+        "I4/I7",
+        DENY,
+        DRC["SCHEMA_VALIDATION_FAILURE"],
+        receipt=missing_status_receipt,
+        revocation_state=missing_status_state,
+        category="v226_adversarial",
+    ))
+
+    invalid_status_receipt = make_receipt(nonce="status-invalid")
+    invalid_status_state = base_revocation(invalid_status_receipt)
+    invalid_status_state["status"] = "unsupported-status"
+    out.append(_v(
+        "KNEG-REVOCATION-TOPLEVEL-UNKNOWN-ENUM",
+        "An unsupported revocation status value fails schema validation.",
+        "I4/I7",
+        DENY,
+        DRC["SCHEMA_VALIDATION_FAILURE"],
+        receipt=invalid_status_receipt,
+        revocation_state=invalid_status_state,
+        category="v226_adversarial",
+    ))
+
+    policy_cap_binding = base_policy()
+    policy_cap_binding["require_capability_token"] = True
+    request_cap_binding = base_request()
+    receipt_cap_binding = make_receipt(
+        request_cap_binding, policy=policy_cap_binding, nonce="cap-binding-receipt"
+    )
+    wrong_binding_capability = make_capability(
+        request_cap_binding,
+        receipt_cap_binding,
+        policy_cap_binding,
+        nonce="cap-binding-wrong",
+        core_overrides={"receipt_digest": "00" * 32},
+    )
+    out.append(_v(
+        "KNEG-CAPABILITY-RECEIPT-BINDING-MISMATCH",
+        "A correctly signed capability bound to another receipt is denied.",
+        "I6",
+        DENY,
+        DRC["CAPABILITY_RECEIPT_BINDING_MISMATCH"],
+        request=request_cap_binding,
+        receipt=receipt_cap_binding,
+        policy_state=policy_cap_binding,
+        context={**base_context(), "capability_token": wrong_binding_capability},
+        category="v226_adversarial",
+    ))
+
+    capability_core = deepcopy(
+        make_capability(
+            request_cap_binding,
+            receipt_cap_binding,
+            policy_cap_binding,
+            nonce="cap-signed-missing-nonce",
+        )["token_core"]
+    )
+    capability_core.pop("nonce")
+    signed_capability_missing_nonce = issue_capability_token(
+        capability_core, CAP_KEY, CAP_ID
+    )
+    out.append(_v(
+        "KNEG-SIGNED-CAPABILITY-NONCE-MISSING",
+        "Correctly signed capability without a nonce fails closed.",
+        "I6/I8",
+        DENY,
+        DRC["CAPABILITY_TOKEN_INVALID_OR_MISSING"],
+        request=request_cap_binding,
+        receipt=receipt_cap_binding,
+        policy_state=policy_cap_binding,
+        context={**base_context(), "capability_token": signed_capability_missing_nonce},
+        category="v226_adversarial",
+    ))
+
+    offline_replay_receipt = make_receipt(
+        reqSafe, policy=polOff, scope=scopeSafe, nonce="offline-replayed-nonce"
+    )
+    out.append(_v(
+        "KNEG-OFFLINE-CONSTRAINED-REPLAY",
+        "Constrained operation never waives receipt anti-replay.",
+        "I8/I9",
+        DENY,
+        DRC["ANTI_REPLAY_FAILURE"],
+        request=reqSafe,
+        receipt=offline_replay_receipt,
+        policy_state=polOff,
+        revocation_state={"status": "missing"},
+        context={
+            **base_context(),
+            "partitioned": True,
+            "used_nonces": ["offline-replayed-nonce"],
+        },
+        category="v226_adversarial",
+    ))
+
+    policy_offline_capability = deepcopy(polOff)
+    policy_offline_capability["require_capability_token"] = True
+    offline_capability_receipt = make_receipt(
+        reqSafe,
+        policy=policy_offline_capability,
+        scope=scopeSafe,
+        nonce="offline-capability-required",
+    )
+    out.append(_v(
+        "KNEG-OFFLINE-CONSTRAINED-CAPABILITY-MISSING",
+        "Constrained operation never waives a required downstream capability.",
+        "I6/I9",
+        DENY,
+        DRC["CAPABILITY_TOKEN_INVALID_OR_MISSING"],
+        request=reqSafe,
+        receipt=offline_capability_receipt,
+        policy_state=policy_offline_capability,
+        revocation_state={"status": "missing"},
+        context={**base_context(), "partitioned": True},
+        category="v226_adversarial",
+    ))
 
     # Extension/schema edge.
     reqExt = {**base_request(), "effect_type":"EXTENSION_INSTALL", "interface_id":"ext-market-1", "action_type":"INSTALL", "target_id":"ext:pub/tool@1.0"}

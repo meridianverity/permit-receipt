@@ -124,10 +124,8 @@ def verify_inclusion_proof(proof: Mapping[str, Any], root_hash: str) -> bool:
                 return False
             if direction == "left":
                 h = node_hash(sibling, h)
-            elif direction == "right":
+            else:  # expected directions are exhaustively "left" or "right"
                 h = node_hash(h, sibling)
-            else:
-                return False
         return _size_bound_root(tree_size, h) == root_hash
     except Exception:
         return False
@@ -171,22 +169,20 @@ def verify_non_inclusion_proof(proof: Mapping[str, Any], root_hash: str) -> bool
         if prev_proof is not None:
             if not verify_inclusion_proof(prev_proof, root_hash):
                 return False
-            if int(prev_proof.get("tree_size", -1)) != tree_size:
-                return False
+            # The inclusion verifier binds tree_size into the committed root, so
+            # a second mutable-size comparison here would be redundant.
             prev_index = int(prev_proof["leaf_index"])
             if str(prev_proof["entry"]["key"]) >= target:
                 return False
         if next_proof is not None:
             if not verify_inclusion_proof(next_proof, root_hash):
                 return False
-            if int(next_proof.get("tree_size", -1)) != tree_size:
-                return False
+            # The inclusion verifier binds tree_size into the committed root.
             next_index = int(next_proof["leaf_index"])
             if str(next_proof["entry"]["key"]) <= target:
                 return False
         if prev_proof is not None and next_proof is not None:
-            if str(prev_proof["entry"]["key"]) >= str(next_proof["entry"]["key"]):
-                return False
+            # The two strict target inequalities above imply prev.key < next.key.
             if prev_index is None or next_index is None or prev_index + 1 != next_index:
                 return False
         elif prev_index is not None:

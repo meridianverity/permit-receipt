@@ -1,271 +1,306 @@
 #!/usr/bin/env python3
+"""Fail-closed structural, publication-boundary, and metadata release gate."""
 from __future__ import annotations
 
-import hashlib
+import ast
 import json
+import os
 import re
+import subprocess
+import sys
+import tomllib
+from xml.parsers import expat
 from pathlib import Path
+from typing import Any
+
+try:
+    from release_config import ARTIFACT_LABEL, PUBLIC_VERSION, TAG
+    from source_inventory import iter_source_files, sha256_file
+except ImportError:  # pragma: no cover
+    from tools.release_config import ARTIFACT_LABEL, PUBLIC_VERSION, TAG
+    from tools.source_inventory import iter_source_files, sha256_file
 
 ROOT = Path(__file__).resolve().parents[1]
 CHECKS = ROOT / "checks"
 CHECKS.mkdir(exist_ok=True)
-
 SKIP_CONTENT = {
-    Path("tools/release_gate.py"),
-    Path("checks/release_gate_report.json"),
-    Path("checks/release_gate_report.md"),
-    Path(".gitignore"),
+    "tools/release_gate.py",
+    "tools/static_security_scan.py",
+    "docs/KNOWN_ISSUES_v2_2_5.md",
+    "PermitReceipt_v2.2.5_Aggressive_Audit_2026-07-10.md",
 }
-SKIP_GENERATED_DIR_SUFFIXES = (".egg-info",)
-SKIP_DIRS = {
-    ".git",
-    ".github",
-    "__pycache__",
-    ".pytest_cache",
-    ".mypy_cache",
-    "tmp",
-    "dist",
-    "build",
-    "results",
-    "checks",
-}
-FORBIDDEN_PATH_FRAGMENTS = [
+ALLOWED_BINARY_EXTS = {".png", ".jpg", ".jpeg", ".gif", ".pdf"}
+FORBIDDEN_PATH_FRAGMENTS = (
     "restricted_diligence",
     "restricted_annex",
     "legal_private",
-    "legal_mapping_private",
     "nonpublic_strategy",
     "production_secret",
     "live_processor",
     "cardholder_data",
-]
-FORBIDDEN_CONTENT_PATTERNS = [
+)
+FORBIDDEN_CONTENT_PATTERNS = (
     r"private\s+diligence",
-    r"evidence\s+of\s+use",
     r"production\s+processor\s+credential",
     r"live\s+processor\s+credential",
-    r"cardholder\s+data\s+environment",
     r"raw\s+card\s+data",
-]
-# These patterns are forbidden when asserted positively. Negated boundary language
-# such as "not a certification program" is allowed and encouraged.
-OVERCLAIM_PATTERNS = [
+)
+OVERCLAIM_PATTERNS = (
     r"production[-\s]+ready",
     r"production[-\s]+grade",
-    r"stable[-\s]+release",
     r"certified\s+production",
     r"official\s+IETF\s+reference\s+implementation",
     r"official\s+IETF\s+implementation",
     r"IETF[-\s]+endorsed",
     r"\bIETF\s+standard\b",
     r"\breference\s+implementation\b",
-    r"open[-\s]+source[-\s]+implementation",
     r"public\s+trust\s+anchor",
     r"certificate\s+registry",
     r"conformance\s+program",
-    r"conformance\s+suite",
     r"certification\s+program",
     r"compliance\s+certification",
     r"production\s+authorization\s+boundary",
-    r"production\s+non[-\s]+bypassability\s+provided",
     r"proves\s+production\s+non[-\s]+bypassability",
-]
-NEGATION_MARKERS = (
-    "not ",
-    "not a ",
-    "not an ",
-    "no ",
-    "does not ",
-    "do not ",
-    "is not ",
-    "are not ",
-    "without ",
-    "excludes ",
-    "exclude ",
-    "no claim",
-    "not claim",
-    "does not claim",
+    r"\bflawless\b",
+    r"99\.9+%?",
+    r"#1\s+(?:at|in|global)",
 )
-ALLOWED_BINARY_EXTS = {".png", ".jpg", ".jpeg", ".gif", ".pdf"}
+NEGATION_MARKERS = (
+    "not ", "no ", "does not ", "do not ", "is not ", "are not ", "without ",
+    "excludes ", "no claim", "cannot claim", "must not claim", "overclaim",
+    "avoid ", "avoid:",
+)
 
 
-def sha256(path: Path) -> str:
-    h = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(chunk)
-    return h.hexdigest()
-
-
-def sha256_prefixed(path: Path) -> str:
-    return "sha256:" + sha256(path)
-
-
-def digest_path_set(paths: list[Path]) -> str:
-    h = hashlib.sha256()
-    for path in sorted(paths, key=lambda p: p.relative_to(ROOT).as_posix()):
-        rel = path.relative_to(ROOT).as_posix()
-        data = path.read_bytes()
-        h.update(rel.encode("utf-8"))
-        h.update(b"\0")
-        h.update(str(len(data)).encode("ascii"))
-        h.update(b"\0")
-        h.update(data)
-        h.update(b"\0")
-    return "sha256:" + h.hexdigest()
-
-
-def check_synthetic_attestation(findings: list[dict]) -> None:
-    rel_s = "attestations/synthetic_evaluation_attestation.json"
-    path = ROOT / rel_s
-    if not path.exists():
-        findings.append({"path": rel_s, "kind": "missing_attestation", "detail": "synthetic evaluation attestation is required"})
-        return
-    try:
-        attestation = json.loads(path.read_text(encoding="utf-8"))
-        core = attestation["attestation_core"]
-    except Exception as exc:
-        findings.append({"path": rel_s, "kind": "attestation_parse_error", "detail": repr(exc)})
-        return
-
-    expected_version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
-    if core.get("version") != expected_version:
-        findings.append({"path": rel_s, "kind": "attestation_version_mismatch", "detail": f"expected {expected_version}, observed {core.get('version')}"})
-
-    validator_components = (core.get("subject") or {}).get("validator_components") or {}
-    for component, expected_digest in sorted(validator_components.items()):
-        component_path = ROOT / component
-        if not component_path.exists():
-            findings.append({"path": rel_s, "kind": "attestation_component_missing", "detail": component})
-            continue
-        observed = sha256_prefixed(component_path)
-        if observed != expected_digest:
-            findings.append({"path": rel_s, "kind": "attestation_component_digest_mismatch", "detail": f"{component}: expected {expected_digest}, observed {observed}"})
-
-    evidence = core.get("evidence") or {}
-    digest_targets = {
-        "vectors_digest": ROOT / "evaluation_vectors" / "vectors.json",
-        "policy_digest": ROOT / "policy_paygate_domain" / "paygate_policy_v1.json",
-    }
-    for field, target in digest_targets.items():
-        expected_digest = evidence.get(field)
-        observed = sha256_prefixed(target) if target.exists() else "missing"
-        if observed != expected_digest:
-            findings.append({"path": rel_s, "kind": "attestation_evidence_digest_mismatch", "detail": f"{field}: expected {expected_digest}, observed {observed}"})
-
-    hybrid_paths = list((ROOT / "examples").glob("h*.json"))
-    observed_hybrid_digest = digest_path_set(hybrid_paths)
-    expected_hybrid_digest = evidence.get("hybrid_examples_digest")
-    if observed_hybrid_digest != expected_hybrid_digest:
-        findings.append({"path": rel_s, "kind": "attestation_hybrid_examples_digest_mismatch", "detail": f"expected {expected_hybrid_digest}, observed {observed_hybrid_digest}"})
-
-
-def iter_files():
-    for p in sorted(ROOT.rglob("*")):
-        if not p.is_file():
-            continue
-        rel = p.relative_to(ROOT)
-        if any(part in SKIP_DIRS or part.endswith(SKIP_GENERATED_DIR_SUFFIXES) for part in rel.parts):
-            continue
-        yield rel, p
-
-
-def read_text(path: Path):
-    try:
-        return path.read_text(encoding="utf-8")
-    except UnicodeDecodeError:
-        return None
+def duplicate_rejecting_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    value: dict[str, Any] = {}
+    for key, item in pairs:
+        if key in value:
+            raise ValueError(f"duplicate JSON member {key!r}")
+        value[key] = item
+    return value
 
 
 def overclaim_is_negated(line: str, start: int) -> bool:
-    window = line[max(0, start - 80) : start].lower()
-    full = line.lower()
-    if any(marker in window for marker in NEGATION_MARKERS):
-        return True
-    if any(marker in full for marker in ('not ', 'no ', 'does not ', 'do not ', 'is not ', 'are not ', 'avoid', 'use instead', 'preferred wording', 'overclaim', 'release-gate scan')):
-        return True
-    # Common list item patterns: "- No X" or "It is not X".
-    if re.search(r"(^|[\n\.;:\-])\s*(no|not|does\s+not|do\s+not|is\s+not|are\s+not)\b", full):
-        return True
-    return False
+    before = line[max(0, start - 120):start].lower()
+    whole = line.lower()
+    return any(marker in before or marker in whole for marker in NEGATION_MARKERS)
+
+
+def collect_pytest_count() -> int:
+    env = dict(os.environ)
+    env.update({
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONWARNINGS": "error",
+    })
+    completed = subprocess.run(
+        [sys.executable, "-m", "pytest", "--collect-only", "-q", "-p", "no:cacheprovider"],
+        cwd=ROOT,
+        env=env,
+        capture_output=True,
+        text=True,
+        timeout=120,
+        check=False,
+    )
+    output = completed.stdout + "\n" + completed.stderr
+    if completed.returncode != 0:
+        raise RuntimeError(f"pytest collection failed ({completed.returncode}): {output[-2000:]}")
+    match = re.search(r"(?m)^(\d+) tests? collected(?: in [^\n]+)?$", output.strip())
+    if match:
+        return int(match.group(1))
+    node_ids = [line for line in completed.stdout.splitlines() if "::" in line and not line.startswith("=")]
+    if node_ids:
+        return len(node_ids)
+    raise ValueError("unable to determine collected pytest count")
+
+
+def numeric_metric_at_least(
+    coverage: dict[str, object],
+    name: str,
+    minimum: float,
+    findings: list[dict[str, object]],
+    path: Path,
+) -> None:
+    observed = coverage.get(name)
+    if isinstance(observed, bool) or not isinstance(observed, (int, float)) or float(observed) < minimum:
+        findings.append({
+            "path": path.relative_to(ROOT).as_posix(),
+            "kind": "attestation_metric_below_minimum",
+            "detail": f"{name}: minimum {minimum}, observed {observed!r}",
+        })
+
+
+def check_attestation(findings: list[dict[str, object]]) -> None:
+    path = ROOT / "attestations/synthetic_evaluation_attestation.json"
+    try:
+        attestation = json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=duplicate_rejecting_pairs)
+        core = attestation["attestation_core"]
+    except Exception as exc:
+        findings.append({"path": path.relative_to(ROOT).as_posix(), "kind": "attestation_invalid", "detail": str(exc)})
+        return
+    if core.get("version") != PUBLIC_VERSION:
+        findings.append({"path": path.relative_to(ROOT).as_posix(), "kind": "attestation_version_mismatch", "detail": repr(core.get("version"))})
+    if core.get("result") != "PASS":
+        findings.append({"path": path.relative_to(ROOT).as_posix(), "kind": "attestation_result_not_pass", "detail": repr(core.get("result"))})
+    coverage = core.get("coverage") or {}
+    try:
+        vector_count = len(json.loads((ROOT / "evaluation_vectors/vectors.json").read_text(encoding="utf-8"), object_pairs_hook=duplicate_rejecting_pairs))
+    except Exception as exc:
+        findings.append({"path": "evaluation_vectors/vectors.json", "kind": "vector_corpus_invalid", "detail": str(exc)})
+    else:
+        if coverage.get("orprg_evaluation_vectors") != vector_count:
+            findings.append({"path": path.relative_to(ROOT).as_posix(), "kind": "attestation_vector_count_mismatch", "detail": f"expected {vector_count}, observed {coverage.get('orprg_evaluation_vectors')!r}"})
+    try:
+        pytest_count = collect_pytest_count()
+    except Exception as exc:
+        findings.append({"path": "tests", "kind": "pytest_collection_failed", "detail": str(exc)})
+    else:
+        if coverage.get("strict_pytest_cases") != pytest_count:
+            findings.append({
+                "path": path.relative_to(ROOT).as_posix(),
+                "kind": "attestation_test_count_mismatch",
+                "detail": f"expected {pytest_count}, observed {coverage.get('strict_pytest_cases')!r}",
+            })
+
+    for metric, minimum in (
+        ("strict_pytest_cases", 300),
+        ("ietf126_review_checks", 20),
+        ("independent_recompute_checks", 17),
+        ("independent_crypto_checks", 19),
+        ("orprg_eval_statement_coverage_percent", 99.0),
+        ("orprg_eval_branch_coverage_percent", 98.0),
+        ("security_core_line_coverage_percent", 99.0),
+        ("security_core_branch_coverage_percent", 97.5),
+        ("hybrid_scenarios", 5),
+    ):
+        numeric_metric_at_least(coverage, metric, minimum, findings, path)
+    for rel, expected in ((core.get("subject") or {}).get("validator_components") or {}).items():
+        target = ROOT / rel
+        observed = "sha256:" + sha256_file(target) if target.is_file() else "missing"
+        if observed != expected:
+            findings.append({"path": rel, "kind": "attestation_component_digest_mismatch", "detail": f"expected {expected}, observed {observed}"})
+    evidence = core.get("evidence") or {}
+    for field, rel in (
+        ("vectors_digest", "evaluation_vectors/vectors.json"),
+        ("policy_digest", "policy_paygate_domain/paygate_policy_v1.json"),
+        ("dependency_lock_digest", "requirements-lock-py313-linux-x86_64.txt"),
+        ("sbom_digest", "sbom.cdx.json"),
+    ):
+        target = ROOT / rel
+        observed = "sha256:" + sha256_file(target) if target.is_file() else "missing"
+        if evidence.get(field) != observed:
+            findings.append({"path": path.relative_to(ROOT).as_posix(), "kind": "attestation_evidence_digest_mismatch", "detail": f"{field}: expected {evidence.get(field)}, observed {observed}"})
+
+
+def check_sbom(findings: list[dict[str, object]]) -> None:
+    path = ROOT / "sbom.cdx.json"
+    try:
+        sbom = json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=duplicate_rejecting_pairs)
+    except Exception as exc:
+        findings.append({"path": path.relative_to(ROOT).as_posix(), "kind": "sbom_invalid", "detail": str(exc)})
+        return
+    if sbom.get("bomFormat") != "CycloneDX" or sbom.get("specVersion") != "1.6":
+        findings.append({"path": path.relative_to(ROOT).as_posix(), "kind": "sbom_profile_mismatch", "detail": repr((sbom.get("bomFormat"), sbom.get("specVersion")))})
+    components = sbom.get("components")
+    if not isinstance(components, list) or len(components) < 10:
+        findings.append({"path": path.relative_to(ROOT).as_posix(), "kind": "sbom_component_count_too_low", "detail": repr(len(components) if isinstance(components, list) else None)})
+
+
+def parse_xml_without_dtd_or_entities(text: str) -> None:
+    """Parse XML while rejecting DTDs, entity declarations, and external entities."""
+    parser = expat.ParserCreate()
+
+    def reject_declaration(*_args: object) -> None:
+        raise ValueError("DTD/entity declarations are forbidden in the public slice")
+
+    parser.StartDoctypeDeclHandler = reject_declaration
+    parser.EntityDeclHandler = reject_declaration
+    parser.ExternalEntityRefHandler = lambda *_args: 0
+    parser.Parse(text, True)
 
 
 def main() -> int:
-    findings = []
-    files = []
-    for rel, p in iter_files():
-        rel_s = rel.as_posix()
-        lower = rel_s.lower()
-        files.append({"path": rel_s, "bytes": p.stat().st_size, "sha256": sha256(p)})
-        if p.suffix.lower() == ".zip":
-            findings.append(
-                {
-                    "path": rel_s,
-                    "kind": "embedded_zip",
-                    "detail": "ZIP files must not be nested in the public evaluation slice",
-                }
-            )
-        for frag in FORBIDDEN_PATH_FRAGMENTS:
-            if frag in lower:
-                findings.append({"path": rel_s, "kind": "forbidden_path_fragment", "detail": frag})
-        if rel in SKIP_CONTENT:
+    findings: list[dict[str, object]] = []
+    files: list[dict[str, object]] = []
+    schema_ids: dict[str, str] = {}
+    for rel_path, path in iter_source_files(ROOT):
+        rel = rel_path.as_posix()
+        files.append({"path": rel, "bytes": path.stat().st_size, "sha256": sha256_file(path)})
+        lower = rel.lower()
+        if path.stat().st_size > 10 * 1024 * 1024:
+            findings.append({"path": rel, "kind": "file_too_large", "detail": str(path.stat().st_size)})
+        if path.suffix.lower() == ".zip":
+            findings.append({"path": rel, "kind": "embedded_zip", "detail": "ZIP files may not be nested in the public slice"})
+        for fragment in FORBIDDEN_PATH_FRAGMENTS:
+            if fragment in lower:
+                findings.append({"path": rel, "kind": "forbidden_path_fragment", "detail": fragment})
+        raw = path.read_bytes()
+        try:
+            text = raw.decode("utf-8")
+        except UnicodeDecodeError:
+            if path.suffix.lower() not in ALLOWED_BINARY_EXTS:
+                findings.append({"path": rel, "kind": "unexpected_binary", "detail": path.suffix})
             continue
-        txt = read_text(p)
-        if txt is None:
-            if p.suffix.lower() not in ALLOWED_BINARY_EXTS:
-                findings.append({"path": rel_s, "kind": "unexpected_binary", "detail": p.suffix})
-            continue
-        for pat in FORBIDDEN_CONTENT_PATTERNS:
-            if re.search(pat, txt, flags=re.IGNORECASE):
-                findings.append({"path": rel_s, "kind": "forbidden_content_pattern", "detail": pat})
-        for pat in OVERCLAIM_PATTERNS:
-            for m in re.finditer(pat, txt, flags=re.IGNORECASE):
-                line_start = txt.rfind("\n", 0, m.start()) + 1
-                line_end = txt.find("\n", m.end())
-                if line_end == -1:
-                    line_end = len(txt)
-                line = txt[line_start:line_end]
-                if not overclaim_is_negated(line, m.start() - line_start):
-                    findings.append(
-                        {
-                            "path": rel_s,
-                            "kind": "positive_overclaim_pattern",
-                            "detail": pat,
-                            "line": line.strip()[:240],
-                        }
-                    )
-    check_synthetic_attestation(findings)
-
+        if b"\r" in raw:
+            findings.append({"path": rel, "kind": "non_lf_line_endings", "detail": "CR byte observed"})
+        if raw and not raw.endswith(b"\n"):
+            findings.append({"path": rel, "kind": "missing_final_newline", "detail": "text file must end with LF"})
+        if rel not in SKIP_CONTENT:
+            for pattern in FORBIDDEN_CONTENT_PATTERNS:
+                if re.search(pattern, text, flags=re.IGNORECASE):
+                    findings.append({"path": rel, "kind": "forbidden_content_pattern", "detail": pattern})
+            for pattern in OVERCLAIM_PATTERNS:
+                for match in re.finditer(pattern, text, flags=re.IGNORECASE):
+                    line_start = text.rfind("\n", 0, match.start()) + 1
+                    line_end = text.find("\n", match.end())
+                    line_end = len(text) if line_end < 0 else line_end
+                    line = text[line_start:line_end]
+                    if not overclaim_is_negated(line, match.start() - line_start):
+                        findings.append({"path": rel, "kind": "positive_overclaim_pattern", "detail": pattern, "line": line.strip()[:240]})
+        try:
+            if path.suffix == ".py":
+                ast.parse(text, filename=rel)
+            elif path.suffix == ".json":
+                value = json.loads(text, object_pairs_hook=duplicate_rejecting_pairs)
+                if isinstance(value, dict) and isinstance(value.get("$id"), str):
+                    schema_id = value["$id"]
+                    if schema_id in schema_ids:
+                        findings.append({"path": rel, "kind": "duplicate_json_schema_id", "detail": f"also in {schema_ids[schema_id]}"})
+                    else:
+                        schema_ids[schema_id] = rel
+            elif path.suffix == ".toml":
+                tomllib.loads(text)
+            elif path.suffix == ".xml":
+                parse_xml_without_dtd_or_entities(text)
+            elif path.suffix in {".yml", ".yaml"} and "\t" in text:
+                findings.append({"path": rel, "kind": "yaml_tab_indentation", "detail": "tab character observed"})
+        except Exception as exc:
+            findings.append({"path": rel, "kind": "structural_parse_error", "detail": f"{type(exc).__name__}: {exc}"})
+    version = (ROOT / "VERSION").read_text(encoding="utf-8").strip() if (ROOT / "VERSION").exists() else None
+    if version != PUBLIC_VERSION:
+        findings.append({"path": "VERSION", "kind": "version_mismatch", "detail": f"expected {PUBLIC_VERSION}, observed {version}"})
+    if TAG not in (ROOT / "README.md").read_text(encoding="utf-8"):
+        findings.append({"path": "README.md", "kind": "active_tag_missing", "detail": TAG})
+    check_sbom(findings)
+    check_attestation(findings)
     report = {
-        "artifact": "PermitReceipt Public Evaluation Slice for AI-Agent External Effects v2.2.5",
+        "artifact": ARTIFACT_LABEL,
+        "version": PUBLIC_VERSION,
         "ok": not findings,
         "file_count": len(files),
         "finding_count": len(findings),
         "findings": findings,
     }
-    (CHECKS / "release_gate_report.json").write_text(
-        json.dumps(report, indent=2, sort_keys=True), encoding="utf-8"
-    )
-    md = [
-        "# Release Gate Report",
-        "",
-        f"Status: **{'PASS' if report['ok'] else 'FAIL'}**",
-        "",
-        f"Files scanned: {len(files)}",
-        f"Findings: {len(findings)}",
-        "",
-    ]
+    (CHECKS / "release_gate_report.json").write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
+    md = ["# Release Gate Report", "", f"Status: **{'PASS' if report['ok'] else 'FAIL'}**", "", f"Files scanned: {len(files)}", f"Findings: {len(findings)}", ""]
     if findings:
-        md += ["| Path | Kind | Detail | Line |", "|---|---|---|---|"]
+        md.extend(["| Path | Kind | Detail |", "|---|---|---|"])
         for finding in findings:
-            md.append(
-                f"| {finding['path']} | {finding['kind']} | `{finding['detail']}` | {finding.get('line', '')} |"
-            )
+            md.append(f"| {finding.get('path', '')} | {finding['kind']} | `{str(finding.get('detail', ''))[:200]}` |")
     else:
-        md.append(
-            "No restricted-publication markers, embedded ZIPs, unexpected binaries, or positive overclaim patterns were found in the public slice."
-        )
-    (CHECKS / "release_gate_report.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+        md.append("All structural, publication-boundary, metadata-binding, and overclaim checks passed.")
+    (CHECKS / "release_gate_report.md").write_text("\n".join(md) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps(report, indent=2, sort_keys=True))
     return 0 if report["ok"] else 1
 

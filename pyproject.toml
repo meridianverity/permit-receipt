@@ -1,20 +1,22 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools==83.0.0", "wheel==0.47.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "permit-receipt-ref-eval"
-version = "2.2.5"
+version = "2.2.6"
 description = "Synthetic public evaluation for PermitReceipt permit-before-commit external-effect authorization"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-  "cryptography>=42.0.0",
+  "cryptography>=49.0.0,<50",
 ]
 
 [project.optional-dependencies]
 dev = [
-  "pytest>=7.0",
+  "pytest>=9.1.1,<10",
+  "jsonschema>=4.26.0,<5",
+  "coverage>=7.15.0,<8",
 ]
 
 [tool.setuptools]

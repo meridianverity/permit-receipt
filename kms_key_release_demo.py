@@ -24,8 +24,13 @@ ROOT = Path(__file__).resolve().parent
 RESULTS = ROOT / "results"
 RESULTS.mkdir(exist_ok=True)
 
+KMS_PERMIT_PROVENANCE_DIGEST = (
+    "sha256:3d7aa89a53070c121ff17753f790f1c8"
+    "591d390040090723b2a3e07b1b37c419"
+)
 
-def key_request(op: str = "DECRYPT", key_id: str = "kms:key/tenant-A/reporting", nonce: str = "kms-nonce-1") -> Dict[str, Any]:
+
+def key_request(op: str = "DECRYPT", key_id: str = "kms:key/tenant-A/reporting") -> Dict[str, Any]:
     return {
         "effect_type": "KEY_RELEASE",
         "interface_id": "kms-gate-1",
@@ -38,7 +43,6 @@ def key_request(op: str = "DECRYPT", key_id: str = "kms:key/tenant-A/reporting",
         "representation_class_id": "key-release-v1",
         "max_effect_budget": 1,
         "payload_digest": "key-release-payload-synth",
-        "nonce": nonce,
     }
 
 
@@ -88,8 +92,17 @@ def main() -> int:
     policy["require_identity_binding"] = False
     policy["require_purpose"] = True
     policy["require_permit_provenance"] = True
+    policy["trusted_permit_provenance_digests"] = [
+        KMS_PERMIT_PROVENANCE_DIGEST
+    ]
     req = key_request()
-    receipt = make_receipt(req, policy=policy, scope=key_scope(req), nonce="kms-receipt-1", permit_provenance_digest="permit-prov-kms-synth")
+    receipt = make_receipt(
+        req,
+        policy=policy,
+        scope=key_scope(req),
+        nonce="kms-receipt-1",
+        permit_provenance_digest=KMS_PERMIT_PROVENANCE_DIGEST,
+    )
     rev = make_revocation_state()
     base_ctx = {**base_context(), "purpose_id": "support", "attestation_required": True, "attestation_present": True}
 

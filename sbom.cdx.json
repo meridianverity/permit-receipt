@@ -1,0 +1,506 @@
+{
+  "bomFormat": "CycloneDX",
+  "components": [
+    {
+      "bom-ref": "pkg:pypi/attrs@26.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309"
+        }
+      ],
+      "name": "attrs",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "attrs-26.1.0-py3-none-any.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/attrs@26.1.0",
+      "type": "library",
+      "version": "26.1.0"
+    },
+    {
+      "bom-ref": "pkg:pypi/cffi@2.1.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "799416bae98336e400981ff6e532d67d5c709cfb30afb79865a1315f94b0e224"
+        }
+      ],
+      "name": "cffi",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "cffi-2.1.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/cffi@2.1.0",
+      "type": "library",
+      "version": "2.1.0"
+    },
+    {
+      "bom-ref": "pkg:pypi/coverage@7.15.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "27f31ecb458da3f859aab3f15ada871eb7a7768807d88df4a9f186bb17737970"
+        }
+      ],
+      "name": "coverage",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "coverage-7.15.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/coverage@7.15.0",
+      "type": "library",
+      "version": "7.15.0"
+    },
+    {
+      "bom-ref": "pkg:pypi/cryptography@49.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cbc77da8c523d5abd028635ba850a6966fcee2c82e2bf65a41d1d8afe0f98be9"
+        }
+      ],
+      "name": "cryptography",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "cryptography-49.0.0-cp311-abi3-manylinux_2_34_x86_64.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/cryptography@49.0.0",
+      "type": "library",
+      "version": "49.0.0"
+    },
+    {
+      "bom-ref": "pkg:pypi/iniconfig@2.3.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12"
+        }
+      ],
+      "name": "iniconfig",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "iniconfig-2.3.0-py3-none-any.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/iniconfig@2.3.0",
+      "type": "library",
+      "version": "2.3.0"
+    },
+    {
+      "bom-ref": "pkg:pypi/jsonschema@4.26.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d489f15263b8d200f8387e64b4c3a75f06629559fb73deb8fdfb525f2dab50ce"
+        }
+      ],
+      "name": "jsonschema",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "jsonschema-4.26.0-py3-none-any.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/jsonschema@4.26.0",
+      "type": "library",
+      "version": "4.26.0"
+    },
+    {
+      "bom-ref": "pkg:pypi/jsonschema-specifications@2025.9.1",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "98802fee3a11ee76ecaca44429fda8a41bff98b00a0f2838151b113f210cc6fe"
+        }
+      ],
+      "name": "jsonschema-specifications",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "jsonschema_specifications-2025.9.1-py3-none-any.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/jsonschema-specifications@2025.9.1",
+      "type": "library",
+      "version": "2025.9.1"
+    },
+    {
+      "bom-ref": "pkg:pypi/packaging@26.2",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5fc45236b9446107ff2415ce77c807cee2862cb6fac22b8a73826d0693b0980e"
+        }
+      ],
+      "name": "packaging",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "packaging-26.2-py3-none-any.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/packaging@26.2",
+      "type": "library",
+      "version": "26.2"
+    },
+    {
+      "bom-ref": "pkg:pypi/pluggy@1.6.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746"
+        }
+      ],
+      "name": "pluggy",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "pluggy-1.6.0-py3-none-any.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/pluggy@1.6.0",
+      "type": "library",
+      "version": "1.6.0"
+    },
+    {
+      "bom-ref": "pkg:pypi/pycparser@3.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992"
+        }
+      ],
+      "name": "pycparser",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "pycparser-3.0-py3-none-any.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/pycparser@3.0",
+      "type": "library",
+      "version": "3.0"
+    },
+    {
+      "bom-ref": "pkg:pypi/pygments@2.20.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "81a9e26dd42fd28a23a2d169d86d7ac03b46e2f8b59ed4698fb4785f946d0176"
+        }
+      ],
+      "name": "pygments",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "pygments-2.20.0-py3-none-any.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/pygments@2.20.0",
+      "type": "library",
+      "version": "2.20.0"
+    },
+    {
+      "bom-ref": "pkg:pypi/pytest@9.1.1",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c"
+        }
+      ],
+      "name": "pytest",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "pytest-9.1.1-py3-none-any.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/pytest@9.1.1",
+      "type": "library",
+      "version": "9.1.1"
+    },
+    {
+      "bom-ref": "pkg:pypi/referencing@0.37.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "381329a9f99628c9069361716891d34ad94af76e461dcb0335825aecc7692231"
+        }
+      ],
+      "name": "referencing",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "referencing-0.37.0-py3-none-any.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/referencing@0.37.0",
+      "type": "library",
+      "version": "0.37.0"
+    },
+    {
+      "bom-ref": "pkg:pypi/rpds-py@2026.6.3",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "acac386b453c2516111b50985d60ce46e7fadb5ea71ae7b25f4c946935bf27cf"
+        }
+      ],
+      "name": "rpds-py",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "rpds_py-2026.6.3-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/rpds-py@2026.6.3",
+      "type": "library",
+      "version": "2026.6.3"
+    },
+    {
+      "bom-ref": "pkg:pypi/setuptools@83.0.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "29b23c360f22f414dc7336bb39178cc7bcbf6021ed2733cde173f09dba19abb3"
+        }
+      ],
+      "name": "setuptools",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "setuptools-83.0.0-py3-none-any.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/setuptools@83.0.0",
+      "type": "library",
+      "version": "83.0.0"
+    },
+    {
+      "bom-ref": "pkg:pypi/wheel@0.47.0",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "212281cab4dff978f6cedd499cd893e1f620791ca6ff7107cf270781e587eced"
+        }
+      ],
+      "name": "wheel",
+      "properties": [
+        {
+          "name": "permitreceipt:locked-wheel",
+          "value": "wheel-0.47.0-py3-none-any.whl"
+        },
+        {
+          "name": "permitreceipt:lock-platform",
+          "value": "CPython 3.13 / Linux x86_64"
+        }
+      ],
+      "purl": "pkg:pypi/wheel@0.47.0",
+      "type": "library",
+      "version": "0.47.0"
+    }
+  ],
+  "dependencies": [
+    {
+      "dependsOn": [
+        "pkg:pypi/attrs@26.1.0",
+        "pkg:pypi/cffi@2.1.0",
+        "pkg:pypi/coverage@7.15.0",
+        "pkg:pypi/cryptography@49.0.0",
+        "pkg:pypi/iniconfig@2.3.0",
+        "pkg:pypi/jsonschema-specifications@2025.9.1",
+        "pkg:pypi/jsonschema@4.26.0",
+        "pkg:pypi/packaging@26.2",
+        "pkg:pypi/pluggy@1.6.0",
+        "pkg:pypi/pycparser@3.0",
+        "pkg:pypi/pygments@2.20.0",
+        "pkg:pypi/pytest@9.1.1",
+        "pkg:pypi/referencing@0.37.0",
+        "pkg:pypi/rpds-py@2026.6.3",
+        "pkg:pypi/setuptools@83.0.0",
+        "pkg:pypi/wheel@0.47.0"
+      ],
+      "ref": "pkg:pypi/permit-receipt-ref-eval@2.2.6"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/attrs@26.1.0"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/cffi@2.1.0"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/coverage@7.15.0"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/cryptography@49.0.0"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/iniconfig@2.3.0"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/jsonschema-specifications@2025.9.1"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/jsonschema@4.26.0"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/packaging@26.2"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/pluggy@1.6.0"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/pycparser@3.0"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/pygments@2.20.0"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/pytest@9.1.1"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/referencing@0.37.0"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/rpds-py@2026.6.3"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/setuptools@83.0.0"
+    },
+    {
+      "dependsOn": [],
+      "ref": "pkg:pypi/wheel@0.47.0"
+    }
+  ],
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:pypi/permit-receipt-ref-eval@2.2.6",
+      "name": "permit-receipt-ref-eval",
+      "properties": [
+        {
+          "name": "permitreceipt:public-version",
+          "value": "2.2.6-public-eval"
+        },
+        {
+          "name": "permitreceipt:release-tag",
+          "value": "v2.2.6-public-eval"
+        }
+      ],
+      "purl": "pkg:pypi/permit-receipt-ref-eval@2.2.6",
+      "type": "application",
+      "version": "2.2.6"
+    },
+    "properties": [
+      {
+        "name": "permitreceipt:artifact",
+        "value": "PermitReceipt Public Evaluation Slice for AI-Agent External Effects v2.2.6"
+      },
+      {
+        "name": "permitreceipt:lockfile",
+        "value": "requirements-lock-py313-linux-x86_64.txt"
+      },
+      {
+        "name": "permitreceipt:lockfile-sha256",
+        "value": "df743541e498f73cfccdb1a8bf6b5a77975614c520ea1ebdedb5525368fe3caa"
+      }
+    ],
+    "timestamp": "2026-07-10T00:00:00Z",
+    "tools": {
+      "components": [
+        {
+          "name": "permit-receipt deterministic metadata generator",
+          "type": "application",
+          "version": "2.2.6"
+        }
+      ]
+    }
+  },
+  "serialNumber": "urn:uuid:8ac0afd2-9c20-5821-9f83-9a16b8fcd1f4",
+  "specVersion": "1.6",
+  "version": 1
+}

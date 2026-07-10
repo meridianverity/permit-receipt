@@ -54,7 +54,11 @@ def capability_only(req: Mapping[str, Any], receipt: Mapping[str, Any] | None, p
 
 
 def orprg(req: Mapping[str, Any], receipt: Mapping[str, Any] | None, policy: Mapping[str, Any], revocation: Mapping[str, Any], ctx: Mapping[str, Any]) -> str:
-    return verify_permit_receipt(dict(req), receipt, dict(policy), dict(revocation), dict(ctx)).decision
+    verifier_context = dict(ctx)
+    verifier_context.pop("session_token", None)  # baseline-only evidence, not an ORPRG context field
+    return verify_permit_receipt(
+        dict(req), receipt, dict(policy), dict(revocation), verifier_context
+    ).decision
 
 
 def build_cases() -> list[dict[str, Any]]:
@@ -74,7 +78,7 @@ def build_cases() -> list[dict[str, Any]]:
     return [valid, missing_receipt, stale_revocation, substituted, epoch_rollback, invalid_signature, replay_or_cap_absent]
 
 
-def main() -> None:
+def main() -> int:
     baselines = {
         "token_only": token_only,
         "scope_only": scope_only,
@@ -101,7 +105,13 @@ def main() -> None:
         md.append(f"| {name} | {stats['correct']}/{len(build_cases())} | {stats['false_allows']} | {stats['false_denies']} |")
     (RESULTS / "pdp_baseline_matrix_summary.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2, sort_keys=True))
+    reference = aggregate["orprg_reference"]
+    return 0 if (
+        reference["correct"] == summary["cases"]
+        and reference["false_allows"] == 0
+        and reference["false_denies"] == 0
+    ) else 1
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

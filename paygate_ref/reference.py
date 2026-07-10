@@ -17,6 +17,11 @@ from orprg_eval.vector_factory import (
     make_revocation_state,
 )
 
+PAYGATE_PERMIT_PROVENANCE_DIGEST = (
+    "sha256:6e56af096dff4530f54dbd8c6651712f"
+    "273ec10e552dc41b0b8c5b52e3b08bda"
+)
+
 
 def payment_request(*, amount_cents: int = 2499, merchant_id: str = "merchant-alpha", agent_id: str = "agent:demo:001", audience: str = "paygate-ref-psp-adapter", purpose: str = "agentic_purchase", cart_digest: str = "cart:sha256:demo-001") -> Dict[str, Any]:
     """Create a deterministic, synthetic payment-adjacent external-effect request.
@@ -66,6 +71,9 @@ def policy_state(*, require_capability_token: bool = False) -> Dict[str, Any]:
         "require_identity_binding": False,
         "require_permit_provenance": True,
         "require_assurance_evidence": False,
+        "trusted_permit_provenance_digests": [
+            PAYGATE_PERMIT_PROVENANCE_DIGEST
+        ],
     })
     return policy
 
@@ -83,7 +91,7 @@ def context_state(*, replay_cache: Optional[ReplayCache] = None) -> Dict[str, An
     return ctx
 
 
-def issue_payment_permit(req: Dict[str, Any], *, scope: Optional[Dict[str, Any]] = None, nonce: str = "paygate-nonce-001", policy: Optional[Dict[str, Any]] = None, valid_to: Optional[str] = None, permit_provenance_digest: Optional[str] = "permit-paygate-ref-001") -> Dict[str, Any]:
+def issue_payment_permit(req: Dict[str, Any], *, scope: Optional[Dict[str, Any]] = None, nonce: str = "paygate-nonce-001", policy: Optional[Dict[str, Any]] = None, valid_to: Optional[str] = None, permit_provenance_digest: Optional[str] = PAYGATE_PERMIT_PROVENANCE_DIGEST) -> Dict[str, Any]:
     pol = policy or policy_state()
     overrides: Dict[str, Any] = {}
     if valid_to is not None:

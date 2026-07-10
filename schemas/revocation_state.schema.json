@@ -1,0 +1,131 @@
+{
+  "$defs": {
+    "authenticity": {
+      "additionalProperties": false,
+      "properties": {
+        "issuer_id": {
+          "$ref": "#/$defs/boundedIdentifier"
+        },
+        "signature": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "issuer_id",
+        "signature"
+      ],
+      "type": "object"
+    },
+    "boundedIdentifier": {
+      "maxLength": 1024,
+      "minLength": 1,
+      "type": "string"
+    },
+    "rfc3339Profile": {
+      "maxLength": 40,
+      "pattern": "^(?!.*-00:00$)[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]{1,6})?(Z|[+-][0-9]{2}:[0-9]{2})$",
+      "type": "string"
+    },
+    "stringList": {
+      "items": {
+        "$ref": "#/$defs/boundedIdentifier"
+      },
+      "maxItems": 10000,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "sha256List": {
+      "type": "array",
+      "maxItems": 10000,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/sha256Digest"
+      }
+    }
+  },
+  "$id": "https://meridianverity.example/schemas/revocation-state/public-eval/v2.2.6",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "last_updated": {
+      "$ref": "#/$defs/rfc3339Profile"
+    },
+    "merkle": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "revoked_issuers": {
+      "$ref": "#/$defs/stringList"
+    },
+    "revoked_receipt_digests": {
+      "$ref": "#/$defs/sha256List"
+    },
+    "signed_revocation_list": {
+      "additionalProperties": false,
+      "properties": {
+        "authenticity": {
+          "$ref": "#/$defs/authenticity"
+        },
+        "body": {
+          "additionalProperties": false,
+          "properties": {
+            "issued_at": {
+              "$ref": "#/$defs/rfc3339Profile"
+            },
+            "issuer_id": {
+              "$ref": "#/$defs/boundedIdentifier"
+            },
+            "revoked_issuers": {
+              "$ref": "#/$defs/stringList"
+            },
+            "revoked_receipt_digests": {
+              "$ref": "#/$defs/sha256List"
+            },
+            "sequence": {
+              "maximum": 9223372036854775807,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "issuer_id",
+            "issued_at",
+            "sequence",
+            "revoked_receipt_digests",
+            "revoked_issuers"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "body",
+        "authenticity"
+      ],
+      "type": "object"
+    },
+    "status": {
+      "enum": [
+        "fresh",
+        "missing",
+        "stale",
+        "unknown",
+        "conflicting",
+        "revoked"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "status"
+  ],
+  "title": "PermitReceipt Revocation State Public-Evaluation Profile v2.2.6",
+  "type": "object"
+}

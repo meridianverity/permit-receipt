@@ -3,6 +3,7 @@
 from __future__ import annotations
 import copy
 import json
+import urllib.parse
 import urllib.request
 from pathlib import Path
 from typing import Any, Dict
@@ -43,10 +44,17 @@ def retrieval_scope(target: str = "case-record-001") -> Dict[str, Any]:
     }
 
 
+def _require_loopback_http_url(url: str) -> None:
+    parsed = urllib.parse.urlsplit(url)
+    if parsed.scheme != "http" or parsed.hostname not in {"127.0.0.1", "localhost", "::1"}:
+        raise ValueError("demo HTTP client only permits loopback http:// URLs")
+
+
 def post_json(url: str, payload: Dict[str, Any]) -> tuple[int, Dict[str, Any]]:
+    _require_loopback_http_url(url)
     req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), method="POST", headers={"content-type": "application/json"})
     try:
-        with urllib.request.urlopen(req, timeout=5) as resp:
+        with urllib.request.urlopen(req, timeout=5) as resp:  # nosec B310
             return resp.status, json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         return e.code, json.loads(e.read().decode("utf-8"))
@@ -66,7 +74,7 @@ def scenario_envelope(policy=None, request=None, receipt=MISSING, revocation=Non
     return {"request": req, "permit_receipt": rec, "policy_state": pol, "revocation_state": rev, "context": ctx}
 
 
-def main() -> None:
+def main() -> int:
     httpd, _thread = start_server()
     base = f"http://{httpd.server_address[0]}:{httpd.server_address[1]}"
     rows = []
@@ -120,7 +128,8 @@ def main() -> None:
         md.append(f"| {r['case']} | {r['observed_status']} | {r['observed_decision']} | {r['observed_reason'] or ''} | {r['pass']} |")
     (RESULTS / "retrieval_gateway_adapter_summary.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2, sort_keys=True))
+    return 0 if summary["failed"] == 0 else 1
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

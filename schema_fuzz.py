@@ -33,7 +33,7 @@ def mutate_set(d: Dict[str, Any], key: str, value: Any) -> Dict[str, Any]:
     out = copy.deepcopy(d); out[key] = value; return out
 
 
-def main() -> None:
+def main() -> int:
     rng = random.Random(20260603)
     policy = base_policy()
     request = base_request()
@@ -50,7 +50,12 @@ def main() -> None:
         for idx, bad in enumerate(BAD_VALUES):
             mutated = mutate_set(request, key, bad)
             res = verify_permit_receipt(mutated, receipt, policy, revocation, context)
-            rows.append({"case": f"request_bad_{key}_{idx}", "kind": "request", "expected": DRC["SCHEMA_VALIDATION_FAILURE"], "observed": res.denial_reason_code, "pass": res.decision == DENY and res.denial_reason_code == DRC["SCHEMA_VALIDATION_FAILURE"]})
+            expected = (
+                DRC["CANONICALIZATION_PROFILE_MISMATCH"]
+                if isinstance(bad, float)
+                else DRC["SCHEMA_VALIDATION_FAILURE"]
+            )
+            rows.append({"case": f"request_bad_{key}_{idx}", "kind": "request", "expected": expected, "observed": res.denial_reason_code, "pass": res.decision == DENY and res.denial_reason_code == expected})
 
     # Required receipt-core deletion/type fuzz.
     for key in RECEIPT_CORE_REQUIRED:
@@ -91,7 +96,8 @@ def main() -> None:
         md.append(f"- {code}")
     (RESULTS / "schema_fuzz_summary.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2, sort_keys=True))
+    return 0 if summary["failed"] == 0 else 1
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

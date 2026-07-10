@@ -92,7 +92,12 @@ def main() -> int:
         md.append(f"| {name} | {vals['correct']} | {vals['false_allows']} | {vals['false_denies']} |")
     (RESULTS / "standard_policy_baseline_matrix_summary.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print(json.dumps({"cases": summary["cases"], "orprg": summary["baselines"]["orprg_reference"]}, indent=2, sort_keys=True))
-    return 0
+    reference = summary["baselines"]["orprg_reference"]
+    return 0 if (
+        reference["correct"] == summary["cases"]
+        and reference["false_allows"] == 0
+        and reference["false_denies"] == 0
+    ) else 1
 
 
 if __name__ == "__main__":
