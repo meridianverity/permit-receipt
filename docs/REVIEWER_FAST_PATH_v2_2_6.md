@@ -33,9 +33,9 @@ python tools/verify_release_artifact.py \
 ## 2. Run the 10-minute evidence path
 
 ```bash
-# Portable path; use the certified lock below on CPython 3.13 / Linux x86_64.
+# Portable network-enabled path; use the certified lock below on CPython 3.13 / Linux x86_64.
 python -m pip install -r requirements.txt
-python -m pip install --no-build-isolation -e . --no-deps
+python -m pip install -e . --no-deps
 python ietf126/run_review_packet.py
 python ietf126/independent_recompute.py
 python ietf126/independent_crypto_verify.py

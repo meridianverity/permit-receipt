@@ -59,6 +59,10 @@ Release-lineage hygiene: this fresh tag is the canonical reviewer-facing pointer
 
 Release asset hashes should be verified from the GitHub release assets generated at publication time. Do not treat an overlay ZIP hash as the full release artifact hash. Active IETF reviewer-facing release pointers are checked by `python tools/check_ietf126_release_pointers.py` and must point to `v2.2.6-public-eval`.
 
+### Separate IETF 126 payment-composition input
+
+A separate frozen pre-execution input for the scoped synthetic EUR payment-composition exercise is documented at [`docs/IETF126_PAYMENT_COMPOSITION_INPUT_v0_1.md`](docs/IETF126_PAYMENT_COMPOSITION_INPUT_v0_1.md). It does not modify or supersede `v2.2.6-public-eval` and is not a composition or interoperability result.
+
 ### v2.2.6 hardening profile
 
 This release reconciles the authorization-reference schema, makes malformed-input behavior total and fail closed, requires strictly typed anti-replay material, makes constrained mode preserve all non-waivable checks, uses timezone-invariant validity parsing, binds capabilities to the active receipt, applies transactional replay reservations, rejects duplicate JSON keys, and adds independent signature verification. See `docs/SECURITY_HARDENING_v2_2_6.md`.

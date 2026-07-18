@@ -1,5 +1,14 @@
 # Reproducibility
 
+## Portable network-enabled reviewer path
+
+```bash
+python -m pip install -r requirements.txt
+python -m pip install -e . --no-deps
+```
+
+This path uses pip's default isolated build environment to provision the build requirements declared in `pyproject.toml`. It requires access to the declared build requirements through a package index or cache.
+
 The public evaluation slice is designed for deterministic source manifests, reproducible test evidence, and byte-identical release builds.
 
 ## Certified clean source-tree gate (CPython 3.13 / Linux x86_64)

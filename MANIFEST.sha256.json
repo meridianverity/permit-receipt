@@ -32,14 +32,14 @@
       "sha256": "9778cbf9a696e6afe7ae91878287f34fb7829d0b25efbbfe26473eef536eba1f"
     },
     {
-      "bytes": 1716,
+      "bytes": 1711,
       "path": "QUICKSTART.md",
-      "sha256": "e222f2eb19e998b001b2a17cbc4196b518ad47b7cd2e0f6192e4de22592e99c1"
+      "sha256": "e50faddd7d45d9f0008200a99096aa77a3d49b4e1c1509b0b9fb8ff30a7eea57"
     },
     {
-      "bytes": 13031,
+      "bytes": 13379,
       "path": "README.md",
-      "sha256": "cc84a133e7228574e78908f15ce1b2504fcfb92d1b3760c907fdf0020450ec89"
+      "sha256": "582a3261d38db49b400cddac98d4d21ade118733a31184d296d5627fb7dbe8ea"
     },
     {
       "bytes": 3261,
@@ -167,6 +167,11 @@
       "sha256": "b0bdffea165802caf4afe16fae0bccee7091709ec8e4fefd7e91008779960d13"
     },
     {
+      "bytes": 2338,
+      "path": "docs/IETF126_PAYMENT_COMPOSITION_INPUT_v0_1.md",
+      "sha256": "30f82768b01a8a87a3f5d3f02e8e3ccbe7c4c50f22983b51e318e4b8f76deb11"
+    },
+    {
       "bytes": 919,
       "path": "docs/IETF126_RELEASE_POINTER_LOCK.md",
       "sha256": "08a17fc3b382f7676ce264266d92fd8170be0ee637050f347562297ca17d76ae"
@@ -267,9 +272,9 @@
       "sha256": "c2d81b4eaee60d9b1a2424ce7024e1d894db182588846429a07b67ba6d7a5ff6"
     },
     {
-      "bytes": 1833,
+      "bytes": 2179,
       "path": "docs/REPRODUCIBILITY.md",
-      "sha256": "f203a2be31f6d5a32be39fa3be17781520da1c6d135a1def49120c9d505c65e2"
+      "sha256": "55c4ff3270071e0ba3de1a0b4daf03072c1122119a1f9c3f12a49a7d52b6c25f"
     },
     {
       "bytes": 2067,
@@ -277,9 +282,9 @@
       "sha256": "e58da1091da239ec749ab511c4a5308cc8b851c586868984628b2c2eb2d242c2"
     },
     {
-      "bytes": 3137,
+      "bytes": 3132,
       "path": "docs/REVIEWER_FAST_PATH_v2_2_6.md",
-      "sha256": "45b715cccdf796226242a2aa97ef8654665d224da500105643c5e4b629a041f0"
+      "sha256": "f5734f3e2511694eae95fabde1562c37a3242d22bb6037205800aaa8c877cb84"
     },
     {
       "bytes": 332,

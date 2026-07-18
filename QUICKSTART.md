@@ -10,9 +10,9 @@ https://github.com/meridianverity/permit-receipt/releases/tag/v2.2.6-public-eval
 sha256sum -c permit-receipt-ref-eval-v2_2_6-public-eval.zip.sha256
 unzip -q permit-receipt-ref-eval-v2_2_6-public-eval.zip
 cd permit-receipt-main
-# Portable reviewer path
+# Portable network-enabled reviewer path
 python -m pip install -r requirements.txt
-python -m pip install --no-build-isolation -e . --no-deps
+python -m pip install -e . --no-deps
 python ietf126/run_review_packet.py
 python ietf126/independent_recompute.py
 python ietf126/independent_crypto_verify.py
