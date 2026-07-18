@@ -123,7 +123,7 @@ It does not process live payments, store PAN/SAD, call live processors, provide 
 
 ```bash
 python -m pip install -r requirements.txt
-python -m pip install --no-build-isolation -e . --no-deps  # portable editable-install smoke check
+python -m pip install -e . --no-deps  # portable editable-install smoke check
 python -m paygate_hybrid.hybrid_demo
 python tools/run_public_eval.py
 ```
